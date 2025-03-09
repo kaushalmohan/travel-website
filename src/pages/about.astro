@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout 
+  title="About Us | Slow Travel with Pankhuri and Kaushal"
+  description="Learn more about Pankhuri and Kaushal, the avid travelers behind the Slow Travel blog."
+>
+  <Hero 
+    title="About Us" 
+    subtitle="The story behind our slow travel journey"
+    image="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200&auto=format&fit=crop"
+  />
+  
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-12">
+          <h2 class="text-3xl font-bold mb-6">Our Story</h2>
+          <p class="text-gray-600 mb-4">
+            We're Pankhuri and Kaushal, a couple with an insatiable wanderlust and a shared passion for experiencing the world at our own pace. Our journey began when we met in college and discovered our mutual love for travel and adventure.
+          </p>
+          <p class="text-gray-600 mb-4">
+            After years of rushed vacations and checking destinations off a list, we realized that we weren't truly experiencing the places we visited. That's when we decided to embrace "slow travel" – a mindful approach that allows us to immerse ourselves in local cultures, forge meaningful connections, and create lasting memories.
+          </p>
+          <p class="text-gray-600">
+            This blog is our way of documenting our journeys and sharing our experiences with fellow travelers who believe that travel is not just about the destinations, but about the journey and the stories we collect along the way.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+          <div>
+            <img 
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop" 
+              alt="Pankhuri" 
+              class="w-full h-80 object-cover rounded-lg shadow-md mb-4"
+            />
+            <h3 class="text-2xl font-bold mb-2">Pankhuri</h3>
+            <p class="text-gray-600 mb-4">
+              A cultural enthusiast with a keen eye for photography, Pankhuri loves capturing the essence of each place we visit. Her background in anthropology gives her a unique perspective on local traditions and customs. She's the planner of our duo, meticulously researching each destination to ensure we don't miss out on authentic experiences.
+            </p>
+            <p class="text-gray-600">
+              Favorite travel memory: Watching the sunrise over the ancient city of Samarkand in Uzbekistan, with the magnificent Registan complex bathed in golden light.
+            </p>
+          </div>
+          
+          <div>
+            <img 
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" 
+              alt="Kaushal" 
+              class="w-full h-80 object-cover rounded-lg shadow-md mb-4"
+            />
+            <h3 class="text-2xl font-bold mb-2">Kaushal</h3>
+            <p class="text-gray-600 mb-4">
+              A food enthusiast and adventure seeker, Kaushal is always on the lookout for hidden culinary gems and off-the-beaten-path experiences. With a background in digital marketing, he handles the technical aspects of our blog and ensures our stories reach fellow travel enthusiasts around the world.
+            </p>
+            <p class="text-gray-600">
+              Favorite travel memory: Spending a night with nomadic shepherds in the mountains of Sikkim, sharing stories around a campfire under a star-filled sky.
+            </p>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 p-8 rounded-lg">
+          <h2 class="text-3xl font-bold mb-6">Our Travel Philosophy</h2>
+          
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-xl font-bold mb-2">Embrace the Slow Pace</h3>
+              <p class="text-gray-600">
+                We believe in spending more time in fewer places, allowing us to develop a deeper connection with each destination. Rather than rushing from one tourist attraction to another, we prefer to wander through local neighborhoods, sit in cafes, and observe daily life.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold mb-2">Connect with Locals</h3>
+              <p class="text-gray-600">
+                Some of our most memorable experiences have come from conversations with locals. We make an effort to learn basic phrases in the local language, stay in family-run accommodations, and participate in community activities whenever possible.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold mb-2">Respect Cultural Differences</h3>
+              <p class="text-gray-600">
+                We approach each destination with an open mind and heart, respecting local customs, traditions, and ways of life. We believe that understanding and appreciating these differences enriches our travel experience and fosters global citizenship.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold mb-2">Travel Sustainably</h3>
+              <p class="text-gray-600">
+                We strive to minimize our environmental impact by choosing eco-friendly accommodations, supporting local businesses, reducing plastic usage, and being mindful of our carbon footprint. We believe that responsible travel ensures that the places we love will be preserved for future generations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

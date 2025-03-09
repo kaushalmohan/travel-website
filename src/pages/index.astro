@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import DestinationCard from '../components/DestinationCard.astro';
+
+const featuredDestinations = [
+  {
+    title: "Uzbekistan",
+    description: "Explore the ancient Silk Road cities with stunning Islamic architecture, vibrant bazaars, and rich cultural heritage.",
+    image: "/images/Uzbekistan/Hero image/Placeholder_image.jpg",
+    url: "/destinations/uzbekistan"
+  },
+  {
+    title: "Dubai",
+    description: "Experience the perfect blend of modern luxury and Arabian tradition in this dazzling desert metropolis.",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop",
+    url: "/destinations/dubai"
+  },
+  {
+    title: "Vietnam",
+    description: "Discover breathtaking landscapes, delicious cuisine, and fascinating history in this Southeast Asian gem.",
+    image: "https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=800&auto=format&fit=crop",
+    url: "/destinations/vietnam"
+  },
+  {
+    title: "Sikkim",
+    description: "Journey through the pristine Himalayan landscapes, Buddhist monasteries, and vibrant culture of this Indian state.",
+    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop",
+    url: "/destinations/sikkim"
+  }
+];
+
+const recentPosts = [
+  {
+    title: "Our 10-Day Uzbekistan Adventure",
+    description: "From the ancient cities of Samarkand and Bukhara to the bustling markets of Tashkent, our comprehensive guide to exploring Uzbekistan.",
+    image: "https://images.unsplash.com/photo-1605147036401-3ea7b2d33e1e?q=80&w=800&auto=format&fit=crop",
+    url: "/destinations/uzbekistan"
+  },
+  {
+    title: "5 Must-Try Dishes in Vietnam",
+    description: "A culinary journey through Vietnam's most delicious and authentic dishes that you absolutely cannot miss.",
+    image: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?q=80&w=800&auto=format&fit=crop",
+    url: "/blog/vietnamese-cuisine"
+  },
+  {
+    title: "Sustainable Travel: Our Approach",
+    description: "How we balance our love for travel with environmental consciousness and cultural respect.",
+    image: "https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?q=80&w=800&auto=format&fit=crop",
+    url: "/blog/sustainable-travel"
+  }
+];
+---
+
+<Layout title="Slow Travel with Pankhuri and Kaushal">
+  <Hero 
+    title="Slow Travel with Pankhuri and Kaushal" 
+    subtitle="Documenting our journeys around the world, one adventure at a time"
+    image="/images/Uzbekistan/Hero image/Hero_image.jpg"
+  />
+  
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">Our Travel Philosophy</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">
+          We believe in immersing ourselves in local cultures, taking our time to truly experience each destination, 
+          and creating meaningful connections along the way. Join us as we explore the world at our own pace.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Cultural Immersion</h3>
+          <p class="text-gray-600">We dive deep into local traditions, cuisines, and daily life to truly understand each destination.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Mindful Exploration</h3>
+          <p class="text-gray-600">We take our time, avoiding rushed itineraries to fully appreciate each moment and place.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Authentic Connections</h3>
+          <p class="text-gray-600">We seek meaningful interactions with locals and fellow travelers, enriching our journey.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center">Featured Destinations</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {featuredDestinations.map(destination => (
+          <DestinationCard 
+            title={destination.title}
+            description={destination.description}
+            image={destination.image}
+            url={destination.url}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center">Recent Adventures</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {recentPosts.map(post => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src={post.image} alt={post.title} class="w-full h-48 object-cover" />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">{post.title}</h3>
+              <p class="text-gray-600 mb-4">{post.description}</p>
+              <a href={post.url} class="inline-flex items-center text-primary-600 font-medium">
+                Read more
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-16 bg-primary-700 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">Join Our Journey</h2>
+      <p class="max-w-2xl mx-auto mb-8">Subscribe to our newsletter and be the first to know about our latest adventures, travel tips, and exclusive content.</p>
+      
+      <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+        <input 
+          type="email" 
+          placeholder="Your email address" 
+          class="px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 text-gray-800 flex-grow"
+          required
+        />
+        <button 
+          type="submit" 
+          class="bg-white text-primary-700 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition duration-300"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>

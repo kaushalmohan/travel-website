@@ -1,0 +1,118 @@
+---
+const navItems = [
+  { name: "Home", url: "/" },
+  { name: "About Us", url: "/about" },
+  { 
+    name: "Destinations", 
+    url: "#",
+    dropdown: true,
+    items: [
+      { name: "Uzbekistan", url: "/destinations/uzbekistan" },
+      { name: "Dubai", url: "/destinations/dubai" },
+      { name: "Vietnam", url: "/destinations/vietnam" },
+      { name: "Sikkim", url: "/destinations/sikkim" }
+    ]
+  },
+  { name: "Contact Us", url: "/contact" },
+  { name: "Sponsorships", url: "/sponsorships" }
+];
+---
+
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <a href="/" class="text-2xl font-serif font-bold text-primary-700">
+      Slow Travel
+    </a>
+    
+    <nav class="hidden md:block">
+      <ul class="flex space-x-6">
+        {navItems.map(item => (
+          <li class="relative group">
+            {item.dropdown ? (
+              <>
+                <button class="flex items-center text-gray-700 hover:text-primary-600 font-medium">
+                  {item.name}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  {item.items.map(subItem => (
+                    <a href={subItem.url} class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">
+                      {subItem.name}
+                    </a>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <a href={item.url} class="text-gray-700 hover:text-primary-600 font-medium">
+                {item.name}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+    
+    <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+    <div class="container mx-auto px-4 py-3">
+      <ul class="space-y-2">
+        {navItems.map(item => (
+          <>
+            {item.dropdown ? (
+              <li>
+                <button class="mobile-dropdown-button flex items-center justify-between w-full text-gray-700 font-medium py-2">
+                  {item.name}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="mobile-dropdown-content hidden pl-4 mt-1 space-y-1">
+                  {item.items.map(subItem => (
+                    <a href={subItem.url} class="block py-2 text-gray-600 hover:text-primary-600">
+                      {subItem.name}
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ) : (
+              <li>
+                <a href={item.url} class="block text-gray-700 font-medium py-2">
+                  {item.name}
+                </a>
+              </li>
+            )}
+          </>
+        ))}
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+  
+  // Mobile dropdown toggles
+  const mobileDropdownButtons = document.querySelectorAll('.mobile-dropdown-button');
+  
+  mobileDropdownButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;
+      content?.classList.toggle('hidden');
+    });
+  });
+</script>
