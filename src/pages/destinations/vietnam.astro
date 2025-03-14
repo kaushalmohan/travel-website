@@ -1,91 +1,1287 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import ItineraryDay from '../../components/ItineraryDay.astro';
 ---
 
 <Layout 
   title="Vietnam Travel Guide | Slow Travel with Pankhuri and Kaushal"
-  description="Coming soon: Our comprehensive guide to exploring Vietnam."
+  description="Explore our comprehensive guide to Vietnam with day-by-day itinerary, must-see attractions, and travel tips."
 >
+  <style is:global>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      cursor: pointer;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90vh;
+      margin-top: 2%;
+      cursor: default;
+      object-fit: contain;
+      background-color: transparent;
+    }
+
+    .image-caption {
+      color: #1a202c;
+      padding: 12px;
+      text-align: center;
+      font-size: 0.95em;
+      font-weight: 600;
+      background-color: #f3f4f6;
+      border-radius: 0.375rem;
+      margin-top: 0.5rem;
+    }
+
+    .caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      text-align: center;
+      color: white;
+      padding: 12px;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    .close {
+      position: absolute;
+      right: 35px;
+      top: 15px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      padding: 10px;
+    }
+
+    .close:hover {
+      color: #bbb;
+    }
+
+    .image-container {
+      position: relative;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease;
+      background-color: #f8f9fa;
+    }
+
+    .image-wrapper:hover {
+      transform: scale(1.02);
+    }
+
+    .clickable-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .clickable-image.active {
+      opacity: 1;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #cbd5e0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .carousel-dot.active {
+      background-color: #4a6fa5;
+    }
+
+    .day-card {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    .day-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.06), 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+    }
+
+    .day-header {
+      background-color: #4a6fa5;
+      color: white;
+      padding: 1rem 1.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .day-content {
+      padding: 1.5rem;
+    }
+
+    .section-title {
+      color: #456789;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid #e6edf5;
+      padding-bottom: 0.5rem;
+    }
+
+    .highlight-box {
+      background-color: #f5f8fa;
+      border-left: 4px solid #4a6fa5;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #e6edf5;
+      color: #456789;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .food-section {
+      background-color: #f8fafc;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .quick-info {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .quick-info-item {
+      background-color: #f5f8fa;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      color: #456789;
+      border: 1px solid #e6edf5;
+    }
+
+    .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 36px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 16px;
+      user-select: none;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .prev {
+      left: 20px;
+    }
+
+    .next {
+      right: 20px;
+    }
+  </style>
+
   <Hero 
     title="Vietnam" 
-    subtitle="A journey through breathtaking landscapes and rich culture"
-    image="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop"
+    subtitle="A journey through history, culture, and natural beauty"
+    image="/images/vietnam/hero-image/hero_image.jpg"
   />
   
-  <section class="py-16">
-    <div class="container mx-auto px-4 text-center">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6">Coming Soon</h2>
-        <p class="text-gray-600 mb-8">
-          We're currently working on our comprehensive Vietnam travel guide based on our recent visit. 
-          Check back soon for a detailed itinerary, must-see attractions, hidden gems, and practical tips for exploring this beautiful country.
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-6">Our 12-Day Vietnam Adventure</h2>
+        <p class="text-gray-600 mb-4">
+          We spent 12 fascinating days exploring Vietnam in November, from the bustling streets of Hanoi to the historic charm of Ho Chi Minh City. Our journey took us through stunning landscapes, including the limestone karsts of Ha Long Bay, the ancient streets of Hoi An, and the modern energy of Da Nang.
         </p>
-        
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-4">What to Expect in Our Vietnam Guide</h3>
-          <ul class="text-gray-600 space-y-2 text-left">
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Comprehensive itineraries for exploring North, Central, and South Vietnam</span>
-            </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Detailed guides to Hanoi, Ho Chi Minh City, Hoi An, and Ha Long Bay</span>
-            </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Tips for experiencing authentic Vietnamese cuisine and food tours</span>
-            </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Off-the-beaten-path experiences and cultural immersion opportunities</span>
-            </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Practical information on transportation, accommodations, and cultural etiquette</span>
-            </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Budget tips for experiencing Vietnam on different travel styles</span>
-            </li>
-          </ul>
+        <p class="text-gray-600">
+          Below is our detailed day-by-day itinerary with recommendations on must-visit locations, places to skip, and practical information to help you plan your own Vietnam adventure.
+        </p>
+      </div>
+
+      {/* Day 1 */}
+      <div class="day-card">
+        <div class="day-header">Day 1: Arrival in Hanoi</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Hanoi Emerald Waters Hotel & Spa</div>
+            <div class="quick-info-item">📍 Location: Hanoi</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                We arrived in Hanoi at 5 AM and completed visa formalities, reaching our hotel by 7-8 AM. Our first task was renting a motorbike from the hotel, which proved invaluable for exploring the city. We visited the Vietnam Museum of Ethnology and spent time around Hoan Kiem lake, enjoying the relaxed atmosphere and nearby garden. For meals, we had our first Vietnamese coffee at Laika cafe, which was excellent, followed by a delicious vegetarian Banh Mi from a local store. Dinner at RK Spice Indian Restaurant was quite average, though we found better Indian options later in our trip.
+              </p>
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Vietnam Museum of Ethnology</span>
+                <span class="tag">Hoan Kiem Lake</span>
+                <span class="tag">Hanoi Market</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day1/day1a.jpg" 
+                     alt="Hoan Kiem Lake" 
+                     class="clickable-image active" 
+                     data-day="1" />
+                <img src="/images/vietnam/day1/day1b.jpg" 
+                     alt="Hanoi Market" 
+                     class="clickable-image" 
+                     data-day="1" />
+                <img src="/images/vietnam/day1/day1c.jpg" 
+                     alt="Hanoi Streets" 
+                     class="clickable-image" 
+                     data-day="1" />
+                <img src="/images/vietnam/day1/day1d.jpg" 
+                     alt="Hanoi City" 
+                     class="clickable-image" 
+                     data-day="1" />
+                <img src="/images/vietnam/day1/day1e.jpg" 
+                     alt="Hanoi Experience" 
+                     class="clickable-image" 
+                     data-day="1" />
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="1"></span>
+                <span class="carousel-dot" data-day="1"></span>
+                <span class="carousel-dot" data-day="1"></span>
+                <span class="carousel-dot" data-day="1"></span>
+                <span class="carousel-dot" data-day="1"></span>
+            </div>
+              <div class="image-caption">Relaxing at Hoan Kiem Lake</div>
+          </div>
         </div>
         
-        <div class="mt-12">
-          <h3 class="text-xl font-bold mb-4">Subscribe for Updates</h3>
-          <p class="text-gray-600 mb-6">
-            Want to be notified when our Vietnam guide is published? Subscribe to our newsletter!
-          </p>
-          
-          <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
-            <input 
-              type="email" 
-              placeholder="Your email address" 
-              class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-800 flex-grow"
-              required
-            />
-            <button 
-              type="submit" 
-              class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-md font-medium transition duration-300"
-            >
-              Subscribe
-            </button>
-          </form>
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The highlight was renting a motorbike and cruising around Hanoi's streets with no particular plan. Hoan Kiem lake was perfect for relaxing - we spent hours walking around and enjoying the nearby garden.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+              The Vietnam Museum of Ethnology - unless you're really into museums, your time might be better spent exploring the city.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Consider Adding</div>
+            <p class="text-gray-600">
+              Tran Quoc Pagoda - we missed it, but heard great things about its beauty.
+            </p>
+          </div>
         </div>
       </div>
+
+      {/* Day 2 */}
+      <div class="day-card">
+        <div class="day-header">Day 2: Ninh Binh Adventure</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🚗 Transport: Local Guide</div>
+            <div class="quick-info-item">📍 Location: Ninh Binh</div>
+              </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                We arranged a local guide for our day trip to Ninh Binh, which proved to be an excellent decision. The two-hour boat ride through Trang An was incredibly relaxing as we navigated through multiple caves. The hike to Mua caves, while challenging with its many steps, rewarded us with spectacular views from the top. We also enjoyed cycling around the old town, experiencing its beauty and charm. Back in Hanoi, we explored the night market (Friday to Sunday), where we enjoyed watching people dance, sing, and play games. For dinner, we had excellent Kadhai Paneer and naan at Red Chilli Indian Restaurant.
+              </p>
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Trang An</span>
+                <span class="tag">Mua Caves</span>
+                <span class="tag">The Huc Bridge</span>
+                <span class="tag">Turtle Tower</span>
+                <span class="tag">Night Market</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day2/day2a.jpg" 
+                     alt="Trang An Boat Ride" 
+                     class="clickable-image active" 
+                     data-day="2" />
+                <img src="/images/vietnam/day2/day2b.jpg" 
+                     alt="Mua Caves View" 
+                     class="clickable-image" 
+                     data-day="2" />
+                <img src="/images/vietnam/day2/day2c.jpg" 
+                     alt="Night Market" 
+                     class="clickable-image" 
+                     data-day="2" />
+                <img src="/images/vietnam/day2/day2d.jpg" 
+                     alt="Ninh Binh Views" 
+                     class="clickable-image" 
+                     data-day="2" />
+                <img src="/images/vietnam/day2/day2e.jpg" 
+                     alt="Trang An Scenery" 
+                     class="clickable-image" 
+                     data-day="2" />
+                <img src="/images/vietnam/day2/day2f.jpg" 
+                     alt="Ninh Binh Countryside" 
+                     class="clickable-image" 
+                     data-day="2" />
+                <img src="/images/vietnam/day2/day2g.jpg" 
+                     alt="Ninh Binh Experience" 
+                     class="clickable-image" 
+                     data-day="2" />
+          </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+              </div>
+              <div class="image-caption">Scenic boat ride through Trang An</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The boat ride through Trang An's caves was a highlight, offering a unique perspective of the region's natural beauty. The hike to Mua Caves provided a rewarding view, and cycling around the old town allowed us to immerse ourselves in the local culture. The night market was a perfect end to the day, filled with lively entertainment and a welcoming atmosphere.
+            </p>
+          </div>
+
+          <div class="section-title">Pro Tips</div>
+            <p class="text-gray-600">
+            While we opted for a local guide to plan our day trip to Ninh Binh, this adventure can also be done independently. Some travelers choose to stay overnight in Ninh Binh to fully experience its charm.
+            </p>
+        </div>
+      </div>
+
+      {/* Day 3 */}
+      <div class="day-card">
+        <div class="day-header">Day 3: Ha Long Bay Cruise</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🚢 Transport: Era Cruise</div>
+            <div class="quick-info-item">📍 Location: Ha Long Bay</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                Our Ha Long Bay experience began with a two-hour Volvo transfer from our hotel to the port. A speedboat then transported us to the Era Cruise, where we were welcomed with lunch before checking into our room, which featured a spacious balcony overlooking the bay. The afternoon included kayaking activities, which proved to be exhilarating. We concluded our day with dinner on the cruise and spent the evening on our private balcony, enjoying music while taking in the serene bay views.
+              </p>
+
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Era Cruise</span>
+                <span class="tag">Ha Long Bay</span>
+                <span class="tag">Limestone Karsts</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day3/day3a.jpg" 
+                     alt="Ha Long Bay Cruise" 
+                     class="clickable-image active" 
+                     data-day="3" />
+                <img src="/images/vietnam/day3/day3b.jpg" 
+                     alt="Kayaking in Ha Long Bay" 
+                     class="clickable-image" 
+                     data-day="3" />
+                <img src="/images/vietnam/day3/day3c.jpg" 
+                     alt="Sunset in Ha Long Bay" 
+                     class="clickable-image" 
+                     data-day="3" />
+                <img src="/images/vietnam/day3/day3d.jpg" 
+                     alt="Ha Long Bay Views" 
+                     class="clickable-image" 
+                     data-day="3" />
+                <img src="/images/vietnam/day3/day3e.jpg" 
+                     alt="Ha Long Bay Activities" 
+                     class="clickable-image" 
+                     data-day="3" />
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+            </div>
+              <div class="image-caption">Cruising through Ha Long Bay</div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The Era Cruise provided an exceptional experience, with its comfortable accommodations and stunning views. Kayaking through the bay's waters was exhilarating, and the evening spent on the balcony was a perfect way to end the day.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Pro Tips</div>
+            <p class="text-gray-600">
+              This cruise is a must-do in Vietnam, offering a unique way to experience the natural beauty of Ha Long Bay.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 4 */}
+      <div class="day-card">
+        <div class="day-header">Day 4: Back to Hanoi from Ha Long Bay</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Airbnb - Nam's place - very small and inside. Not recommended</div>
+            <div class="quick-info-item">📍 Location: Hanoi</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                The day began with breakfast on the cruise, followed by a boat excursion to the Light and Dark caves, which offered stunning natural formations. After returning to Hanoi, we checked into our Airbnb, though Nam's place proved disappointing due to its small size and interior location. We visited The Note Coffee, explored the iconic Hanoi Train Street (timing our visit with the train schedule), and concluded the day at Lotte Tower's observatory deck, the tallest building in Hanoi, where we enjoyed sunset views. We had dinner at Red Chilli Indian Restaurant.
+              </p>
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">The Note Coffee</span>
+                <span class="tag">Hanoi Train Street</span>
+                <span class="tag">Hanoi Lotte Tower</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day4/day4a.jpg" 
+                     alt="Hanoi Train Street" 
+                     class="clickable-image active" 
+                     data-day="4" />
+                <img src="/images/vietnam/day4/day4b.jpg" 
+                     alt="The Note Coffee" 
+                     class="clickable-image" 
+                     data-day="4" />
+                <img src="/images/vietnam/day4/day4c.jpg" 
+                     alt="Lotte Tower View" 
+                     class="clickable-image" 
+                     data-day="4" />
+                <img src="/images/vietnam/day4/day4d.jpg" 
+                     alt="Hanoi Streets" 
+                     class="clickable-image" 
+                     data-day="4" />
+                <img src="/images/vietnam/day4/day4e.jpg" 
+                     alt="Hanoi City Life" 
+                     class="clickable-image" 
+                     data-day="4" />
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+              </div>
+              <div class="image-caption">Watching trains at Hanoi Train Street</div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The Hanoi Train Street offered a unique experience, with the train passing through the narrow street creating an unforgettable moment. The sunset view from the Lotte Tower provided a perfect end to our day.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+              While The Note Coffee is a quirky spot with its walls covered in post-it notes from visitors, it might not be everyone's cup of tea. Similarly, if panoramic city views don't excite you, the Lotte Tower can be skipped.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 5 */}
+      <div class="day-card">
+        <div class="day-header">Day 5: Flight from Hanoi to Da Nang</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Airbnb - Hana's place which is 1 Km from My Khe beach</div>
+            <div class="quick-info-item">📍 Location: Da Nang</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                Upon arrival in Da Nang, we secured a motorbike from our Airbnb, which served as our transportation for the next four days. We explored the area around Dragon Bridge, which offers a particularly vibrant atmosphere with college students enjoying games and social activities nearby. The bridge features a special fire-breathing display on Saturdays and Sundays at 9 PM. We also visited the Da Nang Market, though its extensive seafood displays might not appeal to everyone. For meals, we tried both Indian Curry Restaurant and Maharaja Indian Restaurant.
+              </p>
+
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Dragon Bridge</span>
+                <span class="tag">Da Nang Market</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day5/day5a.jpg" 
+                     alt="Dragon Bridge at night" 
+                     class="clickable-image active" 
+                     data-day="5" />
+                <img src="/images/vietnam/day5/day5b.jpg" 
+                     alt="Da Nang Market" 
+                     class="clickable-image" 
+                     data-day="5" />
+                <img src="/images/vietnam/day5/day5c.jpg" 
+                     alt="Da Nang Streets" 
+                     class="clickable-image" 
+                     data-day="5" />
+                <img src="/images/vietnam/day5/day5d.jpg" 
+                     alt="Da Nang City" 
+                     class="clickable-image" 
+                     data-day="5" />
+                <img src="/images/vietnam/day5/day5e.jpg" 
+                     alt="Da Nang Life" 
+                     class="clickable-image" 
+                     data-day="5" />
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+              </div>
+              <div class="image-caption">Dragon Bridge lit up at night</div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The Dragon Bridge's vibrant atmosphere and the bustling Da Nang Market provided a perfect introduction to the city's culture and energy.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+              The Da Nang Market can be overwhelming for those who are not fond of seafood or crowded places.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Consider Adding</div>
+            <p class="text-gray-600">
+              Marble and Monkey Mountains, Coconut boat ride in Hoi An
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 6 */}
+      <div class="day-card">
+        <div class="day-header">Day 6: Explore Ba Na Hills</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🚗 Transport: Local Guide</div>
+            <div class="quick-info-item">📍 Location: Ba Na Hills</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                A local guide arranged our Ba Na Hills excursion, which began with a scenic cable car journey offering spectacular views throughout the ascent. The Golden Bridge, with its iconic giant stone hands, was particularly impressive. We spent several hours exploring the French Village and enjoying the gaming zone. The afternoon was dedicated to revisiting the Dragon Bridge area, which we had enjoyed so much the previous day.
+              </p>
+
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Ba Na Hills</span>
+                <span class="tag">Golden Bridge</span>
+                <span class="tag">French Village</span>
+                <span class="tag">My Khe Beach</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day6/day6a.jpg" 
+                     alt="Golden Bridge at Ba Na Hills" 
+                     class="clickable-image active" 
+                     data-day="6" />
+                <img src="/images/vietnam/day6/day6b.jpg" 
+                     alt="French Village" 
+                     class="clickable-image" 
+                     data-day="6" />
+                <img src="/images/vietnam/day6/day6c.jpg" 
+                     alt="Ba Na Hills View" 
+                     class="clickable-image" 
+                     data-day="6" />
+                <img src="/images/vietnam/day6/day6d.jpg" 
+                     alt="Ba Na Hills Scenery" 
+                     class="clickable-image" 
+                     data-day="6" />
+                <img src="/images/vietnam/day6/day6e.jpg" 
+                     alt="Ba Na Hills Experience" 
+                     class="clickable-image" 
+                     data-day="6" />
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="6"></span>
+                <span class="carousel-dot" data-day="6"></span>
+                <span class="carousel-dot" data-day="6"></span>
+                <span class="carousel-dot" data-day="6"></span>
+                <span class="carousel-dot" data-day="6"></span>
+              </div>
+              <div class="image-caption">The famous Golden Bridge</div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The cable car ride to Ba Na Hills provided stunning views, and the Golden Bridge was a highlight of our visit. The French Village offered a charming atmosphere, and My Khe Beach was perfect for relaxation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 7 */}
+      <div class="day-card">
+        <div class="day-header">Day 7: Explore Hoi An</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🚗 Transport: Motorbike</div>
+            <div class="quick-info-item">📍 Location: Hoi An</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                We embarked on a 45-kilometer motorbike journey to Hoi An, beginning our day with breakfast and excellent coffee at Good Eats Hoi An. The day was spent exploring various tourist attractions, including a notable house that has survived multiple floods reaching its first floor. The highlight was an evening lantern boat ride, where we witnessed the streets come alive with beautifully lit lanterns creating a magical atmosphere.
+              </p>
+
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Hoi An Ancient Town</span>
+                <span class="tag">Flooded House</span>
+                <span class="tag">Lantern Boat Ride</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day7/day7a.jpg" 
+                     alt="Hoi An at night" 
+                     class="clickable-image active" 
+                     data-day="7" />
+                <img src="/images/vietnam/day7/day7b.jpg" 
+                     alt="Hoi An Lanterns" 
+                     class="clickable-image" 
+                     data-day="7" />
+                <img src="/images/vietnam/day7/day7c.jpg" 
+                     alt="Hoi An Streets" 
+                     class="clickable-image" 
+                     data-day="7" />
+                <img src="/images/vietnam/day7/day7d.jpg" 
+                     alt="Hoi An Experience" 
+                     class="clickable-image" 
+                     data-day="7" />
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="7"></span>
+                <span class="carousel-dot" data-day="7"></span>
+                <span class="carousel-dot" data-day="7"></span>
+                <span class="carousel-dot" data-day="7"></span>
+              </div>
+              <div class="image-caption">Lantern-lit streets of Hoi An</div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The lantern boat ride was a highlight of our day, offering a magical experience as the town lit up with countless lanterns. The ancient architecture and vibrant culture of Hoi An made it a memorable destination.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 8 */}
+      <div class="day-card">
+        <div class="day-header">Day 8: Explore Da Nang</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🚗 Transport: Motorbike</div>
+            <div class="quick-info-item">📍 Location: Da Nang</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                Our day began at the Lady Buddha statue, which offers panoramic city views. We then spent time at My Khe Beach, notable for its excellent maintenance and cleanliness, enjoying coffee while relaxing by the sea. The afternoon took us to Sun World, where we experienced the giant Ferris wheel that provides 360-degree views of Da Nang, though the park offers limited additional attractions.
+              </p>
+
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Lady Buddha</span>
+                <span class="tag">My Khe Beach</span>
+                <span class="tag">Sun World</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day8/day8a.jpg" 
+                     alt="Lady Buddha statue" 
+                     class="clickable-image active" 
+                     data-day="8" />
+                <img src="/images/vietnam/day8/day8b.jpg" 
+                     alt="My Khe Beach" 
+                     class="clickable-image" 
+                     data-day="8" />
+                <img src="/images/vietnam/day8/day8c.jpg" 
+                     alt="Sun World" 
+                     class="clickable-image" 
+                     data-day="8" />
+                <img src="/images/vietnam/day8/day8d.jpg" 
+                     alt="Da Nang Views" 
+                     class="clickable-image" 
+                     data-day="8" />
+                <img src="/images/vietnam/day8/day8e.jpg" 
+                     alt="Da Nang Experience" 
+                     class="clickable-image" 
+                     data-day="8" />
+                <img src="/images/vietnam/day8/day8f.jpg" 
+                     alt="Da Nang City Life" 
+                     class="clickable-image" 
+                     data-day="8" />
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="8"></span>
+                <span class="carousel-dot" data-day="8"></span>
+                <span class="carousel-dot" data-day="8"></span>
+                <span class="carousel-dot" data-day="8"></span>
+                <span class="carousel-dot" data-day="8"></span>
+                <span class="carousel-dot" data-day="8"></span>
+              </div>
+              <div class="image-caption">The majestic Lady Buddha statue</div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The Lady Buddha statue provided a peaceful atmosphere and stunning views, while My Khe Beach offered a perfect spot for relaxation. The Ferris wheel at Sun World was a fun way to see the city from above.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+              Sun World has the tall Ferris wheel but nothing much apart from that. As we enjoy getting a view of the city from the highest point in a city we opted to go here but if that is something that does not fascinate you, you can skip.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 9 */}
+      <div class="day-card">
+        <div class="day-header">Day 9: Ho Chi Minh City Arrival</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">✈️ Travel: Da Nang to Ho Chi Minh City</div>
+            <div class="quick-info-item">📍 Location: Ho Chi Minh City</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                After arriving in Ho Chi Minh City, we visited the fascinating secret weapons cellar, a regular house with an ingeniously concealed underground storage area for weapons. The attached café offers full house access with a coffee purchase, allowing exploration of various secret passageways and tunnels. We spent our evening at Ho Chi Minh Square, which comes alive after 7:30 PM with street artists, vendors, and a vibrant café scene. Dinner was at Namaste Indian Restaurant.
+              </p>
+
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Secret Weapons Cellar</span>
+                <span class="tag">Ho Chi Minh Square</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day9/day9a.jpg" 
+                     alt="Secret Weapons Cellar" 
+                     class="clickable-image active" 
+                     data-day="9" />
+                <img src="/images/vietnam/day9/day9b.jpg" 
+                     alt="Ho Chi Minh Square" 
+                     class="clickable-image" 
+                     data-day="9" />
+                <img src="/images/vietnam/day9/day9c.jpg" 
+                     alt="City Streets" 
+                     class="clickable-image" 
+                     data-day="9" />
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="9"></span>
+                <span class="carousel-dot" data-day="9"></span>
+                <span class="carousel-dot" data-day="9"></span>
+              </div>
+              <div class="image-caption">Hidden passages at the Secret Weapons Cellar</div>
+            </div>
+          </div>
+
+          <div class="section-title">What We Loved</div>
+          <div class="highlight-box">
+            <p class="text-gray-600">
+              The secret weapons cellar was a highlight, offering a glimpse into the resourcefulness of the Vietnamese during the war. Ho Chi Minh Square's vibrant vibe made it a perfect spot for an evening walk.
+            </p>
+          </div>
+
+          <div class="section-title">Consider Adding</div>
+          <p class="text-gray-600">
+            Consider taking the Mekong Delta Tour for a unique experience outside the city.
+          </p>
+        </div>
+      </div>
+
+      {/* Day 10 */}
+      <div class="day-card">
+        <div class="day-header">Day 10: Cu Chi Tunnels & City Views</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🕳️ Morning: Cu Chi Tunnels</div>
+            <div class="quick-info-item">🏙️ Evening: Landmark 81</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                Our morning was dedicated to exploring the Cu Chi Tunnels, an extensive underground network used by the Vietnamese army. The guided tour demonstrated how these invisible tunnel openings were concealed in the forest, with options to enter tunnels of varying lengths (30m, 100m, and 200m). The afternoon brought us to Landmark 81, Ho Chi Minh City's tallest building, where we enjoyed sunset views and the lively atmosphere in the surrounding area.
+              </p>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day10/day10a.jpg" 
+                     alt="Cu Chi Tunnels" 
+                     class="clickable-image active" 
+                     data-day="10" />
+                <img src="/images/vietnam/day10/day10b.jpg" 
+                     alt="Tunnel Entrance" 
+                     class="clickable-image" 
+                     data-day="10" />
+                <img src="/images/vietnam/day10/day10c.jpg" 
+                     alt="Landmark 81" 
+                     class="clickable-image" 
+                     data-day="10" />
+                <img src="/images/vietnam/day10/day10d.jpg" 
+                     alt="Cu Chi Experience" 
+                     class="clickable-image" 
+                     data-day="10" />
+                <img src="/images/vietnam/day10/day10e.jpg" 
+                     alt="City Views" 
+                     class="clickable-image" 
+                     data-day="10" />
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="10"></span>
+                <span class="carousel-dot" data-day="10"></span>
+                <span class="carousel-dot" data-day="10"></span>
+                <span class="carousel-dot" data-day="10"></span>
+                <span class="carousel-dot" data-day="10"></span>
+              </div>
+              <div class="image-caption">Exploring the Cu Chi Tunnels</div>
+            </div>
+          </div>
+
+          <div class="section-title">What We Loved</div>
+          <div class="highlight-box">
+            <p class="text-gray-600">
+              The Cu Chi Tunnels offered a unique historical perspective, and the views from Landmark 81 were simply stunning, providing a new appreciation for the city's skyline.
+            </p>
+          </div>
+
+          <div class="section-title">Skip If You Want</div>
+          <p class="text-gray-600">
+            If you're not interested in city views from above, you might consider skipping Landmark 81.
+          </p>
+        </div>
+      </div>
+
+      {/* Day 11 */}
+      <div class="day-card">
+        <div class="day-header">Day 11: HCMC Cultural Tour</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏛️ Day: City Landmarks</div>
+            <div class="quick-info-item">🌃 Evening: Bui Vien Street</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                We spent over four hours at the War Remnants Museum, examining its detailed exhibits on the Vietnam War, including war equipment, weapons, and documentation of the conflict's impacts. Our cultural exploration continued with visits to the historic Saigon Post Office, which remains fully functional and offers souvenir shopping opportunities, and the nearby Pink Church. The evening concluded at Bui Vien Street, a vibrant walking street featuring diverse entertainment and nightlife, including the unusual sight of snake handlers.
+              </p>
+
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">War Remnants Museum</span>
+                <span class="tag">Ho Chi Minh Post Office</span>
+                <span class="tag">Pink Church</span>
+                <span class="tag">Bui Vien Street</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <img src="/images/vietnam/day11/day11a.jpg" 
+                     alt="Saigon Post Office" 
+                     class="clickable-image active" 
+                     data-day="11" />
+                <img src="/images/vietnam/day11/day11b.jpg" 
+                     alt="War Remnants Museum" 
+                     class="clickable-image" 
+                     data-day="11" />
+                <img src="/images/vietnam/day11/day11c.jpg" 
+                     alt="Bui Vien Street" 
+                     class="clickable-image" 
+                     data-day="11" />
+                <img src="/images/vietnam/day11/day11d.jpg" 
+                     alt="City Landmarks" 
+                     class="clickable-image" 
+                     data-day="11" />
+                <img src="/images/vietnam/day11/day11e.jpg" 
+                     alt="City Life" 
+                     class="clickable-image" 
+                     data-day="11" />
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="11"></span>
+                <span class="carousel-dot" data-day="11"></span>
+                <span class="carousel-dot" data-day="11"></span>
+                <span class="carousel-dot" data-day="11"></span>
+                <span class="carousel-dot" data-day="11"></span>
+              </div>
+              <div class="image-caption">The historic Saigon Post Office</div>
+            </div>
+          </div>
+
+          <div class="section-title">What We Loved</div>
+          <div class="highlight-box">
+            <p class="text-gray-600">
+              The War Remnants Museum offered a poignant reminder of the past, while Bui Vien Street's lively atmosphere was a highlight of our evening.
+            </p>
+          </div>
+
+          <div class="section-title">Skip If You Want</div>
+          <p class="text-gray-600">
+            If museums aren't your thing, you might consider skipping the War Remnants Museum.
+          </p>
+        </div>
+      </div>
+
+      {/* Day 12 */}
+      <div class="day-card">
+        <div class="day-header">Day 12: Homeward Bound</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">✈️ Travel: Ho Chi Minh City - Hanoi - Mumbai</div>
+            <div class="quick-info-item">🛫 Status: Departure Day</div>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Daily Summary</div>
+            <p class="text-gray-600 mb-4">
+              Our final day was dedicated to travel, with flights from Ho Chi Minh City to Hanoi, followed by a long layover before our return flight to Mumbai. While the day was primarily spent in transit, it provided time to reflect on our comprehensive exploration of Vietnam's diverse landscapes and cultures.
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.createElement('div');
+      modal.className = 'modal';
+      modal.innerHTML = `
+        <span class="close">&times;</span>
+        <span class="nav prev">&#10094;</span>
+        <span class="nav next">&#10095;</span>
+        <img class="modal-content">
+        <div class="caption"></div>
+      `;
+      document.body.appendChild(modal);
+
+      const modalImg = modal.querySelector('.modal-content');
+      const captionText = modal.querySelector('.caption');
+      const closeBtn = modal.querySelector('.close');
+      const prevBtn = modal.querySelector('.nav.prev');
+      const nextBtn = modal.querySelector('.nav.next');
+
+      let currentModalDay = null;
+      let currentModalIndex = 0;
+
+      // Image captions mapping
+      const imageCaptions = {
+        'day1a': 'Finding a local place to eat banh mi in the afternoon.',
+        'day1b': 'Park near Hoan Kiem lake where we chilled for a while',
+        'day1c': 'This is the very pretty and chill Hoan Kiem Lake. We sat outside the lake for nearly an hour eating fries and drinking juice.',
+        'day1d': 'Riding around aimlessly in the streets of Hanoi was incredible fun',
+        'day1e': 'Laika cafe where we got our first ever taste of incredible Vietnamese coffee',
+        'day2a': 'We cycled on this beautiful road where our cycle chain came off and we were stranded for a while.',
+        'day2b': 'Boating around in Ningbing amongst the caves was a great experience.',
+        'day2c': 'There was somebody working on the top of Mua caves, and I wish that was my workspace.',
+        'day2d': 'Incredible view from the top of Mua caves',
+        'day2e': 'Happy faces',
+        'day2f': 'Pretty lanes around Mua Caves area',
+        'day2g': 'Walking on the beautiful streets of Trang An surrounded by breathtaking landscapes',
+        'day3a': 'This is Era cruise which was our home for the night',
+        'day3b': 'This was the view from our bed on the cruise. We had this view on three sides',
+        'day3c': 'Kayaking in the beautiful waters of Halong Bay',
+        'day3d': 'When you are on one of these Ha Long Bay cruises, you would spend hours looking at mountains and formations like these.',
+        'day3e': 'The beautiful light and dark caves',
+        'day4a': 'Lazy cruising through Halong Bay',
+        'day4b': 'When you are on one of these Ha Long Bay cruises, you would spend hours looking at mountains and formations like these.',
+        'day4c': 'The infamous Hanoi train street',
+        'day4d': 'View fron the 50th floor of Hanoi Lotte tower',
+        'day4e': 'Best ever Kadhai Panner at Red Chilli Indian restaurant',
+        'day5a': 'First glimpse of Da Nang city from the plane',
+        'day5b': 'Night market in Da Nang',
+        'day5c': 'Chill area around Dragon Bridge. We chilled here watching the local college kids play games',
+        'day5d': 'The amazing Dragon bridge. We enjoyed the vibe so much that we returned the next day',
+        'day5e': 'Happy faces at Dragon bridge',
+        'day6a': 'Dancing with this cutie was so uch fun',
+        'day6b': 'The beautiful hand bridge. The weather here changes every few minutes',
+        'day6c': 'Got lucky with this shot without anyone in the background',
+        'day6d': 'The cable car ride to and from Ba Na hills gives views of the most stunning landscapes',
+        'day6e': 'And we are bck to the dragon bridge are to chill some more',
+        'day7a': 'Morning view of Thu Bon river',
+        'day7b': 'The refreshing lemon and ginger drink',
+        'day7c': 'Moments before the town lit up with lanterns all around',
+        'day7d': 'What a magical evening. Reminds me of the scene from tangled when Rupunzel is at the boat and the sky lights up with lanterns',
+        'day7e': 'Look at those pretty coconut trees at the banks of Thu Bon river',
+        'day8a': 'You can see the entire city from Lady Buddha',
+        'day8b': 'Happy faces at Lady Buddha',
+        'day8c': 'Look at this cutie!',
+        'day8d': 'My Khe beach was so clean and well maintained. Loved every minute we spent here',
+        'day8e': 'Locals exercising at the beach',
+        'day8f': 'Look at that landscape. Makes you want to teleport yourself to this place, doesn\'t it!',
+        'day9a': 'Secret weapon cellar in Ho Chi Minh city is worth a visit',
+        'day9b': 'Nguyen Hue street is so lively in the evenings',
+        'day9c': 'Got to get clicked when the streets are so pretty!',
+        'day10a': 'One of the five tunnels that are open for tourists at Cu Chi tunnels',
+        'day10b': 'The entrance to the tunnel is so small',
+        'day10c': 'The guide told us that the tunnels have been widened for tourists and that they used to be even smaller originally',
+        'day10d': 'View from the Landmark 81 which is the tallest building in Ho Chi Minh city',
+        'day10e': 'We reached Landmark pre sunset and watched the sun go down and the town light up which was incredible',
+        'day11a': 'The War Remnants Museum had displays of army tanks',
+        'day11b': 'The War Remnants Museum had displays of army tanks',
+        'day11c': 'The Saigon post office where we picked beautiful post cards',
+        'day11d': 'The Tan Dinh Church or the Pink church is very pretty',
+        'day11e': 'The Bui Vien walking street has some major vibes and is a must do for everyone who enjoys nightlife'
+      };
+
+      // Carousel functionality
+      const carousels = {};
+      
+      // Initialize carousels for each day
+      document.querySelectorAll('.image-container').forEach(container => {
+        const day = container.querySelector('.clickable-image').dataset.day;
+        const images = container.querySelectorAll('.clickable-image');
+        const dots = container.querySelectorAll('.carousel-dot');
+        const captionElement = container.querySelector('.image-caption');
+        let currentIndex = 0;
+
+        carousels[day] = {
+          images,
+          dots,
+          currentIndex,
+          captionElement,
+          interval: setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel(day, currentIndex);
+          }, 3000)
+        };
+
+        // Add click handlers for dots
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            clearInterval(carousels[day].interval);
+            updateCarousel(day, index);
+            carousels[day].interval = setInterval(() => {
+              carousels[day].currentIndex = (carousels[day].currentIndex + 1) % images.length;
+              updateCarousel(day, carousels[day].currentIndex);
+            }, 3000);
+          });
+        });
+
+        // Add click handlers for images
+        images.forEach((img, index) => {
+          img.addEventListener('click', (e) => {
+            e.stopPropagation();
+          modal.style.display = "block";
+            modalImg.src = e.target.src;
+            const imageName = e.target.src.split('/').pop().replace('.jpg', '');
+            captionText.innerHTML = imageCaptions[imageName] || e.target.alt;
+            currentModalDay = day;
+            currentModalIndex = index;
+          });
+        });
+      });
+
+      function updateCarousel(day, index) {
+        const carousel = carousels[day];
+        carousel.images.forEach(img => img.classList.remove('active'));
+        carousel.dots.forEach(dot => dot.classList.remove('active'));
+        
+        carousel.images[index].classList.add('active');
+        carousel.dots[index].classList.add('active');
+        carousel.currentIndex = index;
+
+        // Update caption
+        const activeImage = carousel.images[index];
+        const imageName = activeImage.src.split('/').pop().replace('.jpg', '');
+        carousel.captionElement.innerHTML = imageCaptions[imageName] || activeImage.alt;
+      }
+
+      function showNextImage() {
+        if (currentModalDay) {
+          const images = carousels[currentModalDay].images;
+          currentModalIndex = (currentModalIndex + 1) % images.length;
+          modalImg.src = images[currentModalIndex].src;
+          const imageName = images[currentModalIndex].src.split('/').pop().replace('.jpg', '');
+          captionText.innerHTML = imageCaptions[imageName] || images[currentModalIndex].alt;
+        }
+      }
+
+      function showPrevImage() {
+        if (currentModalDay) {
+          const images = carousels[currentModalDay].images;
+          currentModalIndex = (currentModalIndex - 1 + images.length) % images.length;
+          modalImg.src = images[currentModalIndex].src;
+          const imageName = images[currentModalIndex].src.split('/').pop().replace('.jpg', '');
+          captionText.innerHTML = imageCaptions[imageName] || images[currentModalIndex].alt;
+        }
+      }
+
+      // Navigation button click handlers
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNextImage();
+      });
+
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showPrevImage();
+      });
+
+      // Close modal with close button
+      closeBtn.addEventListener('click', () => {
+          modal.style.display = "none";
+        });
+
+      // Close modal when clicking outside the image
+      modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+
+      // Handle keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (modal.style.display === "block") {
+          if (e.key === 'Escape') {
+            modal.style.display = "none";
+          } else if (e.key === 'ArrowRight') {
+            showNextImage();
+          } else if (e.key === 'ArrowLeft') {
+            showPrevImage();
+          }
+        }
+      });
+    });
+  </script>
+
+  <div class="modal">
+    <span class="close">&times;</span>
+    <span class="nav prev">&#10094;</span>
+    <span class="nav next">&#10095;</span>
+    <img class="modal-content">
+    <div class="caption"></div>
+  </div>
+
 </Layout>

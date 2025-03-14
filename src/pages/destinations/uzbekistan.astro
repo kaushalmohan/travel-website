@@ -119,7 +119,7 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             We spent 14 incredible days exploring Uzbekistan in mid-November, from the modern capital of Tashkent to the ancient Silk Road cities of Samarkand, Bukhara, and Khiva. Our journey took us through stunning Islamic architecture, bustling bazaars, and gave us a deep appreciation for Uzbek culture and hospitality.
           </p>
           <p class="text-gray-600">
-            Below is our detailed day-by-day itinerary with recommendations on must-see attractions, places to skip, and practical information to help you plan your own Uzbekistan adventure.
+            Below is our detailed day-by-day itinerary with recommendations on must-see attractions, places to skip, and <a href="#practical-information" class="text-blue-600 hover:text-blue-800">practical information</a> to help you plan your own Uzbekistan adventure.
           </p>
         </div>
         
@@ -898,53 +898,53 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
           </div>
 
           {/* Practical Information Section */}
-          <div class="mt-16">
+          <div id="practical-information" class="mt-16">
             <h2 class="text-3xl font-bold mb-8">Practical Information</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="bg-white p-6 rounded-lg shadow-md">
                 <h3 class="text-xl font-bold mb-4">Accommodation</h3>
-              <div class="space-y-4">
-                <div>
-                  <h4 class="font-semibold text-gray-800">Tashkent: City Centre Hotel</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Tashkent: City Centre Hotel</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
                       <li>Central location with all attractions within 3-4 kms</li>
                       <li>Clean, modern rooms with health faucet (rare in Uzbekistan)</li>
                       <li>Window-less room cost ₹3,600 per night (booked via Agoda)</li>
                       <li>Card payments accepted</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-800">Samarkand: Hanifa Boutique</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Samarkand: Hanifa Boutique</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
                       <li>Prime location - all major attractions under 1km away</li>
                       <li>Beautiful wooden architecture and decor</li>
                       <li>Exceptionally helpful staff</li>
                       <li>No health faucet available</li>
                       <li>Card payments accepted</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-800">Bukhara: Hotel Marhaba Boutique</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Bukhara: Hotel Marhaba Boutique</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
                       <li>10-minute walk to main attractions</li>
                       <li>Note: Route gets secluded at night</li>
                       <li>Cash payments only - prepare ~200+ USD</li>
                       <li>Good quality rooms and service</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-800">Khiva: Hotel Nazira Boutique</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Khiva: Hotel Nazira Boutique</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
                       <li>Located inside Ichan Kala (walled city)</li>
                       <li>Perfect base for exploring - everything walkable</li>
-                    <li>Traditional architecture</li>
+                      <li>Traditional architecture</li>
                       <li>No need for taxis during your stay</li>
                     </ul>
                   </div>
                 </div>
               </div>
-              
+
               <div class="bg-white p-6 rounded-lg shadow-md">
                 <h3 class="text-xl font-bold mb-4">Transportation</h3>
                 <div class="space-y-4">
@@ -967,25 +967,27 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                       <li>Yandex taxi - reliable, cheap, and readily available</li>
                       <li>Most historic centers are very walkable</li>
                       <li>Metro in Tashkent - economical and beautiful stations</li>
-                  </ul>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-            
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h3 class="text-xl font-bold mb-4">Food Options</h3>
-              <div class="space-y-4">
-                <div>
-                  <h4 class="font-semibold text-gray-800">Tashkent</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-4">Food Options</h3>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Tashkent</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
                       <li>Mumbai Indian Restaurant - Best Indian food in the city</li>
                       <li>Karvaan - Good food but cash only</li>
                       <li>Raj Kapur - Decent options</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-800">Samarkand</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Samarkand</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
                       <li>The Indian Kitchen - Multiple branches, consistent quality</li>
                       <li>Cafe Punjab - Good Indian food</li>
                     </ul>
@@ -996,80 +998,99 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                       <li>Joy Restaurant - Good vegetarian options, accepts cards</li>
                       <li>Chess Zone - Tasty international cuisine</li>
                       <li>The Terrace - Average food, cash only</li>
-                  </ul>
-                </div>
-               <div>
+                    </ul>
+                  </div>
+                  <div>
                     <h4 class="font-semibold text-gray-800">Khiva</h4>
                     <ul class="text-gray-600 list-disc pl-5">
                       <li>Terressa Restaurant - Good Vegetarian options available, a bit pricey - accepts cards</li>
                       <li>Mirzo Boshi cafe - Some vegetarian options available, average food - accepts cards</li>
-                  </ul>
+                    </ul>
+                  </div>
                 </div>
-                
               </div>
-            </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h3 class="text-xl font-bold mb-4">Weather</h3>
-              <div class="space-y-4">
-                <div>
-                  <h4 class="font-semibold text-gray-800">Tashkent</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
-                      <li>Hovering between 8 to 15 degree Celsius </li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-800">Samarkand</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
-                      <li>This was the coldest part of the trip. Day temperatures were between 0 to 5 degrees celsius and night temperatures were between -1 to -2. </li>
+              <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-4">Weather</h3>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Tashkent</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
+                      <li>Hovering between 8 to 15 degree Celsius</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Samarkand</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
+                      <li>This was the coldest part of the trip. Day temperatures were between 0 to 5 degrees celsius and night temperatures were between -1 to -2.</li>
                     </ul>
                   </div>
                   <div>
                     <h4 class="font-semibold text-gray-800">Bukhara</h4>
                     <ul class="text-gray-600 list-disc pl-5">
-                      <li>This was the warmest part of the trip. Bukhara hovered between 10 to 15 degrees celsius. </li>
-                  </ul>
-                </div>
-                <div>
+                      <li>This was the warmest part of the trip. Bukhara hovered between 10 to 15 degrees celsius.</li>
+                    </ul>
+                  </div>
+                  <div>
                     <h4 class="font-semibold text-gray-800">Khiva</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
-                    <li>Khiva was quite cold as well with temperatures hovering between 0 to 6 degrees Celsius. </li>
-                  
-                  </ul>
+                    <ul class="text-gray-600 list-disc pl-5">
+                      <li>Khiva was quite cold as well with temperatures hovering between 0 to 6 degrees Celsius.</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
 
-            
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h3 class="text-xl font-bold mb-4">Entry Fees & Guides</h3>
-              <div class="space-y-4">
-                <div>
-                  <h4 class="font-semibold text-gray-800">Samarkand</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
-                    <li>Registan: 65,000 UZS</li>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-4">Entry Fees & Guides</h3>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Samarkand</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
+                      <li>Registan: 65,000 UZS</li>
                       <li>Bibi-Khanum Mosque: 40,000 UZS (2-day validity)</li>
-                    <li>Gur-i-Timur: 40,000 UZS</li>
+                      <li>Gur-i-Timur: 40,000 UZS</li>
                       <li>Shah-i-Zinda: 40,000 UZS</li>
-                    <li>Guide fees: 80,000-300,000 UZS</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-800">Bukhara</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
+                      <li>Guide fees: 80,000-300,000 UZS</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Bukhara</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
                       <li>Ark of Bukhara: 70,000 UZS</li>
                       <li>Poi Kalon Mosque: 20,000 UZS</li>
                       <li>Abdul Aziz Madrasa: 20,000 UZS</li>
-                    <li>Guide fees: ~150,000 UZS</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-800">Khiva</h4>
-                  <ul class="text-gray-600 list-disc pl-5">
+                      <li>Guide fees: ~150,000 UZS</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Khiva</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
                       <li>Universal ticket: 200,000 UZS (covers 40 monuments)</li>
                       <li>Islam Khoja Minaret climbing: 100,000 UZS</li>
-                    <li>Guide fees: ~300,000 UZS</li>
-                  </ul>
+                      <li>Guide fees: ~300,000 UZS</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-4">Costing (For 2)</h3>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Total Trip Cost Breakdown (in INR)</h4>
+                    <ul class="text-gray-600 list-disc pl-5">
+                      <li>Accommodation: ₹50,500</li>
+                      <li>Food: ₹25,000</li>
+                      <li>Flights and Visas (Mumbai to Tashkent and back): ₹63,500</li>
+                      <li>Intercity Trains: ₹12,500</li>
+                      <li>Entry tickets and guides: ₹18,000</li>
+                      <li>Travel / Cabs: ₹6,000</li>
+                      <li>Miscellaneous: ₹4,000</li>
+                      <li>Souvenirs: ₹2,100</li>
+                      <li class="font-semibold">Total: ₹181,600</li>
+                    </ul>
                   </div>
                 </div>
               </div>
