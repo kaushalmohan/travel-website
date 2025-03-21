@@ -5,7 +5,7 @@ import Hero from '../../components/Hero.astro';
 
 <Layout 
   title="Dubai Travel Guide | Slow Travel with Pankhuri and Kaushal"
-  description="Coming soon: Our comprehensive guide to exploring Dubai, UAE."
+  description="A comprehensive guide to exploring Dubai based on our personal experience."
 >
   <Hero 
     title="Dubai" 
@@ -13,76 +13,685 @@ import Hero from '../../components/Hero.astro';
     image="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop"
   />
   
-  <section class="py-16">
-    <div class="container mx-auto px-4 text-center">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6">Coming Soon</h2>
-        <p class="text-gray-600 mb-8">
-          We're currently working on our comprehensive Dubai travel guide based on our recent visit. 
-          Check back soon for a detailed itinerary, must-see attractions, hidden gems, and practical tips for exploring this fascinating city.
-        </p>
-        
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-4">What to Expect in Our Dubai Guide</h3>
-          <ul class="text-gray-600 space-y-2 text-left">
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Day-by-day itinerary for exploring Dubai's highlights and hidden gems</span>
-            </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Tips for experiencing both the ultra-modern and traditional sides of Dubai</span>
-            </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Recommendations for authentic Emirati cuisine and international dining experiences</span>
-            </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Practical information on transportation, accommodations, and cultural etiquette</span>
-            </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink <span>Practical information on transportation, accommodations, and cultural etiquette</span>
-            </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Budget tips for experiencing Dubai without breaking the bank</span>
-            </li>
-          </ul>
+  <main class="py-16 bg-green-50">
+    <div class="container mx-auto px-4">
+      <!-- Introduction -->
+      <section class="max-w-4xl mx-auto mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+          <div class="flex flex-col md:flex-row gap-8">
+            <div class="md:w-2/3">
+              <h2 class="text-3xl font-bold mb-6 text-black">Our Dubai Experience</h2>
+              <p class="text-black leading-relaxed">
+                We are documenting our Dubai travel here. A lot of Dubai itineraries are already available on the internet so instead of giving our day to day plan we will be talking about our Dubai experience in general.
+              </p>
+            </div>
+            <div class="md:w-1/3 aspect-[4/3] bg-green-100 rounded-xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1526495124232-a04e1849168c" alt="Dubai Skyline" class="w-full h-full object-cover" />
+            </div>
+          </div>
         </div>
-        
-        <div class="mt-12">
-          <h3 class="text-xl font-bold mb-4">Subscribe for Updates</h3>
-          <p class="text-gray-600 mb-6">
-            Want to be notified when our Dubai guide is published? Subscribe to our newsletter!
-          </p>
-          
-          <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
-            <input 
-              type="email" 
-              placeholder="Your email address" 
-              class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-800 flex-grow"
-              required
-            />
-            <button 
-              type="submit" 
-              class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-md font-medium transition duration-300"
-            >
-              Subscribe
-            </button>
-          </form>
+      </section>
+
+      <!-- Trip Overview -->
+      <section class="max-w-4xl mx-auto mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+          <h3 class="text-xl font-bold mb-4 text-black">When We Visited & What the Weather was Like</h3>
+          <p class="text-black">We travelled to Dubai in the mid of October for 11 days and the weather was a bit hot in the afternoons. The weather in the mornings and evening was nice and pleasant. For us the most incredible part was going around the city like a local. We always opted for metros / buses over cabs and that really made us feel like a part of the city.</p>
+          <div class="mt-4 aspect-[4/3] bg-green-100 rounded-xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c" alt="Dubai Calendar" class="w-full h-full object-cover" />
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- Transportation -->
+      <section class="max-w-4xl mx-auto mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+          <div class="flex flex-col md:flex-row gap-8">
+            <div class="md:w-2/3">
+              <h2 class="text-2xl font-bold mb-6 text-black">Getting Around Dubai</h2>
+              <div class="space-y-6">
+                <div>
+                  <h3 class="text-xl font-semibold mb-3 text-black">Public Transport</h3>
+                  <p class="text-black leading-relaxed">We mostly covered all of Dubai just by local transport. We took one or two cabs in our entire 11 days. We predominantly got around the city via metros, but we also took the bus, mono rail and abra rides. Getting around Dubai using just metros was quite easy as all the attractions are very well connected via metro.</p>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-3 text-black">NOL Card System</h3>
+                  <p class="text-black leading-relaxed">Dubai has something called a NOL card. All one needs to do is get a NOL card in Dubai (which is easily available on any metro station) and load it. The entire metro network is divided in zones and how much will you get charged will depend on where you enter the netro station and where you exit. What is even more amazing is that you can use the same NOL card in buses and it works in exactly the same way. As you enter the bus you need to tap your card and then tap your card while exiting the bus and it's done! The same NOL card can be used for payment in tram, cabs and Abra rides as well.</p>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/3">
+              <div class="sticky top-4 aspect-[3/4] bg-green-100 rounded-xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1575538439014-1b8bc5fcaa1d" alt="Dubai Metro" class="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accommodation -->
+      <section class="max-w-4xl mx-auto mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+          <h2 class="text-2xl font-bold mb-6 text-black">Where We Stayed</h2>
+          <div class="space-y-6">
+            <p class="text-black mb-4">As we had planned to travel in Dubai by metros mostly, we got all our accomodations close to a metro station (200-300m) from a metro station.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-green-50 p-6 rounded-xl border border-green-100">
+                <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-4 relative">
+                  <div class="carousel-container">
+                    <div class="carousel-image-container">
+                      <img src="/images/dubai/Orchid Hotel Al Barsha/Orchidhotel1.jpg" alt="Orchid Hotel" class="carousel-image w-full h-full object-cover" />
+                    </div>
+                    <div class="carousel-image-container">
+                      <img src="/images/dubai/Orchid Hotel Al Barsha/Orchidhotel2.jpg" alt="Orchid Hotel" class="carousel-image w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-black">Orchid Hotel Al Barsha</h3>
+                <ul class="text-black space-y-2">
+                  <li>• Just 350m from Mashreq metro station</li>
+                  <li>• Clean and decently priced</li>
+                  <li>• Good breakfast every morning</li>
+                  <li>• Stayed here for 3 days</li>
+                  <li>• No issues during our stay</li>
+                </ul>
+              </div>
+              <div class="bg-green-50 p-6 rounded-xl border border-green-100">
+                <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-4 relative">
+                  <div class="carousel-container">
+                    <div class="carousel-image-container">
+                      <img src="/images/dubai/George Hotel by Saffron/Georgehotel1.jpg" alt="George Hotel" class="carousel-image w-full h-full object-cover" />
+                    </div>
+                    <div class="carousel-image-container">
+                      <img src="/images/dubai/George Hotel by Saffron/Georgehotel2.jpg" alt="George Hotel" class="carousel-image w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-black">George Hotel by Saffron</h3>
+                <ul class="text-black space-y-2">
+                  <li>• Only 400m from Al Ras metro station</li>
+                  <li>• Clean and well maintained</li>
+                  <li>• Decent breakfast options</li>
+                  <li>• Stayed here for 4 days</li>
+                  <li>• No issues during check-out (despite some bad reviews)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Attractions and Experiences -->
+      <section class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center text-black">Places We Visited</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- JBR Walk -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6 relative">
+              <div class="carousel-container">
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/JBR Walk/JBR1.jpg" alt="JBR Walk" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/JBR Walk/JBR2.jpg" alt="JBR Walk" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/JBR Walk/JBR3.jpg" alt="JBR Walk" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/JBR Walk/JBR4.jpg" alt="JBR Walk" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/JBR Walk/JBR5.jpg" alt="JBR Walk" class="carousel-image w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">JBR Walk</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+            <p class="text-black">JBR walk - It is a an upscale neighbourhood in Dubai which is about a 2km strip where people can walk around and eat in cafes. It is an amazing place to aimlessly stroll, rent cycles and cycle around and just chill without an agenda. We spent a few hours here and had a lot of fun. We also planned to return on another day but sadly could not. If we go to Dubai again, we are definitelt spending a lot of time here!</p>
+          </div>
+
+          <!-- Dhow Cruise -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6 relative">
+              <div class="carousel-container">
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dhow_Cruise/Dhowcruise1.jpg" alt="Dhow Cruise" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dhow_Cruise/Dhowcruise2.jpg" alt="Dhow Cruise" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dhow_Cruise/Dhowcruise3.jpg" alt="Dhow Cruise" class="carousel-image w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Dhow Cruise Dinner</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+            <p class="text-black">The Dhow cruise was amazing! We spent two hours sailing through Dubai Marina, watching all the skyscrapers light up at night. The food was great, and the music made it even better. It was such a fun evening!</p>
+            <p class="text-sm text-black mt-4">Pro Tip: Make sure to book the upper deck tickets - they're open-air and give you the best views. The lower deck is usually the default option but isn't as good.</p>
+          </div>
+
+          <!-- Kite Beach -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6 relative">
+              <div class="carousel-container">
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Kite Beach/Kitebeach1.jpg" alt="Kite Beach" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Kite Beach/Kitebeach2.jpg" alt="Kite Beach" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Kite Beach/Kitebeach3.jpg" alt="Kite Beach" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Kite Beach</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+            <p class="text-black">We went to the kite beach in the morning and surprisingly it was not over crowded. The beach has clean shores, clear waters and stunning view of the Burj Al Arab. We spent hours walking in the clean waters and just chilling and relaxing on the beach.</p>
+            <p class="text-sm text-black mt-4">Getting There: 4 minute walk from Orchid Al Barsha to Insurance Market Metro Bus stop. Get off at Manara Enoc 2 bus stop and walk to the beach.</p>
+          </div>
+
+          <!-- Burj Khalifa -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6 relative">
+              <div class="carousel-container">
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa1.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa2.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa3.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa4.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa5.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa6.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa7.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Burj Khalifa</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+            <p class="text-black">The tallest building in the world is totally worth the hype! We visited Burj Khalifa in the morning and took the high speed elevator to the 124th floor and reached the 124th floor in about a minute. The 124th and 125th floor give an amazing view of the city and it was almost difficult to believe how up we were! We spent hours here taking in the views of the Sheikh Zayad road, watching the metros go by. The entire area is full of high rises and yet the Burj Khalifa makes every single building there look tiny. It a am experience one must not miss when in Dubai.</p>
+            <p class="text-sm text-black mt-4">Getting There: 4 minute walk from the George hotel by Saffron to Al Ras Metro station. Change fron Green line to red line at Burjuman metro station and ride to Burj Khalifa / Dubai Mall metro station. A covered walkway of about 700m to the Dubai mall.</p>
+          </div>
+
+          <!-- Dubai Fountain Show -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6 relative">
+              <div class="carousel-container">
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dubai Fountain/Dubaifountain1.jpg" alt="Dubai Fountain Show" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dubai Fountain/Dubaifountain2.jpg" alt="Dubai Fountain Show" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dubai Fountain/Dubaifountain3.jpg" alt="Dubai Fountain Show" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dubai Fountain/Dubaifountain4.jpg" alt="Dubai Fountain Show" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Dubai Fountain Show</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+            <p class="text-black">The Dubai Fountain Show happens within Dubai Mall, right outside in the lake near the mall. It is absolutely breathtaking and is a must-watch. There Is a Fountain Show every half an hour starting at 7 pm in Dubai Mall. during the fountain show, even all of Burj Khalifa will light up. This is mind-blowing, and we went and watched the fountain show four times in our trip.</p>
+            <p class="text-sm text-black mt-4">Getting There: This is inside Dubai Mall itself. The easiest way to reach there is getting off at Dubai Mall Metro Station.</p>
+          </div>
+
+          <!-- Global Village -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6">
+              <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5" alt="Global Village" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Global Village</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+            <p class="text-black">Global Village was absolutely magical. It is one of those places where we ended up getting so exhausted from all the walking around and all the things to see that we weren't able to complete the entire space. There were individual country stalls for more than 30 countries in Global Village. We had so much fun exploring each of the stalls, eating random samples of food from each country, viewing the souvenirs, crockery, and exhibits in each country. We entered Global Village at about 5:00 pm or so and we were there all the way until 12:00 am.</p>
+            <p class="text-sm text-black mt-4">Getting there: We went from Miracle Garden directly to Global Village and we took a cab. Global village is quite far away from the city and if you are to reach global village on your own you can get a bus there. While leaving we got the last bus back from Global Village back towards Bur Dubai at 1 am.</p>
+          </div>
+
+          <!-- Spice Souk -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6">
+              <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5" alt="Spice Souk" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Spice Souk</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+            <p class="text-black">Spice Souk was so much fun! In Spice Souk, you get all forms of spices, of course, but also dry fruits, fruits, souvenirs. The shopkeepers allow you to taste all their products. We went there three times because it was just so much fun to walk around that place. After a point, the shopkeepers stopped calling us because they recognized us! Highly recommend going to Spice Souk.</p>
+            <p class="text-sm text-black mt-4">Getting there: This is very easily accessible if you are in Burj Dubai. You can just walk directly from Al Ras Metro Station.</p>
+          </div>
+
+          <!-- View at the Palm -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6">
+              <img src="https://images.unsplash.com/photo-1578575737417-7f4ca1df16cb" alt="View at the Palm" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">View at the Palm</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span class="text-gray-300">★</span>
+              </div>
+            </div>
+            <p class="text-black">We took the monorail to get here and timed it perfectly for sunset. From the 52nd floor, we got amazing views of the Palm and Atlantis. When the sun went down, all the buildings lit up - it was pretty magical!</p>
+          </div>
+
+          <!-- Desert Safari -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6 relative">
+              <div class="carousel-container">
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Desert_Safari/Desertsafari1.jpg" alt="Desert Safari" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Desert_Safari/Desertsafari2.jpg" alt="Desert Safari" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Desert_Safari/Desertsafari3.jpg" alt="Desert Safari" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Desert_Safari/Desertsafari4.jpg" alt="Desert Safari" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Desert Safari</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span class="text-gray-300">★</span>
+              </div>
+            </div>
+            <p class="text-black">Our desert adventure started at 2:30 PM when they picked us up from our hotel. After a two-hour drive (about 100 km), we reached the Hamdan Desert Safari camp. While some people did camel rides and ATV rides, we waited for the main event - dune bashing! We got strapped into a 4x4 and had an exciting 15-20 minute ride over the dunes. After that, we took pictures, tried sandboarding, and headed back to the camp for dinner. The evening ended with a fire show, belly dancing, and a cool Tanoura dance performance.</p>
+          </div>
+
+          <!-- Gold Souk -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6">
+              <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5" alt="Gold Souk" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Gold Souk</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span class="text-gray-300">★</span>
+              </div>
+            </div>
+            <p class="text-black">Gold Souk was a real sight. Never had we ever seen such mannequins wearing lots of gold jewelry all out there available straight on the road without any security. It was very fascinating to see how much jewelry people and tourists were buying. The area was filled with Indians buying jewelry.</p>
+            <p class="text-sm text-black mt-4">Getting there: directly walkable from Gold Souk metro station itself. We walked from our hotel George Saffron because again it was only about 800 meters.</p>
+          </div>
+
+          <!-- Sky View Dubai -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6">
+              <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5" alt="Sky View Dubai" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Sky View Dubai</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span class="text-gray-300">★</span>
+              </div>
+            </div>
+            <p class="text-black">The Sky View Dubai is one of the few publicly accessible buildings which gives you a view of the Burj Khalifa from a height. It was beautiful, and we got very nice views of the entire city from the Sky Observatory. The other great fun part of the Sky View is a glass slide which enables you to slide from the 53rd floor to the 52nd floor - This can be quite scary, but we had a lot of fun. The Sky Observatory is very skippable if You aren't an absolute nerd when it comes to city views - if you have already gone all the way up to the Burj Khalifa and seen the Dubai skyline from the top there, Then you don't really need to do the Sky Observatory. There is also an edge walk on the Sky Observatory where you can actually walk on the edge of the building in open air with a harness. We did not do this, but a lot of people did.</p>
+            <p class="text-sm text-black mt-4">Getting there: Very easily accessible - directly get off at Burj Khalifa metro station (5-minute walk from there).</p>
+          </div>
+
+          <!-- Museum of the Future -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6 relative">
+              <div class="carousel-container">
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Museum of the Future/MOTF1.jpg" alt="Museum of the Future" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Museum of the Future/MOTF2.jpg" alt="Museum of the Future" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Museum of the Future/MOTF3.jpg" alt="Museum of the Future" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Museum of the Future/MOTF4.jpg" alt="Museum of the Future" class="carousel-image w-full h-full object-cover cursor-pointer" />
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Museum of the Future</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span class="relative">
+                  <span class="absolute inset-0 overflow-hidden w-1/2">★</span>
+                  <span class="text-gray-300">★</span>
+                </span><span class="text-gray-300">★</span>
+              </div>
+            </div>
+            <p class="text-black">The building itself is super cool - you've got to see it both during the day and at night! While the museum inside was a bit disappointing, we really liked the DNA species display. The terrace was great too - we got some awesome views of Sheikh Zayed Road.</p>
+            <p class="text-sm text-black mt-4">Important: You can't take backpacks inside, but they have a safe place to leave them on the ground floor.</p>
+            <p class="text-sm text-black mt-2">Getting There: Take the red line to Emirates Tower Station - there's a covered walkway right to the museum.</p>
+          </div>
+
+          <!-- Dubai Aquarium -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6">
+              <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5" alt="Dubai Aquarium" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Dubai Aquarium and Underwater Zoo</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span class="relative">
+                  <span class="absolute inset-0 overflow-hidden w-1/2">★</span>
+                  <span class="text-gray-300">★</span>
+                </span><span class="text-gray-300">★</span>
+              </div>
+            </div>
+            <p class="text-black">Dubai Aquarium is inside Dubai Mall itself. We spent about three hours in Dubai Aquarium, and it was very fascinating. There were a lot of different variants of water creatures in Dubai Aquarium, ranging from these pretty beautiful fish to large crocodiles. The crocodile in Dubai aquarium is over 5 meters long and weighs 750 kgs, it's absolutely massive. There also is a Penguin Cove in Dubai Aquarium. There are also desert animals within Dubai Aquarium in a dry section. That was also very interesting.</p>
+            <p class="text-sm text-black mt-4">Getting There: This is inside Dubai Mall itself. The easiest way to reach there is just getting off at the Dubai Mall Metro Station.</p>
+          </div>
+
+          <!-- Mall of the Emirates -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6">
+              <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745" alt="Mall of the Emirates" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Mall of the Emirates</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span class="text-gray-300">★</span><span class="text-gray-300">★</span>
+              </div>
+            </div>
+            <p class="text-black">This is the mall with the famous Ski Dubai inside. Though we did not go inside, we could see people playing in snow and doing snow rides from the outside. The mall itself is quite huge with a lot of jewellery shops and high end shops. Totally skipable if one does not want to do Ski Dubai or shop in one of these super high-end shops.</p>
+            <p class="text-sm text-black mt-4">Getting There: Take the red line to Mall of the Emirates Station - there's a covered walkway right to the mall.</p>
+          </div>
+
+          <!-- Miracle Garden -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6">
+              <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5" alt="Miracle Garden" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Miracle Garden</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span class="text-gray-300">★</span><span class="text-gray-300">★</span>
+              </div>
+            </div>
+            <p class="text-black">Miracle Garden is a giant garden outside Dubai city. It is closer to Global Village than the city itself, so it makes sense to do Miracle Garden and Global Village on the same day. It is large, beautiful, funky, and very, very well maintained. there is a large Emirates plane inside. We spent about three hours here.</p>
+            <p class="text-sm text-black mt-4">Getting there: This is quite far away from Dubai. We took a bus to Miracle Garden - This was bus F36 which is available from Mall of the Emirates station. We took our train from Al Ras Metro Station all the way to Mall of the Emirates, and then we took the bus from there. It was about a 45-minute bus ride from Mall of the Emirates.</p>
+          </div>
+
+          <!-- Dubai Frame -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300 border border-green-100">
+            <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-6 relative">
+              <div class="carousel-container">
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dubai Frame/Dubaiframe1.jpg" alt="Dubai Frame" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dubai Frame/Dubaiframe2.jpg" alt="Dubai Frame" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dubai Frame/Dubaiframe3.jpg" alt="Dubai Frame" class="carousel-image w-full h-full object-cover" />
+                </div>
+                <div class="carousel-image-container">
+                  <img src="/images/dubai/Dubai Frame/Dubaiframe4.jpg" alt="Dubai Frame" class="carousel-image w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-black">Dubai Frame</h3>
+              <div class="flex text-black">
+                <span>★</span><span>★</span><span>★</span><span class="text-gray-300">★</span><span class="text-gray-300">★</span>
+              </div>
+            </div>
+            <p class="text-black">We visited the Dubai Frame in the evening. It's a big frame-shaped building, and we went up to the 48th floor for city views. It was a bit hazy when we were there, so we didn't get the best views. Overall an okay experience, however entirely skipable if going to Burj Khalifa.</p>
+            <p class="text-sm text-black mt-4">Getting There: In all the attractions in Dubai, getting to Dubai by public transport was the most difficult. It is not well connected by metro or bus and getting a cab might be the best idea.</p>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
+  </main>
 </Layout>
+
+<style>
+  .transform {
+    will-change: transform;
+  }
+  
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .carousel-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .carousel-image-container:first-child {
+    opacity: 1;
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+  }
+
+  #imageModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  #modalImage {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+    margin-top: 2%;
+  }
+
+  #closeModal {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  #closeModal:hover {
+    color: #bbb;
+  }
+
+  .modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 20px;
+    transition: color 0.3s;
+  }
+
+  .modal-nav:hover {
+    color: #bbb;
+  }
+
+  #prevBtn {
+    left: 20px;
+  }
+
+  #nextBtn {
+    right: 20px;
+  }
+</style>
+
+<div id="imageModal">
+  <span id="closeModal">&times;</span>
+  <span id="prevBtn" class="modal-nav">&#10094;</span>
+  <span id="nextBtn" class="modal-nav">&#10095;</span>
+  <img id="modalImage">
+</div>
+
+<script>
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  const closeBtn = document.getElementById('closeModal');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let currentImageIndex = 0;
+  let currentCarouselImages = [];
+  let carouselIntervals = new Map();
+
+  // Function to rotate carousel images
+  function rotateCarousel(container) {
+    const images = container.querySelectorAll('.carousel-image-container');
+    let currentIndex = 0;
+
+    // Clear any existing interval for this container
+    if (carouselIntervals.has(container)) {
+      clearInterval(carouselIntervals.get(container));
+    }
+
+    // Set up new interval
+    const interval = setInterval(() => {
+      images[currentIndex].style.opacity = '0';
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].style.opacity = '1';
+    }, 3000);
+
+    // Store the interval
+    carouselIntervals.set(container, interval);
+  }
+
+  // Initialize all carousels
+  document.querySelectorAll('.carousel-container').forEach(container => {
+    rotateCarousel(container);
+  });
+
+  // Add click handlers to all images
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('click', () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      
+      // Find all images in the same carousel
+      const carouselContainer = img.closest('.carousel-container');
+      if (carouselContainer) {
+        currentCarouselImages = Array.from(carouselContainer.querySelectorAll('img'));
+        currentImageIndex = currentCarouselImages.indexOf(img);
+        // Always show navigation buttons for carousel images
+        prevBtn.style.display = 'block';
+        nextBtn.style.display = 'block';
+      } else {
+        // If image is not in a carousel, hide navigation buttons
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+      }
+    });
+  });
+
+  // Navigation functions
+  function showNextImage() {
+    if (currentCarouselImages.length > 0) {
+      currentImageIndex = (currentImageIndex + 1) % currentCarouselImages.length;
+      modalImg.src = currentCarouselImages[currentImageIndex].src;
+    }
+  }
+
+  function showPrevImage() {
+    if (currentCarouselImages.length > 0) {
+      currentImageIndex = (currentImageIndex - 1 + currentCarouselImages.length) % currentCarouselImages.length;
+      modalImg.src = currentCarouselImages[currentImageIndex].src;
+    }
+  }
+
+  // Add navigation event listeners
+  nextBtn.addEventListener('click', showNextImage);
+  prevBtn.addEventListener('click', showPrevImage);
+
+  // Close modal
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = "none";
+    currentCarouselImages = [];
+    currentImageIndex = 0;
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      currentCarouselImages = [];
+      currentImageIndex = 0;
+    }
+  });
+
+  // Close with ESC key and handle arrow navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === "block") {
+      modal.style.display = "none";
+      currentCarouselImages = [];
+      currentImageIndex = 0;
+    }
+    // Add arrow key navigation
+    if (modal.style.display === "block") {
+      if (e.key === 'ArrowRight') {
+        showNextImage();
+      } else if (e.key === 'ArrowLeft') {
+        showPrevImage();
+      }
+    }
+  });
+</script>
