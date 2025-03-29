@@ -27,7 +27,7 @@ const navItems = [
 ];
 ---
 
-<header class="bg-white shadow-md sticky top-0 z-50 will-change-transform">
+<header class="bg-white shadow-md sticky top-0 z-50">
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
     <a href="/" class="text-2xl font-serif font-bold text-primary-700">
       Slow Travel
@@ -39,21 +39,13 @@ const navItems = [
           <li class="relative group">
             {item.dropdown ? (
               <>
-                <button 
-                  class="flex items-center text-gray-700 hover:text-primary-600 font-medium"
-                  data-toggle="dropdown"
-                  aria-controls={`dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                  aria-expanded="false"
-                >
+                <button class="flex items-center text-gray-700 hover:text-primary-600 font-medium">
                   {item.name}
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div 
-                  id={`dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                  class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 contain-content"
-                >
+                <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   {item.items.map(subItem => (
                     <a href={subItem.url} class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">
                       {subItem.name}
@@ -71,46 +63,28 @@ const navItems = [
       </ul>
     </nav>
     
-    <button 
-      id="mobile-menu-button" 
-      class="md:hidden text-gray-700 focus:outline-none" 
-      aria-label="Toggle mobile menu"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-    >
+    <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </div>
   
-  <!-- Mobile menu - hidden by default for better performance -->
-  <div 
-    id="mobile-menu" 
-    class="hidden md:hidden bg-white border-t contain-content" 
-    aria-hidden="true"
-  >
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
     <div class="container mx-auto px-4 py-3">
       <ul class="space-y-2">
         {navItems.map(item => (
           <>
             {item.dropdown ? (
               <li>
-                <button 
-                  class="mobile-dropdown-button flex items-center justify-between w-full text-gray-700 font-medium py-2"
-                  data-toggle="dropdown"
-                  aria-controls={`mobile-dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                  aria-expanded="false"
-                >
+                <button class="mobile-dropdown-button flex items-center justify-between w-full text-gray-700 font-medium py-2">
                   {item.name}
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div 
-                  id={`mobile-dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                  class="mobile-dropdown-content hidden pl-4 mt-1 space-y-1 content-visibility-auto"
-                >
+                <div class="mobile-dropdown-content hidden pl-4 mt-1 space-y-1">
                   {item.items.map(subItem => (
                     <a href={subItem.url} class="block py-2 text-gray-600 hover:text-primary-600">
                       {subItem.name}
@@ -133,52 +107,21 @@ const navItems = [
 </header>
 
 <script>
-  // Basic mobile menu toggle
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (menuButton && mobileMenu) {
-      menuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
-    
-    // Handle mobile dropdowns
-    const dropdownButtons = document.querySelectorAll('.mobile-dropdown-button');
-    dropdownButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const targetId = button.getAttribute('aria-controls');
-        const targetContent = document.getElementById(targetId);
-        if (targetContent) {
-          targetContent.classList.toggle('hidden');
-        }
-      });
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+  
+  // Mobile dropdown toggles
+  const mobileDropdownButtons = document.querySelectorAll('.mobile-dropdown-button');
+  
+  mobileDropdownButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;
+      content?.classList.toggle('hidden');
     });
   });
 </script>
-
-<style>
-  /* Add CSS containment for better performance */
-  .dropdown, .mobile-dropdown-content {
-    contain: content;
-  }
-  
-  /* Optimize transitions */
-  .group:hover > div {
-    transition-property: opacity, visibility;
-    transition-duration: 200ms;
-    will-change: opacity, visibility;
-  }
-  
-  /* Add CSS variable for content height to avoid layout shifts */
-  .mobile-dropdown-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-  }
-  
-  .mobile-dropdown-content:not(.hidden) {
-    max-height: var(--content-height, 500px);
-  }
-</style>
