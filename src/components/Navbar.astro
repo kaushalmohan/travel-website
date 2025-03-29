@@ -133,63 +133,27 @@ const navItems = [
 </header>
 
 <script>
-  // Use event delegation instead of multiple event listeners
+  // Basic mobile menu toggle
   document.addEventListener('DOMContentLoaded', () => {
-    // Cache DOM elements
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
-    if (mobileMenuButton && mobileMenu) {
-      // Handle mobile menu toggle with animation
-      mobileMenuButton.addEventListener('click', () => {
-        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-        
-        // Toggle aria-expanded state
-        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-        
-        // Toggle the menu visibility
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
-        mobileMenu.setAttribute('aria-hidden', isExpanded);
       });
     }
     
-    // Use event delegation for mobile dropdown buttons
-    document.addEventListener('click', (e) => {
-      const button = e.target.closest('.mobile-dropdown-button');
-      if (!button) return;
-      
-      // Get the dropdown content element
-      const dropdownId = button.getAttribute('aria-controls');
-      const content = document.getElementById(dropdownId);
-      if (!content) return;
-      
-      // Toggle aria-expanded state
-      const isExpanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', !isExpanded);
-      
-      // Toggle content visibility
-      content.classList.toggle('hidden');
-    });
-    
-    // Reduce layout shifts by setting height on dropdown menus
-    const setDropdownHeights = () => {
-      const dropdowns = document.querySelectorAll('.mobile-dropdown-content');
-      dropdowns.forEach(dropdown => {
-        const height = Array.from(dropdown.children).reduce((acc, el) => acc + el.scrollHeight, 0);
-        dropdown.style.setProperty('--content-height', `${height}px`);
+    // Handle mobile dropdowns
+    const dropdownButtons = document.querySelectorAll('.mobile-dropdown-button');
+    dropdownButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('aria-controls');
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.classList.toggle('hidden');
+        }
       });
-    };
-    
-    // Initialize once DOM is loaded
-    setDropdownHeights();
-    
-    // Update on resize with throttling
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      if (resizeTimeout) {
-        clearTimeout(resizeTimeout);
-      }
-      resizeTimeout = setTimeout(setDropdownHeights, 100);
     });
   });
 </script>
