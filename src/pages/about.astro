@@ -19,15 +19,51 @@ import Hero from '../components/Hero.astro';
     .section-card {
       will-change: transform;
     }
+    
+    /* Custom hero text positioning */
+    .custom-hero-text {
+      position: absolute;
+      bottom: 30%;
+      left: 50%;
+      right: 0;
+      text-align: center;
+      z-index: 10;
+    }
+    
+    @media (max-width: 768px) {
+      .custom-hero-text {
+        bottom: 15%;
+      }
+    }
   </style>
   
-  <Hero 
-    title="The People Life-ing Together" 
-    subtitle="A bit about our lives, curiosities, and travel philosophy"
-    image="/images/miscellaneous/about-us/about_us.webp"
-    imageSmall="/images/miscellaneous/about-us/about_us-800w.webp"
-    imageMobile="/images/miscellaneous/about-us/about_us-400w.webp"
-  />
+  <!-- Custom hero section with better text positioning -->
+  <section class="relative h-[70vh]">
+    <div class="absolute inset-0 z-0">
+      <picture>
+        <source 
+          srcset="/images/miscellaneous/about-us/about_us-400w.webp 400w,
+                  /images/miscellaneous/about-us/about_us-800w.webp 800w,
+                  /images/miscellaneous/about-us/about_us.webp 1200w" 
+          type="image/webp">
+        <img 
+          src="/images/miscellaneous/about-us/about_us.jpg"
+          srcset="/images/miscellaneous/about-us/about_us.jpg 1200w"
+          alt="The People Life-ing Together" 
+          class="w-full h-full object-cover"
+          width="1200"
+          height="800"
+          fetchpriority="high"
+        />
+      </picture>
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+    </div>
+    
+    <div class="custom-hero-text text-white px-4 max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">The People Life-ing Together</h1>
+      <p class="text-xl md:text-2xl">A bit about our lives, curiosities, and travel philosophy</p>
+    </div>
+  </section>
   
   <main class="bg-gray-50 py-16">
     <div class="container mx-auto px-4">
