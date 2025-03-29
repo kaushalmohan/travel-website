@@ -25,8 +25,8 @@ def convert_image(image_path):
             return False
 
         # Skip if not jpg/jpeg
-        if image_path.suffix.lower() not in ['.jpg', '.jpeg']:
-            print(f"Skipping non-JPG/JPEG image: {image_path}")
+        if image_path.suffix.lower() not in ['.jpg', '.jpeg', '.png']:
+            print(f"Skipping non-JPG/JPEG/PNG image: {image_path}")
             return False
             
         print(f"Converting {image_path}")
@@ -69,7 +69,7 @@ def convert_image(image_path):
 
 def process_images():
     """Process all images in the uzbekistan folder"""
-    base_dir = Path('/Users/pankhuriandkaushal/CodeExperiments/travel-website/public/images/dubai')
+    base_dir = Path('/Users/pankhuriandkaushal/CodeExperiments/travel-website/public/images/miscellaneous')
     
     if not base_dir.exists():
         print(f"Error: Directory {base_dir} does not exist")

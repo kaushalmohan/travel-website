@@ -4,97 +4,241 @@ import Hero from '../components/Hero.astro';
 ---
 
 <Layout 
-  title="About Us | Slow Travel with Pankhuri and Kaushal"
-  description="Learn more about Pankhuri and Kaushal, the avid travelers behind the Slow Travel blog."
+  title="About Us | Life-ing Together"
+  description="Meet Pankhuri and Kaushal, the minds behind Life-ing Together who are always seeking new experiences and asking questions."
 >
+  <!-- Resource hints for faster loading -->
+  <link rel="preload" href="/images/miscellaneous/about-us/about_us-800w.webp" as="image" type="image/webp" fetchpriority="high" />
+  
+  <!-- Critical CSS -->
+  <style is:inline>
+    .profile-image {
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
+    .section-card {
+      will-change: transform;
+    }
+  </style>
+  
   <Hero 
-    title="About Us" 
-    subtitle="The story behind our slow travel journey"
-    image="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200&auto=format&fit=crop"
+    title="The People Life-ing Together" 
+    subtitle="A bit about our lives, curiosities, and travel philosophy"
+    image="/images/miscellaneous/about-us/about_us.webp"
+    imageSmall="/images/miscellaneous/about-us/about_us-800w.webp"
+    imageMobile="/images/miscellaneous/about-us/about_us-400w.webp"
   />
   
-  <section class="py-16">
+  <main class="bg-gray-50 py-16">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="mb-12">
-          <h2 class="text-3xl font-bold mb-6">Our Story</h2>
-          <p class="text-gray-600 mb-4">
-            We're Pankhuri and Kaushal, a couple with an insatiable wanderlust and a shared passion for experiencing the world at our own pace. Our journey began when we met in college and discovered our mutual love for travel and adventure.
-          </p>
-          <p class="text-gray-600 mb-4">
-            After years of rushed vacations and checking destinations off a list, we realized that we weren't truly experiencing the places we visited. That's when we decided to embrace "slow travel" – a mindful approach that allows us to immerse ourselves in local cultures, forge meaningful connections, and create lasting memories.
-          </p>
-          <p class="text-gray-600">
-            This blog is our way of documenting our journeys and sharing our experiences with fellow travelers who believe that travel is not just about the destinations, but about the journey and the stories we collect along the way.
-          </p>
+      <!-- Introduction Section -->
+      <section class="max-w-4xl mx-auto mb-16">
+        <div class="bg-white rounded-2xl shadow-md p-8 transform hover:shadow-lg transition-all duration-300 section-card">
+          <div class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold mb-6 text-primary-700 text-center">Our Story</h2>
+            
+            <p class="mb-4">
+              We're two folks who found each other and decided to navigate life's journey together. 
+              While our professional lives keep us grounded in the corporate world, our shared love for 
+              exploration fuels our adventures around the globe.
+            </p>
+            
+            <p class="mb-4">
+              What drives us is our insatiable curiosity and constant questioning. We love diving deep into 
+              topics that interest us, whether it's local history, cultural traditions, or the best way to make 
+              authentic local stories. This reflects our shared philosophy of valuing depth over breadth in 
+              everything we do - we'd rather know a few things deeply than many things superficially.
+            </p>
+            
+            <p class="mb-4">
+              Our approach to travel mirrors this mindset – we believe in taking our time. Even though 
+              our jobs don't allow us to spend months on end in a single country, we definitely allocate 
+              more than the average time to each place we visit. This deliberate pace lets us 
+              absorb the essence of each destination, form meaningful connections, and discover hidden gems 
+              that most tourists never see.
+            </p>
+            
+            <p class="mb-4">
+              We both live with the interesting tension of being simultaneously ambitious and laid-back.
+              Sometimes we're driven by career goals and achievements, and other times we just want to 
+              take it slow and enjoy life's simple pleasures. This duality shapes our travel style as well - 
+              structured enough to be meaningful, relaxed enough to be enjoyable.
+            </p>
+            
+            <p>
+              Through Life-ing Together, we share our experiences, the questions we ask, and the 
+              answers we find – sometimes profound, sometimes amusing, but always authentic.
+            </p>
+          </div>
         </div>
+      </section>
+      
+      <!-- Meet Us Section -->
+      <section class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold mb-10 text-center text-primary-700">Meet Us</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-          <div>
-            <img 
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop" 
-              alt="Pankhuri" 
-              class="w-full h-80 object-cover rounded-lg shadow-md mb-4"
-            />
-            <h3 class="text-2xl font-bold mb-2">Pankhuri</h3>
-            <p class="text-gray-600 mb-4">
-              A cultural enthusiast with a keen eye for photography, Pankhuri loves capturing the essence of each place we visit. Her background in anthropology gives her a unique perspective on local traditions and customs. She's the planner of our duo, meticulously researching each destination to ensure we don't miss out on authentic experiences.
-            </p>
-            <p class="text-gray-600">
-              Favorite travel memory: Watching the sunrise over the ancient city of Samarkand in Uzbekistan, with the magnificent Registan complex bathed in golden light.
-            </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Pankhuri Profile -->
+          <div class="bg-white rounded-2xl shadow-md overflow-hidden transform hover:shadow-lg transition-all duration-300 section-card">
+            <div class="p-6">
+              <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 bg-primary-100">
+                <picture>
+                  <source 
+                    srcset="/images/miscellaneous/about-us/pankhuri-400w.webp 400w,
+                            /images/miscellaneous/about-us/pankhuri-800w.webp 800w,
+                            /images/miscellaneous/about-us/pankhuri.webp"
+                    type="image/webp"
+                  />
+                  <img 
+                    src="/images/miscellaneous/about-us/pankhuri.jpg" 
+                    alt="Pankhuri Maheshwari" 
+                    class="profile-image w-full h-full object-cover"
+                    width="128"
+                    height="128"
+                    loading="eager"
+                    decoding="sync"
+                  />
+                </picture>
+              </div>
+              
+              <h3 class="text-2xl font-bold mb-4 text-center text-primary-700">Pankhuri Maheshwari</h3>
+              
+              <ul class="space-y-4 mb-6">
+                <li class="flex items-start">
+                  <span class="text-primary-500 mr-2">✦</span>
+                  <span>Chartered Accountant specializing in transfer pricing and international finance with a keen analytical mind</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-500 mr-2">✦</span>
+                  <span>Balances her professional intensity with a love for travel, reading, and discovering hidden local experiences</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-500 mr-2">✦</span>
+                  <span>Known for her ability to find the perfect balance between planned activities and spontaneous adventures</span>
+                </li>
+              </ul>
+              
+              <div class="flex justify-center space-x-4">
+                <a href="https://www.linkedin.com/in/pankhuri-maheshwari-195845159/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800" aria-label="LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+                <a href="https://pankhurimaheshwari.in/" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:text-purple-800" aria-label="Personal Website">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
           
-          <div>
-            <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" 
-              alt="Kaushal" 
-              class="w-full h-80 object-cover rounded-lg shadow-md mb-4"
-            />
-            <h3 class="text-2xl font-bold mb-2">Kaushal</h3>
-            <p class="text-gray-600 mb-4">
-              A food enthusiast and adventure seeker, Kaushal is always on the lookout for hidden culinary gems and off-the-beaten-path experiences. With a background in digital marketing, he handles the technical aspects of our blog and ensures our stories reach fellow travel enthusiasts around the world.
-            </p>
-            <p class="text-gray-600">
-              Favorite travel memory: Spending a night with nomadic shepherds in the mountains of Sikkim, sharing stories around a campfire under a star-filled sky.
-            </p>
+          <!-- Kaushal Profile -->
+          <div class="bg-white rounded-2xl shadow-md overflow-hidden transform hover:shadow-lg transition-all duration-300 section-card">
+            <div class="p-6">
+              <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 bg-primary-100">
+                <picture>
+                  <source 
+                    srcset="/images/miscellaneous/about-us/kaushal-400w.webp 400w,
+                            /images/miscellaneous/about-us/kaushal-800w.webp 800w,
+                            /images/miscellaneous/about-us/kaushal.webp"
+                    type="image/webp"
+                  />
+                  <img 
+                    src="/images/miscellaneous/about-us/kaushal.jpg" 
+                    alt="Kaushal Mohan" 
+                    class="profile-image w-full h-full object-cover"
+                    width="128"
+                    height="128"
+                    loading="eager"
+                    decoding="sync"
+                  />
+                </picture>
+              </div>
+              
+              <h3 class="text-2xl font-bold mb-4 text-center text-primary-700">Kaushal Mohan</h3>
+              
+              <ul class="space-y-4 mb-6">
+                <li class="flex items-start">
+                  <span class="text-primary-500 mr-2">✦</span>
+                  <span>Product Manager in the startup ecosystem with a passion for building innovative solutions</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-500 mr-2">✦</span>
+                  <span>Enthusiastic about geography, exploration, and history, often serving as our unofficial tour guide</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-500 mr-2">✦</span>
+                  <span>Brings an energetic yet thoughtful approach to travel, always seeking to understand the deeper context of each place</span>
+                </li>
+              </ul>
+              
+              <div class="flex justify-center space-x-4">
+                <a href="https://www.linkedin.com/in/kaushal-mohan/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800" aria-label="LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+                <a href="https://www.kaushalmohan.com/" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:text-purple-800" aria-label="Personal Website">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div class="bg-gray-50 p-8 rounded-lg">
-          <h2 class="text-3xl font-bold mb-6">Our Travel Philosophy</h2>
+      </section>
+      
+      <!-- Our Travel Approach -->
+      <section class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-md p-8 transform hover:shadow-lg transition-all duration-300 section-card">
+          <h2 class="text-3xl font-bold mb-8 text-center text-primary-700">Our Travel Approach</h2>
           
-          <div class="space-y-6">
-            <div>
-              <h3 class="text-xl font-bold mb-2">Embrace the Slow Pace</h3>
-              <p class="text-gray-600">
-                We believe in spending more time in fewer places, allowing us to develop a deeper connection with each destination. Rather than rushing from one tourist attraction to another, we prefer to wander through local neighborhoods, sit in cafes, and observe daily life.
+          <div class="prose prose-lg max-w-none">
+            <p class="mb-6">
+              When we travel, we try to blend in rather than stand out. We prefer local cafes over tourist traps, 
+              public transportation over tour buses, and authentic experiences over Instagram hotspots.
+            </p>
+            
+            <p class="mb-6">
+              We love starting our days early, wandering through morning markets when cities are just waking up. 
+              We're equally content spending hours at a local cafe, observing daily life and chatting with residents, 
+              as we are visiting famous landmarks.
+            </p>
+            
+            <p>
+              Our itineraries always have room for spontaneity – some of our most memorable experiences have been 
+              unplanned detours based on local recommendations. This approach has led us to hidden gems in Uzbekistan, 
+              authentic family restaurants in Vietnam, and breathtaking viewpoints in Dubai that weren't in any guidebook.
               </p>
             </div>
             
-            <div>
-              <h3 class="text-xl font-bold mb-2">Connect with Locals</h3>
-              <p class="text-gray-600">
-                Some of our most memorable experiences have come from conversations with locals. We make an effort to learn basic phrases in the local language, stay in family-run accommodations, and participate in community activities whenever possible.
-              </p>
-            </div>
-            
-            <div>
-              <h3 class="text-xl font-bold mb-2">Respect Cultural Differences</h3>
-              <p class="text-gray-600">
-                We approach each destination with an open mind and heart, respecting local customs, traditions, and ways of life. We believe that understanding and appreciating these differences enriches our travel experience and fosters global citizenship.
-              </p>
-            </div>
-            
-            <div>
-              <h3 class="text-xl font-bold mb-2">Travel Sustainably</h3>
-              <p class="text-gray-600">
-                We strive to minimize our environmental impact by choosing eco-friendly accommodations, supporting local businesses, reducing plastic usage, and being mindful of our carbon footprint. We believe that responsible travel ensures that the places we love will be preserved for future generations.
-              </p>
-            </div>
+          <div class="mt-10 text-center">
+            <a href="/contact" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+              Get in Touch With Us
+            </a>
           </div>
         </div>
-      </div>
+      </section>
     </div>
-  </section>
+  </main>
 </Layout>
+
+<style>
+  /* Add will-change for elements that animate */
+  .section-card {
+    will-change: transform;
+  }
+  
+  /* Content visibility for below-the-fold sections */
+  section:not(:first-child) {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+  }
+  
+  /* Optimize rendering */
+  .profile-image {
+    contain: paint;
+  }
+</style>
