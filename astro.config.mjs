@@ -15,7 +15,7 @@ export default defineConfig({
   vite: {
     // Enable better optimizations
     build: {
-      cssMinify: 'lightningcss',
+      cssMinify: true, // Use standard CSS minification instead of lightningcss
       minify: 'terser',
       sourcemap: false,
       assetsInlineLimit: 4096, // 4kb - inline small assets
