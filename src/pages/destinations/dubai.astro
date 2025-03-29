@@ -7,10 +7,16 @@ import Hero from '../../components/Hero.astro';
   title="Dubai Travel Guide | Slow Travel with Pankhuri and Kaushal"
   description="A comprehensive guide to exploring Dubai based on our personal experience."
 >
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="/styles/dubai.css">
+  
+  <!-- Hero section with WebP image -->
   <Hero 
     title="Dubai" 
     subtitle="Where tradition meets futuristic innovation"
     image="/images/dubai/Hero_image/Heroimage.jpg"
+    imageSmall="/images/dubai/Hero_image/Heroimage-800w.webp"
+    imageMobile="/images/dubai/Hero_image/Heroimage-400w.webp"
   />
   
   <main class="py-16 bg-green-50">
@@ -26,7 +32,23 @@ import Hero from '../../components/Hero.astro';
               </p>
             </div>
             <div class="md:w-1/3 aspect-[4/3] bg-green-100 rounded-xl overflow-hidden">
-              <img src="/images/dubai/Our_Dubai_Experience/OurDubaiExperience.jpg?v=2" alt="Dubai Skyline" class="w-full h-full object-cover" />
+              <picture>
+                <source 
+                  srcset="/images/dubai/Our_Dubai_Experience/OurDubaiExperience-400w.webp 400w, 
+                          /images/dubai/Our_Dubai_Experience/OurDubaiExperience-800w.webp 800w, 
+                          /images/dubai/Our_Dubai_Experience/OurDubaiExperience.webp 1200w"
+                  type="image/webp"
+                  sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                />
+                <img 
+                  src="/images/dubai/Our_Dubai_Experience/OurDubaiExperience.jpg?v=2" 
+                  alt="Dubai Skyline" 
+                  width="800" 
+                  height="600"
+                  loading="lazy"
+                  class="w-full h-full object-cover" 
+                />
+              </picture>
             </div>
           </div>
         </div>
@@ -38,7 +60,23 @@ import Hero from '../../components/Hero.astro';
           <h3 class="text-xl font-bold mb-4 text-black">When We Visited & What the Weather was Like</h3>
           <p class="text-black">We travelled to Dubai in the mid of October for 11 days and the weather was a bit hot in the afternoons. The weather in the mornings and evening was nice and pleasant. For us the most incredible part was going around the city like a local. We always opted for metros / buses over cabs and that really made us feel like a part of the city.</p>
           <div class="mt-4 aspect-[4/3] bg-green-100 rounded-xl overflow-hidden">
-            <img src="/images/dubai/When_we_visited/Whenwevisited.jpg" alt="Dubai Calendar" class="w-full h-full object-cover" />
+            <picture>
+              <source 
+                srcset="/images/dubai/When_we_visited/Whenwevisited-400w.webp 400w, 
+                        /images/dubai/When_we_visited/Whenwevisited-800w.webp 800w, 
+                        /images/dubai/When_we_visited/Whenwevisited.webp 1200w"
+                type="image/webp"
+                sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+              />
+              <img 
+                src="/images/dubai/When_we_visited/Whenwevisited.jpg" 
+                alt="Dubai Calendar" 
+                width="800" 
+                height="600"
+                loading="lazy"
+                class="w-full h-full object-cover" 
+              />
+            </picture>
           </div>
         </div>
       </section>
@@ -62,7 +100,23 @@ import Hero from '../../components/Hero.astro';
             </div>
             <div class="md:w-1/3">
               <div class="sticky top-4 aspect-[2/4] bg-green-100 rounded-xl overflow-hidden">
-                <img src="/images/dubai/Getting_Around/getting_around.jpg" alt="Dubai Metro" class="w-full h-full object-cover" />
+                <picture>
+                  <source 
+                    srcset="/images/dubai/Getting_Around/getting_around-400w.webp 400w, 
+                            /images/dubai/Getting_Around/getting_around-800w.webp 800w, 
+                            /images/dubai/Getting_Around/getting_around.webp 1200w"
+                    type="image/webp"
+                    sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                  />
+                  <img 
+                    src="/images/dubai/Getting_Around/getting_around.jpg" 
+                    alt="Dubai Metro" 
+                    width="600" 
+                    height="1200"
+                    loading="lazy"
+                    class="w-full h-full object-cover" 
+                  />
+                </picture>
               </div>
             </div>
           </div>
@@ -80,10 +134,42 @@ import Hero from '../../components/Hero.astro';
                 <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-4 relative">
                   <div class="carousel-container">
                     <div class="carousel-image-container">
-                      <img src="/images/dubai/Orchid Hotel Al Barsha/Orchidhotel1.jpg" alt="Orchid Hotel" class="carousel-image w-full h-full object-cover" />
+                      <picture>
+                        <source 
+                          srcset="/images/dubai/Orchid Hotel Al Barsha/Orchidhotel1-400w.webp 400w, 
+                                  /images/dubai/Orchid Hotel Al Barsha/Orchidhotel1-800w.webp 800w, 
+                                  /images/dubai/Orchid Hotel Al Barsha/Orchidhotel1.webp 1200w"
+                          type="image/webp"
+                          sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                        />
+                        <img 
+                          src="/images/dubai/Orchid Hotel Al Barsha/Orchidhotel1.jpg" 
+                          alt="Orchid Hotel" 
+                          width="800" 
+                          height="600"
+                          loading="lazy"
+                          class="carousel-image w-full h-full object-cover" 
+                        />
+                      </picture>
                     </div>
                     <div class="carousel-image-container">
-                      <img src="/images/dubai/Orchid Hotel Al Barsha/Orchidhotel2.jpg" alt="Orchid Hotel" class="carousel-image w-full h-full object-cover" />
+                      <picture>
+                        <source 
+                          srcset="/images/dubai/Orchid Hotel Al Barsha/Orchidhotel2-400w.webp 400w, 
+                                  /images/dubai/Orchid Hotel Al Barsha/Orchidhotel2-800w.webp 800w, 
+                                  /images/dubai/Orchid Hotel Al Barsha/Orchidhotel2.webp 1200w"
+                          type="image/webp"
+                          sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                        />
+                        <img 
+                          src="/images/dubai/Orchid Hotel Al Barsha/Orchidhotel2.jpg" 
+                          alt="Orchid Hotel" 
+                          width="800" 
+                          height="600"
+                          loading="lazy"
+                          class="carousel-image w-full h-full object-cover" 
+                        />
+                      </picture>
                     </div>
                   </div>
                 </div>
@@ -100,10 +186,42 @@ import Hero from '../../components/Hero.astro';
                 <div class="aspect-[4/3] bg-green-100 rounded-xl overflow-hidden mb-4 relative">
                   <div class="carousel-container">
                     <div class="carousel-image-container">
-                      <img src="/images/dubai/George Hotel by Saffron/Georgehotel1.jpg" alt="George Hotel" class="carousel-image w-full h-full object-cover" />
+                      <picture>
+                        <source 
+                          srcset="/images/dubai/George Hotel by Saffron/Georgehotel1-400w.webp 400w, 
+                                  /images/dubai/George Hotel by Saffron/Georgehotel1-800w.webp 800w, 
+                                  /images/dubai/George Hotel by Saffron/Georgehotel1.webp 1200w"
+                          type="image/webp"
+                          sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                        />
+                        <img 
+                          src="/images/dubai/George Hotel by Saffron/Georgehotel1.jpg" 
+                          alt="George Hotel" 
+                          width="800" 
+                          height="600"
+                          loading="lazy"
+                          class="carousel-image w-full h-full object-cover" 
+                        />
+                      </picture>
                     </div>
                     <div class="carousel-image-container">
-                      <img src="/images/dubai/George Hotel by Saffron/Georgehotel2.jpg" alt="George Hotel" class="carousel-image w-full h-full object-cover" />
+                      <picture>
+                        <source 
+                          srcset="/images/dubai/George Hotel by Saffron/Georgehotel2-400w.webp 400w, 
+                                  /images/dubai/George Hotel by Saffron/Georgehotel2-800w.webp 800w, 
+                                  /images/dubai/George Hotel by Saffron/Georgehotel2.webp 1200w"
+                          type="image/webp"
+                          sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                        />
+                        <img 
+                          src="/images/dubai/George Hotel by Saffron/Georgehotel2.jpg" 
+                          alt="George Hotel" 
+                          width="800" 
+                          height="600"
+                          loading="lazy"
+                          class="carousel-image w-full h-full object-cover" 
+                        />
+                      </picture>
                     </div>
                   </div>
                 </div>
@@ -140,19 +258,99 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/JBR Walk/JBR1.jpg" alt="JBR Walk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/JBR Walk/JBR1-400w.webp 400w, 
+                              /images/dubai/JBR Walk/JBR1-800w.webp 800w, 
+                              /images/dubai/JBR Walk/JBR1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/JBR Walk/JBR1.jpg" 
+                      alt="JBR Walk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/JBR Walk/JBR2.jpg" alt="JBR Walk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/JBR Walk/JBR2-400w.webp 400w, 
+                              /images/dubai/JBR Walk/JBR2-800w.webp 800w, 
+                              /images/dubai/JBR Walk/JBR2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/JBR Walk/JBR2.jpg" 
+                      alt="JBR Walk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/JBR Walk/JBR3.jpg" alt="JBR Walk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/JBR Walk/JBR3-400w.webp 400w, 
+                              /images/dubai/JBR Walk/JBR3-800w.webp 800w, 
+                              /images/dubai/JBR Walk/JBR3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/JBR Walk/JBR3.jpg" 
+                      alt="JBR Walk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/JBR Walk/JBR4.jpg" alt="JBR Walk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/JBR Walk/JBR4-400w.webp 400w, 
+                              /images/dubai/JBR Walk/JBR4-800w.webp 800w, 
+                              /images/dubai/JBR Walk/JBR4.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/JBR Walk/JBR4.jpg" 
+                      alt="JBR Walk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/JBR Walk/JBR5.jpg" alt="JBR Walk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/JBR Walk/JBR5-400w.webp 400w, 
+                              /images/dubai/JBR Walk/JBR5-800w.webp 800w, 
+                              /images/dubai/JBR Walk/JBR5.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/JBR Walk/JBR5.jpg" 
+                      alt="JBR Walk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -161,13 +359,61 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dhow_Cruise/Dhowcruise1.jpg" alt="Dhow Cruise" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dhow_Cruise/Dhowcruise1-400w.webp 400w, 
+                              /images/dubai/Dhow_Cruise/Dhowcruise1-800w.webp 800w, 
+                              /images/dubai/Dhow_Cruise/Dhowcruise1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dhow_Cruise/Dhowcruise1.jpg" 
+                      alt="Dhow Cruise" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dhow_Cruise/Dhowcruise2.jpg" alt="Dhow Cruise" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dhow_Cruise/Dhowcruise2-400w.webp 400w, 
+                              /images/dubai/Dhow_Cruise/Dhowcruise2-800w.webp 800w, 
+                              /images/dubai/Dhow_Cruise/Dhowcruise2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dhow_Cruise/Dhowcruise2.jpg" 
+                      alt="Dhow Cruise" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dhow_Cruise/Dhowcruise3.jpg" alt="Dhow Cruise" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dhow_Cruise/Dhowcruise3-400w.webp 400w, 
+                              /images/dubai/Dhow_Cruise/Dhowcruise3-800w.webp 800w, 
+                              /images/dubai/Dhow_Cruise/Dhowcruise3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dhow_Cruise/Dhowcruise3.jpg" 
+                      alt="Dhow Cruise" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -176,13 +422,61 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Kite Beach/Kitebeach1.jpg" alt="Kite Beach" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Kite Beach/Kitebeach1-400w.webp 400w, 
+                              /images/dubai/Kite Beach/Kitebeach1-800w.webp 800w, 
+                              /images/dubai/Kite Beach/Kitebeach1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Kite Beach/Kitebeach1.jpg" 
+                      alt="Kite Beach" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Kite Beach/Kitebeach2.jpg" alt="Kite Beach" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Kite Beach/Kitebeach2-400w.webp 400w, 
+                              /images/dubai/Kite Beach/Kitebeach2-800w.webp 800w, 
+                              /images/dubai/Kite Beach/Kitebeach2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Kite Beach/Kitebeach2.jpg" 
+                      alt="Kite Beach" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Kite Beach/Kitebeach3.jpg" alt="Kite Beach" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Kite Beach/Kitebeach3-400w.webp 400w, 
+                              /images/dubai/Kite Beach/Kitebeach3-800w.webp 800w, 
+                              /images/dubai/Kite Beach/Kitebeach3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Kite Beach/Kitebeach3.jpg" 
+                      alt="Kite Beach" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -191,25 +485,137 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa1.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Burj Khalifa/Burjkhalifa1-400w.webp 400w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa1-800w.webp 800w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Burj Khalifa/Burjkhalifa1.jpg" 
+                      alt="Burj Khalifa" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa2.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Burj Khalifa/Burjkhalifa2-400w.webp 400w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa2-800w.webp 800w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Burj Khalifa/Burjkhalifa2.jpg" 
+                      alt="Burj Khalifa" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa3.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Burj Khalifa/Burjkhalifa3-400w.webp 400w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa3-800w.webp 800w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Burj Khalifa/Burjkhalifa3.jpg" 
+                      alt="Burj Khalifa" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa4.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Burj Khalifa/Burjkhalifa4-400w.webp 400w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa4-800w.webp 800w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa4.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Burj Khalifa/Burjkhalifa4.jpg" 
+                      alt="Burj Khalifa" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa5.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Burj Khalifa/Burjkhalifa5-400w.webp 400w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa5-800w.webp 800w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa5.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Burj Khalifa/Burjkhalifa5.jpg" 
+                      alt="Burj Khalifa" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa6.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Burj Khalifa/Burjkhalifa6-400w.webp 400w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa6-800w.webp 800w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa6.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Burj Khalifa/Burjkhalifa6.jpg" 
+                      alt="Burj Khalifa" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Burj Khalifa/Burjkhalifa7.jpg" alt="Burj Khalifa" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Burj Khalifa/Burjkhalifa7-400w.webp 400w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa7-800w.webp 800w, 
+                              /images/dubai/Burj Khalifa/Burjkhalifa7.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Burj Khalifa/Burjkhalifa7.jpg" 
+                      alt="Burj Khalifa" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -218,16 +624,80 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Fountain/Dubaifountain1.jpg" alt="Dubai Fountain" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Fountain/Dubaifountain1-400w.webp 400w, 
+                              /images/dubai/Dubai Fountain/Dubaifountain1-800w.webp 800w, 
+                              /images/dubai/Dubai Fountain/Dubaifountain1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Fountain/Dubaifountain1.jpg" 
+                      alt="Dubai Fountain" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Fountain/Dubaifountain2.jpg" alt="Dubai Fountain" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Fountain/Dubaifountain2-400w.webp 400w, 
+                              /images/dubai/Dubai Fountain/Dubaifountain2-800w.webp 800w, 
+                              /images/dubai/Dubai Fountain/Dubaifountain2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Fountain/Dubaifountain2.jpg" 
+                      alt="Dubai Fountain" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Fountain/Dubaifountain3.jpg" alt="Dubai Fountain" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Fountain/Dubaifountain3-400w.webp 400w, 
+                              /images/dubai/Dubai Fountain/Dubaifountain3-800w.webp 800w, 
+                              /images/dubai/Dubai Fountain/Dubaifountain3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Fountain/Dubaifountain3.jpg" 
+                      alt="Dubai Fountain" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Fountain/Dubaifountain4.jpg" alt="Dubai Fountain" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Fountain/Dubaifountain4-400w.webp 400w, 
+                              /images/dubai/Dubai Fountain/Dubaifountain4-800w.webp 800w, 
+                              /images/dubai/Dubai Fountain/Dubaifountain4.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Fountain/Dubaifountain4.jpg" 
+                      alt="Dubai Fountain" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -236,22 +706,118 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Global Village/Globelvillage1.jpg" alt="Global Village" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Global Village/Globelvillage1-400w.webp 400w, 
+                              /images/dubai/Global Village/Globelvillage1-800w.webp 800w, 
+                              /images/dubai/Global Village/Globelvillage1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Global Village/Globelvillage1.jpg" 
+                      alt="Global Village" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Global Village/Globelvillage2.jpg" alt="Global Village" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Global Village/Globelvillage2-400w.webp 400w, 
+                              /images/dubai/Global Village/Globelvillage2-800w.webp 800w, 
+                              /images/dubai/Global Village/Globelvillage2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Global Village/Globelvillage2.jpg" 
+                      alt="Global Village" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Global Village/Globelvillage3.jpg" alt="Global Village" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Global Village/Globelvillage3-400w.webp 400w, 
+                              /images/dubai/Global Village/Globelvillage3-800w.webp 800w, 
+                              /images/dubai/Global Village/Globelvillage3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Global Village/Globelvillage3.jpg" 
+                      alt="Global Village" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Global Village/Globelvillage4.jpg" alt="Global Village" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Global Village/Globelvillage4-400w.webp 400w, 
+                              /images/dubai/Global Village/Globelvillage4-800w.webp 800w, 
+                              /images/dubai/Global Village/Globelvillage4.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Global Village/Globelvillage4.jpg" 
+                      alt="Global Village" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Global Village/Globelvillage5.jpg" alt="Global Village" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Global Village/Globelvillage5-400w.webp 400w, 
+                              /images/dubai/Global Village/Globelvillage5-800w.webp 800w, 
+                              /images/dubai/Global Village/Globelvillage5.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Global Village/Globelvillage5.jpg" 
+                      alt="Global Village" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Global Village/Globelvillage6.jpg" alt="Global Village" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Global Village/Globelvillage6-400w.webp 400w, 
+                              /images/dubai/Global Village/Globelvillage6-800w.webp 800w, 
+                              /images/dubai/Global Village/Globelvillage6.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Global Village/Globelvillage6.jpg" 
+                      alt="Global Village" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -260,19 +826,99 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Spice Souk/Spicesouk1.jpg" alt="Spice Souk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Spice Souk/Spicesouk1-400w.webp 400w, 
+                              /images/dubai/Spice Souk/Spicesouk1-800w.webp 800w, 
+                              /images/dubai/Spice Souk/Spicesouk1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Spice Souk/Spicesouk1.jpg" 
+                      alt="Spice Souk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Spice Souk/Spicesouk2.jpg" alt="Spice Souk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Spice Souk/Spicesouk2-400w.webp 400w, 
+                              /images/dubai/Spice Souk/Spicesouk2-800w.webp 800w, 
+                              /images/dubai/Spice Souk/Spicesouk2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Spice Souk/Spicesouk2.jpg" 
+                      alt="Spice Souk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Spice Souk/Spicesouk3.jpg" alt="Spice Souk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Spice Souk/Spicesouk3-400w.webp 400w, 
+                              /images/dubai/Spice Souk/Spicesouk3-800w.webp 800w, 
+                              /images/dubai/Spice Souk/Spicesouk3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Spice Souk/Spicesouk3.jpg" 
+                      alt="Spice Souk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Spice Souk/Spicesouk4.jpg" alt="Spice Souk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Spice Souk/Spicesouk4-400w.webp 400w, 
+                              /images/dubai/Spice Souk/Spicesouk4-800w.webp 800w, 
+                              /images/dubai/Spice Souk/Spicesouk4.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Spice Souk/Spicesouk4.jpg" 
+                      alt="Spice Souk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Spice Souk/Spicesouk5.jpg" alt="Spice Souk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Spice Souk/Spicesouk5-400w.webp 400w, 
+                              /images/dubai/Spice Souk/Spicesouk5-800w.webp 800w, 
+                              /images/dubai/Spice Souk/Spicesouk5.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Spice Souk/Spicesouk5.jpg" 
+                      alt="Spice Souk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -338,19 +984,99 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/View at the Palm/Viewatthepalm1.jpg" alt="View at the Palm" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/View at the Palm/Viewatthepalm1-400w.webp 400w, 
+                              /images/dubai/View at the Palm/Viewatthepalm1-800w.webp 800w, 
+                              /images/dubai/View at the Palm/Viewatthepalm1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/View at the Palm/Viewatthepalm1.jpg" 
+                      alt="View at the Palm" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/View at the Palm/Viewatthepalm2.jpg" alt="View at the Palm" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/View at the Palm/Viewatthepalm2-400w.webp 400w, 
+                              /images/dubai/View at the Palm/Viewatthepalm2-800w.webp 800w, 
+                              /images/dubai/View at the Palm/Viewatthepalm2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/View at the Palm/Viewatthepalm2.jpg" 
+                      alt="View at the Palm" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/View at the Palm/Viewatthepalm3.jpg" alt="View at the Palm" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/View at the Palm/Viewatthepalm3-400w.webp 400w, 
+                              /images/dubai/View at the Palm/Viewatthepalm3-800w.webp 800w, 
+                              /images/dubai/View at the Palm/Viewatthepalm3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/View at the Palm/Viewatthepalm3.jpg" 
+                      alt="View at the Palm" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/View at the Palm/Viewatthepalm4.jpg" alt="View at the Palm" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/View at the Palm/Viewatthepalm4-400w.webp 400w, 
+                              /images/dubai/View at the Palm/Viewatthepalm4-800w.webp 800w, 
+                              /images/dubai/View at the Palm/Viewatthepalm4.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/View at the Palm/Viewatthepalm4.jpg" 
+                      alt="View at the Palm" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/View at the Palm/Viewatthepalm5.jpg" alt="View at the Palm" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/View at the Palm/Viewatthepalm5-400w.webp 400w, 
+                              /images/dubai/View at the Palm/Viewatthepalm5-800w.webp 800w, 
+                              /images/dubai/View at the Palm/Viewatthepalm5.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/View at the Palm/Viewatthepalm5.jpg" 
+                      alt="View at the Palm" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -359,16 +1085,80 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Desert_Safari/Desertsafari1.jpg" alt="Desert Safari" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Desert_Safari/Desertsafari1-400w.webp 400w, 
+                              /images/dubai/Desert_Safari/Desertsafari1-800w.webp 800w, 
+                              /images/dubai/Desert_Safari/Desertsafari1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Desert_Safari/Desertsafari1.jpg" 
+                      alt="Desert Safari" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Desert_Safari/Desertsafari2.jpg" alt="Desert Safari" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Desert_Safari/Desertsafari2-400w.webp 400w, 
+                              /images/dubai/Desert_Safari/Desertsafari2-800w.webp 800w, 
+                              /images/dubai/Desert_Safari/Desertsafari2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Desert_Safari/Desertsafari2.jpg" 
+                      alt="Desert Safari" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Desert_Safari/Desertsafari3.jpg" alt="Desert Safari" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Desert_Safari/Desertsafari3-400w.webp 400w, 
+                              /images/dubai/Desert_Safari/Desertsafari3-800w.webp 800w, 
+                              /images/dubai/Desert_Safari/Desertsafari3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Desert_Safari/Desertsafari3.jpg" 
+                      alt="Desert Safari" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Desert_Safari/Desertsafari4.jpg" alt="Desert Safari" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Desert_Safari/Desertsafari4-400w.webp 400w, 
+                              /images/dubai/Desert_Safari/Desertsafari4-800w.webp 800w, 
+                              /images/dubai/Desert_Safari/Desertsafari4.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Desert_Safari/Desertsafari4.jpg" 
+                      alt="Desert Safari" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -377,13 +1167,61 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Gold Souk/Goldsouk1.jpg" alt="Gold Souk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Gold Souk/Goldsouk1-400w.webp 400w, 
+                              /images/dubai/Gold Souk/Goldsouk1-800w.webp 800w, 
+                              /images/dubai/Gold Souk/Goldsouk1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Gold Souk/Goldsouk1.jpg" 
+                      alt="Gold Souk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Gold Souk/Goldsouk2.jpg" alt="Gold Souk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Gold Souk/Goldsouk2-400w.webp 400w, 
+                              /images/dubai/Gold Souk/Goldsouk2-800w.webp 800w, 
+                              /images/dubai/Gold Souk/Goldsouk2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Gold Souk/Goldsouk2.jpg" 
+                      alt="Gold Souk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Gold Souk/Goldsouk3.jpg" alt="Gold Souk" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Gold Souk/Goldsouk3-400w.webp 400w, 
+                              /images/dubai/Gold Souk/Goldsouk3-800w.webp 800w, 
+                              /images/dubai/Gold Souk/Goldsouk3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Gold Souk/Goldsouk3.jpg" 
+                      alt="Gold Souk" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -392,13 +1230,61 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Sky View Dubai/Skyview1.jpg" alt="Sky View Dubai" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Sky View Dubai/Skyview1-400w.webp 400w, 
+                              /images/dubai/Sky View Dubai/Skyview1-800w.webp 800w, 
+                              /images/dubai/Sky View Dubai/Skyview1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Sky View Dubai/Skyview1.jpg" 
+                      alt="Sky View Dubai" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Sky View Dubai/Skyview2.jpg" alt="Sky View Dubai" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Sky View Dubai/Skyview2-400w.webp 400w, 
+                              /images/dubai/Sky View Dubai/Skyview2-800w.webp 800w, 
+                              /images/dubai/Sky View Dubai/Skyview2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Sky View Dubai/Skyview2.jpg" 
+                      alt="Sky View Dubai" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Sky View Dubai/Skyview3.jpg" alt="Sky View Dubai" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Sky View Dubai/Skyview3-400w.webp 400w, 
+                              /images/dubai/Sky View Dubai/Skyview3-800w.webp 800w, 
+                              /images/dubai/Sky View Dubai/Skyview3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Sky View Dubai/Skyview3.jpg" 
+                      alt="Sky View Dubai" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -407,25 +1293,137 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Museum of Illusions/Museumofillusions1.jpg" alt="Museum of Illusions" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Museum of Illusions/Museumofillusions1-400w.webp 400w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions1-800w.webp 800w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Museum of Illusions/Museumofillusions1.jpg" 
+                      alt="Museum of Illusions" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Museum of Illusions/Museumofillusions2.jpg" alt="Museum of Illusions" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Museum of Illusions/Museumofillusions2-400w.webp 400w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions2-800w.webp 800w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Museum of Illusions/Museumofillusions2.jpg" 
+                      alt="Museum of Illusions" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Museum of Illusions/Museumofillusions3.jpg" alt="Museum of Illusions" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Museum of Illusions/Museumofillusions3-400w.webp 400w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions3-800w.webp 800w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Museum of Illusions/Museumofillusions3.jpg" 
+                      alt="Museum of Illusions" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Museum of Illusions/Museumofillusions4.jpg" alt="Museum of Illusions" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Museum of Illusions/Museumofillusions4-400w.webp 400w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions4-800w.webp 800w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions4.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Museum of Illusions/Museumofillusions4.jpg" 
+                      alt="Museum of Illusions" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Museum of Illusions/Museumofillusions5.jpg" alt="Museum of Illusions" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Museum of Illusions/Museumofillusions5-400w.webp 400w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions5-800w.webp 800w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions5.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Museum of Illusions/Museumofillusions5.jpg" 
+                      alt="Museum of Illusions" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Museum of Illusions/Museumofillusions6.jpg" alt="Museum of Illusions" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Museum of Illusions/Museumofillusions6-400w.webp 400w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions6-800w.webp 800w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions6.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Museum of Illusions/Museumofillusions6.jpg" 
+                      alt="Museum of Illusions" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Museum of Illusions/Museumofillusions7.jpg" alt="Museum of Illusions" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Museum of Illusions/Museumofillusions7-400w.webp 400w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions7-800w.webp 800w, 
+                              /images/dubai/Museum of Illusions/Museumofillusions7.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Museum of Illusions/Museumofillusions7.jpg" 
+                      alt="Museum of Illusions" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -481,13 +1479,61 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Museum of the Future/MOTF1.jpg" alt="Museum of the Future" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Museum of the Future/MOTF1-400w.webp 400w, 
+                              /images/dubai/Museum of the Future/MOTF1-800w.webp 800w, 
+                              /images/dubai/Museum of the Future/MOTF1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Museum of the Future/MOTF1.jpg" 
+                      alt="Museum of the Future" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Museum of the Future/MOTF2.jpg" alt="Museum of the Future" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Museum of the Future/MOTF2-400w.webp 400w, 
+                              /images/dubai/Museum of the Future/MOTF2-800w.webp 800w, 
+                              /images/dubai/Museum of the Future/MOTF2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Museum of the Future/MOTF2.jpg" 
+                      alt="Museum of the Future" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Museum of the Future/MOTF3.jpg" alt="Museum of the Future" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Museum of the Future/MOTF3-400w.webp 400w, 
+                              /images/dubai/Museum of the Future/MOTF3-800w.webp 800w, 
+                              /images/dubai/Museum of the Future/MOTF3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Museum of the Future/MOTF3.jpg" 
+                      alt="Museum of the Future" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -496,19 +1542,99 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Aquarium/Dubaiaquarium1.jpg" alt="Dubai Aquarium" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Aquarium/Dubaiaquarium1-400w.webp 400w, 
+                              /images/dubai/Dubai Aquarium/Dubaiaquarium1-800w.webp 800w, 
+                              /images/dubai/Dubai Aquarium/Dubaiaquarium1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Aquarium/Dubaiaquarium1.jpg" 
+                      alt="Dubai Aquarium" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Aquarium/Dubaiaquarium2.jpg" alt="Dubai Aquarium" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Aquarium/Dubaiaquarium2-400w.webp 400w, 
+                              /images/dubai/Dubai Aquarium/Dubaiaquarium2-800w.webp 800w, 
+                              /images/dubai/Dubai Aquarium/Dubaiaquarium2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Aquarium/Dubaiaquarium2.jpg" 
+                      alt="Dubai Aquarium" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Aquarium/Dubaiaquarium3.jpg" alt="Dubai Aquarium" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Aquarium/Dubaiaquarium3-400w.webp 400w, 
+                              /images/dubai/Dubai Aquarium/Dubaiaquarium3-800w.webp 800w, 
+                              /images/dubai/Dubai Aquarium/Dubaiaquarium3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Aquarium/Dubaiaquarium3.jpg" 
+                      alt="Dubai Aquarium" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Aquarium/Dubaiaquarium4.jpg" alt="Dubai Aquarium" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Aquarium/Dubaiaquarium4-400w.webp 400w, 
+                              /images/dubai/Dubai Aquarium/Dubaiaquarium4-800w.webp 800w, 
+                              /images/dubai/Dubai Aquarium/Dubaiaquarium4.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Aquarium/Dubaiaquarium4.jpg" 
+                      alt="Dubai Aquarium" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Aquarium/Dubaiaquarium5.jpg" alt="Dubai Aquarium" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Aquarium/Dubaiaquarium5-400w.webp 400w, 
+                              /images/dubai/Dubai Aquarium/Dubaiaquarium5-800w.webp 800w, 
+                              /images/dubai/Dubai Aquarium/Dubaiaquarium5.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Aquarium/Dubaiaquarium5.jpg" 
+                      alt="Dubai Aquarium" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -546,19 +1672,99 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Miracle Garden/MiracleGarden1.jpg" alt="Miracle Garden" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Miracle Garden/MiracleGarden1-400w.webp 400w, 
+                              /images/dubai/Miracle Garden/MiracleGarden1-800w.webp 800w, 
+                              /images/dubai/Miracle Garden/MiracleGarden1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Miracle Garden/MiracleGarden1.jpg" 
+                      alt="Miracle Garden" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Miracle Garden/MiracleGarden2.jpg" alt="Miracle Garden" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Miracle Garden/MiracleGarden2-400w.webp 400w, 
+                              /images/dubai/Miracle Garden/MiracleGarden2-800w.webp 800w, 
+                              /images/dubai/Miracle Garden/MiracleGarden2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Miracle Garden/MiracleGarden2.jpg" 
+                      alt="Miracle Garden" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Miracle Garden/MiracleGarden3.jpg" alt="Miracle Garden" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Miracle Garden/MiracleGarden3-400w.webp 400w, 
+                              /images/dubai/Miracle Garden/MiracleGarden3-800w.webp 800w, 
+                              /images/dubai/Miracle Garden/MiracleGarden3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Miracle Garden/MiracleGarden3.jpg" 
+                      alt="Miracle Garden" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Miracle Garden/MiracleGarden4.jpg" alt="Miracle Garden" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Miracle Garden/MiracleGarden4-400w.webp 400w, 
+                              /images/dubai/Miracle Garden/MiracleGarden4-800w.webp 800w, 
+                              /images/dubai/Miracle Garden/MiracleGarden4.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Miracle Garden/MiracleGarden4.jpg" 
+                      alt="Miracle Garden" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Miracle Garden/MiracleGarden5.jpg" alt="Miracle Garden" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Miracle Garden/MiracleGarden5-400w.webp 400w, 
+                              /images/dubai/Miracle Garden/MiracleGarden5-800w.webp 800w, 
+                              /images/dubai/Miracle Garden/MiracleGarden5.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Miracle Garden/MiracleGarden5.jpg" 
+                      alt="Miracle Garden" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -567,13 +1773,61 @@ import Hero from '../../components/Hero.astro';
             <div class="aspect-[4/3] bg-green-100 rounded-lg overflow-hidden relative">
               <div class="carousel-container">
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Frame/Dubaiframe1.jpg" alt="Dubai Frame" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Frame/Dubaiframe1-400w.webp 400w, 
+                              /images/dubai/Dubai Frame/Dubaiframe1-800w.webp 800w, 
+                              /images/dubai/Dubai Frame/Dubaiframe1.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Frame/Dubaiframe1.jpg" 
+                      alt="Dubai Frame" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Frame/Dubaiframe2.jpg" alt="Dubai Frame" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Frame/Dubaiframe2-400w.webp 400w, 
+                              /images/dubai/Dubai Frame/Dubaiframe2-800w.webp 800w, 
+                              /images/dubai/Dubai Frame/Dubaiframe2.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Frame/Dubaiframe2.jpg" 
+                      alt="Dubai Frame" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
                 <div class="carousel-image-container">
-                  <img src="/images/dubai/Dubai Frame/Dubaiframe3.jpg" alt="Dubai Frame" class="carousel-image w-full h-full object-cover" />
+                  <picture>
+                    <source 
+                      srcset="/images/dubai/Dubai Frame/Dubaiframe3-400w.webp 400w, 
+                              /images/dubai/Dubai Frame/Dubaiframe3-800w.webp 800w, 
+                              /images/dubai/Dubai Frame/Dubaiframe3.webp 1200w"
+                      type="image/webp"
+                      sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+                    />
+                    <img 
+                      src="/images/dubai/Dubai Frame/Dubaiframe3.jpg" 
+                      alt="Dubai Frame" 
+                      width="800" 
+                      height="600"
+                      loading="lazy"
+                      class="carousel-image w-full h-full object-cover" 
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -605,100 +1859,7 @@ import Hero from '../../components/Hero.astro';
   </main>
 </Layout>
 
-<style>
-  .transform {
-    will-change: transform;
-  }
-  
-  .carousel-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .carousel-image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .carousel-image-container:first-child {
-    opacity: 1;
-  }
-
-  .carousel-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    cursor: pointer;
-  }
-
-  #imageModal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-  }
-
-  #modalImage {
-    margin: auto;
-    display: block;
-    max-width: 90%;
-    max-height: 90vh;
-    margin-top: 2%;
-  }
-
-  #closeModal {
-    position: absolute;
-    right: 35px;
-    top: 15px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1001;
-  }
-
-  #closeModal:hover {
-    color: #bbb;
-  }
-
-  .modal-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1001;
-    padding: 20px;
-    transition: color 0.3s;
-  }
-
-  .modal-nav:hover {
-    color: #bbb;
-  }
-
-  #prevBtn {
-    left: 20px;
-  }
-
-  #nextBtn {
-    right: 20px;
-  }
-</style>
-
+<!-- Image modal HTML structure -->
 <div id="imageModal">
   <span id="closeModal">&times;</span>
   <span id="prevBtn" class="modal-nav">&#10094;</span>
@@ -706,113 +1867,5 @@ import Hero from '../../components/Hero.astro';
   <img id="modalImage">
 </div>
 
-<script>
-  const modal = document.getElementById('imageModal');
-  const modalImg = document.getElementById('modalImage');
-  const closeBtn = document.getElementById('closeModal');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-
-  let currentImageIndex = 0;
-  let currentCarouselImages = [];
-  let carouselIntervals = new Map();
-
-  // Function to rotate carousel images
-  function rotateCarousel(container) {
-    const images = container.querySelectorAll('.carousel-image-container');
-    let currentIndex = 0;
-
-    // Clear any existing interval for this container
-    if (carouselIntervals.has(container)) {
-      clearInterval(carouselIntervals.get(container));
-    }
-
-    // Set up new interval
-    const interval = setInterval(() => {
-      images[currentIndex].style.opacity = '0';
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex].style.opacity = '1';
-    }, 3000);
-
-    // Store the interval
-    carouselIntervals.set(container, interval);
-  }
-
-  // Initialize all carousels
-  document.querySelectorAll('.carousel-container').forEach(container => {
-    rotateCarousel(container);
-  });
-
-  // Add click handlers to all images
-  document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('click', () => {
-      modal.style.display = "block";
-      modalImg.src = img.src;
-      
-      // Find all images in the same carousel
-      const carouselContainer = img.closest('.carousel-container');
-      if (carouselContainer) {
-        currentCarouselImages = Array.from(carouselContainer.querySelectorAll('img'));
-        currentImageIndex = currentCarouselImages.indexOf(img);
-        // Always show navigation buttons for carousel images
-        prevBtn.style.display = 'block';
-        nextBtn.style.display = 'block';
-      } else {
-        // If image is not in a carousel, hide navigation buttons
-        prevBtn.style.display = 'none';
-        nextBtn.style.display = 'none';
-      }
-    });
-  });
-
-  // Navigation functions
-  function showNextImage() {
-    if (currentCarouselImages.length > 0) {
-      currentImageIndex = (currentImageIndex + 1) % currentCarouselImages.length;
-      modalImg.src = currentCarouselImages[currentImageIndex].src;
-    }
-  }
-
-  function showPrevImage() {
-    if (currentCarouselImages.length > 0) {
-      currentImageIndex = (currentImageIndex - 1 + currentCarouselImages.length) % currentCarouselImages.length;
-      modalImg.src = currentCarouselImages[currentImageIndex].src;
-    }
-  }
-
-  // Add navigation event listeners
-  nextBtn.addEventListener('click', showNextImage);
-  prevBtn.addEventListener('click', showPrevImage);
-
-  // Close modal
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = "none";
-    currentCarouselImages = [];
-    currentImageIndex = 0;
-  });
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-      currentCarouselImages = [];
-      currentImageIndex = 0;
-    }
-  });
-
-  // Close with ESC key and handle arrow navigation
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.style.display === "block") {
-      modal.style.display = "none";
-      currentCarouselImages = [];
-      currentImageIndex = 0;
-    }
-    // Add arrow key navigation
-    if (modal.style.display === "block") {
-      if (e.key === 'ArrowRight') {
-        showNextImage();
-      } else if (e.key === 'ArrowLeft') {
-        showPrevImage();
-      }
-    }
-  });
-</script>
+<!-- Link to external JavaScript file with defer attribute -->
+<script src="/scripts/dubai.js" defer></script>

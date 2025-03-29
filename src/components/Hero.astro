@@ -3,20 +3,39 @@ interface Props {
   title: string;
   subtitle?: string;
   image: string;
+  imageSmall?: string;
+  imageMobile?: string;
   overlay?: boolean;
 }
 
-const { title, subtitle, image, overlay = true } = Astro.props;
+const { title, subtitle, image, imageSmall, imageMobile, overlay = true } = Astro.props;
 ---
 
 <section class="relative h-[70vh] flex items-center justify-center">
   <div class="absolute inset-0 z-0">
-    <img 
-      src={image} 
-      alt={title} 
-      class="w-full h-full object-cover"
-      fetchpriority="high"
-    />
+    {imageSmall && imageMobile ? (
+      <picture>
+        <source 
+          srcset={`${imageMobile} 400w, ${imageSmall} 800w, ${image} 1200w`} 
+          type="image/webp">
+        <img 
+          src={image.replace('.webp', '.jpg')} 
+          srcset={`${image.replace('.webp', '.jpg')} 1200w`}
+          alt={title} 
+          class="w-full h-full object-cover"
+          width="1200"
+          height="800"
+          fetchpriority="high"
+        />
+      </picture>
+    ) : (
+      <img 
+        src={image} 
+        alt={title} 
+        class="w-full h-full object-cover"
+        fetchpriority="high"
+      />
+    )}
     {overlay && <div class="absolute inset-0 bg-black opacity-40"></div>}
   </div>
   
