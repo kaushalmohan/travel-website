@@ -27,7 +27,7 @@ const navItems = [
 ];
 ---
 
-<header class="bg-white shadow-md sticky top-0 z-50">
+<header class="bg-white shadow-md sticky top-0 z-50 will-change-transform">
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
     <a href="/" class="text-2xl font-serif font-bold text-primary-700">
       Slow Travel
@@ -39,13 +39,21 @@ const navItems = [
           <li class="relative group">
             {item.dropdown ? (
               <>
-                <button class="flex items-center text-gray-700 hover:text-primary-600 font-medium">
+                <button 
+                  class="flex items-center text-gray-700 hover:text-primary-600 font-medium"
+                  data-toggle="dropdown"
+                  aria-controls={`dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  aria-expanded="false"
+                >
                   {item.name}
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <div 
+                  id={`dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 contain-content"
+                >
                   {item.items.map(subItem => (
                     <a href={subItem.url} class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">
                       {subItem.name}
@@ -63,28 +71,46 @@ const navItems = [
       </ul>
     </nav>
     
-    <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+    <button 
+      id="mobile-menu-button" 
+      class="md:hidden text-gray-700 focus:outline-none" 
+      aria-label="Toggle mobile menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </div>
   
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+  <!-- Mobile menu - hidden by default for better performance -->
+  <div 
+    id="mobile-menu" 
+    class="hidden md:hidden bg-white border-t contain-content" 
+    aria-hidden="true"
+  >
     <div class="container mx-auto px-4 py-3">
       <ul class="space-y-2">
         {navItems.map(item => (
           <>
             {item.dropdown ? (
               <li>
-                <button class="mobile-dropdown-button flex items-center justify-between w-full text-gray-700 font-medium py-2">
+                <button 
+                  class="mobile-dropdown-button flex items-center justify-between w-full text-gray-700 font-medium py-2"
+                  data-toggle="dropdown"
+                  aria-controls={`mobile-dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  aria-expanded="false"
+                >
                   {item.name}
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div class="mobile-dropdown-content hidden pl-4 mt-1 space-y-1">
+                <div 
+                  id={`mobile-dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  class="mobile-dropdown-content hidden pl-4 mt-1 space-y-1 content-visibility-auto"
+                >
                   {item.items.map(subItem => (
                     <a href={subItem.url} class="block py-2 text-gray-600 hover:text-primary-600">
                       {subItem.name}
@@ -107,21 +133,88 @@ const navItems = [
 </header>
 
 <script>
-  // Mobile menu toggle
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
-  
-  // Mobile dropdown toggles
-  const mobileDropdownButtons = document.querySelectorAll('.mobile-dropdown-button');
-  
-  mobileDropdownButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const content = button.nextElementSibling;
-      content?.classList.toggle('hidden');
+  // Use event delegation instead of multiple event listeners
+  document.addEventListener('DOMContentLoaded', () => {
+    // Cache DOM elements
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      // Handle mobile menu toggle with animation
+      mobileMenuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        
+        // Toggle aria-expanded state
+        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+        
+        // Toggle the menu visibility
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.setAttribute('aria-hidden', isExpanded);
+      });
+    }
+    
+    // Use event delegation for mobile dropdown buttons
+    document.addEventListener('click', (e) => {
+      const button = e.target.closest('.mobile-dropdown-button');
+      if (!button) return;
+      
+      // Get the dropdown content element
+      const dropdownId = button.getAttribute('aria-controls');
+      const content = document.getElementById(dropdownId);
+      if (!content) return;
+      
+      // Toggle aria-expanded state
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', !isExpanded);
+      
+      // Toggle content visibility
+      content.classList.toggle('hidden');
+    });
+    
+    // Reduce layout shifts by setting height on dropdown menus
+    const setDropdownHeights = () => {
+      const dropdowns = document.querySelectorAll('.mobile-dropdown-content');
+      dropdowns.forEach(dropdown => {
+        const height = Array.from(dropdown.children).reduce((acc, el) => acc + el.scrollHeight, 0);
+        dropdown.style.setProperty('--content-height', `${height}px`);
+      });
+    };
+    
+    // Initialize once DOM is loaded
+    setDropdownHeights();
+    
+    // Update on resize with throttling
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+      resizeTimeout = setTimeout(setDropdownHeights, 100);
     });
   });
 </script>
+
+<style>
+  /* Add CSS containment for better performance */
+  .dropdown, .mobile-dropdown-content {
+    contain: content;
+  }
+  
+  /* Optimize transitions */
+  .group:hover > div {
+    transition-property: opacity, visibility;
+    transition-duration: 200ms;
+    will-change: opacity, visibility;
+  }
+  
+  /* Add CSS variable for content height to avoid layout shifts */
+  .mobile-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+  
+  .mobile-dropdown-content:not(.hidden) {
+    max-height: var(--content-height, 500px);
+  }
+</style>

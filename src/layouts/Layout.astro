@@ -23,25 +23,76 @@ const { title, description = "Slow travel with Pankhuri and Kaushal - Documentin
     <!-- Performance optimizations -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
     
     <!-- Resource hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="/fonts.css" as="style">
-    <link rel="stylesheet" href="/fonts.css">
-    
-    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://images.unsplash.com">
     
-    <!-- Critical CSS -->
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/fonts.css" as="style">
+    <link rel="preload" href="/global.css" as="style">
+    
+    <!-- Preload critical font files to prevent layout shifts -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXp-p7K4KLg.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/merriweather/v30/u-4n0qyriQwlOrhSvowK_l52_wFZWMf6hPvhPQ.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Efficient font loading -->
+    <link rel="stylesheet" href="/fonts.css">
+    <link rel="stylesheet" href="/global.css">
+    
+    <!-- Inline critical CSS for faster first paint -->
     <style>
-      /* Inline critical CSS here */
-      body {font-family: 'Montserrat', sans-serif; margin: 0; padding: 0;}
-      h1, h2, h3, h4, h5, h6 {font-family: 'Merriweather', serif;}
+      /* Critical CSS for faster rendering */
+      :root {
+        --content-visibility-timing: 30000ms; /* Time to use content-visibility */
+      }
+      
+      /* Font display swap prevents invisible text during loading */
+      @font-face {
+        font-family: 'Montserrat';
+        font-display: swap;
+      }
+      
+      @font-face {
+        font-family: 'Merriweather';
+        font-display: swap;
+      }
+      
+      /* Core layout for fast initial render */
+      body {
+        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Use system font first until custom font loads */
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Merriweather', Georgia, serif;
+      }
+      
+      /* Optimize below-the-fold content */
+      footer, section:not(:first-of-type) {
+        content-visibility: auto;
+        contain-intrinsic-size: 0 500px;
+      }
+      
+      /* Prevent layout shifts during image loading */
+      img {
+        aspect-ratio: attr(width) / attr(height);
+      }
     </style>
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Google Fonts with display=swap for better performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
   </head>
   <body class="min-h-screen flex flex-col bg-gray-50">
     <Navbar />
@@ -49,6 +100,9 @@ const { title, description = "Slow travel with Pankhuri and Kaushal - Documentin
       <slot />
     </main>
     <Footer />
+    
+    <!-- Defer non-critical JS -->
+    <script src="/scripts/global.js" defer></script>
   </body>
 </html>
 
@@ -63,5 +117,21 @@ const { title, description = "Slow travel with Pankhuri and Kaushal - Documentin
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
+  }
+  
+  /* Image loading optimizations */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Optimize animations */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
