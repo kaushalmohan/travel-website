@@ -7,8 +7,28 @@ import Hero from '../../components/Hero.astro';
   title="Dubai Travel Guide | Slow Travel with Pankhuri and Kaushal"
   description="A comprehensive guide to exploring Dubai based on our personal experience."
 >
+  <!-- Performance optimizations -->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  
+  <!-- Resource hints for faster loading -->
+  <link rel="dns-prefetch" href="/">
+  <link rel="preconnect" href="/" crossorigin>
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/styles/dubai.css" as="style">
+  <link rel="preload" href="/scripts/dubai.js" as="script">
+  <link rel="preload" href="/images/dubai/Hero_image/Heroimage-800w.webp" as="image" type="image/webp" media="(max-width: 800px)">
+  <link rel="preload" href="/images/dubai/Hero_image/Heroimage-400w.webp" as="image" type="image/webp" media="(max-width: 400px)">
+  
   <!-- Link to external CSS file -->
   <link rel="stylesheet" href="/styles/dubai.css">
+  
+  <style>
+    /* Ensure text remains visible during webfont load */
+    @font-face {
+      font-display: swap;
+    }
+  </style>
   
   <!-- Hero section with WebP image -->
   <Hero 
@@ -47,6 +67,7 @@ import Hero from '../../components/Hero.astro';
                   height="600"
                   loading="lazy"
                   class="w-full h-full object-cover" 
+                  decoding="async"
                 />
               </picture>
             </div>
