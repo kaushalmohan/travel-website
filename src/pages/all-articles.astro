@@ -36,7 +36,16 @@ import Layout from '../layouts/Layout.astro';
             <!-- Experience Article - Coldplay Concert -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-[1.02] transition-transform duration-300">
               <div class="aspect-[16/9] bg-gray-200 relative">
-                <img src="/images/experiences/coldplay/coldplay2.webp" alt="Coldplay Concert in Mumbai" class="w-full h-full object-cover" />
+                <img 
+                  src="/images/experiences/coldplay/coldplay2.webp" 
+                  srcset="/images/experiences/coldplay/coldplay2.webp 800w,
+                          /images/experiences/coldplay/coldplay2-400w.webp 400w"
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  alt="Coldplay Concert in Mumbai" 
+                  class="w-full h-full object-cover"
+                  width="400" 
+                  height="225"
+                  loading="lazy" />
                 <div class="absolute top-0 right-0 bg-primary-600 text-white px-3 py-1 m-2 rounded-full text-sm">
                   Mar 20, 2025
                 </div>

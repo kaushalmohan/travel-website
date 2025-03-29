@@ -30,7 +30,17 @@ import Layout from '../../layouts/Layout.astro';
       
       <!-- Hero Image -->
       <div class="mb-12 aspect-[16/9] bg-gray-200 rounded-xl overflow-hidden">
-        <img src="/images/experiences/coldplay/coldplay1.webp" alt="Coldplay Concert in Mumbai" class="w-full h-full object-cover" />
+        <img 
+          src="/images/experiences/coldplay/coldplay1.webp" 
+          srcset="/images/experiences/coldplay/coldplay1.webp 1200w,
+                  /images/experiences/coldplay/coldplay1-800w.webp 800w,
+                  /images/experiences/coldplay/coldplay1-400w.webp 400w"
+          sizes="(max-width: 768px) 100vw, 1200px"
+          alt="Coldplay Concert in Mumbai" 
+          class="w-full h-full object-cover"
+          width="1200" 
+          height="675"
+          loading="eager" />
       </div>
       
       <!-- Article Content -->
@@ -46,10 +56,28 @@ import Layout from '../../layouts/Layout.astro';
         
         <div class="grid grid-cols-2 gap-4 my-8">
           <div class="aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden">
-            <img src="/images/experiences/coldplay/coldplay2.webp" alt="Arriving at the concert" class="w-full h-full object-cover" />
+            <img 
+              src="/images/experiences/coldplay/coldplay2.webp" 
+              srcset="/images/experiences/coldplay/coldplay2.webp 800w,
+                      /images/experiences/coldplay/coldplay2-400w.webp 400w"
+              sizes="(max-width: 768px) 100vw, 400px"
+              alt="Arriving at the concert" 
+              class="w-full h-full object-cover"
+              width="800" 
+              height="600" 
+              loading="lazy" />
           </div>
           <div class="aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden">
-            <img src="/images/experiences/coldplay/coldplay3.webp" alt="LED Wristbands" class="w-full h-full object-cover" />
+            <img 
+              src="/images/experiences/coldplay/coldplay3.webp" 
+              srcset="/images/experiences/coldplay/coldplay3.webp 800w,
+                      /images/experiences/coldplay/coldplay3-400w.webp 400w"
+              sizes="(max-width: 768px) 100vw, 400px"
+              alt="LED Wristbands" 
+              class="w-full h-full object-cover"
+              width="800" 
+              height="600" 
+              loading="lazy" />
           </div>
         </div>
         
@@ -130,19 +158,106 @@ import Layout from '../../layouts/Layout.astro';
     </div>
   </main>
 
-  <script>
-    // Initialize Netlify Identity for authentication (optional)
-    if (typeof netlifyIdentity !== 'undefined') {
-      netlifyIdentity.on('init', user => {
-        if (user) {
-          document.getElementById('name').value = user.user_metadata.full_name || '';
-          document.getElementById('email').value = user.email || '';
+  <!-- Custom Notification Popup -->
+  <div id="notification-popup" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 transition-opacity duration-300 opacity-0 pointer-events-none">
+    <div class="bg-white rounded-xl shadow-xl p-6 max-w-md w-full mx-4 transform transition-transform duration-300 scale-95">
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Thank You!</h3>
+        <p class="text-gray-600 mb-6">Your comment has been posted successfully.</p>
+        <button id="popup-close-btn" class="w-full px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors">
+          Okay
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script defer>
+    // Initialize comments only when user scrolls to them
+    let commentsLoaded = false;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set up lazy loading for comments section
+      const commentsSection = document.querySelector('.border-t.border-gray-200');
+      
+      // Use Intersection Observer to detect when comments section is visible
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !commentsLoaded) {
+            initializeComments();
+            commentsLoaded = true;
+            observer.disconnect(); // No need to observe anymore
+          }
+        });
+      }, {
+        rootMargin: '100px', // Load a bit before it comes into view
+      });
+      
+      observer.observe(commentsSection);
+      
+      // Initialize popup functionality right away (it's lightweight)
+      setupNotificationPopup();
+    });
+    
+    // Setup notification popup
+    function setupNotificationPopup() {
+      const notificationPopup = document.getElementById('notification-popup');
+      const popupCloseBtn = document.getElementById('popup-close-btn');
+      
+      // Close popup when the button is clicked
+      popupCloseBtn.addEventListener('click', () => hideNotification(notificationPopup));
+      
+      // Close popup when clicking outside
+      notificationPopup.addEventListener('click', function(e) {
+        if (e.target === notificationPopup) {
+          hideNotification(notificationPopup);
+        }
+      });
+      
+      // Close popup when Escape key is pressed
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !notificationPopup.classList.contains('opacity-0')) {
+          hideNotification(notificationPopup);
         }
       });
     }
+    
+    // Function to show the notification popup
+    function showNotification(popup = document.getElementById('notification-popup')) {
+      popup.classList.remove('opacity-0', 'pointer-events-none');
+      popup.classList.add('opacity-100');
+      document.querySelector('#notification-popup > div').classList.remove('scale-95');
+      document.querySelector('#notification-popup > div').classList.add('scale-100');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+    
+    // Function to hide the notification popup
+    function hideNotification(popup = document.getElementById('notification-popup')) {
+      popup.classList.remove('opacity-100');
+      popup.classList.add('opacity-0', 'pointer-events-none');
+      document.querySelector('#notification-popup > div').classList.remove('scale-100');
+      document.querySelector('#notification-popup > div').classList.add('scale-95');
+      document.body.style.overflow = ''; // Allow scrolling again
+    }
 
-    // Comment functionality with Netlify Functions
-    document.addEventListener('DOMContentLoaded', function() {
+    // Initialize comments functionality
+    function initializeComments() {
+      console.log('Initializing comments section...');
+      
+      // Initialize Netlify Identity if available
+      if (typeof netlifyIdentity !== 'undefined') {
+        netlifyIdentity.on('init', user => {
+          if (user) {
+            document.getElementById('name').value = user.user_metadata.full_name || '';
+            document.getElementById('email').value = user.email || '';
+          }
+        });
+      }
+      
       // Load existing comments
       fetchComments();
       
@@ -176,14 +291,14 @@ import Layout from '../../layouts/Layout.astro';
           // Refresh comments
           fetchComments();
           
-          // Show success message
-          alert('Your comment has been posted!');
+          // Show custom notification popup
+          showNotification();
         } catch (error) {
           console.error('Error posting comment:', error);
           alert('There was an error posting your comment. Please try again.');
         }
       });
-    });
+    }
 
     // Function to fetch comments
     async function fetchComments() {
