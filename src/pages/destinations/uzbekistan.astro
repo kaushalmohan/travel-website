@@ -8,6 +8,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
   title="Uzbekistan Travel Guide | Slow Travel with Pankhuri and Kaushal"
   description="Explore our comprehensive guide to Uzbekistan with day-by-day itinerary, must-see attractions, and travel tips."
 >
+  <link rel="stylesheet" href="/styles/uzbekistan.css">
+
   <style is:global>
     .modal {
       display: none;
@@ -107,7 +109,7 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
   <Hero 
     title="Uzbekistan" 
     subtitle="A journey through the heart of the Silk Road"
-    image="/images/uzbekistan/hero-image/hero_image.jpg"
+    image="/images/uzbekistan/hero-image/hero_image.webp"
   />
   
   <section class="py-16">
@@ -139,9 +141,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day1/day1a.jpg" 
-                       alt="Tashkent Park" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day1/day1a.webp 1200w,
+                                   /images/uzbekistan/day1/day1a-800w.webp 800w,
+                                   /images/uzbekistan/day1/day1a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day1/day1a.jpg" 
+                         alt="Tashkent Park" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">This is a park near Amir Temur Square in Tashkent. Tashkent is filled with beautiful parks and large open spaces.</div>
               </div>
@@ -169,9 +180,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day2/day2a.jpg" 
-                       alt="Registan Square" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day2/day2a.webp 1200w,
+                                   /images/uzbekistan/day2/day2a-800w.webp 800w,
+                                   /images/uzbekistan/day2/day2a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day2/day2a.jpg" 
+                         alt="Registan Square" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">This was our first glimpse of Registan Square. It was stunning.</div>
               </div>
@@ -193,17 +213,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day2/day2b.jpg" 
-                       alt="Afrosiyob Train" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day2/day2b.webp 1200w,
+                                   /images/uzbekistan/day2/day2b-800w.webp 800w,
+                                   /images/uzbekistan/day2/day2b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day2/day2b.jpg" 
+                         alt="Afrosiyob Train" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">This is the Afrosiyob from Tashkent to Samarkand</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day2/day2c.jpg" 
-                       alt="Siyob Bazaar" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day2/day2c.webp 1200w,
+                                   /images/uzbekistan/day2/day2c-800w.webp 800w,
+                                   /images/uzbekistan/day2/day2c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day2/day2c.jpg" 
+                         alt="Siyob Bazaar" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Siyob Bazaar in Samarkand is filled with dry fruits, cutlery, naan, meat, and lots of vegetables</div>
               </div>
@@ -217,9 +255,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day3/day3a.jpg" 
-                       alt="Bibikanyum Mosque" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day3/day3a.webp 1200w,
+                                   /images/uzbekistan/day3/day3a-800w.webp 800w,
+                                   /images/uzbekistan/day3/day3a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day3/day3a.jpg" 
+                         alt="Bibikanyum Mosque" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">The Bibikanyum Mosque in Samarkand is so majestic. Crazy to think that this building is over 600 years old.</div>
               </div>
@@ -244,17 +291,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day3/day3b.jpg" 
-                       alt="Coronation Stone" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day3/day3b.webp 1200w,
+                                   /images/uzbekistan/day3/day3b-800w.webp 800w,
+                                   /images/uzbekistan/day3/day3b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day3/day3b.jpg" 
+                         alt="Coronation Stone" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Coronation stone of emirs within Temur mausoleum</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day3/day3c.jpg" 
-                       alt="Temur Mausoleum at Night" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day3/day3c.webp 1200w,
+                                   /images/uzbekistan/day3/day3c-800w.webp 800w,
+                                   /images/uzbekistan/day3/day3c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day3/day3c.jpg" 
+                         alt="Temur Mausoleum at Night" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Outside view of Temor mausoleum in the night</div>
               </div>
@@ -275,9 +340,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day4/day4a.jpg" 
-                       alt="Night view of Registan" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day4/day4a.webp 1200w,
+                                   /images/uzbekistan/day4/day4a-800w.webp 800w,
+                                   /images/uzbekistan/day4/day4a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day4/day4a.jpg" 
+                         alt="Night view of Registan" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Night view of Registan square. We went here every night in all our 4 nights when we were in Samarkand</div>
               </div>
@@ -299,17 +373,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day4/day4b.jpg" 
-                       alt="Ulugh Beg Madrasah" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day4/day4b.webp 1200w,
+                                   /images/uzbekistan/day4/day4b-800w.webp 800w,
+                                   /images/uzbekistan/day4/day4b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day4/day4b.jpg" 
+                         alt="Ulugh Beg Madrasah" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">The restoration attempt at Ulugh Beg Madrasah in Registan square after the multiple earthquakes and time took its toll.</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day4/day4c.jpeg" 
-                       alt="Sher-dor Madrasah" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day4/day4c.webp 1200w,
+                                   /images/uzbekistan/day4/day4c-800w.webp 800w,
+                                   /images/uzbekistan/day4/day4c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day4/day4c.jpeg" 
+                         alt="Sher-dor Madrasah" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">A picture of us outside the Sher-dor Madrasah taken from a door in Ulugh Beg Madrasah</div>
               </div>
@@ -330,9 +422,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day5/day5a.jpg" 
-                       alt="Overall view of Shahi Zinda" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day5/day5a.webp 1200w,
+                                   /images/uzbekistan/day5/day5a-800w.webp 800w,
+                                   /images/uzbekistan/day5/day5a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day5/day5a.jpg" 
+                         alt="Overall view of Shahi Zinda" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Overall view of Shahi Zinda - one of the cousins of Prophet Mohammed - Qusam ibn Abbas, who supposedly brought islam to central asia in the 7th century is buried here</div>
               </div>
@@ -354,25 +455,52 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day5/day5b.jpg" 
-                       alt="Walking amongst tombs in Shahi Zinda" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day5/day5b.webp 1200w,
+                                   /images/uzbekistan/day5/day5b-800w.webp 800w,
+                                   /images/uzbekistan/day5/day5b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day5/day5b.jpg" 
+                         alt="Walking amongst tombs in Shahi Zinda" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Walking amongst multiple tombs in Shahi Zinda - all of which are 600 years old.</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day5/day5c.jpg" 
-                       alt="Temur's sister's tomb" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day5/day5c.webp 1200w,
+                                   /images/uzbekistan/day5/day5c-800w.webp 800w,
+                                   /images/uzbekistan/day5/day5c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day5/day5c.jpg" 
+                         alt="Temur's sister's tomb" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Shahi Zinda - this is a place filled with graves of important ancient folks - like Temur's wives and sisters. This specific grave is where Temur's sister was buried in the late 14th century.</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day5/day5d.jpg" 
-                       alt="Another tomb in Shahi Zinda" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day5/day5d.webp 1200w,
+                                   /images/uzbekistan/day5/day5d-800w.webp 800w,
+                                   /images/uzbekistan/day5/day5d-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day5/day5d.jpg" 
+                         alt="Another tomb in Shahi Zinda" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Another tomb in Shahi Zinda</div>
               </div>
@@ -386,9 +514,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day6/day6a.jpg" 
-                       alt="Entrance to Ark of Bukhara" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day6/day6a.webp 1200w,
+                                   /images/uzbekistan/day6/day6a-800w.webp 800w,
+                                   /images/uzbekistan/day6/day6a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day6/day6a.jpg" 
+                         alt="Entrance to Ark of Bukhara" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">The entrance to Ark of Bukhara</div>
               </div>
@@ -410,17 +547,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day6/day6b.jpg" 
-                       alt="View from Ark of Bukhara" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day6/day6b.webp 1200w,
+                                   /images/uzbekistan/day6/day6b-800w.webp 800w,
+                                   /images/uzbekistan/day6/day6b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day6/day6b.jpg" 
+                         alt="View from Ark of Bukhara" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">View from the top of Ark of Bukhara</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day6/day6c.jpg" 
-                       alt="Bukhara Cat" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day6/day6c.webp 1200w,
+                                   /images/uzbekistan/day6/day6c-800w.webp 800w,
+                                   /images/uzbekistan/day6/day6c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day6/day6c.jpg" 
+                         alt="Bukhara Cat" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Bukhara is filled with cute cats and all are taken care of by the locals</div>
               </div>
@@ -432,7 +587,7 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                 The Ark of Bukhara can be skipped if you're unable to secure an English-speaking guide. The museums inside lack good descriptions, making it difficult to distinguish between 5th and 18th-century constructions. Without a guide, only the view from the top of the Ark is truly worthwhile.
               </p>
             </div>
-        </div>
+          </div>
 
           {/* Day 7 */}
           <div class="mb-8 bg-white p-6 rounded-lg shadow-md">
@@ -441,9 +596,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day7/day7a.jpg" 
-                       alt="Kalon Square" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day7/day7a.webp 1200w,
+                                   /images/uzbekistan/day7/day7a-800w.webp 800w,
+                                   /images/uzbekistan/day7/day7a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day7/day7a.jpg" 
+                         alt="Kalon Square" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">The Kalon Square - where you can see the Minaret which was built in 1127 and the mir arab madrasa.</div>
               </div>
@@ -465,17 +629,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day7/day7b.jpg" 
-                       alt="Musical Instruments Shop" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day7/day7b.webp 1200w,
+                                   /images/uzbekistan/day7/day7b-800w.webp 800w,
+                                   /images/uzbekistan/day7/day7b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day7/day7b.jpg" 
+                         alt="Musical Instruments Shop" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Walking around Bukhara was truly like walking in a silk road bazaar - here's a shop which sold handmade musical instruments</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day7/day7c.jpg" 
-                       alt="Backgammon Players" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day7/day7c.webp 1200w,
+                                   /images/uzbekistan/day7/day7c-800w.webp 800w,
+                                   /images/uzbekistan/day7/day7c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day7/day7c.jpg" 
+                         alt="Backgammon Players" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Old people playing backgammon was a common sight in Uzbekistan</div>
               </div>
@@ -489,7 +671,7 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <li>The museum inside Abdul Aziz Madrasa (focus on the courtyard instead)</li>
                   <li>Nodir Devon Begi Museum (the exterior is beautiful but the museum is disappointing)</li>
                   <li>The calligraphy museum in Ulug Beg Madrasa</li>
-              </ul>
+                </ul>
                 The museums generally display unlabeled collections of pots, pans, and water pipes that don't add much to the experience.
               </p>
             </div>
@@ -502,9 +684,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day8/day8a.jpg" 
-                       alt="Kalon Square at Night" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day8/day8a.webp 1200w,
+                                   /images/uzbekistan/day8/day8a-800w.webp 800w,
+                                   /images/uzbekistan/day8/day8a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day8/day8a.jpg" 
+                         alt="Kalon Square at Night" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Kalon square again, in the night. The minaret was built in 1127 and is supposedly the only thing in Bukhara that Genghis Khan didn't raze to the ground when he sacked the city in 1220</div>
               </div>
@@ -526,17 +717,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day8/day8b.jpg" 
-                       alt="Ismail Somani Mausoleum" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day8/day8b.webp 1200w,
+                                   /images/uzbekistan/day8/day8b-800w.webp 800w,
+                                   /images/uzbekistan/day8/day8b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day8/day8b.jpg" 
+                         alt="Ismail Somani Mausoleum" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">This is Ismail Somani Mausoleum, built in 892 AD. This is super well preserved because it was buried deep in sand for the longest time. The grave here belongs to Ismail Somani, founder of the Somanid dynasty.</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day8/day8c.jpg" 
-                       alt="Friendly Cat" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day8/day8c.webp 1200w,
+                                   /images/uzbekistan/day8/day8c-800w.webp 800w,
+                                   /images/uzbekistan/day8/day8c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day8/day8c.jpg" 
+                         alt="Friendly Cat" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Friendly cute cats who sit on you to keep themselves warm in the 5 degree temperature of bukhara</div>
               </div>
@@ -545,9 +754,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day8/day8d.jpg" 
-                       alt="More Friendly Cats" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day8/day8d.webp 1200w,
+                                   /images/uzbekistan/day8/day8d-800w.webp 800w,
+                                   /images/uzbekistan/day8/day8d-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day8/day8d.jpg" 
+                         alt="More Friendly Cats" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">More friendly cute cats who are always ready for pets</div>
               </div>
@@ -567,9 +785,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day9/day9a.jpg" 
-                       alt="Kalta Minor Minaret" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day9/day9a.webp 1200w,
+                                   /images/uzbekistan/day9/day9a-800w.webp 800w,
+                                   /images/uzbekistan/day9/day9a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day9/day9a.jpg" 
+                         alt="Kalta Minor Minaret" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">This is the incomplete Kalta Minor Minaret which is now an iconic part of the Khiva "skyline"</div>
               </div>
@@ -591,17 +818,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day9/day9b.jpg" 
-                       alt="Pakhlvan Makhmud Mausoleum" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day9/day9b.webp 1200w,
+                                   /images/uzbekistan/day9/day9b-800w.webp 800w,
+                                   /images/uzbekistan/day9/day9b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day9/day9b.jpg" 
+                         alt="Pakhlvan Makhmud Mausoleum" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Stunning Mausoleum of Pakhlvan Makhmud in Khiva</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day9/day9c.jpg" 
-                       alt="Inside Pakhlvan Makhmud Mausoleum" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day9/day9c.webp 1200w,
+                                   /images/uzbekistan/day9/day9c-800w.webp 800w,
+                                   /images/uzbekistan/day9/day9c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day9/day9c.jpg" 
+                         alt="Inside Pakhlvan Makhmud Mausoleum" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Inside the Mausoleum of Pakhlvan Makhmud</div>
               </div>
@@ -622,9 +867,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day10/day10a.jpg" 
-                       alt="Khiva City Walls" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day10/day10a.webp 1200w,
+                                   /images/uzbekistan/day10/day10a-800w.webp 800w,
+                                   /images/uzbekistan/day10/day10a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day10/day10a.jpg" 
+                         alt="Khiva City Walls" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Khiva is a walled city - the entire city is inside these walls. We walked on the walls</div>
               </div>
@@ -646,17 +900,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day10/day10b.jpg" 
-                       alt="Sunset from City Walls" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day10/day10b.webp 1200w,
+                                   /images/uzbekistan/day10/day10b-800w.webp 800w,
+                                   /images/uzbekistan/day10/day10b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day10/day10b.jpg" 
+                         alt="Sunset from City Walls" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Witnessed this beautiful sunset from the walls</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day10/day10c.jpg" 
-                       alt="Juma Mosque Interior" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day10/day10c.webp 1200w,
+                                   /images/uzbekistan/day10/day10c-800w.webp 800w,
+                                   /images/uzbekistan/day10/day10c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day10/day10c.jpg" 
+                         alt="Juma Mosque Interior" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Inside the Juma mosque in Khiva. About 8-10 pillars in this mosque are over 1000 years old.</div>
               </div>
@@ -677,9 +949,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day11/day11a.jpg" 
-                       alt="Tea Time" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day11/day11a.webp 1200w,
+                                   /images/uzbekistan/day11/day11a-800w.webp 800w,
+                                   /images/uzbekistan/day11/day11a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day11/day11a.jpg" 
+                         alt="Tea Time" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Just two uncles spilling tea over tea</div>
               </div>
@@ -701,17 +982,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day11/day11b.jpg" 
-                       alt="Climbing the Minaret" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day11/day11b.webp 1200w,
+                                   /images/uzbekistan/day11/day11b-800w.webp 800w,
+                                   /images/uzbekistan/day11/day11b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day11/day11b.jpg" 
+                         alt="Climbing the Minaret" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Climbing the minaret of Ichan Kala Minaret in Khiva. It has 119 steps, many of which are steep.</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day11/day11c.jpg" 
-                       alt="View from Minaret" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day11/day11c.webp 1200w,
+                                   /images/uzbekistan/day11/day11c-800w.webp 800w,
+                                   /images/uzbekistan/day11/day11c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day11/day11c.jpg" 
+                         alt="View from Minaret" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">View from the top of Ichan Kala Minaret in Khiva</div>
               </div>
@@ -732,9 +1031,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day12/day12a.jpg" 
-                       alt="Chorsu Bazaar Interior" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day12/day12a.webp 1200w,
+                                   /images/uzbekistan/day12/day12a-800w.webp 800w,
+                                   /images/uzbekistan/day12/day12a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day12/day12a.jpg" 
+                         alt="Chorsu Bazaar Interior" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Inside Chorsu Bazar, which is the biggest bazaar of Tashkent</div>
               </div>
@@ -756,17 +1064,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day12/day12b.jpg" 
-                       alt="Outside Chorsu Bazaar" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day12/day12b.webp 1200w,
+                                   /images/uzbekistan/day12/day12b-800w.webp 800w,
+                                   /images/uzbekistan/day12/day12b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day12/day12b.jpg" 
+                         alt="Outside Chorsu Bazaar" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">This is us outside Chorsu Bazaar after having bought a lot of super tasty dry fruits.</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day12/day12c.jpg" 
-                       alt="Fresh Produce" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day12/day12c.webp 1200w,
+                                   /images/uzbekistan/day12/day12c-800w.webp 800w,
+                                   /images/uzbekistan/day12/day12c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day12/day12c.jpg" 
+                         alt="Fresh Produce" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">The vegetables and fruits in Uzbekistan are to die for. Look at the shine and the size of them!</div>
               </div>
@@ -787,9 +1113,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day13/day13a.jpg" 
-                       alt="Kosmonovtlar Metro Station" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day13/day13a.webp 1200w,
+                                   /images/uzbekistan/day13/day13a-800w.webp 800w,
+                                   /images/uzbekistan/day13/day13a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day13/day13a.jpg" 
+                         alt="Kosmonovtlar Metro Station" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">The metro stations in Tashkent are absolutely stunning. This one is called Kosmonovtlar.</div>
               </div>
@@ -804,17 +1139,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day13/day13b.jpg" 
-                       alt="Amir Timur Statue" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day13/day13b.webp 1200w,
+                                   /images/uzbekistan/day13/day13b-800w.webp 800w,
+                                   /images/uzbekistan/day13/day13b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day13/day13b.jpg" 
+                         alt="Amir Timur Statue" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">This is us standing outside Amir Timur statue in Amir Timur park in the middle of the city.</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day13/day13c.jpg" 
-                       alt="Suburban Tashkent" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day13/day13c.webp 1200w,
+                                   /images/uzbekistan/day13/day13c-800w.webp 800w,
+                                   /images/uzbekistan/day13/day13c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day13/day13c.jpg" 
+                         alt="Suburban Tashkent" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">Walking around suburban Tashkent was beautiful in the fall. You could see so many fallen leaves and kids were playing around.</div>
               </div>
@@ -842,9 +1195,18 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day14/day14a.jpg" 
-                       alt="Plov at Besh Quzon" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day14/day14a.webp 1200w,
+                                   /images/uzbekistan/day14/day14a-800w.webp 800w,
+                                   /images/uzbekistan/day14/day14a-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day14/day14a.jpg" 
+                         alt="Plov at Besh Quzon" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">This is plov being made at Besh Quzon - Plov is the national dish in Uzbekistan - it's basically pulao with meat</div>
               </div>
@@ -859,17 +1221,35 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day14/day14b.jpg" 
-                       alt="Tashkent TV Tower" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day14/day14b.webp 1200w,
+                                   /images/uzbekistan/day14/day14b-800w.webp 800w,
+                                   /images/uzbekistan/day14/day14b-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day14/day14b.jpg" 
+                         alt="Tashkent TV Tower" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">This is the Tashkent TV Tower</div>
               </div>
               <div class="image-container">
                 <div class="image-wrapper">
-                  <img src="/images/uzbekistan/day14/day14c.jpg" 
-                       alt="View from TV Tower" 
-                       class="clickable-image" />
+                  <picture>
+                    <source srcset="/images/uzbekistan/day14/day14c.webp 1200w,
+                                   /images/uzbekistan/day14/day14c-800w.webp 800w,
+                                   /images/uzbekistan/day14/day14c-400w.webp 400w" 
+                           type="image/webp">
+                    <img src="/images/uzbekistan/day14/day14c.jpg" 
+                         alt="View from TV Tower" 
+                         class="clickable-image"
+                         loading="lazy"
+                         width="800"
+                         height="600" />
+                  </picture>
                 </div>
                 <div class="image-caption">View from the top of Tashkent TV tower - In the distance you can see mountains (Uzbekistan Kazakhsthan border)</div>
               </div>
@@ -1109,59 +1489,4 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
   <div id="caption" class="caption"></div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const imageContainers = document.querySelectorAll('.image-container');
-    const modal = document.getElementById('imageModal');
-    const closeBtn = document.querySelector('.close');
-    
-    imageContainers.forEach(container => {
-      container.addEventListener('click', function() {
-        const img = container.querySelector('img');
-        const caption = container.querySelector('.image-caption').textContent;
-        openModal(img.src, caption);
-      });
-    });
-
-    // Close modal when clicking the close button
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function(event) {
-        event.stopPropagation(); // Prevent event from bubbling to modal
-        closeModal();
-      });
-    }
-
-    // Close modal when clicking outside the image
-    if (modal) {
-      modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
-          closeModal();
-        }
-      });
-    }
-
-    // Close modal when pressing ESC key
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
-    });
-  });
-
-  function openModal(imgSrc, caption) {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
-    const captionText = document.getElementById("caption");
-    
-    modal.style.display = "block";
-    modalImg.src = imgSrc;
-    captionText.innerHTML = caption;
-  }
-
-  function closeModal() {
-    const modal = document.getElementById("imageModal");
-    if (modal) {
-      modal.style.display = "none";
-    }
-  }
-</script>
+<script src="/scripts/uzbekistan.js" defer></script>
