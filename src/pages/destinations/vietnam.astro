@@ -8,245 +8,14 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
   title="Vietnam Travel Guide | Slow Travel with Pankhuri and Kaushal"
   description="Explore our comprehensive guide to Vietnam with day-by-day itinerary, must-see attractions, and travel tips."
 >
-  <style is:global>
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      cursor: pointer;
-    }
-
-    .modal-content {
-      margin: auto;
-      display: block;
-      max-width: 90%;
-      max-height: 90vh;
-      margin-top: 2%;
-      cursor: default;
-      object-fit: contain;
-      background-color: transparent;
-    }
-
-    .image-caption {
-      color: #1a202c;
-      padding: 12px;
-      text-align: center;
-      font-size: 0.95em;
-      font-weight: 600;
-      background-color: #f3f4f6;
-      border-radius: 0.375rem;
-      margin-top: 0.5rem;
-    }
-
-    .caption {
-      margin: auto;
-      display: block;
-      width: 80%;
-      text-align: center;
-      color: white;
-      padding: 12px;
-      font-size: 1.2em;
-      font-weight: 600;
-    }
-
-    .close {
-      position: absolute;
-      right: 35px;
-      top: 15px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 1001;
-      padding: 10px;
-    }
-
-    .close:hover {
-      color: #bbb;
-    }
-
-    .image-container {
-      position: relative;
-      cursor: pointer;
-      margin-bottom: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .image-wrapper {
-      width: 100%;
-      height: 0;
-      padding-bottom: 100%;
-      position: relative;
-      overflow: hidden;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease;
-      background-color: #f8f9fa;
-    }
-
-    .image-wrapper:hover {
-      transform: scale(1.02);
-    }
-
-    .clickable-image {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
-
-    .clickable-image.active {
-      opacity: 1;
-    }
-
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .carousel-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #cbd5e0;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .carousel-dot.active {
-      background-color: #4a6fa5;
-    }
-
-    .day-card {
-      background-color: #ffffff;
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-      transition: transform 0.3s ease;
-      margin-bottom: 2rem;
-    }
-
-    .day-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.06), 0 4px 6px -1px rgba(0, 0, 0, 0.04);
-    }
-
-    .day-header {
-      background-color: #4a6fa5;
-      color: white;
-      padding: 1rem 1.5rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .day-content {
-      padding: 1.5rem;
-    }
-
-    .section-title {
-      color: #456789;
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      border-bottom: 2px solid #e6edf5;
-      padding-bottom: 0.5rem;
-    }
-
-    .highlight-box {
-      background-color: #f5f8fa;
-      border-left: 4px solid #4a6fa5;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 0.5rem;
-    }
-
-    .tag {
-      display: inline-block;
-      background-color: #e6edf5;
-      color: #456789;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.875rem;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .food-section {
-      background-color: #f8fafc;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      margin-top: 1rem;
-    }
-
-    .quick-info {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .quick-info-item {
-      background-color: #f5f8fa;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      color: #456789;
-      border: 1px solid #e6edf5;
-    }
-
-    .nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-      font-size: 36px;
-      font-weight: bold;
-      cursor: pointer;
-      padding: 16px;
-      user-select: none;
-      background-color: rgba(0, 0, 0, 0.3);
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s ease;
-    }
-
-    .nav:hover {
-      background-color: rgba(0, 0, 0, 0.6);
-    }
-
-    .prev {
-      left: 20px;
-    }
-
-    .next {
-      right: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="/styles/vietnam.css">
 
   <Hero 
     title="Vietnam" 
     subtitle="A journey through history, culture, and natural beauty"
-    image="/images/vietnam/hero-image/hero_image.jpg"
+    image="/images/vietnam/hero-image/hero_image.webp"
+    imageSmall="/images/vietnam/hero-image/hero_image-800w.webp"
+    imageMobile="/images/vietnam/hero-image/hero_image-400w.webp"
   />
   
   <div class="container mx-auto px-4 py-16">
@@ -286,26 +55,86 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day1/day1a.jpg" 
-                     alt="Hoan Kiem Lake" 
-                     class="clickable-image active" 
-                     data-day="1" />
-                <img src="/images/vietnam/day1/day1b.jpg" 
-                     alt="Hanoi Market" 
-                     class="clickable-image" 
-                     data-day="1" />
-                <img src="/images/vietnam/day1/day1c.jpg" 
-                     alt="Hanoi Streets" 
-                     class="clickable-image" 
-                     data-day="1" />
-                <img src="/images/vietnam/day1/day1d.jpg" 
-                     alt="Hanoi City" 
-                     class="clickable-image" 
-                     data-day="1" />
-                <img src="/images/vietnam/day1/day1e.jpg" 
-                     alt="Hanoi Experience" 
-                     class="clickable-image" 
-                     data-day="1" />
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day1/day1a-400w.webp 400w, 
+                            /images/vietnam/day1/day1a-800w.webp 800w, 
+                            /images/vietnam/day1/day1a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day1/day1a.jpg" 
+                    srcset="/images/vietnam/day1/day1a.jpg 1200w"
+                    alt="Hoan Kiem Lake" 
+                    class="clickable-image active" 
+                    data-day="1"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day1/day1b-400w.webp 400w, 
+                            /images/vietnam/day1/day1b-800w.webp 800w, 
+                            /images/vietnam/day1/day1b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day1/day1b.jpg" 
+                    srcset="/images/vietnam/day1/day1b.jpg 1200w"
+                    alt="Hanoi Market" 
+                    class="clickable-image" 
+                    data-day="1"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day1/day1c-400w.webp 400w, 
+                            /images/vietnam/day1/day1c-800w.webp 800w, 
+                            /images/vietnam/day1/day1c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day1/day1c.jpg" 
+                    srcset="/images/vietnam/day1/day1c.jpg 1200w"
+                    alt="Hanoi Streets" 
+                    class="clickable-image" 
+                    data-day="1"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day1/day1d-400w.webp 400w, 
+                            /images/vietnam/day1/day1d-800w.webp 800w, 
+                            /images/vietnam/day1/day1d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day1/day1d.jpg" 
+                    srcset="/images/vietnam/day1/day1d.jpg 1200w"
+                    alt="Hanoi City" 
+                    class="clickable-image" 
+                    data-day="1"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day1/day1e-400w.webp 400w, 
+                            /images/vietnam/day1/day1e-800w.webp 800w, 
+                            /images/vietnam/day1/day1e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day1/day1e.jpg" 
+                    srcset="/images/vietnam/day1/day1e.jpg 1200w"
+                    alt="Hanoi Experience" 
+                    class="clickable-image" 
+                    data-day="1"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
               </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="1"></span>
@@ -313,10 +142,10 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                 <span class="carousel-dot" data-day="1"></span>
                 <span class="carousel-dot" data-day="1"></span>
                 <span class="carousel-dot" data-day="1"></span>
-            </div>
+              </div>
               <div class="image-caption">Relaxing at Hoan Kiem Lake</div>
+            </div>
           </div>
-        </div>
         
           <div class="highlight-box">
             <div class="section-title">What We Loved</div>
@@ -348,7 +177,7 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
           <div class="quick-info">
             <div class="quick-info-item">🚗 Transport: Local Guide</div>
             <div class="quick-info-item">📍 Location: Ninh Binh</div>
-              </div>
+          </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
@@ -368,35 +197,119 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day2/day2a.jpg" 
-                     alt="Trang An Boat Ride" 
-                     class="clickable-image active" 
-                     data-day="2" />
-                <img src="/images/vietnam/day2/day2b.jpg" 
-                     alt="Mua Caves View" 
-                     class="clickable-image" 
-                     data-day="2" />
-                <img src="/images/vietnam/day2/day2c.jpg" 
-                     alt="Night Market" 
-                     class="clickable-image" 
-                     data-day="2" />
-                <img src="/images/vietnam/day2/day2d.jpg" 
-                     alt="Ninh Binh Views" 
-                     class="clickable-image" 
-                     data-day="2" />
-                <img src="/images/vietnam/day2/day2e.jpg" 
-                     alt="Trang An Scenery" 
-                     class="clickable-image" 
-                     data-day="2" />
-                <img src="/images/vietnam/day2/day2f.jpg" 
-                     alt="Ninh Binh Countryside" 
-                     class="clickable-image" 
-                     data-day="2" />
-                <img src="/images/vietnam/day2/day2g.jpg" 
-                     alt="Ninh Binh Experience" 
-                     class="clickable-image" 
-                     data-day="2" />
-          </div>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day2/day2a-400w.webp 400w, 
+                            /images/vietnam/day2/day2a-800w.webp 800w, 
+                            /images/vietnam/day2/day2a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day2/day2a.jpg" 
+                    srcset="/images/vietnam/day2/day2a.jpg 1200w"
+                    alt="Trang An Boat Ride" 
+                    class="clickable-image active" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day2/day2b-400w.webp 400w, 
+                            /images/vietnam/day2/day2b-800w.webp 800w, 
+                            /images/vietnam/day2/day2b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day2/day2b.jpg" 
+                    srcset="/images/vietnam/day2/day2b.jpg 1200w"
+                    alt="Mua Caves View" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day2/day2c-400w.webp 400w, 
+                            /images/vietnam/day2/day2c-800w.webp 800w, 
+                            /images/vietnam/day2/day2c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day2/day2c.jpg" 
+                    srcset="/images/vietnam/day2/day2c.jpg 1200w"
+                    alt="Night Market" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day2/day2d-400w.webp 400w, 
+                            /images/vietnam/day2/day2d-800w.webp 800w, 
+                            /images/vietnam/day2/day2d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day2/day2d.jpg" 
+                    srcset="/images/vietnam/day2/day2d.jpg 1200w"
+                    alt="Ninh Binh Views" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day2/day2e-400w.webp 400w, 
+                            /images/vietnam/day2/day2e-800w.webp 800w, 
+                            /images/vietnam/day2/day2e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day2/day2e.jpg" 
+                    srcset="/images/vietnam/day2/day2e.jpg 1200w"
+                    alt="Trang An Scenery" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day2/day2f-400w.webp 400w, 
+                            /images/vietnam/day2/day2f-800w.webp 800w, 
+                            /images/vietnam/day2/day2f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day2/day2f.jpg" 
+                    srcset="/images/vietnam/day2/day2f.jpg 1200w"
+                    alt="Ninh Binh Countryside" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day2/day2g-400w.webp 400w, 
+                            /images/vietnam/day2/day2g-800w.webp 800w, 
+                            /images/vietnam/day2/day2g.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day2/day2g.jpg" 
+                    srcset="/images/vietnam/day2/day2g.jpg 1200w"
+                    alt="Ninh Binh Experience" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="2"></span>
                 <span class="carousel-dot" data-day="2"></span>
@@ -407,7 +320,7 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                 <span class="carousel-dot" data-day="2"></span>
               </div>
               <div class="image-caption">Scenic boat ride through Trang An</div>
-          </div>
+            </div>
           </div>
 
           <div class="highlight-box">
@@ -449,26 +362,86 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day3/day3a.jpg" 
-                     alt="Ha Long Bay Cruise" 
-                     class="clickable-image active" 
-                     data-day="3" />
-                <img src="/images/vietnam/day3/day3b.jpg" 
-                     alt="Kayaking in Ha Long Bay" 
-                     class="clickable-image" 
-                     data-day="3" />
-                <img src="/images/vietnam/day3/day3c.jpg" 
-                     alt="Sunset in Ha Long Bay" 
-                     class="clickable-image" 
-                     data-day="3" />
-                <img src="/images/vietnam/day3/day3d.jpg" 
-                     alt="Ha Long Bay Views" 
-                     class="clickable-image" 
-                     data-day="3" />
-                <img src="/images/vietnam/day3/day3e.jpg" 
-                     alt="Ha Long Bay Activities" 
-                     class="clickable-image" 
-                     data-day="3" />
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day3/day3a-400w.webp 400w, 
+                            /images/vietnam/day3/day3a-800w.webp 800w, 
+                            /images/vietnam/day3/day3a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day3/day3a.jpg" 
+                    srcset="/images/vietnam/day3/day3a.jpg 1200w"
+                    alt="Ha Long Bay Cruise" 
+                    class="clickable-image active" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day3/day3b-400w.webp 400w, 
+                            /images/vietnam/day3/day3b-800w.webp 800w, 
+                            /images/vietnam/day3/day3b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day3/day3b.jpg" 
+                    srcset="/images/vietnam/day3/day3b.jpg 1200w"
+                    alt="Kayaking in Ha Long Bay" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day3/day3c-400w.webp 400w, 
+                            /images/vietnam/day3/day3c-800w.webp 800w, 
+                            /images/vietnam/day3/day3c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day3/day3c.jpg" 
+                    srcset="/images/vietnam/day3/day3c.jpg 1200w"
+                    alt="Sunset in Ha Long Bay" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day3/day3d-400w.webp 400w, 
+                            /images/vietnam/day3/day3d-800w.webp 800w, 
+                            /images/vietnam/day3/day3d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day3/day3d.jpg" 
+                    srcset="/images/vietnam/day3/day3d.jpg 1200w"
+                    alt="Ha Long Bay Views" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day3/day3e-400w.webp 400w, 
+                            /images/vietnam/day3/day3e-800w.webp 800w, 
+                            /images/vietnam/day3/day3e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day3/day3e.jpg" 
+                    srcset="/images/vietnam/day3/day3e.jpg 1200w"
+                    alt="Ha Long Bay Activities" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
               </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="3"></span>
@@ -476,7 +449,7 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                 <span class="carousel-dot" data-day="3"></span>
                 <span class="carousel-dot" data-day="3"></span>
                 <span class="carousel-dot" data-day="3"></span>
-            </div>
+              </div>
               <div class="image-caption">Cruising through Ha Long Bay</div>
             </div>
           </div>
@@ -522,26 +495,86 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day4/day4a.jpg" 
-                     alt="Hanoi Train Street" 
-                     class="clickable-image active" 
-                     data-day="4" />
-                <img src="/images/vietnam/day4/day4b.jpg" 
-                     alt="The Note Coffee" 
-                     class="clickable-image" 
-                     data-day="4" />
-                <img src="/images/vietnam/day4/day4c.jpg" 
-                     alt="Lotte Tower View" 
-                     class="clickable-image" 
-                     data-day="4" />
-                <img src="/images/vietnam/day4/day4d.jpg" 
-                     alt="Hanoi Streets" 
-                     class="clickable-image" 
-                     data-day="4" />
-                <img src="/images/vietnam/day4/day4e.jpg" 
-                     alt="Hanoi City Life" 
-                     class="clickable-image" 
-                     data-day="4" />
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day4/day4a-400w.webp 400w, 
+                            /images/vietnam/day4/day4a-800w.webp 800w, 
+                            /images/vietnam/day4/day4a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day4/day4a.jpg" 
+                    srcset="/images/vietnam/day4/day4a.jpg 1200w"
+                    alt="Hanoi Train Street" 
+                    class="clickable-image active" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day4/day4b-400w.webp 400w, 
+                            /images/vietnam/day4/day4b-800w.webp 800w, 
+                            /images/vietnam/day4/day4b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day4/day4b.jpg" 
+                    srcset="/images/vietnam/day4/day4b.jpg 1200w"
+                    alt="The Note Coffee" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day4/day4c-400w.webp 400w, 
+                            /images/vietnam/day4/day4c-800w.webp 800w, 
+                            /images/vietnam/day4/day4c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day4/day4c.jpg" 
+                    srcset="/images/vietnam/day4/day4c.jpg 1200w"
+                    alt="Lotte Tower View" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day4/day4d-400w.webp 400w, 
+                            /images/vietnam/day4/day4d-800w.webp 800w, 
+                            /images/vietnam/day4/day4d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day4/day4d.jpg" 
+                    srcset="/images/vietnam/day4/day4d.jpg 1200w"
+                    alt="Hanoi Streets" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day4/day4e-400w.webp 400w, 
+                            /images/vietnam/day4/day4e-800w.webp 800w, 
+                            /images/vietnam/day4/day4e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day4/day4e.jpg" 
+                    srcset="/images/vietnam/day4/day4e.jpg 1200w"
+                    alt="Hanoi City Life" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
               </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="4"></span>
@@ -594,26 +627,86 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day5/day5a.jpg" 
-                     alt="Dragon Bridge at night" 
-                     class="clickable-image active" 
-                     data-day="5" />
-                <img src="/images/vietnam/day5/day5b.jpg" 
-                     alt="Da Nang Market" 
-                     class="clickable-image" 
-                     data-day="5" />
-                <img src="/images/vietnam/day5/day5c.jpg" 
-                     alt="Da Nang Streets" 
-                     class="clickable-image" 
-                     data-day="5" />
-                <img src="/images/vietnam/day5/day5d.jpg" 
-                     alt="Da Nang City" 
-                     class="clickable-image" 
-                     data-day="5" />
-                <img src="/images/vietnam/day5/day5e.jpg" 
-                     alt="Da Nang Life" 
-                     class="clickable-image" 
-                     data-day="5" />
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day5/day5a-400w.webp 400w, 
+                            /images/vietnam/day5/day5a-800w.webp 800w, 
+                            /images/vietnam/day5/day5a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day5/day5a.jpg" 
+                    srcset="/images/vietnam/day5/day5a.jpg 1200w"
+                    alt="Dragon Bridge at night" 
+                    class="clickable-image active" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day5/day5b-400w.webp 400w, 
+                            /images/vietnam/day5/day5b-800w.webp 800w, 
+                            /images/vietnam/day5/day5b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day5/day5b.jpg" 
+                    srcset="/images/vietnam/day5/day5b.jpg 1200w"
+                    alt="Da Nang Market" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day5/day5c-400w.webp 400w, 
+                            /images/vietnam/day5/day5c-800w.webp 800w, 
+                            /images/vietnam/day5/day5c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day5/day5c.jpg" 
+                    srcset="/images/vietnam/day5/day5c.jpg 1200w"
+                    alt="Da Nang Streets" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day5/day5d-400w.webp 400w, 
+                            /images/vietnam/day5/day5d-800w.webp 800w, 
+                            /images/vietnam/day5/day5d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day5/day5d.jpg" 
+                    srcset="/images/vietnam/day5/day5d.jpg 1200w"
+                    alt="Da Nang City" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day5/day5e-400w.webp 400w, 
+                            /images/vietnam/day5/day5e-800w.webp 800w, 
+                            /images/vietnam/day5/day5e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day5/day5e.jpg" 
+                    srcset="/images/vietnam/day5/day5e.jpg 1200w"
+                    alt="Da Nang Life" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
               </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="5"></span>
@@ -675,26 +768,86 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day6/day6a.jpg" 
-                     alt="Golden Bridge at Ba Na Hills" 
-                     class="clickable-image active" 
-                     data-day="6" />
-                <img src="/images/vietnam/day6/day6b.jpg" 
-                     alt="French Village" 
-                     class="clickable-image" 
-                     data-day="6" />
-                <img src="/images/vietnam/day6/day6c.jpg" 
-                     alt="Ba Na Hills View" 
-                     class="clickable-image" 
-                     data-day="6" />
-                <img src="/images/vietnam/day6/day6d.jpg" 
-                     alt="Ba Na Hills Scenery" 
-                     class="clickable-image" 
-                     data-day="6" />
-                <img src="/images/vietnam/day6/day6e.jpg" 
-                     alt="Ba Na Hills Experience" 
-                     class="clickable-image" 
-                     data-day="6" />
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day6/day6a-400w.webp 400w, 
+                            /images/vietnam/day6/day6a-800w.webp 800w, 
+                            /images/vietnam/day6/day6a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day6/day6a.jpg" 
+                    srcset="/images/vietnam/day6/day6a.jpg 1200w"
+                    alt="Golden Bridge at Ba Na Hills" 
+                    class="clickable-image active" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day6/day6b-400w.webp 400w, 
+                            /images/vietnam/day6/day6b-800w.webp 800w, 
+                            /images/vietnam/day6/day6b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day6/day6b.jpg" 
+                    srcset="/images/vietnam/day6/day6b.jpg 1200w"
+                    alt="French Village" 
+                    class="clickable-image" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day6/day6c-400w.webp 400w, 
+                            /images/vietnam/day6/day6c-800w.webp 800w, 
+                            /images/vietnam/day6/day6c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day6/day6c.jpg" 
+                    srcset="/images/vietnam/day6/day6c.jpg 1200w"
+                    alt="Ba Na Hills View" 
+                    class="clickable-image" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day6/day6d-400w.webp 400w, 
+                            /images/vietnam/day6/day6d-800w.webp 800w, 
+                            /images/vietnam/day6/day6d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day6/day6d.jpg" 
+                    srcset="/images/vietnam/day6/day6d.jpg 1200w"
+                    alt="Ba Na Hills Scenery" 
+                    class="clickable-image" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day6/day6e-400w.webp 400w, 
+                            /images/vietnam/day6/day6e-800w.webp 800w, 
+                            /images/vietnam/day6/day6e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day6/day6e.jpg" 
+                    srcset="/images/vietnam/day6/day6e.jpg 1200w"
+                    alt="Ba Na Hills Experience" 
+                    class="clickable-image" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
               </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="6"></span>
@@ -741,22 +894,70 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day7/day7a.jpg" 
-                     alt="Hoi An at night" 
-                     class="clickable-image active" 
-                     data-day="7" />
-                <img src="/images/vietnam/day7/day7b.jpg" 
-                     alt="Hoi An Lanterns" 
-                     class="clickable-image" 
-                     data-day="7" />
-                <img src="/images/vietnam/day7/day7c.jpg" 
-                     alt="Hoi An Streets" 
-                     class="clickable-image" 
-                     data-day="7" />
-                <img src="/images/vietnam/day7/day7d.jpg" 
-                     alt="Hoi An Experience" 
-                     class="clickable-image" 
-                     data-day="7" />
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day7/day7a-400w.webp 400w, 
+                            /images/vietnam/day7/day7a-800w.webp 800w, 
+                            /images/vietnam/day7/day7a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day7/day7a.jpg" 
+                    srcset="/images/vietnam/day7/day7a.jpg 1200w"
+                    alt="Hoi An at night" 
+                    class="clickable-image active" 
+                    data-day="7"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day7/day7b-400w.webp 400w, 
+                            /images/vietnam/day7/day7b-800w.webp 800w, 
+                            /images/vietnam/day7/day7b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day7/day7b.jpg" 
+                    srcset="/images/vietnam/day7/day7b.jpg 1200w"
+                    alt="Hoi An Lanterns" 
+                    class="clickable-image" 
+                    data-day="7"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day7/day7c-400w.webp 400w, 
+                            /images/vietnam/day7/day7c-800w.webp 800w, 
+                            /images/vietnam/day7/day7c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day7/day7c.jpg" 
+                    srcset="/images/vietnam/day7/day7c.jpg 1200w"
+                    alt="Hoi An Streets" 
+                    class="clickable-image" 
+                    data-day="7"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day7/day7d-400w.webp 400w, 
+                            /images/vietnam/day7/day7d-800w.webp 800w, 
+                            /images/vietnam/day7/day7d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day7/day7d.jpg" 
+                    srcset="/images/vietnam/day7/day7d.jpg 1200w"
+                    alt="Hoi An Experience" 
+                    class="clickable-image" 
+                    data-day="7"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
               </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="7"></span>
@@ -802,34 +1003,105 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day8/day8a.jpg" 
-                     alt="Lady Buddha statue" 
-                     class="clickable-image active" 
-                     data-day="8" />
-                <img src="/images/vietnam/day8/day8b.jpg" 
-                     alt="My Khe Beach" 
-                     class="clickable-image" 
-                     data-day="8" />
-                <img src="/images/vietnam/day8/day8c.jpg" 
-                     alt="Sun World" 
-                     class="clickable-image" 
-                     data-day="8" />
-                <img src="/images/vietnam/day8/day8d.jpg" 
-                     alt="Da Nang Views" 
-                     class="clickable-image" 
-                     data-day="8" />
-                <img src="/images/vietnam/day8/day8e.jpg" 
-                     alt="Da Nang Experience" 
-                     class="clickable-image" 
-                     data-day="8" />
-                <img src="/images/vietnam/day8/day8f.jpg" 
-                     alt="Da Nang City Life" 
-                     class="clickable-image" 
-                     data-day="8" />
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day8/day8a-400w.webp 400w, 
+                            /images/vietnam/day8/day8a-800w.webp 800w, 
+                            /images/vietnam/day8/day8a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day8/day8a.jpg" 
+                    srcset="/images/vietnam/day8/day8a.jpg 1200w"
+                    alt="Lady Buddha statue" 
+                    class="clickable-image active" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day8/day8b-400w.webp 400w, 
+                            /images/vietnam/day8/day8b-800w.webp 800w, 
+                            /images/vietnam/day8/day8b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day8/day8b.jpg" 
+                    srcset="/images/vietnam/day8/day8b.jpg 1200w"
+                    alt="My Khe Beach" 
+                    class="clickable-image" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day8/day8c-400w.webp 400w, 
+                            /images/vietnam/day8/day8c-800w.webp 800w, 
+                            /images/vietnam/day8/day8c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day8/day8c.jpg" 
+                    srcset="/images/vietnam/day8/day8c.jpg 1200w"
+                    alt="Sun World" 
+                    class="clickable-image" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day8/day8d-400w.webp 400w, 
+                            /images/vietnam/day8/day8d-800w.webp 800w, 
+                            /images/vietnam/day8/day8d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day8/day8d.jpg" 
+                    srcset="/images/vietnam/day8/day8d.jpg 1200w"
+                    alt="Da Nang Views" 
+                    class="clickable-image" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day8/day8e-400w.webp 400w, 
+                            /images/vietnam/day8/day8e-800w.webp 800w, 
+                            /images/vietnam/day8/day8e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day8/day8e.jpg" 
+                    srcset="/images/vietnam/day8/day8e.jpg 1200w"
+                    alt="Da Nang Experience" 
+                    class="clickable-image" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day8/day8f-400w.webp 400w, 
+                            /images/vietnam/day8/day8f-800w.webp 800w, 
+                            /images/vietnam/day8/day8f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day8/day8f.jpg" 
+                    srcset="/images/vietnam/day8/day8f.jpg 1200w"
+                    alt="Da Nang City Life" 
+                    class="clickable-image" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
               </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="8"></span>
-                <span class="carousel-dot" data-day="8"></span>
                 <span class="carousel-dot" data-day="8"></span>
                 <span class="carousel-dot" data-day="8"></span>
                 <span class="carousel-dot" data-day="8"></span>
@@ -879,18 +1151,54 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day9/day9a.jpg" 
-                     alt="Secret Weapons Cellar" 
-                     class="clickable-image active" 
-                     data-day="9" />
-                <img src="/images/vietnam/day9/day9b.jpg" 
-                     alt="Ho Chi Minh Square" 
-                     class="clickable-image" 
-                     data-day="9" />
-                <img src="/images/vietnam/day9/day9c.jpg" 
-                     alt="City Streets" 
-                     class="clickable-image" 
-                     data-day="9" />
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day9/day9a-400w.webp 400w, 
+                            /images/vietnam/day9/day9a-800w.webp 800w, 
+                            /images/vietnam/day9/day9a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day9/day9a.jpg" 
+                    srcset="/images/vietnam/day9/day9a.jpg 1200w"
+                    alt="Secret Weapons Cellar" 
+                    class="clickable-image active" 
+                    data-day="9"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day9/day9b-400w.webp 400w, 
+                            /images/vietnam/day9/day9b-800w.webp 800w, 
+                            /images/vietnam/day9/day9b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day9/day9b.jpg" 
+                    srcset="/images/vietnam/day9/day9b.jpg 1200w"
+                    alt="Ho Chi Minh Square" 
+                    class="clickable-image" 
+                    data-day="9"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day9/day9c-400w.webp 400w, 
+                            /images/vietnam/day9/day9c-800w.webp 800w, 
+                            /images/vietnam/day9/day9c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day9/day9c.jpg" 
+                    srcset="/images/vietnam/day9/day9c.jpg 1200w"
+                    alt="City Streets" 
+                    class="clickable-image" 
+                    data-day="9"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
               </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="9"></span>
@@ -901,17 +1209,19 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
           </div>
 
-          <div class="section-title">What We Loved</div>
           <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
             <p class="text-gray-600">
               The secret weapons cellar was a highlight, offering a glimpse into the resourcefulness of the Vietnamese during the war. Ho Chi Minh Square's vibrant vibe made it a perfect spot for an evening walk.
             </p>
           </div>
 
-          <div class="section-title">Consider Adding</div>
-          <p class="text-gray-600">
-            Consider taking the Mekong Delta Tour for a unique experience outside the city.
-          </p>
+          <div class="mt-4">
+            <div class="section-title">Consider Adding</div>
+            <p class="text-gray-600">
+              Consider taking the Mekong Delta Tour for a unique experience outside the city.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -933,26 +1243,86 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day10/day10a.jpg" 
-                     alt="Cu Chi Tunnels" 
-                     class="clickable-image active" 
-                     data-day="10" />
-                <img src="/images/vietnam/day10/day10b.jpg" 
-                     alt="Tunnel Entrance" 
-                     class="clickable-image" 
-                     data-day="10" />
-                <img src="/images/vietnam/day10/day10c.jpg" 
-                     alt="Landmark 81" 
-                     class="clickable-image" 
-                     data-day="10" />
-                <img src="/images/vietnam/day10/day10d.jpg" 
-                     alt="Cu Chi Experience" 
-                     class="clickable-image" 
-                     data-day="10" />
-                <img src="/images/vietnam/day10/day10e.jpg" 
-                     alt="City Views" 
-                     class="clickable-image" 
-                     data-day="10" />
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day10/day10a-400w.webp 400w, 
+                            /images/vietnam/day10/day10a-800w.webp 800w, 
+                            /images/vietnam/day10/day10a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day10/day10a.jpg" 
+                    srcset="/images/vietnam/day10/day10a.jpg 1200w"
+                    alt="Cu Chi Tunnels" 
+                    class="clickable-image active" 
+                    data-day="10"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day10/day10b-400w.webp 400w, 
+                            /images/vietnam/day10/day10b-800w.webp 800w, 
+                            /images/vietnam/day10/day10b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day10/day10b.jpg" 
+                    srcset="/images/vietnam/day10/day10b.jpg 1200w"
+                    alt="Tunnel Entrance" 
+                    class="clickable-image" 
+                    data-day="10"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day10/day10c-400w.webp 400w, 
+                            /images/vietnam/day10/day10c-800w.webp 800w, 
+                            /images/vietnam/day10/day10c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day10/day10c.jpg" 
+                    srcset="/images/vietnam/day10/day10c.jpg 1200w"
+                    alt="Landmark 81" 
+                    class="clickable-image" 
+                    data-day="10"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day10/day10d-400w.webp 400w, 
+                            /images/vietnam/day10/day10d-800w.webp 800w, 
+                            /images/vietnam/day10/day10d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day10/day10d.jpg" 
+                    srcset="/images/vietnam/day10/day10d.jpg 1200w"
+                    alt="Cu Chi Experience" 
+                    class="clickable-image" 
+                    data-day="10"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day10/day10e-400w.webp 400w, 
+                            /images/vietnam/day10/day10e-800w.webp 800w, 
+                            /images/vietnam/day10/day10e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day10/day10e.jpg" 
+                    srcset="/images/vietnam/day10/day10e.jpg 1200w"
+                    alt="City Views" 
+                    class="clickable-image" 
+                    data-day="10"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
               </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="10"></span>
@@ -965,17 +1335,19 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
           </div>
 
-          <div class="section-title">What We Loved</div>
           <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
             <p class="text-gray-600">
               The Cu Chi Tunnels offered a unique historical perspective, and the views from Landmark 81 were simply stunning, providing a new appreciation for the city's skyline.
             </p>
           </div>
 
-          <div class="section-title">Skip If You Want</div>
-          <p class="text-gray-600">
-            If you're not interested in city views from above, you might consider skipping Landmark 81.
-          </p>
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+              If you're not interested in city views from above, you might consider skipping Landmark 81.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -1005,26 +1377,86 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
             <div class="image-container">
               <div class="image-wrapper">
-                <img src="/images/vietnam/day11/day11a.jpg" 
-                     alt="Saigon Post Office" 
-                     class="clickable-image active" 
-                     data-day="11" />
-                <img src="/images/vietnam/day11/day11b.jpg" 
-                     alt="War Remnants Museum" 
-                     class="clickable-image" 
-                     data-day="11" />
-                <img src="/images/vietnam/day11/day11c.jpg" 
-                     alt="Bui Vien Street" 
-                     class="clickable-image" 
-                     data-day="11" />
-                <img src="/images/vietnam/day11/day11d.jpg" 
-                     alt="City Landmarks" 
-                     class="clickable-image" 
-                     data-day="11" />
-                <img src="/images/vietnam/day11/day11e.jpg" 
-                     alt="City Life" 
-                     class="clickable-image" 
-                     data-day="11" />
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day11/day11a-400w.webp 400w, 
+                            /images/vietnam/day11/day11a-800w.webp 800w, 
+                            /images/vietnam/day11/day11a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day11/day11a.jpg" 
+                    srcset="/images/vietnam/day11/day11a.jpg 1200w"
+                    alt="Saigon Post Office" 
+                    class="clickable-image active" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day11/day11b-400w.webp 400w, 
+                            /images/vietnam/day11/day11b-800w.webp 800w, 
+                            /images/vietnam/day11/day11b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day11/day11b.jpg" 
+                    srcset="/images/vietnam/day11/day11b.jpg 1200w"
+                    alt="War Remnants Museum" 
+                    class="clickable-image" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day11/day11c-400w.webp 400w, 
+                            /images/vietnam/day11/day11c-800w.webp 800w, 
+                            /images/vietnam/day11/day11c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day11/day11c.jpg" 
+                    srcset="/images/vietnam/day11/day11c.jpg 1200w"
+                    alt="Bui Vien Street" 
+                    class="clickable-image" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day11/day11d-400w.webp 400w, 
+                            /images/vietnam/day11/day11d-800w.webp 800w, 
+                            /images/vietnam/day11/day11d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day11/day11d.jpg" 
+                    srcset="/images/vietnam/day11/day11d.jpg 1200w"
+                    alt="City Landmarks" 
+                    class="clickable-image" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/vietnam/day11/day11e-400w.webp 400w, 
+                            /images/vietnam/day11/day11e-800w.webp 800w, 
+                            /images/vietnam/day11/day11e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/vietnam/day11/day11e.jpg" 
+                    srcset="/images/vietnam/day11/day11e.jpg 1200w"
+                    alt="City Life" 
+                    class="clickable-image" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
               </div>
               <div class="carousel-dots">
                 <span class="carousel-dot active" data-day="11"></span>
@@ -1037,17 +1469,19 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
             </div>
           </div>
 
-          <div class="section-title">What We Loved</div>
           <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
             <p class="text-gray-600">
               The War Remnants Museum offered a poignant reminder of the past, while Bui Vien Street's lively atmosphere was a highlight of our evening.
             </p>
           </div>
 
-          <div class="section-title">Skip If You Want</div>
-          <p class="text-gray-600">
-            If museums aren't your thing, you might consider skipping the War Remnants Museum.
-          </p>
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+              If museums aren't your thing, you might consider skipping the War Remnants Museum.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -1072,216 +1506,5 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const modal = document.createElement('div');
-      modal.className = 'modal';
-      modal.innerHTML = `
-        <span class="close">&times;</span>
-        <span class="nav prev">&#10094;</span>
-        <span class="nav next">&#10095;</span>
-        <img class="modal-content">
-        <div class="caption"></div>
-      `;
-      document.body.appendChild(modal);
-
-      const modalImg = modal.querySelector('.modal-content');
-      const captionText = modal.querySelector('.caption');
-      const closeBtn = modal.querySelector('.close');
-      const prevBtn = modal.querySelector('.nav.prev');
-      const nextBtn = modal.querySelector('.nav.next');
-
-      let currentModalDay = null;
-      let currentModalIndex = 0;
-
-      // Image captions mapping
-      const imageCaptions = {
-        'day1a': 'Finding a local place to eat banh mi in the afternoon.',
-        'day1b': 'Park near Hoan Kiem lake where we chilled for a while',
-        'day1c': 'This is the very pretty and chill Hoan Kiem Lake. We sat outside the lake for nearly an hour eating fries and drinking juice.',
-        'day1d': 'Riding around aimlessly in the streets of Hanoi was incredible fun',
-        'day1e': 'Laika cafe where we got our first ever taste of incredible Vietnamese coffee',
-        'day2a': 'We cycled on this beautiful road where our cycle chain came off and we were stranded for a while.',
-        'day2b': 'Boating around in Ningbing amongst the caves was a great experience.',
-        'day2c': 'There was somebody working on the top of Mua caves, and I wish that was my workspace.',
-        'day2d': 'Incredible view from the top of Mua caves',
-        'day2e': 'Happy faces',
-        'day2f': 'Pretty lanes around Mua Caves area',
-        'day2g': 'Walking on the beautiful streets of Trang An surrounded by breathtaking landscapes',
-        'day3a': 'This is Era cruise which was our home for the night',
-        'day3b': 'This was the view from our bed on the cruise. We had this view on three sides',
-        'day3c': 'Kayaking in the beautiful waters of Halong Bay',
-        'day3d': 'When you are on one of these Ha Long Bay cruises, you would spend hours looking at mountains and formations like these.',
-        'day3e': 'The beautiful light and dark caves',
-        'day4a': 'Lazy cruising through Halong Bay',
-        'day4b': 'When you are on one of these Ha Long Bay cruises, you would spend hours looking at mountains and formations like these.',
-        'day4c': 'The infamous Hanoi train street',
-        'day4d': 'View fron the 50th floor of Hanoi Lotte tower',
-        'day4e': 'Best ever Kadhai Panner at Red Chilli Indian restaurant',
-        'day5a': 'First glimpse of Da Nang city from the plane',
-        'day5b': 'Night market in Da Nang',
-        'day5c': 'Chill area around Dragon Bridge. We chilled here watching the local college kids play games',
-        'day5d': 'The amazing Dragon bridge. We enjoyed the vibe so much that we returned the next day',
-        'day5e': 'Happy faces at Dragon bridge',
-        'day6a': 'Dancing with this cutie was so uch fun',
-        'day6b': 'The beautiful hand bridge. The weather here changes every few minutes',
-        'day6c': 'Got lucky with this shot without anyone in the background',
-        'day6d': 'The cable car ride to and from Ba Na hills gives views of the most stunning landscapes',
-        'day6e': 'And we are bck to the dragon bridge are to chill some more',
-        'day7a': 'Morning view of Thu Bon river',
-        'day7b': 'The refreshing lemon and ginger drink',
-        'day7c': 'Moments before the town lit up with lanterns all around',
-        'day7d': 'What a magical evening. Reminds me of the scene from tangled when Rupunzel is at the boat and the sky lights up with lanterns',
-        'day7e': 'Look at those pretty coconut trees at the banks of Thu Bon river',
-        'day8a': 'You can see the entire city from Lady Buddha',
-        'day8b': 'Happy faces at Lady Buddha',
-        'day8c': 'Look at this cutie!',
-        'day8d': 'My Khe beach was so clean and well maintained. Loved every minute we spent here',
-        'day8e': 'Locals exercising at the beach',
-        'day8f': 'Look at that landscape. Makes you want to teleport yourself to this place, doesn\'t it!',
-        'day9a': 'Secret weapon cellar in Ho Chi Minh city is worth a visit',
-        'day9b': 'Nguyen Hue street is so lively in the evenings',
-        'day9c': 'Got to get clicked when the streets are so pretty!',
-        'day10a': 'One of the five tunnels that are open for tourists at Cu Chi tunnels',
-        'day10b': 'The entrance to the tunnel is so small',
-        'day10c': 'The guide told us that the tunnels have been widened for tourists and that they used to be even smaller originally',
-        'day10d': 'View from the Landmark 81 which is the tallest building in Ho Chi Minh city',
-        'day10e': 'We reached Landmark pre sunset and watched the sun go down and the town light up which was incredible',
-        'day11a': 'The War Remnants Museum had displays of army tanks',
-        'day11b': 'The War Remnants Museum had displays of army tanks',
-        'day11c': 'The Saigon post office where we picked beautiful post cards',
-        'day11d': 'The Tan Dinh Church or the Pink church is very pretty',
-        'day11e': 'The Bui Vien walking street has some major vibes and is a must do for everyone who enjoys nightlife'
-      };
-
-      // Carousel functionality
-      const carousels = {};
-      
-      // Initialize carousels for each day
-      document.querySelectorAll('.image-container').forEach(container => {
-        const day = container.querySelector('.clickable-image').dataset.day;
-        const images = container.querySelectorAll('.clickable-image');
-        const dots = container.querySelectorAll('.carousel-dot');
-        const captionElement = container.querySelector('.image-caption');
-        let currentIndex = 0;
-
-        carousels[day] = {
-          images,
-          dots,
-          currentIndex,
-          captionElement,
-          interval: setInterval(() => {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateCarousel(day, currentIndex);
-          }, 3000)
-        };
-
-        // Add click handlers for dots
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', (e) => {
-            e.stopPropagation();
-            clearInterval(carousels[day].interval);
-            updateCarousel(day, index);
-            carousels[day].interval = setInterval(() => {
-              carousels[day].currentIndex = (carousels[day].currentIndex + 1) % images.length;
-              updateCarousel(day, carousels[day].currentIndex);
-            }, 3000);
-          });
-        });
-
-        // Add click handlers for images
-        images.forEach((img, index) => {
-          img.addEventListener('click', (e) => {
-            e.stopPropagation();
-          modal.style.display = "block";
-            modalImg.src = e.target.src;
-            const imageName = e.target.src.split('/').pop().replace('.jpg', '');
-            captionText.innerHTML = imageCaptions[imageName] || e.target.alt;
-            currentModalDay = day;
-            currentModalIndex = index;
-          });
-        });
-      });
-
-      function updateCarousel(day, index) {
-        const carousel = carousels[day];
-        carousel.images.forEach(img => img.classList.remove('active'));
-        carousel.dots.forEach(dot => dot.classList.remove('active'));
-        
-        carousel.images[index].classList.add('active');
-        carousel.dots[index].classList.add('active');
-        carousel.currentIndex = index;
-
-        // Update caption
-        const activeImage = carousel.images[index];
-        const imageName = activeImage.src.split('/').pop().replace('.jpg', '');
-        carousel.captionElement.innerHTML = imageCaptions[imageName] || activeImage.alt;
-      }
-
-      function showNextImage() {
-        if (currentModalDay) {
-          const images = carousels[currentModalDay].images;
-          currentModalIndex = (currentModalIndex + 1) % images.length;
-          modalImg.src = images[currentModalIndex].src;
-          const imageName = images[currentModalIndex].src.split('/').pop().replace('.jpg', '');
-          captionText.innerHTML = imageCaptions[imageName] || images[currentModalIndex].alt;
-        }
-      }
-
-      function showPrevImage() {
-        if (currentModalDay) {
-          const images = carousels[currentModalDay].images;
-          currentModalIndex = (currentModalIndex - 1 + images.length) % images.length;
-          modalImg.src = images[currentModalIndex].src;
-          const imageName = images[currentModalIndex].src.split('/').pop().replace('.jpg', '');
-          captionText.innerHTML = imageCaptions[imageName] || images[currentModalIndex].alt;
-        }
-      }
-
-      // Navigation button click handlers
-      nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showNextImage();
-      });
-
-      prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showPrevImage();
-      });
-
-      // Close modal with close button
-      closeBtn.addEventListener('click', () => {
-          modal.style.display = "none";
-        });
-
-      // Close modal when clicking outside the image
-      modal.addEventListener('click', (e) => {
-          if (e.target === modal) {
-            modal.style.display = "none";
-          }
-        });
-
-      // Handle keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (modal.style.display === "block") {
-          if (e.key === 'Escape') {
-            modal.style.display = "none";
-          } else if (e.key === 'ArrowRight') {
-            showNextImage();
-          } else if (e.key === 'ArrowLeft') {
-            showPrevImage();
-          }
-        }
-      });
-    });
-  </script>
-
-  <div class="modal">
-    <span class="close">&times;</span>
-    <span class="nav prev">&#10094;</span>
-    <span class="nav next">&#10095;</span>
-    <img class="modal-content">
-    <div class="caption"></div>
-  </div>
-
-</Layout>
+  <script src="/scripts/vietnam.js" defer></script>
+</Layout> 
