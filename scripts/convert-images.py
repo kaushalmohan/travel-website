@@ -69,7 +69,7 @@ def convert_image(image_path):
 
 def process_images():
     """Process all images in the uzbekistan folder"""
-    base_dir = Path('/Users/pankhuriandkaushal/CodeExperiments/travel-website/public/images/miscellaneous')
+    base_dir = Path('/Users/pankhuriandkaushal/CodeExperiments/travel-website/public/images/experiences')
     
     if not base_dir.exists():
         print(f"Error: Directory {base_dir} does not exist")

@@ -6,9 +6,9 @@ import Layout from '../layouts/Layout.astro';
   title="Travel Opinions | Slow Travel with Pankhuri and Kaushal"
   description="Read our thoughts, perspectives, and opinions on various aspects of travel and tourism."
 >
-  <main class="py-12 bg-green-50">
+  <main class="py-12 bg-grey-50">
     <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold text-center mb-12 text-black">Our Travel Opinions</h1>
+      <h1 class="text-4xl font-bold text-center mb-12 text-black">Opinions</h1>
       
       <!-- 2025 -->
       <section class="mb-16">
@@ -19,7 +19,37 @@ import Layout from '../layouts/Layout.astro';
           <h3 class="text-xl font-bold mb-4 text-black bg-green-100 px-4 py-2 rounded-lg inline-block">March 2025</h3>
           
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-            <!-- Article 1 -->
+            <!-- Mar 18 - Slow Travel Article -->
+            <a href="/opinions/slow-travel-reasons" class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-[1.02] transition-transform duration-300 no-underline">
+              <div class="aspect-[16/9] bg-green-100 relative">
+                <picture>
+                  <source
+                    srcset="/images/opinions/slow-travel-reasons/registan1-400w.webp 400w,
+                           /images/opinions/slow-travel-reasons/registan1-800w.webp 800w"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    type="image/webp"
+                  />
+                  <img src="/images/opinions/slow-travel-reasons/registan1.webp" 
+                    alt="Registan Square in Samarkand" 
+                    class="w-full h-full object-cover" />
+                </picture>
+                <div class="absolute top-0 right-0 bg-primary-600 text-white px-3 py-1 m-2 rounded-full text-sm">
+                  Mar 18, 2025
+                </div>
+              </div>
+              <div class="p-6">
+                <h4 class="text-lg font-bold mb-2 text-black">Why We Prefer Relatively Slow Travel</h4>
+                <p class="text-gray-600 mb-4 line-clamp-3">Our perspective on the benefits of spending more time in fewer places rather than rushing to check destinations off a bucket list. How slow travel changed our perspective.</p>
+                <span class="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                  Read more
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+            
+            <!-- Mar 15 - Sustainable Tourism Article -->
             <a href="#" class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-[1.02] transition-transform duration-300 no-underline">
               <div class="aspect-[16/9] bg-green-100 relative">
                 <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b" alt="Article thumbnail" class="w-full h-full object-cover" />
@@ -39,12 +69,12 @@ import Layout from '../layouts/Layout.astro';
               </div>
             </a>
             
-            <!-- Article 2 -->
+            <!-- Mar 1 - Slow Travel Over Rushed Tourism Article -->
             <a href="#" class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-[1.02] transition-transform duration-300 no-underline">
               <div class="aspect-[16/9] bg-green-100 relative">
                 <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Article thumbnail" class="w-full h-full object-cover" />
                 <div class="absolute top-0 right-0 bg-primary-600 text-white px-3 py-1 m-2 rounded-full text-sm">
-                  Mar 5, 2025
+                  Mar 1, 2025
                 </div>
               </div>
               <div class="p-6">
