@@ -1,7 +1,7 @@
 ---
-description: 
+description: My ways of working. 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # Coding pattern preferences
 
@@ -15,3 +15,4 @@ alwaysApply: false
 – Mocking data is only needed for tests, never mock data for dev or prod  
 – Never add stubbing or fake data patterns to code that affects the dev or prod environments  
 – Never overwrite my .env file without first asking and confirming
+- Never commit or push any changes to git before testing locally. 

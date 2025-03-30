@@ -95,7 +95,7 @@ const recentPosts = [
   
   <Hero 
     title="Just Life-ing Together" 
-    subtitle="Documenting bits and pieces of our life, one bit at a time"
+    subtitle="Documenting bits and pieces of our life, one story at a time"
     image="/images/miscellaneous/index-images/hero-index.webp"
     imageSmall="/images/miscellaneous/index-images/hero-index-800w.webp"
     imageMobile="/images/miscellaneous/index-images/hero-index-400w.webp"
@@ -126,7 +126,7 @@ const recentPosts = [
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {recentPosts.map((post, index) => (
-          <div class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-[1.02] transition-transform duration-300">
+          <a href={post.url} class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-[1.02] transition-transform duration-300 no-underline">
             <div class="aspect-[16/9] bg-gray-200 relative">
               {post.imageSmall && post.imageMobile ? (
                 <picture>
@@ -172,14 +172,14 @@ const recentPosts = [
             <div class="p-6">
               <h4 class="text-lg font-bold mb-2 text-black">{post.title}</h4>
               <p class="text-gray-600 mb-4 line-clamp-3">{post.description}</p>
-              <a href={post.url} class="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+              <span class="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                 Read more
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
-              </a>
+              </span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

@@ -91,7 +91,7 @@ import Layout from '../../layouts/Layout.astro';
         
         <h2 class="text-2xl font-bold mt-8 mb-4 text-black">Opening Acts</h2>
         <p class="text-black">
-          Before Coldplay took the stage, we were treated to performances by some incredible artists. Elyanna was absolutely mind-blowing—her powerful vocals resonated throughout the stadium and set the perfect tone for the evening. She was followed by Jasleen Royal, who connected with the audience through her soulful melodies and authentic stage presence. These opening acts weren't just fillers; they were carefully chosen artists who complemented what was to come.
+          Before Coldplay took the stage, we were treated to performances by some incredible artists. Elyanna was absolutely mind-blowing—her powerful vocals resonated throughout the stadium and set the perfect tone for the evening. She was followed by Jasleen Royal, who's best performance came on the Indian version of We Pray. These opening acts weren't just fillers; they were carefully chosen artists who complemented what was to come.
         </p>
         
         <h2 class="text-2xl font-bold mt-8 mb-4 text-black">The Main Event</h2>
@@ -135,10 +135,6 @@ import Layout from '../../layouts/Layout.astro';
             <div>
               <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
               <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500">
-            </div>
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email (will not be published)</label>
-              <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500">
             </div>
             <div>
               <label for="comment" class="block text-sm font-medium text-gray-700 mb-1">Comment</label>
@@ -253,7 +249,6 @@ import Layout from '../../layouts/Layout.astro';
         netlifyIdentity.on('init', user => {
           if (user) {
             document.getElementById('name').value = user.user_metadata.full_name || '';
-            document.getElementById('email').value = user.email || '';
           }
         });
       }
@@ -267,7 +262,6 @@ import Layout from '../../layouts/Layout.astro';
         e.preventDefault();
         
         const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
         const commentText = document.getElementById('comment').value;
         const timestamp = new Date().toISOString();
         const page = window.location.pathname;
@@ -275,7 +269,6 @@ import Layout from '../../layouts/Layout.astro';
         // Create comment object
         const commentData = {
           name,
-          email,
           comment: commentText,
           timestamp,
           page
