@@ -2,12 +2,143 @@
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
 import ItineraryDay from '../../components/ItineraryDay.astro';
+
+// SEO metadata
+const title = "Vietnam Travel Guide: 12-Day Itinerary | Lifeing Together";
+const description = "Explore our comprehensive Vietnam travel guide with a detailed 12-day itinerary covering Hanoi, Ha Long Bay, Hoi An, Da Nang, Ho Chi Minh City, and more. Discover the best places to visit and travel tips.";
+
+// Fix for URL handling - gracefully handle when Astro.site is undefined
+const siteUrl = Astro.site?.toString() || 'https://lifeingwithpankhuriandkaushal.com';
+const canonicalURL = new URL('/destinations/vietnam', new URL(siteUrl)).toString();
+const ogImage = "/images/vietnam/hero-image/hero_image.webp";
+const absoluteImageUrl = new URL(ogImage, new URL(siteUrl)).toString();
+
+// Define structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "TravelGuide",
+  "name": "Vietnam Travel Guide: 12-Day Itinerary",
+  "author": {
+    "@type": "Person",
+    "name": "Pankhuri and Kaushal"
+  },
+  "description": "A comprehensive 12-day Vietnam travel guide with detailed itinerary covering Hanoi, Ha Long Bay, Hoi An, Da Nang, and Ho Chi Minh City.",
+  "datePublished": "2023-11-30",
+  "dateModified": new Date().toISOString().split('T')[0],
+  "image": absoluteImageUrl,
+  "inLanguage": "en",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalURL
+  },
+  "about": {
+    "@type": "Place",
+    "name": "Vietnam",
+    "description": "Southeast Asian country known for its beaches, rivers, Buddhist pagodas, and bustling cities."
+  },
+  "itinerary": {
+    "@type": "ItemList",
+    "numberOfItems": 12,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "TouristDestination",
+          "name": "Arrival in Hanoi",
+          "touristType": ["City Tourism", "Cultural Tourism"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "TouristDestination",
+          "name": "Ninh Binh Adventure",
+          "touristType": ["Nature Tourism", "Cultural Tourism"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "TouristDestination",
+          "name": "Ha Long Bay Cruise",
+          "touristType": ["Nature Tourism", "Cruise Tourism"]
+        }
+      }
+    ]
+  },
+  "touristType": ["Cultural Tourism", "Food Tourism", "Adventure Tourism", "Beach Tourism"],
+  "keywords": "Vietnam travel guide, Vietnam itinerary, Ha Long Bay cruises, Hoi An lantern festival, things to do in Vietnam, Vietnam tourist attractions, Vietnam travel tips, Hanoi travel guide, Ho Chi Minh City attractions"
+};
+
+// Define breadcrumb structured data
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": new URL('/', new URL(siteUrl)).toString()
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Destinations",
+      "item": new URL('/destinations', new URL(siteUrl)).toString()
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Vietnam",
+      "item": canonicalURL
+    }
+  ]
+};
 ---
 
 <Layout 
-  title="Vietnam Travel Guide | Lifeing Together with Pankhuri and Kaushal"
-  description="Explore our comprehensive guide to Vietnam with day-by-day itinerary, must-see attractions, and travel tips."
+  title={title}
+  description={description}
 >
+  <!-- SEO Meta Tags -->
+  <link rel="canonical" href={canonicalURL} slot="head" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" slot="head" />
+  <meta property="og:url" content={canonicalURL} slot="head" />
+  <meta property="og:title" content={title} slot="head" />
+  <meta property="og:description" content={description} slot="head" />
+  <meta property="og:image" content={absoluteImageUrl} slot="head" />
+  <meta property="og:image:alt" content="Vietnam panoramic view with Ha Long Bay" slot="head" />
+  <meta property="og:site_name" content="Lifeing Together" slot="head" />
+  <meta property="og:locale" content="en_US" slot="head" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" slot="head" />
+  <meta name="twitter:url" content={canonicalURL} slot="head" />
+  <meta name="twitter:title" content={title} slot="head" />
+  <meta name="twitter:description" content={description} slot="head" />
+  <meta name="twitter:image" content={absoluteImageUrl} slot="head" />
+  <meta name="twitter:image:alt" content="Vietnam panoramic view with Ha Long Bay" slot="head" />
+  
+  <!-- Additional SEO Tags -->
+  <meta name="keywords" content="Vietnam travel guide, Vietnam itinerary, Ha Long Bay cruises, Hoi An lantern festival, things to do in Vietnam, best places to visit in Vietnam, Vietnam tourist attractions, Vietnam travel tips, Vietnam travel blog, Hanoi travel guide, Ho Chi Minh City attractions" slot="head" />
+  <meta name="author" content="Pankhuri and Kaushal" slot="head" />
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json" slot="head">
+    {JSON.stringify(structuredData)}
+  </script>
+  
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json" slot="head">
+    {JSON.stringify(breadcrumbData)}
+  </script>
+  
   <link rel="stylesheet" href="/styles/vietnam.css">
 
   <Hero 
@@ -16,6 +147,7 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
     image="/images/vietnam/hero-image/hero_image.webp"
     imageSmall="/images/vietnam/hero-image/hero_image-800w.webp"
     imageMobile="/images/vietnam/hero-image/hero_image-400w.webp"
+    imageAlt="Scenic Vietnam landscape with limestone karsts of Ha Long Bay, a top tourist destination in Southeast Asia"
   />
   
   <div class="container mx-auto px-4 py-16">
@@ -64,8 +196,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day1/day1a.jpg" 
                     srcset="/images/vietnam/day1/day1a.jpg 1200w"
-                     alt="Hoan Kiem Lake" 
-                     class="clickable-image active" 
+                    alt="Peaceful Hoan Kiem Lake in Hanoi Vietnam with traditional architecture and lush greenery" 
+                    class="clickable-image active" 
                     data-day="1"
                     width="800"
                     height="600"
@@ -80,8 +212,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day1/day1b.jpg" 
                     srcset="/images/vietnam/day1/day1b.jpg 1200w"
-                     alt="Hanoi Market" 
-                     class="clickable-image" 
+                    alt="Authentic Hanoi Market with colorful local Vietnamese produce and street foods for tourists" 
+                    class="clickable-image" 
                     data-day="1"
                     width="800"
                     height="600"
@@ -96,8 +228,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day1/day1c.jpg" 
                     srcset="/images/vietnam/day1/day1c.jpg 1200w"
-                     alt="Hanoi Streets" 
-                     class="clickable-image" 
+                    alt="Bustling streets of Hanoi Old Quarter with motorcycles and historic French colonial architecture" 
+                    class="clickable-image" 
                     data-day="1"
                     width="800"
                     height="600"
@@ -112,8 +244,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day1/day1d.jpg" 
                     srcset="/images/vietnam/day1/day1d.jpg 1200w"
-                     alt="Hanoi City" 
-                     class="clickable-image" 
+                    alt="Hanoi's urban landscape showcasing traditional Vietnamese pagodas and modern buildings" 
+                    class="clickable-image" 
                     data-day="1"
                     width="800"
                     height="600"
@@ -128,8 +260,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day1/day1e.jpg" 
                     srcset="/images/vietnam/day1/day1e.jpg 1200w"
-                     alt="Hanoi Experience" 
-                     class="clickable-image" 
+                    alt="Local cultural experience in Hanoi Vietnam with authentic food stalls and street vendors" 
+                    class="clickable-image" 
                     data-day="1"
                     width="800"
                     height="600"
@@ -206,8 +338,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day2/day2a.jpg" 
                     srcset="/images/vietnam/day2/day2a.jpg 1200w"
-                     alt="Trang An Boat Ride" 
-                     class="clickable-image active" 
+                    alt="Scenic boat ride through Trang An limestone karsts in Ninh Binh Vietnam, a UNESCO World Heritage site" 
+                    class="clickable-image active" 
                     data-day="2"
                     width="800"
                     height="600"
@@ -222,8 +354,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day2/day2b.jpg" 
                     srcset="/images/vietnam/day2/day2b.jpg 1200w"
-                     alt="Mua Caves View" 
-                     class="clickable-image" 
+                    alt="Panoramic mountain view from Mua Caves in Ninh Binh showing Vietnam's dramatic landscape and rice fields" 
+                    class="clickable-image" 
                     data-day="2"
                     width="800"
                     height="600"
@@ -238,8 +370,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day2/day2c.jpg" 
                     srcset="/images/vietnam/day2/day2c.jpg 1200w"
-                     alt="Night Market" 
-                     class="clickable-image" 
+                    alt="Vibrant Hanoi night market with colorful lights and local Vietnamese street food vendors" 
+                    class="clickable-image" 
                     data-day="2"
                     width="800"
                     height="600"
@@ -254,8 +386,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day2/day2d.jpg" 
                     srcset="/images/vietnam/day2/day2d.jpg 1200w"
-                     alt="Ninh Binh Views" 
-                     class="clickable-image" 
+                    alt="Spectacular natural scenery of Ninh Binh Vietnam with mountains, waterways and traditional boats" 
+                    class="clickable-image" 
                     data-day="2"
                     width="800"
                     height="600"
@@ -270,8 +402,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day2/day2e.jpg" 
                     srcset="/images/vietnam/day2/day2e.jpg 1200w"
-                     alt="Trang An Scenery" 
-                     class="clickable-image" 
+                    alt="Tranquil waterways and limestone formations of Trang An grottoes, a must-visit destination in Vietnam" 
+                    class="clickable-image" 
                     data-day="2"
                     width="800"
                     height="600"
@@ -286,8 +418,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day2/day2f.jpg" 
                     srcset="/images/vietnam/day2/day2f.jpg 1200w"
-                     alt="Ninh Binh Countryside" 
-                     class="clickable-image" 
+                    alt="Lush green Vietnamese countryside in Ninh Binh with traditional farming practices and water buffalo" 
+                    class="clickable-image" 
                     data-day="2"
                     width="800"
                     height="600"
@@ -302,8 +434,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day2/day2g.jpg" 
                     srcset="/images/vietnam/day2/day2g.jpg 1200w"
-                     alt="Ninh Binh Experience" 
-                     class="clickable-image" 
+                    alt="Authentic cultural experience in Ninh Binh with local Vietnamese guides and traditional sampan boats" 
+                    class="clickable-image" 
                     data-day="2"
                     width="800"
                     height="600"
@@ -371,8 +503,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day3/day3a.jpg" 
                     srcset="/images/vietnam/day3/day3a.jpg 1200w"
-                     alt="Ha Long Bay Cruise" 
-                     class="clickable-image active" 
+                    alt="Luxury cruise ship navigating through Ha Long Bay's emerald waters and limestone islands in Vietnam" 
+                    class="clickable-image active" 
                     data-day="3"
                     width="800"
                     height="600"
@@ -387,8 +519,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day3/day3b.jpg" 
                     srcset="/images/vietnam/day3/day3b.jpg 1200w"
-                     alt="Kayaking in Ha Long Bay" 
-                     class="clickable-image" 
+                    alt="Kayaking adventure between towering karst formations in Ha Long Bay, a top outdoor activity in Vietnam" 
+                    class="clickable-image" 
                     data-day="3"
                     width="800"
                     height="600"
@@ -403,8 +535,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day3/day3c.jpg" 
                     srcset="/images/vietnam/day3/day3c.jpg 1200w"
-                     alt="Sunset in Ha Long Bay" 
-                     class="clickable-image" 
+                    alt="Breathtaking sunset over Ha Long Bay UNESCO World Heritage Site with silhouetted limestone pillars" 
+                    class="clickable-image" 
                     data-day="3"
                     width="800"
                     height="600"
@@ -419,8 +551,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day3/day3d.jpg" 
                     srcset="/images/vietnam/day3/day3d.jpg 1200w"
-                     alt="Ha Long Bay Views" 
-                     class="clickable-image" 
+                    alt="Panoramic vista of Ha Long Bay's iconic seascape with hundreds of limestone islands and islets in Vietnam" 
+                    class="clickable-image" 
                     data-day="3"
                     width="800"
                     height="600"
@@ -435,8 +567,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day3/day3e.jpg" 
                     srcset="/images/vietnam/day3/day3e.jpg 1200w"
-                     alt="Ha Long Bay Activities" 
-                     class="clickable-image" 
+                    alt="Tourists enjoying various water activities and excursions in the pristine waters of Ha Long Bay Vietnam" 
+                    class="clickable-image" 
                     data-day="3"
                     width="800"
                     height="600"
@@ -504,8 +636,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day4/day4a.jpg" 
                     srcset="/images/vietnam/day4/day4a.jpg 1200w"
-                     alt="Hanoi Train Street" 
-                     class="clickable-image active" 
+                    alt="Famous Hanoi Train Street where trains pass between narrow buildings, a unique tourist attraction in Vietnam" 
+                    class="clickable-image active" 
                     data-day="4"
                     width="800"
                     height="600"
@@ -520,8 +652,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day4/day4b.jpg" 
                     srcset="/images/vietnam/day4/day4b.jpg 1200w"
-                     alt="The Note Coffee" 
-                     class="clickable-image" 
+                    alt="The Note Coffee in Hanoi decorated with colorful post-it notes, a popular Instagram-worthy café in Vietnam" 
+                    class="clickable-image" 
                     data-day="4"
                     width="800"
                     height="600"
@@ -536,8 +668,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day4/day4c.jpg" 
                     srcset="/images/vietnam/day4/day4c.jpg 1200w"
-                     alt="Lotte Tower View" 
-                     class="clickable-image" 
+                    alt="Spectacular aerial panorama of Hanoi cityscape from Lotte Tower observation deck at sunset in Vietnam" 
+                    class="clickable-image" 
                     data-day="4"
                     width="800"
                     height="600"
@@ -552,8 +684,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day4/day4d.jpg" 
                     srcset="/images/vietnam/day4/day4d.jpg 1200w"
-                     alt="Hanoi Streets" 
-                     class="clickable-image" 
+                    alt="Bustling streets of Hanoi Old Quarter with motorbikes, street vendors and traditional Vietnamese shops" 
+                    class="clickable-image" 
                     data-day="4"
                     width="800"
                     height="600"
@@ -568,8 +700,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day4/day4e.jpg" 
                     srcset="/images/vietnam/day4/day4e.jpg 1200w"
-                     alt="Hanoi City Life" 
-                     class="clickable-image" 
+                    alt="Authentic urban Vietnamese lifestyle in Hanoi with traditional food stalls and local daily activities" 
+                    class="clickable-image" 
                     data-day="4"
                     width="800"
                     height="600"
@@ -636,8 +768,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day5/day5a.jpg" 
                     srcset="/images/vietnam/day5/day5a.jpg 1200w"
-                     alt="Dragon Bridge at night" 
-                     class="clickable-image active" 
+                    alt="Illuminated Dragon Bridge in Da Nang at night with colorful lights, a major tourist attraction in Vietnam" 
+                    class="clickable-image active" 
                     data-day="5"
                     width="800"
                     height="600"
@@ -652,8 +784,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day5/day5b.jpg" 
                     srcset="/images/vietnam/day5/day5b.jpg 1200w"
-                     alt="Da Nang Market" 
-                     class="clickable-image" 
+                    alt="Vibrant Da Nang Market with fresh Vietnamese seafood, produce, and local delicacies for tourists" 
+                    class="clickable-image" 
                     data-day="5"
                     width="800"
                     height="600"
@@ -668,8 +800,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day5/day5c.jpg" 
                     srcset="/images/vietnam/day5/day5c.jpg 1200w"
-                     alt="Da Nang Streets" 
-                     class="clickable-image" 
+                    alt="Motorbike ride through Da Nang's busy streets with locals and tourists exploring Vietnam's central coast" 
+                    class="clickable-image" 
                     data-day="5"
                     width="800"
                     height="600"
@@ -684,8 +816,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day5/day5d.jpg" 
                     srcset="/images/vietnam/day5/day5d.jpg 1200w"
-                     alt="Da Nang City" 
-                     class="clickable-image" 
+                    alt="Modern skyline of Da Nang with impressive bridges and riverfront development in central Vietnam" 
+                    class="clickable-image" 
                     data-day="5"
                     width="800"
                     height="600"
@@ -700,8 +832,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day5/day5e.jpg" 
                     srcset="/images/vietnam/day5/day5e.jpg 1200w"
-                     alt="Da Nang Life" 
-                     class="clickable-image" 
+                    alt="Local lifestyle and street food culture in Da Nang with authentic Vietnamese cuisine and vendors" 
+                    class="clickable-image" 
                     data-day="5"
                     width="800"
                     height="600"
@@ -777,8 +909,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day6/day6a.jpg" 
                     srcset="/images/vietnam/day6/day6a.jpg 1200w"
-                     alt="Golden Bridge at Ba Na Hills" 
-                     class="clickable-image active" 
+                    alt="Iconic Golden Bridge at Ba Na Hills with giant stone hands support, a must-visit attraction near Da Nang Vietnam" 
+                    class="clickable-image active" 
                     data-day="6"
                     width="800"
                     height="600"
@@ -793,8 +925,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day6/day6b.jpg" 
                     srcset="/images/vietnam/day6/day6b.jpg 1200w"
-                     alt="French Village" 
-                     class="clickable-image" 
+                    alt="Beautiful French Village architecture at Ba Na Hills theme park with European style buildings in Vietnam" 
+                    class="clickable-image" 
                     data-day="6"
                     width="800"
                     height="600"
@@ -809,8 +941,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day6/day6c.jpg" 
                     srcset="/images/vietnam/day6/day6c.jpg 1200w"
-                     alt="Ba Na Hills View" 
-                     class="clickable-image" 
+                    alt="Breathtaking mountain views from Ba Na Hills cable car, showing Vietnam's lush landscapes and valleys" 
+                    class="clickable-image" 
                     data-day="6"
                     width="800"
                     height="600"
@@ -825,8 +957,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day6/day6d.jpg" 
                     srcset="/images/vietnam/day6/day6d.jpg 1200w"
-                     alt="Ba Na Hills Scenery" 
-                     class="clickable-image" 
+                    alt="Scenic natural landscape of Ba Na Hills with fog-covered mountains and rainforest in central Vietnam" 
+                    class="clickable-image" 
                     data-day="6"
                     width="800"
                     height="600"
@@ -841,8 +973,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day6/day6e.jpg" 
                     srcset="/images/vietnam/day6/day6e.jpg 1200w"
-                     alt="Ba Na Hills Experience" 
-                     class="clickable-image" 
+                    alt="Tourists enjoying attractions and entertainment at Ba Na Hills, a popular destination for visitors to Vietnam" 
+                    class="clickable-image" 
                     data-day="6"
                     width="800"
                     height="600"
@@ -903,8 +1035,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day7/day7a.jpg" 
                     srcset="/images/vietnam/day7/day7a.jpg 1200w"
-                     alt="Hoi An at night" 
-                     class="clickable-image active" 
+                    alt="Magical Hoi An Ancient Town at night with colorful lanterns illuminating the UNESCO World Heritage site in Vietnam" 
+                    class="clickable-image active" 
                     data-day="7"
                     width="800"
                     height="600"
@@ -919,8 +1051,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day7/day7b.jpg" 
                     srcset="/images/vietnam/day7/day7b.jpg 1200w"
-                     alt="Hoi An Lanterns" 
-                     class="clickable-image" 
+                    alt="Traditional Vietnamese lanterns hanging in Hoi An streets during the famous monthly lantern festival" 
+                    class="clickable-image" 
                     data-day="7"
                     width="800"
                     height="600"
@@ -935,8 +1067,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day7/day7c.jpg" 
                     srcset="/images/vietnam/day7/day7c.jpg 1200w"
-                     alt="Hoi An Streets" 
-                     class="clickable-image" 
+                    alt="Historic buildings and ancient architecture of Hoi An with yellow walls and preserved merchant houses" 
+                    class="clickable-image" 
                     data-day="7"
                     width="800"
                     height="600"
@@ -951,8 +1083,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day7/day7d.jpg" 
                     srcset="/images/vietnam/day7/day7d.jpg 1200w"
-                     alt="Hoi An Experience" 
-                     class="clickable-image" 
+                    alt="Tourists enjoying cultural experiences in Hoi An with authentic Vietnamese crafts and local cuisine" 
+                    class="clickable-image" 
                     data-day="7"
                     width="800"
                     height="600"
@@ -1012,8 +1144,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day8/day8a.jpg" 
                     srcset="/images/vietnam/day8/day8a.jpg 1200w"
-                     alt="Lady Buddha statue" 
-                     class="clickable-image active" 
+                    alt="Towering Lady Buddha statue on Son Tra Peninsula overlooking Da Nang city and bay in Vietnam" 
+                    class="clickable-image active" 
                     data-day="8"
                     width="800"
                     height="600"
@@ -1028,8 +1160,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day8/day8b.jpg" 
                     srcset="/images/vietnam/day8/day8b.jpg 1200w"
-                     alt="My Khe Beach" 
-                     class="clickable-image" 
+                    alt="Beautiful My Khe Beach in Da Nang with white sand, palm trees and clear blue ocean water in Vietnam" 
+                    class="clickable-image" 
                     data-day="8"
                     width="800"
                     height="600"
@@ -1044,8 +1176,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day8/day8c.jpg" 
                     srcset="/images/vietnam/day8/day8c.jpg 1200w"
-                     alt="Sun World" 
-                     class="clickable-image" 
+                    alt="Sun World amusement park in Da Nang featuring the giant Ferris wheel with panoramic views of Vietnam" 
+                    class="clickable-image" 
                     data-day="8"
                     width="800"
                     height="600"
@@ -1060,8 +1192,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day8/day8d.jpg" 
                     srcset="/images/vietnam/day8/day8d.jpg 1200w"
-                     alt="Da Nang Views" 
-                     class="clickable-image" 
+                    alt="Breathtaking aerial view of Da Nang city with mountains, beaches and modern skyline in central Vietnam" 
+                    class="clickable-image" 
                     data-day="8"
                     width="800"
                     height="600"
@@ -1076,8 +1208,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day8/day8e.jpg" 
                     srcset="/images/vietnam/day8/day8e.jpg 1200w"
-                     alt="Da Nang Experience" 
-                     class="clickable-image" 
+                    alt="Vietnamese cultural experiences in Da Nang with local food, attractions and tourist activities" 
+                    class="clickable-image" 
                     data-day="8"
                     width="800"
                     height="600"
@@ -1092,8 +1224,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day8/day8f.jpg" 
                     srcset="/images/vietnam/day8/day8f.jpg 1200w"
-                     alt="Da Nang City Life" 
-                     class="clickable-image" 
+                    alt="Vibrant urban street scene in Da Nang with motorbikes, local markets and everyday Vietnamese lifestyle" 
+                    class="clickable-image" 
                     data-day="8"
                     width="800"
                     height="600"
@@ -1160,8 +1292,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day9/day9a.jpg" 
                     srcset="/images/vietnam/day9/day9a.jpg 1200w"
-                     alt="Secret Weapons Cellar" 
-                     class="clickable-image active" 
+                    alt="Historic Secret Weapons Cellar in Ho Chi Minh City showcasing Vietnam War era hidden tunnels and artifacts" 
+                    class="clickable-image active" 
                     data-day="9"
                     width="800"
                     height="600"
@@ -1176,8 +1308,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day9/day9b.jpg" 
                     srcset="/images/vietnam/day9/day9b.jpg 1200w"
-                     alt="Ho Chi Minh Square" 
-                     class="clickable-image" 
+                    alt="Bustling Ho Chi Minh Square at night with city hall building, visitors and illuminated landmarks in Vietnam" 
+                    class="clickable-image" 
                     data-day="9"
                     width="800"
                     height="600"
@@ -1192,8 +1324,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day9/day9c.jpg" 
                     srcset="/images/vietnam/day9/day9c.jpg 1200w"
-                     alt="City Streets" 
-                     class="clickable-image" 
+                    alt="Vibrant streets of Ho Chi Minh City (Saigon) with colonial architecture, motorbikes and urban Vietnamese life" 
+                    class="clickable-image" 
                     data-day="9"
                     width="800"
                     height="600"
@@ -1252,8 +1384,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day10/day10a.jpg" 
                     srcset="/images/vietnam/day10/day10a.jpg 1200w"
-                     alt="Cu Chi Tunnels" 
-                     class="clickable-image active" 
+                    alt="Famous Cu Chi Tunnels near Ho Chi Minh City used by Vietnamese soldiers during the Vietnam War" 
+                    class="clickable-image active" 
                     data-day="10"
                     width="800"
                     height="600"
@@ -1268,8 +1400,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day10/day10b.jpg" 
                     srcset="/images/vietnam/day10/day10b.jpg 1200w"
-                     alt="Tunnel Entrance" 
-                     class="clickable-image" 
+                    alt="Hidden entrance to Cu Chi Tunnels system showing ingenious camouflage techniques used during Vietnam War" 
+                    class="clickable-image" 
                     data-day="10"
                     width="800"
                     height="600"
@@ -1284,8 +1416,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day10/day10c.jpg" 
                     srcset="/images/vietnam/day10/day10c.jpg 1200w"
-                     alt="Landmark 81" 
-                     class="clickable-image" 
+                    alt="Spectacular view of Landmark 81 skyscraper, Vietnam's tallest building in Ho Chi Minh City skyline" 
+                    class="clickable-image" 
                     data-day="10"
                     width="800"
                     height="600"
@@ -1300,8 +1432,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day10/day10d.jpg" 
                     srcset="/images/vietnam/day10/day10d.jpg 1200w"
-                     alt="Cu Chi Experience" 
-                     class="clickable-image" 
+                    alt="Tourists exploring Cu Chi Tunnels war memorial site, a popular historical attraction near Ho Chi Minh City" 
+                    class="clickable-image" 
                     data-day="10"
                     width="800"
                     height="600"
@@ -1316,8 +1448,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day10/day10e.jpg" 
                     srcset="/images/vietnam/day10/day10e.jpg 1200w"
-                     alt="City Views" 
-                     class="clickable-image" 
+                    alt="Panoramic sunset view of Ho Chi Minh City from high vantage point showing urban development in Vietnam" 
+                    class="clickable-image" 
                     data-day="10"
                     width="800"
                     height="600"
@@ -1386,8 +1518,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day11/day11a.jpg" 
                     srcset="/images/vietnam/day11/day11a.jpg 1200w"
-                     alt="Saigon Post Office" 
-                     class="clickable-image active" 
+                    alt="Historic French colonial Saigon Central Post Office in Ho Chi Minh City, a popular tourist attraction in Vietnam" 
+                    class="clickable-image active" 
                     data-day="11"
                     width="800"
                     height="600"
@@ -1402,8 +1534,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day11/day11b.jpg" 
                     srcset="/images/vietnam/day11/day11b.jpg 1200w"
-                     alt="War Remnants Museum" 
-                     class="clickable-image" 
+                    alt="War Remnants Museum in Ho Chi Minh City featuring exhibits from the Vietnam War and its historical impact" 
+                    class="clickable-image" 
                     data-day="11"
                     width="800"
                     height="600"
@@ -1418,8 +1550,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day11/day11c.jpg" 
                     srcset="/images/vietnam/day11/day11c.jpg 1200w"
-                     alt="Bui Vien Street" 
-                     class="clickable-image" 
+                    alt="Vibrant nightlife on Bui Vien Walking Street in Ho Chi Minh City with bars, restaurants and street performances" 
+                    class="clickable-image" 
                     data-day="11"
                     width="800"
                     height="600"
@@ -1434,8 +1566,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day11/day11d.jpg" 
                     srcset="/images/vietnam/day11/day11d.jpg 1200w"
-                     alt="City Landmarks" 
-                     class="clickable-image" 
+                    alt="Iconic architectural landmarks and colonial buildings in Ho Chi Minh City highlighting Vietnamese heritage" 
+                    class="clickable-image" 
                     data-day="11"
                     width="800"
                     height="600"
@@ -1450,8 +1582,8 @@ import ItineraryDay from '../../components/ItineraryDay.astro';
                   <img 
                     src="/images/vietnam/day11/day11e.jpg" 
                     srcset="/images/vietnam/day11/day11e.jpg 1200w"
-                     alt="City Life" 
-                     class="clickable-image" 
+                    alt="Daily life in Ho Chi Minh City with local Vietnamese culture, street vendors and authentic urban experiences" 
+                    class="clickable-image" 
                     data-day="11"
                     width="800"
                     height="600"

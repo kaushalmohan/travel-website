@@ -1,12 +1,111 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+
+// Get the current URL for canonical and OpenGraph tags
+const canonicalURL = new URL('/destinations/dubai', Astro.site || 'https://justlifeingtogether.com').toString();
 ---
 
 <Layout 
-  title="Dubai Travel Guide | Lifeing Together with Pankhuri and Kaushal"
-  description="A comprehensive guide to exploring Dubai based on our personal experience."
+  title="Dubai Travel Guide: Best Things to Do & Places to Visit | Lifeing Together with Pankhuri and Kaushal"
+  description="Explore our comprehensive Dubai travel guide with top attractions, local tips, where to stay, and how to get around Dubai using public transport based on our personal experience."
 >
+  <!-- SEO Meta Tags -->
+  <link rel="canonical" href={canonicalURL} />
+  <meta name="keywords" content="Dubai travel guide, things to do in Dubai, Dubai itinerary, best places to visit in Dubai, Dubai tourist attractions, Dubai travel blog, Dubai vacation tips, Dubai travel tips, where to stay in Dubai, Dubai sightseeing, Dubai desert safari, Dubai shopping guide, Dubai local food, Dubai cultural experiences, best time to visit Dubai" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content="Dubai Travel Guide: Best Things to Do & Places to Visit" />
+  <meta property="og:description" content="Our personal Dubai travel guide with top attractions, local transportation tips, and best experiences from our 11-day trip." />
+  <meta property="og:image" content="https://justlifeingtogether.com/images/dubai/Hero_image/Heroimage.jpg" />
+  <meta property="og:image:alt" content="Dubai skyline view" />
+  <meta property="og:site_name" content="Lifeing Together with Pankhuri and Kaushal" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={canonicalURL} />
+  <meta name="twitter:title" content="Dubai Travel Guide: Best Things to Do & Places to Visit" />
+  <meta name="twitter:description" content="Our personal Dubai travel guide with top attractions, local transportation tips, and best experiences from our 11-day trip." />
+  <meta name="twitter:image" content="https://justlifeingtogether.com/images/dubai/Hero_image/Heroimage.jpg" />
+  <meta name="twitter:image:alt" content="Dubai skyline view" />
+  
+  <!-- Structured Data - JSON-LD for Travel Guide -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "headline": "Dubai Travel Guide: Best Things to Do & Places to Visit",
+      "description": "Explore our comprehensive Dubai travel guide with top attractions, local tips, where to stay, and how to get around Dubai using public transport based on our personal experience.",
+      "image": "https://justlifeingtogether.com/images/dubai/Hero_image/Heroimage.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Pankhuri and Kaushal"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lifeing Together with Pankhuri and Kaushal",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://justlifeingtogether.com/logo.png"
+        }
+      },
+      "datePublished": "2023-10-30",
+      "dateModified": "2023-11-15",
+      "mainEntity": {
+        "@type": "Place",
+        "name": "Dubai",
+        "description": "Dubai is a city and emirate in the United Arab Emirates known for luxury shopping, ultramodern architecture, and a lively nightlife scene.",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "25.276987",
+          "longitude": "55.296249"
+        }
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Transportation",
+          "value": "Metro, Bus, Abra Ride, NOL Card System"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Best Time to Visit",
+          "value": "October to April when the weather is pleasant"
+        }
+      ]
+    }
+  </script>
+  
+  <!-- Structured Data - JSON-LD for BreadcrumbList -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://justlifeingtogether.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Destinations",
+          "item": "https://justlifeingtogether.com/destinations"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dubai Travel Guide",
+          "item": "https://justlifeingtogether.com/destinations/dubai"
+        }
+      ]
+    }
+  </script>
+  
   <!-- Performance optimizations -->
   <meta http-equiv="x-dns-prefetch-control" content="on">
   
@@ -62,7 +161,7 @@ import Hero from '../../components/Hero.astro';
                 />
                 <img 
                   src="/images/dubai/Our_Dubai_Experience/OurDubaiExperience.jpg?v=2" 
-                  alt="Dubai Skyline" 
+                  alt="Dubai Skyline featuring modern skyscrapers and architecture, panoramic city view" 
                   width="800" 
                   height="600"
                   loading="lazy"
@@ -91,7 +190,7 @@ import Hero from '../../components/Hero.astro';
               />
               <img 
                 src="/images/dubai/When_we_visited/Whenwevisited.jpg" 
-                alt="Dubai Calendar" 
+                alt="October calendar showing best time to visit Dubai with pleasant weather conditions" 
                 width="800" 
                 height="600"
                 loading="lazy"
@@ -131,7 +230,7 @@ import Hero from '../../components/Hero.astro';
                   />
                   <img 
                     src="/images/dubai/Getting_Around/getting_around.jpg" 
-                    alt="Dubai Metro" 
+                    alt="Dubai Metro train and station - efficient public transportation system for tourists" 
                     width="600" 
                     height="1200"
                     loading="lazy"
@@ -165,7 +264,7 @@ import Hero from '../../components/Hero.astro';
                         />
                         <img 
                           src="/images/dubai/Orchid Hotel Al Barsha/Orchidhotel1.jpg" 
-                          alt="Orchid Hotel" 
+                          alt="Orchid Hotel Al Barsha in Dubai - affordable accommodation near Mashreq metro station" 
                           width="800" 
                           height="600"
                           loading="lazy"
@@ -184,7 +283,7 @@ import Hero from '../../components/Hero.astro';
                         />
                         <img 
                           src="/images/dubai/Orchid Hotel Al Barsha/Orchidhotel2.jpg" 
-                          alt="Orchid Hotel" 
+                          alt="Room interior at Orchid Hotel Al Barsha - clean and comfortable accommodation in Dubai" 
                           width="800" 
                           height="600"
                           loading="lazy"
@@ -217,7 +316,7 @@ import Hero from '../../components/Hero.astro';
                         />
                         <img 
                           src="/images/dubai/George Hotel by Saffron/Georgehotel1.jpg" 
-                          alt="George Hotel" 
+                          alt="George Hotel by Saffron exterior - convenient hotel near Al Ras metro station in Dubai" 
                           width="800" 
                           height="600"
                           loading="lazy"
@@ -236,7 +335,7 @@ import Hero from '../../components/Hero.astro';
                         />
                         <img 
                           src="/images/dubai/George Hotel by Saffron/Georgehotel2.jpg" 
-                          alt="George Hotel" 
+                          alt="George Hotel by Saffron room accommodations - clean and well-maintained lodging in Dubai" 
                           width="800" 
                           height="600"
                           loading="lazy"
@@ -289,7 +388,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/JBR Walk/JBR2.jpg" 
-                      alt="JBR Walk" 
+                      alt="JBR Walk beachfront promenade in Dubai - upscale neighborhood with 2km walking strip" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -308,7 +407,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/JBR Walk/JBR3.jpg" 
-                      alt="JBR Walk" 
+                      alt="JBR Walk cafes and restaurants along Dubai Marina - vibrant dining scene for tourists" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -327,7 +426,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/JBR Walk/JBR4.jpg" 
-                      alt="JBR Walk" 
+                      alt="JBR Walk waterfront at sunset - scenic Dubai coastal walkway with beach activities" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -346,7 +445,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/JBR Walk/JBR5.jpg" 
-                      alt="JBR Walk" 
+                      alt="JBR Walk recreational area in Dubai - leisure activities and cycling path for visitors" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -371,7 +470,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Dhow_Cruise/Dhowcruise1.jpg" 
-                      alt="Dhow Cruise" 
+                      alt="Traditional Dhow Cruise boat in Dubai Marina - evening dinner cruise with city lights" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -390,7 +489,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Dhow_Cruise/Dhowcruise2.jpg" 
-                      alt="Dhow Cruise" 
+                      alt="Dhow Cruise dinner setting with entertainment - authentic Arabian dining experience on water" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -409,8 +508,8 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Dhow_Cruise/Dhowcruise3.jpg" 
-                      alt="Dhow Cruise" 
-                      width="800" 
+                      alt="Dhow Cruise night view of illuminated Dubai Marina skyscrapers from the water" 
+                      width="800"
                       height="600"
                       loading="lazy"
                       class="carousel-image w-full h-full object-cover" 
@@ -434,7 +533,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Kite Beach/Kitebeach1.jpg" 
-                      alt="Kite Beach" 
+                      alt="Kite Beach shoreline in Dubai with pristine white sand and clear blue waters" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -453,7 +552,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Kite Beach/Kitebeach2.jpg" 
-                      alt="Kite Beach" 
+                      alt="Kite Beach Dubai with stunning view of Burj Al Arab in the background - popular beach destination" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -472,7 +571,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Kite Beach/Kitebeach3.jpg" 
-                      alt="Kite Beach" 
+                      alt="Kite Beach water activities in Dubai - relaxing beach day with swimming and shoreline walking" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -497,7 +596,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Burj Khalifa/Burjkhalifa1.jpg" 
-                      alt="Burj Khalifa" 
+                      alt="Burj Khalifa - world's tallest building towering over Dubai skyline at 828 meters" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -516,7 +615,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Burj Khalifa/Burjkhalifa2.jpg" 
-                      alt="Burj Khalifa" 
+                      alt="View from Burj Khalifa observation deck on the 124th floor - panoramic Dubai cityscape" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -535,7 +634,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Burj Khalifa/Burjkhalifa5.jpg" 
-                      alt="Burj Khalifa" 
+                      alt="Burj Khalifa architecture details and design - close-up of the iconic Dubai landmark" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -554,7 +653,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Burj Khalifa/Burjkhalifa6.jpg" 
-                      alt="Burj Khalifa" 
+                      alt="Burj Khalifa at night with illuminated facade - spectacular evening view of Dubai's iconic skyscraper"
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -579,7 +678,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Dubai Fountain/Dubaifountain1.jpg" 
-                      alt="Dubai Fountain" 
+                      alt="Dubai Fountain water show with choreographed jets illuminated at night - largest choreographed fountain system in the world" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -598,7 +697,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Dubai Fountain/Dubaifountain4.jpg" 
-                      alt="Dubai Fountain" 
+                      alt="Dubai Fountain show against backdrop of Burj Khalifa at night - spectacular free attraction at Dubai Mall" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -623,7 +722,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Global Village/Globelvillage4.jpg" 
-                      alt="Global Village" 
+                      alt="Global Village Dubai pavilions representing different countries - international cultural fair and shopping experience" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -642,7 +741,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Global Village/Globelvillage5.jpg" 
-                      alt="Global Village" 
+                      alt="Global Village Dubai pavilions representing different countries - international cultural fair and shopping experience" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -661,7 +760,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Global Village/Globelvillage6.jpg" 
-                      alt="Global Village" 
+                      alt="Global Village Dubai at night with illuminated attractions - family-friendly entertainment complex with over 30 country pavilions"
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -686,7 +785,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Spice Souk/Spicesouk1.jpg" 
-                      alt="Spice Souk" 
+                      alt="Spice Souk traditional market in Dubai - colorful spices and aromatic herbs display" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -705,7 +804,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Spice Souk/Spicesouk2.jpg" 
-                      alt="Spice Souk" 
+                      alt="Spice Souk vendors and shops in old Dubai - authentic Middle Eastern market experience" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -724,7 +823,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Spice Souk/Spicesouk3.jpg" 
-                      alt="Spice Souk" 
+                      alt="Spice Souk exotic spice varieties and dry goods - traditional shopping district in Dubai" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -743,7 +842,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Spice Souk/Spicesouk5.jpg" 
-                      alt="Spice Souk" 
+                      alt="Spice Souk sampling and tasting experience - fragrant spices and souvenirs shopping in Dubai" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -825,7 +924,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/View at the Palm/Viewatthepalm3.jpg" 
-                      alt="View at the Palm" 
+                      alt="View at the Palm observation deck on 52nd floor - spectacular sunset views of Palm Jumeirah in Dubai" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -844,7 +943,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/View at the Palm/Viewatthepalm5.jpg" 
-                      alt="View at the Palm" 
+                      alt="View at the Palm skyline vista with illuminated buildings - panoramic night view of Dubai's iconic Palm Island" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -869,7 +968,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Desert_Safari/Desertsafari1.jpg" 
-                      alt="Desert Safari" 
+                      alt="Dubai Desert Safari golden sand dunes - traditional Bedouin camp experience outside the city" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -888,7 +987,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Desert_Safari/Desertsafari2.jpg" 
-                      alt="Desert Safari" 
+                      alt="Desert Safari dune bashing experience in 4x4 vehicle - thrilling off-road adventure in Dubai" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -907,7 +1006,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Desert_Safari/Desertsafari4.jpg" 
-                      alt="Desert Safari" 
+                      alt="Desert Safari evening entertainment with fire show and belly dancing - cultural performances at Dubai desert camp" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -932,7 +1031,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Gold Souk/Goldsouk1.jpg" 
-                      alt="Gold Souk" 
+                      alt="Gold Souk Dubai traditional market - glittering jewelry displays and gold shops in Deira"
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -951,7 +1050,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Gold Souk/Goldsouk2.jpg" 
-                      alt="Gold Souk" 
+                      alt="Gold Souk shop window with elaborate gold necklaces and jewelry - famous Dubai shopping destination for precious metals"
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -976,7 +1075,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Sky View Dubai/Skyview1.jpg" 
-                      alt="Sky View Dubai" 
+                      alt="Sky View Dubai observation deck with glass floor - breathtaking views of Burj Khalifa from the observatory"
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -995,7 +1094,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Sky View Dubai/Skyview3.jpg" 
-                      alt="Sky View Dubai" 
+                      alt="Sky View Dubai glass slide connecting 53rd and 52nd floors - unique adrenaline attraction with Dubai cityscape views"
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1020,7 +1119,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Museum of Illusions/Museumofillusions1.jpg" 
-                      alt="Museum of Illusions" 
+                      alt="Museum of Illusions Dubai entrance with optical illusion displays - interactive visual experience attraction" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1039,7 +1138,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Museum of Illusions/Museumofillusions3.jpg" 
-                      alt="Museum of Illusions" 
+                      alt="Museum of Illusions rotating tunnel room - disorienting interactive walkway creating visual vertigo sensation" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1058,7 +1157,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Museum of Illusions/Museumofillusions5.jpg" 
-                      alt="Museum of Illusions" 
+                      alt="Museum of Illusions infinity room with mirrors - endless reflections creating optical depth illusion" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1077,7 +1176,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Museum of Illusions/Museumofillusions6.jpg" 
-                      alt="Museum of Illusions" 
+                      alt="Museum of Illusions gravity-defying room - tilted space creating visual perception of walking on walls" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1149,7 +1248,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Museum of the Future/MOTF1.jpg" 
-                      alt="Museum of the Future" 
+                      alt="Museum of the Future iconic torus-shaped building with Arabic calligraphy exterior - futuristic Dubai landmark"
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1168,7 +1267,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Museum of the Future/MOTF2.jpg" 
-                      alt="Museum of the Future" 
+                      alt="Museum of the Future interior exhibition hall - interactive technology displays highlighting innovation" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1187,7 +1286,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Museum of the Future/MOTF3.jpg" 
-                      alt="Museum of the Future" 
+                      alt="Museum of the Future terrace view - panoramic vista of Sheikh Zayed Road and Dubai skyline" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1212,7 +1311,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Dubai Aquarium/Dubaiaquarium2.jpg" 
-                      alt="Dubai Aquarium" 
+                      alt="Dubai Aquarium massive tank in Dubai Mall - impressive underwater viewing tunnel with diverse marine life" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1231,7 +1330,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Dubai Aquarium/Dubaiaquarium4.jpg" 
-                      alt="Dubai Aquarium" 
+                      alt="Dubai Aquarium penguin cove exhibit - Gentoo penguins in temperature-controlled habitat" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1250,7 +1349,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Dubai Aquarium/Dubaiaquarium5.jpg" 
-                      alt="Dubai Aquarium" 
+                      alt="Dubai Aquarium and Underwater Zoo massive crocodile exhibit - 750kg reptile in specially designed environment" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1304,7 +1403,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Miracle Garden/MiracleGarden3.jpg" 
-                      alt="Miracle Garden" 
+                      alt="Miracle Garden colorful floral displays - largest flower garden in the world with millions of blooming plants" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1323,7 +1422,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Miracle Garden/MiracleGarden4.jpg" 
-                      alt="Miracle Garden" 
+                      alt="Miracle Garden Emirates airplane display - life-size Airbus A380 covered with over 500,000 fresh flowers" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1342,7 +1441,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Miracle Garden/MiracleGarden5.jpg" 
-                      alt="Miracle Garden" 
+                      alt="Miracle Garden heart-shaped flower tunnel - romantic walkway with vibrant floral arrangements" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1367,7 +1466,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Dubai Frame/Dubaiframe1.jpg" 
-                      alt="Dubai Frame" 
+                      alt="Dubai Frame iconic golden rectangular landmark - 150-meter tall frame structure connecting old and new Dubai" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1386,7 +1485,7 @@ import Hero from '../../components/Hero.astro';
                     />
                     <img 
                       src="/images/dubai/Dubai Frame/Dubaiframe3.jpg" 
-                      alt="Dubai Frame" 
+                      alt="Dubai Frame observation deck with panoramic city views - 48th floor glass walkway overlooking Dubai skyline" 
                       width="800" 
                       height="600"
                       loading="lazy"
@@ -1478,7 +1577,7 @@ import Hero from '../../components/Hero.astro';
   <span id="closeModal">&times;</span>
   <span id="prevBtn" class="modal-nav">&#10094;</span>
   <span id="nextBtn" class="modal-nav">&#10095;</span>
-  <img id="modalImage">
+  <img id="modalImage" alt="Full-size view of selected Dubai attraction">
 </div>
 
 <!-- Link to external JavaScript file with defer attribute -->
