@@ -1,0 +1,11 @@
+# robots.txt for Lifeing Together with Pankhuri and Kaushal
+# Allow all web crawlers to access all content
+
+User-agent: *
+Allow: /
+
+# Set crawl delay to prevent server overload (optional)
+Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://justlifeingtogether.com/sitemap.xml 
