@@ -69,7 +69,7 @@ def convert_image(image_path):
 
 def process_images():
     """Process all images in the uzbekistan folder"""
-    base_dir = Path('/Users/pankhuriandkaushal/CodeExperiments/travel-website/public/images/experiences')
+    base_dir = Path('/Users/pankhuriandkaushal/CodeExperiments/travel-website/public/images/sikkim')
     
     if not base_dir.exists():
         print(f"Error: Directory {base_dir} does not exist")
@@ -92,7 +92,7 @@ def process_images():
         print(f"Processing folder: {folder}")
         
         # Get all JPG/JPEG images in the folder
-        images = [f for f in folder.iterdir() if f.is_file() and f.suffix.lower() in ['.jpg', '.jpeg']]
+        images = [f for f in folder.iterdir() if f.is_file() and f.suffix.lower() in ['.png', '.jpg', '.jpeg']]
         total_images += len(images)
         
         # Convert each image

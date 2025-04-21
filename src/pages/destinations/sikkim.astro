@@ -1,73 +1,691 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import ImageCarousel from '../../components/ImageCarousel.astro';
+
+// SEO metadata
+const ogImage = "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=1200&auto=format&fit=crop";
+const canonicalURL = "/destinations/sikkim";
+const keywords = "Sikkim travel, Sikkim guide, Gurudongmar Lake, Yumthang Valley, Zero Point, Gangtok, North Sikkim tour, Maggi in mountains, monsoon travel Sikkim, Sikkim permits";
 ---
 
 <Layout 
-  title="Sikkim Travel Guide | Lifeing Together with Pankhuri and Kaushal"
-  description="Coming soon: Our comprehensive guide to exploring Sikkim, India."
+  title="Sikkim Travel Guide | High Altitudes, Hot Maggi, and Hilarious Detours | Lifeing Together with Pankhuri and Kaushal"
+  description="Discover our unforgettable journey through Sikkim's misty mountains, spontaneous roadside Maggi, and rain-soaked adventures that turned into inside jokes for life."
+  canonical={canonicalURL}
+  ogImage={ogImage}
+  keywords={keywords}
 >
   <Hero 
     title="Sikkim" 
-    subtitle="A Himalayan paradise of mountains, monasteries, and culture"
-    image="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=1200&auto=format&fit=crop"
+    subtitle="High Altitudes, Hot Maggi, and Hilarious Detours"
+    image="/images/sikkim/hero-image.webp"
   />
   
   <section class="py-16">
-    <div class="container mx-auto px-4 text-center">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6">Coming Soon</h2>
-        <p class="text-gray-600 mb-8">
-          We're currently working on our comprehensive Sikkim travel guide based on our recent visit. 
-          Check back soon for a detailed itinerary, must-see attractions, hidden gems, and practical tips for exploring this beautiful Indian state.
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6 text-center">Sikkim Travel Guide: High Altitudes, Hot Maggi, and Hilarious Detours</h2>
+        <p class="text-gray-700 mb-8 leading-relaxed">
+          Let me just say this upfront: Sikkim is magic. Not the Harry Potter kind, but the kind that sneaks up on you — in the form of misty mountains, spontaneous roadside Maggi, and rain-soaked adventures that turn into inside jokes for life. If you're even thinking of going to Sikkim, let this story nudge you into booking that ticket.
         </p>
         
+        <div class="space-y-12 mb-16">
+          <!-- Day 1 -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-2xl font-bold mb-3 text-primary-700">Day 1: Mumbai to Gangtok — Delays, Veg Puff, and the Longest Drive Ever</h3>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              Our Sikkim story started with a classic travel twist: a three-hour flight delay. We had a 3-hour wait inside the plane in Mumbai because Bagdogra was playing hard to land. But the moment we landed, the adventure switch flipped on. A quick veg puff at the airport — not exactly gourmet, but after that delay, it tasted like a Michelin-star meal.
+            </p>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              WizzRide (a cab-sharing app that we now owe our sanity to) whisked us away for a six-hour drive to Gangtok. By the time we reached Zostel Gangtok, it was dark, we were tired, and honestly, the place wasn't as clean as I'd hoped.
+            </p>
+          </div>
+          
+          <!-- Day 2 -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-2xl font-bold mb-3 text-primary-700">Day 2: Gangtok's Mall Road — Where Time Slows Down and Drizzles Make Everything Better</h3>
+            
+            <!-- Mobile layout - stacked -->
+            <div class="md:hidden">
+              <div class="rounded-lg overflow-hidden mb-4">
+                <ImageCarousel
+                  images={[
+                    {
+                      src: "/images/sikkim/2.jpg",
+                      srcset: "/images/sikkim/2-400w.webp 400w, /images/sikkim/2-800w.webp 800w, /images/sikkim/2.webp 1200w",
+                      alt: "Panoramic view of Gangtok's Mall Road with vibrant shops and mountain backdrop",
+                      caption: "The bustling Mall Road in Gangtok offers shopping, dining, and stunning mountain views"
+                    },
+                    {
+                      src: "/images/sikkim/3.webp",
+                      srcset: "/images/sikkim/3-400w.webp 400w, /images/sikkim/3-800w.webp 800w, /images/sikkim/3.webp 1200w",
+                      alt: "Enchey Monastery surrounded by misty mountains in Gangtok",
+                      caption: "The serene Enchey Monastery is just a short ride from Mall Road"
+                    },
+                    {
+                      src: "/images/sikkim/1.webp",
+                      srcset: "/images/sikkim/1-400w.webp 400w, /images/sikkim/1-800w.webp 800w, /images/sikkim/1.webp 1200w",
+                      alt: "Traditional Sikkimese cuisine at Nimtho restaurant with mountain views",
+                      caption: "Authentic Sikkimese food at Nimtho restaurant with views of the city below"
+                    }
+                  ]}
+                />
+              </div>
+              
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                Waking up in Gangtok felt like opening a window to a different world. The air was crisp, the city buzzed quietly, and Mall Road was alive with mountain-town charm. We wandered aimlessly (the best kind of wandering), ducking into shops, people-watching, and just soaking up the "mountain-y" vibe.
+              </p>
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                Lunch at Nimtho was a revelation. Authentic food, a view overlooking Mall Road, and that feeling when you realize you have nowhere else to be. We sat for over an hour, just chatting and letting the world pass by. As the afternoon faded, a gentle drizzle started — the kind that makes you want to slow-walk and breathe deeper. Rains in early June is apparently a thing in Sikkim.
+              </p>
+              <p class="text-gray-700 mb-0 leading-relaxed">
+                Enchey Monastery was next. We took a share cab up (20 rupees well spent) and walked down, munching on bhel near the monastery. There's something about eating street food in the mountains — it just hits different.
+              </p>
+            </div>
+            
+            <!-- Desktop layout with text wrapping -->
+            <div class="hidden md:block">
+              <div class="float-right ml-6 mb-4 w-[45%]">
+                <div class="rounded-lg overflow-hidden">
+                  <ImageCarousel
+                    images={[
+                      {
+                        src: "/images/sikkim/2.jpg",
+                        srcset: "/images/sikkim/2-400w.webp 400w, /images/sikkim/2-800w.webp 800w, /images/sikkim/2.webp 1200w",
+                        alt: "Panoramic view of Gangtok's Mall Road with vibrant shops and mountain backdrop",
+                        caption: "The bustling Mall Road in Gangtok offers shopping, dining, and stunning mountain views"
+                      },
+                      {
+                        src: "/images/sikkim/3.webp",
+                        srcset: "/images/sikkim/3-400w.webp 400w, /images/sikkim/3-800w.webp 800w, /images/sikkim/3.webp 1200w",
+                        alt: "Enchey Monastery surrounded by misty mountains in Gangtok",
+                        caption: "The serene Enchey Monastery is just a short ride from Mall Road"
+                      },
+                      {
+                        src: "/images/sikkim/1.webp",
+                        srcset: "/images/sikkim/1-400w.webp 400w, /images/sikkim/1-800w.webp 800w, /images/sikkim/1.webp 1200w",
+                        alt: "Traditional Sikkimese cuisine at Nimtho restaurant with mountain views",
+                        caption: "Authentic Sikkimese food at Nimtho restaurant with views of the city below"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  Waking up in Gangtok felt like opening a window to a different world. The air was crisp, the city buzzed quietly, and Mall Road was alive with mountain-town charm. We wandered aimlessly (the best kind of wandering), ducking into shops, people-watching, and just soaking up the "mountain-y" vibe.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  Lunch at Nimtho was a revelation. Authentic food, a view overlooking Mall Road, and that feeling when you realize you have nowhere else to be. We sat for over an hour, just chatting and letting the world pass by. As the afternoon faded, a gentle drizzle started — the kind that makes you want to slow-walk and breathe deeper. Rains in early June is apparently a thing in Sikkim.
+                </p>
+                <p class="text-gray-700 mb-0 leading-relaxed">
+                  Enchey Monastery was next. We took a share cab up (20 rupees well spent) and walked down, munching on bhel near the monastery. There's something about eating street food in the mountains — it just hits different.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Day 3 -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-2xl font-bold mb-3 text-primary-700">Day 3: The Road to Lachen — Windows Down, Heart Full</h3>
+            
+            <!-- Mobile layout - stacked -->
+            <div class="md:hidden">
+              <div class="rounded-lg overflow-hidden mb-4">
+                <ImageCarousel
+                  images={[
+                    {
+                      src: "/images/sikkim/9.webp",
+                      srcset: "/images/sikkim/9-400w.webp 400w, /images/sikkim/9-800w.webp 800w, /images/sikkim/9.webp 1200w",
+                      alt: "Scenic mountain route through Himalayan forests on the journey to Lachen",
+                      caption: "Breathtaking scenic route through North Sikkim's pristine Himalayan forests on the journey to Lachen - a photographer's paradise"
+                    },
+                    {
+                      src: "/images/sikkim/15.webp",
+                      srcset: "/images/sikkim/15-400w.webp 400w, /images/sikkim/15-800w.webp 800w, /images/sikkim/15.webp 1200w",
+                      alt: "Roadside tea break by a mountain creek in North Sikkim",
+                      caption: "Authentic Sikkimese roadside tea experience by a crystal-clear mountain creek - one of North Sikkim's hidden travel gems"
+                    }
+                  ]}
+                />
+              </div>
+              
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                The next phase of our trip was all about heading north — into the higher Himalayas. We'd booked a 3-day North Sikkim package that covered Lachen, Lachung, Gurudongmar Lake, Zero Point, and Yumthang Valley. It cost around ₹30,000 and included transport, food, and stay.
+              </p>
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                Monday was all about the drive to Lachen. If you ever want to know what "scenery overload" feels like, take this route. Our driver stopped at random roadside shops, and every meal was a new adventure. Hot momos, steaming tea, and the kind of spicy chutneys that make you tear up (in a good way).
+              </p>
+              <p class="text-gray-700 mb-0 leading-relaxed">
+                The drive wasn't just about covering distance — it was about acclimatizing to the higher altitudes, laughing at silly jokes, and watching the landscape change from lush to rugged. By the time we reached Khen Khim (our Airbnb at Lachen), we were exhausted, but the anticipation for the next day was real.
+              </p>
+            </div>
+            
+            <!-- Desktop layout with text wrapping -->
+            <div class="hidden md:block">
+              <div class="float-right ml-6 mb-4 w-[45%]">
+                <div class="rounded-lg overflow-hidden">
+                  <ImageCarousel
+                    images={[
+                      {
+                        src: "/images/sikkim/9.webp",
+                        srcset: "/images/sikkim/9-400w.webp 400w, /images/sikkim/9-800w.webp 800w, /images/sikkim/9.webp 1200w",
+                        alt: "Scenic mountain route through Himalayan forests on the journey to Lachen",
+                        caption: "Breathtaking scenic route through North Sikkim's pristine Himalayan forests on the journey to Lachen - a photographer's paradise"
+                      },
+                      {
+                        src: "/images/sikkim/15.webp",
+                        srcset: "/images/sikkim/15-400w.webp 400w, /images/sikkim/15-800w.webp 800w, /images/sikkim/15.webp 1200w",
+                        alt: "Roadside tea break by a mountain creek in North Sikkim",
+                        caption: "Authentic Sikkimese roadside tea experience by a crystal-clear mountain creek - one of North Sikkim's hidden travel gems"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  The next phase of our trip was all about heading north — into the higher Himalayas. We'd booked a 3-day North Sikkim package that covered Lachen, Lachung, Gurudongmar Lake, Zero Point, and Yumthang Valley. It cost around ₹30,000 and included transport, food, and stay.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  Monday was all about the drive to Lachen. If you ever want to know what "scenery overload" feels like, take this route. Our driver stopped at random roadside shops, and every meal was a new adventure. Hot momos, steaming tea, and the kind of spicy chutneys that make you tear up (in a good way).
+                </p>
+                <p class="text-gray-700 mb-0 leading-relaxed">
+                  The drive wasn't just about covering distance — it was about acclimatizing to the higher altitudes, laughing at silly jokes, and watching the landscape change from lush to rugged. By the time we reached Khen Khim (our Airbnb at Lachen), we were exhausted, but the anticipation for the next day was real.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Day 4 -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-2xl font-bold mb-3 text-primary-700">Day 4: Gurudongmar Lake — Out of Breath, Out of Words</h3>
+            
+            <!-- Mobile layout - stacked -->
+            <div class="md:hidden">
+              <div class="rounded-lg overflow-hidden mb-4">
+                <ImageCarousel
+                  images={[
+                    {
+                      src: "/images/sikkim/10.webp",
+                      srcset: "/images/sikkim/10-400w.webp 400w, /images/sikkim/10-800w.webp 800w, /images/sikkim/10.webp 1200w",
+                      alt: "Stunning turquoise blue waters of Gurudongmar Lake surrounded by snow-capped peaks",
+                      caption: "Majestic Gurudongmar Lake with its enchanting turquoise blue waters - one of Sikkim's most sacred high-altitude lakes at 17,800 feet"
+                    },
+                    {
+                      src: "/images/sikkim/11.webp",
+                      srcset: "/images/sikkim/11-400w.webp 400w, /images/sikkim/11-800w.webp 800w, /images/sikkim/11.webp 1200w",
+                      alt: "Panoramic viewpoint overlooking Gurudongmar Lake with mountain backdrop",
+                      caption: "Spectacular panoramic viewpoint overlooking the sacred Gurudongmar Lake - an essential stop on your North Sikkim itinerary"
+                    },
+                    {
+                      src: "/images/sikkim/12.webp",
+                      srcset: "/images/sikkim/12-400w.webp 400w, /images/sikkim/12-800w.webp 800w, /images/sikkim/12.webp 1200w",
+                      alt: "Majestic Himalayan mountain views on the journey to Gurudongmar Lake",
+                      caption: "Awe-inspiring Himalayan mountain vistas on the journey to Gurudongmar - witnessing Sikkim's breathtaking natural beauty"
+                    },
+                    {
+                      src: "/images/sikkim/13.webp",
+                      srcset: "/images/sikkim/13-400w.webp 400w, /images/sikkim/13-800w.webp 800w, /images/sikkim/13.webp 1200w",
+                      alt: "Gurudongmar Lake with mountain reflections in the crystal-clear waters",
+                      caption: "Perfect mountain reflections in Gurudongmar Lake's crystal-clear waters - showcasing North Sikkim's pristine natural beauty"
+                    },
+                    {
+                      src: "/images/sikkim/14.webp",
+                      srcset: "/images/sikkim/14-400w.webp 400w, /images/sikkim/14-800w.webp 800w, /images/sikkim/14.webp 1200w",
+                      alt: "Mountain path leading to Gurudongmar Lake through the Himalayan landscape",
+                      caption: "The scenic hiking path toward Gurudongmar Lake through Sikkim's dramatic Himalayan landscape - an unforgettable trekking experience"
+                    }
+                  ]}
+                />
+              </div>
+              
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                The drive to Gurudongmar Lake is five hours of "wow." Every curve in the road brought a new view: snow-capped peaks, valleys that looked painted, and finally, the lake itself.
+              </p>
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                Gurudongmar is the kind of place that makes you forget to take photos because you're too busy just staring. The still turquoise lake surrounded by snow-capped mountains felt otherworldly.
+              </p>
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                And also literally took our breath away — low oxygen meant I was a bit dazed and woozy, but it was 100% worth it. The turquoise waters, the silence, the cold air biting at our cheeks — it was the most beautiful place we'd ever seen. We spent a hour and a half there, which felt both too short and just right, given how thin the air was.
+              </p>
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                On the way back, we stopped at what claims to be the highest dosa place in India. Eating dosa with numb fingers, surrounded by snow, is a memory I'll never forget.
+              </p>
+              <p class="text-gray-700 mb-0 leading-relaxed">
+                That night, we stayed at a cozy homestay in Lachung — part of the same tour package. Warm beds, hot food, and stories of the lake.
+              </p>
+            </div>
+            
+            <!-- Desktop layout with text wrapping -->
+            <div class="hidden md:block">
+              <div class="float-right ml-6 mb-4 w-[45%]">
+                <div class="rounded-lg overflow-hidden">
+                  <ImageCarousel
+                    images={[
+                      {
+                        src: "/images/sikkim/10.webp",
+                        srcset: "/images/sikkim/10-400w.webp 400w, /images/sikkim/10-800w.webp 800w, /images/sikkim/10.webp 1200w",
+                        alt: "Stunning turquoise blue waters of Gurudongmar Lake surrounded by snow-capped peaks",
+                        caption: "Majestic Gurudongmar Lake with its enchanting turquoise blue waters - one of Sikkim's most sacred high-altitude lakes at 17,800 feet"
+                      },
+                      {
+                        src: "/images/sikkim/11.webp",
+                        srcset: "/images/sikkim/11-400w.webp 400w, /images/sikkim/11-800w.webp 800w, /images/sikkim/11.webp 1200w",
+                        alt: "Panoramic viewpoint overlooking Gurudongmar Lake with mountain backdrop",
+                        caption: "Spectacular panoramic viewpoint overlooking the sacred Gurudongmar Lake - an essential stop on your North Sikkim itinerary"
+                      },
+                      {
+                        src: "/images/sikkim/12.webp",
+                        srcset: "/images/sikkim/12-400w.webp 400w, /images/sikkim/12-800w.webp 800w, /images/sikkim/12.webp 1200w",
+                        alt: "Majestic Himalayan mountain views on the journey to Gurudongmar Lake",
+                        caption: "Awe-inspiring Himalayan mountain vistas on the journey to Gurudongmar - witnessing Sikkim's breathtaking natural beauty"
+                      },
+                      {
+                        src: "/images/sikkim/13.webp",
+                        srcset: "/images/sikkim/13-400w.webp 400w, /images/sikkim/13-800w.webp 800w, /images/sikkim/13.webp 1200w",
+                        alt: "Gurudongmar Lake with mountain reflections in the crystal-clear waters",
+                        caption: "Perfect mountain reflections in Gurudongmar Lake's crystal-clear waters - showcasing North Sikkim's pristine natural beauty"
+                      },
+                      {
+                        src: "/images/sikkim/14.webp",
+                        srcset: "/images/sikkim/14-400w.webp 400w, /images/sikkim/14-800w.webp 800w, /images/sikkim/14.webp 1200w",
+                        alt: "Mountain path leading to Gurudongmar Lake through the Himalayan landscape",
+                        caption: "The scenic hiking path toward Gurudongmar Lake through Sikkim's dramatic Himalayan landscape - an unforgettable trekking experience"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  The drive to Gurudongmar Lake is five hours of "wow." Every curve in the road brought a new view: snow-capped peaks, valleys that looked painted, and finally, the lake itself.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  Gurudongmar is the kind of place that makes you forget to take photos because you're too busy just staring. The still turquoise lake surrounded by snow-capped mountains felt otherworldly.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  And also literally took our breath away — low oxygen meant I was a bit dazed and woozy, but it was 100% worth it. The turquoise waters, the silence, the cold air biting at our cheeks — it was the most beautiful place we'd ever seen. We spent a hour and a half there, which felt both too short and just right, given how thin the air was.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  On the way back, we stopped at what claims to be the highest dosa place in India. Eating dosa with numb fingers, surrounded by snow, is a memory I'll never forget.
+                </p>
+                <p class="text-gray-700 mb-0 leading-relaxed">
+                  That night, we stayed at a cozy homestay in Lachung — part of the same tour package. Warm beds, hot food, and stories of the lake.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Day 5 -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-2xl font-bold mb-3 text-primary-700">Day 5: Zero Point, Yumthang Valley, and the Joy of Mountain Maggi</h3>
+            
+            <!-- Mobile layout - stacked -->
+            <div class="md:hidden">
+              <div class="rounded-lg overflow-hidden mb-4">
+                <ImageCarousel
+                  images={[
+                    {
+                      src: "/images/sikkim/16.webp",
+                      srcset: "/images/sikkim/16-400w.webp 400w, /images/sikkim/16-800w.webp 800w, /images/sikkim/16.webp 1200w",
+                      alt: "Snow-covered landscape at Zero Point with mountain peaks in the distance",
+                      caption: "Pristine snow-covered landscape at Zero Point (Yumesamdong) - the last accessible point before Tibet with stunning Himalayan views"
+                    },
+                    {
+                      src: "/images/sikkim/17.webp",
+                      srcset: "/images/sikkim/17-400w.webp 400w, /images/sikkim/17-800w.webp 800w, /images/sikkim/17.webp 1200w",
+                      alt: "Traditional wooden homestay in Lachung village with mountain backdrop",
+                      caption: "Authentic traditional wooden homestay in picturesque Lachung village - experiencing true Sikkimese hospitality in the mountains"
+                    },
+                    {
+                      src: "/images/sikkim/18.webp",
+                      srcset: "/images/sikkim/18-400w.webp 400w, /images/sikkim/18-800w.webp 800w, /images/sikkim/18.webp 1200w",
+                      alt: "Colorful valley of flowers in Yumthang with surrounding mountains",
+                      caption: "The famous Yumthang Valley of Flowers with vibrant rhododendrons and alpine blooms - North Sikkim's must-visit natural paradise"
+                    }
+                  ]}
+                />
+              </div>
+              
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                Zero Point was next — just 5 km from the India-China border, and so cold that my teeth chattered non-stop. We rented jackets for 100 rupees (best investment ever) and braved the fog. Sure, we couldn't see much, but sometimes imagination fills in the gaps. I could almost picture the mountains hiding behind the mist.
+              </p>
+              <p class="text-gray-700 mb-0 leading-relaxed">
+                Yumthang Valley was a splash of color — even with the fog, the flowers stood out. And then came the moment: Maggi. Hot, spicy, and eaten while our breath formed little clouds in the air. I swear, mountain Maggi is a different species. Each slurp was pure happiness, warming me from the inside out. We played a game counting waterfalls on the way back (lost count after 100), and the drive to Gangtok was a blur of laughter and "did you see that?" moments.
+              </p>
+            </div>
+            
+            <!-- Desktop layout with text wrapping -->
+            <div class="hidden md:block">
+              <div class="float-right ml-6 mb-4 w-[45%]">
+                <div class="rounded-lg overflow-hidden">
+                  <ImageCarousel
+                    images={[
+                      {
+                        src: "/images/sikkim/16.webp",
+                        srcset: "/images/sikkim/16-400w.webp 400w, /images/sikkim/16-800w.webp 800w, /images/sikkim/16.webp 1200w",
+                        alt: "Snow-covered landscape at Zero Point with mountain peaks in the distance",
+                        caption: "Pristine snow-covered landscape at Zero Point (Yumesamdong) - the last accessible point before Tibet with stunning Himalayan views"
+                      },
+                      {
+                        src: "/images/sikkim/17.webp",
+                        srcset: "/images/sikkim/17-400w.webp 400w, /images/sikkim/17-800w.webp 800w, /images/sikkim/17.webp 1200w",
+                        alt: "Traditional wooden homestay in Lachung village with mountain backdrop",
+                        caption: "Authentic traditional wooden homestay in picturesque Lachung village - experiencing true Sikkimese hospitality in the mountains"
+                      },
+                      {
+                        src: "/images/sikkim/18.webp",
+                        srcset: "/images/sikkim/18-400w.webp 400w, /images/sikkim/18-800w.webp 800w, /images/sikkim/18.webp 1200w",
+                        alt: "Colorful valley of flowers in Yumthang with surrounding mountains",
+                        caption: "The famous Yumthang Valley of Flowers with vibrant rhododendrons and alpine blooms - North Sikkim's must-visit natural paradise"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  Zero Point was next — just 5 km from the India-China border, and so cold that my teeth chattered non-stop. We rented jackets for 100 rupees (best investment ever) and braved the fog. Sure, we couldn't see much, but sometimes imagination fills in the gaps. I could almost picture the mountains hiding behind the mist.
+                </p>
+                <p class="text-gray-700 mb-0 leading-relaxed">
+                  Yumthang Valley was a splash of color — even with the fog, the flowers stood out. And then came the moment: Maggi. Hot, spicy, and eaten while our breath formed little clouds in the air. I swear, mountain Maggi is a different species. Each slurp was pure happiness, warming me from the inside out. We played a game counting waterfalls on the way back (lost count after 100), and the drive to Gangtok was a blur of laughter and "did you see that?" moments.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Day 6 -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-2xl font-bold mb-3 text-primary-700">Day 6: Aimless Wandering, Pani Puri, and Cream Rolls in the Rain</h3>
+            
+            <!-- Mobile layout - stacked -->
+            <div class="md:hidden">
+              <div class="rounded-lg overflow-hidden mb-4">
+                <ImageCarousel
+                  images={[
+                    {
+                      src: "/images/sikkim/20.webp",
+                      srcset: "/images/sikkim/20-400w.webp 400w, /images/sikkim/20-800w.webp 800w, /images/sikkim/20.webp 1200w",
+                      alt: "Picturesque winding street with traditional architecture in the hills of Gangtok, Sikkim",
+                      caption: "A random street in the hills of Gangtok - experience authentic Sikkimese neighborhood charm away from tourist spots"
+                    },
+                    {
+                      src: "/images/sikkim/21.webp",
+                      srcset: "/images/sikkim/21-400w.webp 400w, /images/sikkim/21-800w.webp 800w, /images/sikkim/21.webp 1200w",
+                      alt: "Scenic walkway descending from the Namgyal Institute of Tibetology in Gangtok with Himalayan views",
+                      caption: "Walking down from the Museum of Tibetology - exploring Gangtok's cultural heritage with panoramic mountain views"
+                    },
+                    {
+                      src: "/images/sikkim/22.webp",
+                      srcset: "/images/sikkim/22-400w.webp 400w, /images/sikkim/22-800w.webp 800w, /images/sikkim/22.webp 1200w",
+                      alt: "Authentic local Sikkimese pani puri street food with mountain spices and flavors",
+                      caption: "The Pani Puri was brilliant - we didn't stop at one plate"
+                    }
+                  ]}
+                />
+              </div>
+              
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                Back in Gangtok, we declared it a no-itinerary day. We had three planned days and we just wanted to do nothing today. We strolled to the Museum of Tibetology, where history felt alive. Outside, a pani puri vendor caught our eye. Three plates later (plus some Chinese noodles from a tiny shop), we were officially stuffed and happy.
+              </p>
+              <p class="text-gray-700 mb-0 leading-relaxed">
+                The drizzle returned as we walked back to Mall Road. There's something about rain in the mountains — it makes everything feel more alive. We ducked into a bakery for a cream roll, and it was the perfect comfort food. That evening, we rented a bike for the next day's adventure, feeling like kids on the night before a big field trip.
+              </p>
+            </div>
+            
+            <!-- Desktop layout with text wrapping -->
+            <div class="hidden md:block">
+              <div class="float-right ml-6 mb-4 w-[45%]">
+                <div class="rounded-lg overflow-hidden">
+                  <ImageCarousel
+                    images={[
+                      {
+                        src: "/images/sikkim/20.webp",
+                        srcset: "/images/sikkim/20-400w.webp 400w, /images/sikkim/20-800w.webp 800w, /images/sikkim/20.webp 1200w",
+                        alt: "Picturesque winding street with traditional architecture in the hills of Gangtok, Sikkim",
+                        caption: "A random street in the hills of Gangtok - experience authentic Sikkimese neighborhood charm away from tourist spots"
+                      },
+                      {
+                        src: "/images/sikkim/21.webp",
+                        srcset: "/images/sikkim/21-400w.webp 400w, /images/sikkim/21-800w.webp 800w, /images/sikkim/21.webp 1200w",
+                        alt: "Scenic walkway descending from the Namgyal Institute of Tibetology in Gangtok with Himalayan views",
+                        caption: "Walking down from the Museum of Tibetology - exploring Gangtok's cultural heritage with panoramic mountain views"
+                      },
+                      {
+                        src: "/images/sikkim/22.webp",
+                        srcset: "/images/sikkim/22-400w.webp 400w, /images/sikkim/22-800w.webp 800w, /images/sikkim/22.webp 1200w",
+                        alt: "Authentic local Sikkimese pani puri street food with mountain spices and flavors",
+                        caption: "The Pani Puri was brilliant - we didn't stop at one plate" 
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  Back in Gangtok, we declared it a no-itinerary day. We had three planned days and we just wanted to do nothing today. We strolled to the Museum of Tibetology, where history felt alive. Outside, a pani puri vendor caught our eye. Three plates later (plus some Chinese noodles from a tiny shop), we were officially stuffed and happy.
+                </p>
+                <p class="text-gray-700 mb-0 leading-relaxed">
+                  The drizzle returned as we walked back to Mall Road. There's something about rain in the mountains — it makes everything feel more alive. We ducked into a bakery for a cream roll, and it was the perfect comfort food. That evening, we rented a bike for the next day's adventure, feeling like kids on the night before a big field trip.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Day 7 -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-2xl font-bold mb-3 text-primary-700">Day 7: Nathula Pass, Rain, and the Best "Failed" Adventure Ever</h3>
+            
+            <!-- Mobile layout - stacked -->
+            <div class="md:hidden">
+              <div class="rounded-lg overflow-hidden mb-4">
+                <ImageCarousel
+                  images={[
+                    {
+                      src: "/images/sikkim/23.webp",
+                      srcset: "/images/sikkim/23-400w.webp 400w, /images/sikkim/23-800w.webp 800w, /images/sikkim/23.webp 1200w",
+                      alt: "Rare monsoon moment captured during a rain-drenched day in Sikkim's scenic mountains",
+                      caption: "The only picture we got on this hilarious RAIN marred day - capturing Sikkim's unpredictable monsoon adventure during our journey home"
+                    }
+                  ]}
+                />
+              </div>
+              
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                This might just be our second favorite day in Sikkim.
+              </p>
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                It was supposed to be epic: a bike ride to Nathula Pass and Rumtek Monastery. What we got was even better — a comedy of errors. We set off on our Enfield, spirits high, but the weather had other plans. Fifteen kilometers in, the rain started. Not a drizzle, but a full-on downpour. Visibility dropped, we shivered, and ended up buying gloves from a lady by the roadside.
+              </p>
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                We waited, hoping the rain would ease, but it didn't. So we turned around, drenched but laughing, and pointed our bike toward Rumtek Monastery. The rain kept coming, and we got completely lost in the forest. For over an hour, we rode in circles, soaked to the bone, giggling at how ridiculous the whole situation was. No photos from this day (thanks, rain!), but honestly, after Gurudongmar, it was our second-best day in Sikkim. Sometimes, the best memories are the ones you never planned.
+              </p>
+              <p class="text-gray-700 mb-0 leading-relaxed">
+                We ended the day at the Sikkim post office, sending postcards to ourselves — a little reminder of our rain-soaked misadventure.
+              </p>
+            </div>
+            
+            <!-- Desktop layout with text wrapping -->
+            <div class="hidden md:block">
+              <div class="float-right ml-6 mb-4 w-[45%]">
+                <div class="rounded-lg overflow-hidden">
+                  <ImageCarousel
+                    images={[
+                      {
+                        src: "/images/sikkim/23.webp",
+                        srcset: "/images/sikkim/23-400w.webp 400w, /images/sikkim/23-800w.webp 800w, /images/sikkim/23.webp 1200w",
+                        alt: "Rare monsoon moment captured during a rain-drenched day in Sikkim's scenic mountains",
+                        caption: "The only picture we got on this hilarious RAIN marred day - capturing Sikkim's unpredictable monsoon adventure during our journey home"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  This might just be our second favorite day in Sikkim.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  It was supposed to be epic: a bike ride to Nathula Pass and Rumtek Monastery. What we got was even better — a comedy of errors. We set off on our Enfield, spirits high, but the weather had other plans. Fifteen kilometers in, the rain started. Not a drizzle, but a full-on downpour. Visibility dropped, we shivered, and ended up buying gloves from a lady by the roadside.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  We waited, hoping the rain would ease, but it didn't. So we turned around, drenched but laughing, and pointed our bike toward Rumtek Monastery. The rain kept coming, and we got completely lost in the forest. For over an hour, we rode in circles, soaked to the bone, giggling at how ridiculous the whole situation was. No photos from this day (thanks, rain!), but honestly, after Gurudongmar, it was our second-best day in Sikkim. Sometimes, the best memories are the ones you never planned.
+                </p>
+                <p class="text-gray-700 mb-0 leading-relaxed">
+                  We ended the day at the Sikkim post office, sending postcards to ourselves — a little reminder of our rain-soaked misadventure.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Day 8 -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-2xl font-bold mb-3 text-primary-700">Day 8: The Long Goodbye — Siliguri and the Dum Aloo That Haunts My Dreams</h3>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              Saturday was a travel day, but not without its own highlight: Kashmiri Dum Aloo at our hotel in Siliguri. I still think about that dish — spicy, rich, and the perfect end to a week of culinary adventures.
+            </p>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              WizzRide took us back to Siliguri in comfort, giving us time to replay our favorite moments, from the dizzy heights of Gurudongmar to the laughter in the rain.
+            </p>
+          </div>
+          
+          <!-- Day 9 -->
         <div class="bg-white p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-4">What to Expect in Our Sikkim Guide</h3>
-          <ul class="text-gray-600 space-y-2 text-left">
+            <h3 class="text-2xl font-bold mb-3 text-primary-700">Day 9: Homeward Bound, Heart Full</h3>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              Sunday, we flew back to Mumbai. Bags heavier, hearts even heavier (with memories, not just souvenirs). Sikkim had worked its magic.
+            </p>
+          </div>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg shadow-md mb-12">
+          <h3 class="text-xl font-bold mb-4">Sikkim Travel Tips – Permits, Transport, Weather & Packing Guide</h3>
+          <p class="text-gray-700 mb-4">If you're inspired to plan a similar trip, here are a few logistical notes we learned the fun (and sometimes hard) way:</p>
+          <ul class="text-gray-700 space-y-3">
             <li class="flex items-start">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span>Detailed itineraries for North, East, South, and West Sikkim</span>
+              <span><strong>Getting There:</strong> Fly into Bagdogra. Book your WizzRide (download the app on the playstore) in advance for a hassle-free drive to Gangtok.</span>
             </li>
             <li class="flex items-start">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span>Guides to Gangtok, Pelling, Lachung, and other key destinations</span>
+              <span><strong>Where to Stay:</strong> Zostel is budget-friendly but can be hit-or-miss on cleanliness. Airbnb options like Khen Khim in Lachen are cozy. Book North Sikkim tour packages (cab + stay + food) for convenience.</span>
             </li>
             <li class="flex items-start">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span>Information on trekking routes, monasteries, and natural attractions</span>
+              <span><strong>Getting Around:</strong> Don't even think about self-driving — the roads are wild, and permits are needed for many places. Cabs and share rides are your friends.</span>
             </li>
             <li class="flex items-start">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span>Tips for experiencing local Sikkimese cuisine and cultural practices</span>
+              <span><strong>Permits:</strong> Nathula Pass, Gurudongmar, and some other spots need permits. Your hotel or tour operator can help sort these.</span>
             </li>
             <li class="flex items-start">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span>Practical information on permits, transportation, and accommodations</span>
+              <span><strong>Weather & Packing:</strong> Layers, rain gear, and warm clothes are a must. Renting jackets at Zero Point is easy, but it's better to be prepared.</span>
             </li>
             <li class="flex items-start">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span>Seasonal travel advice and best times to visit different regions</span>
+              <span><strong>Altitude:</strong> Take it slow. Spend a day in Gangtok before heading higher. Drink water, listen to your body.</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Food:</strong> Eat Maggi everywhere. Try local spots, and don't miss street food on Mall Road.</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Connectivity:</strong> Internet is patchy in the hills. Download maps and playlists in advance.</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Rain during June:</strong> Embrace it. Some of our best memories happened because plans got washed away.</span>
             </li>
           </ul>
         </div>
         
-        <div class="mt-12">
-          <h3 class="text-xl font-bold mb-4">Subscribe for Updates</h3>
-          <p class="text-gray-600 mb-6">
-            Want to be notified when our Sikkim guide is published? Subscribe to our newsletter!
+        <div class="bg-white p-8 rounded-lg shadow-md mb-12">
+          <h3 class="text-xl font-bold mb-4">Frequently Asked Questions About Traveling to Sikkim</h3>
+          
+          <div class="space-y-6">
+            <div>
+              <p class="font-bold text-primary-700">Q1: What's the best time to visit Sikkim?</p>
+              <p class="text-gray-700 mt-2">
+                We visited in early June, and while it rained quite a bit, the mist and drizzle actually added a lot of charm — especially in Gangtok and Yumthang Valley. That said, if you want clearer skies and more predictable weather, March to May and October to December are generally ideal.
+              </p>
+            </div>
+            
+            <div>
+              <p class="font-bold text-primary-700">Q2: How many days do you need for a Sikkim trip?</p>
+              <p class="text-gray-700 mt-2">
+                We did 9 days, which allowed us to explore Gangtok leisurely, do a 3-day North Sikkim tour (Lachen, Lachung, Gurudongmar, Yumthang, Zero Point), and attempt a bike ride adventure too. 7–9 days is a great range if you want to enjoy Sikkim without rushing.
+              </p>
+            </div>
+            
+            <div>
+              <p class="font-bold text-primary-700">Q3: Is Gurudongmar Lake worth the hype?</p>
+              <p class="text-gray-700 mt-2">
+                Absolutely. It was the most beautiful place we've ever seen — turquoise waters, snow-capped peaks, and an eerie silence at nearly 18,000 feet. But be warned: the altitude hits hard. Spend a few days acclimatizing in Gangtok first.
+              </p>
+            </div>
+            
+            <div>
+              <p class="font-bold text-primary-700">Q4: What's the deal with permits in Sikkim?</p>
+              <p class="text-gray-700 mt-2">
+                For places like Gurudongmar Lake, Nathula Pass, and Zero Point, you need special permits (especially for Indian citizens). Don't worry though — most hotels or travel agencies in Gangtok can help you sort it out quickly.
+              </p>
+            </div>
+            
+            <div>
+              <p class="font-bold text-primary-700">Q5: Is self-driving allowed in North Sikkim?</p>
+              <p class="text-gray-700 mt-2">
+                Nope — and even if it was, we wouldn't recommend it. The roads are rough, narrow, and often foggy. We booked a North Sikkim tour package that included a driver, stay, and food — super convenient.
+              </p>
+            </div>
+            
+            <div>
+              <p class="font-bold text-primary-700">Q6: What kind of food should I try in Sikkim?</p>
+              <p class="text-gray-700 mt-2">
+                Eat Maggi in the mountains — it's basically a rule. We also loved the food at Nimtho in Gangtok, the dosa place near Gurudongmar, and some unexpectedly great Kashmiri Dum Aloo in Siliguri. Street food like pani puri and local noodles hit different in the cold.
+              </p>
+            </div>
+            
+            <div>
+              <p class="font-bold text-primary-700">Q7: Is it okay to visit Sikkim during the monsoon?</p>
+              <p class="text-gray-700 mt-2">
+                It can be risky with road closures, but if you're up for an unpredictable adventure (and don't mind getting soaked), it's amazing. Our bike ride in the rain became one of our best memories of the trip.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-12 text-center">
+          <h3 class="text-xl font-bold mb-4">Share Your Sikkim Experiences</h3>
+          <p class="text-gray-700 mb-6">
+            Have you visited Sikkim or planning to go soon? We'd love to hear your thoughts and answer any questions!
           </p>
           
           <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
@@ -88,4 +706,118 @@ import Hero from '../../components/Hero.astro';
       </div>
     </div>
   </section>
+  
+  
+  <!-- Image Modal for full-screen viewing -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <span id="closeModal" class="absolute top-6 right-8 text-white text-4xl cursor-pointer hover:text-gray-300 transition-colors">&times;</span>
+    <button id="prevBtn" class="absolute left-4 text-white text-4xl hover:text-gray-300 transition-colors p-4">&lt;</button>
+    <button id="nextBtn" class="absolute right-4 text-white text-4xl hover:text-gray-300 transition-colors p-4">&gt;</button>
+    <img id="modalImage" class="max-h-[90vh] max-w-[90vw] object-contain transition-transform duration-300 transform" src="" alt="Full size image" />
+    <p id="modalCaption" class="absolute bottom-8 left-0 right-0 text-center text-white bg-black bg-opacity-50 py-2 px-4 mx-auto max-w-2xl"></p>
+  </div>
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeBtn = document.getElementById('closeModal');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    let currentImageIndex = 0;
+    let currentCarouselImages = [];
+    let currentCarouselCaptions = [];
+    
+    // Add click handlers to all carousel images
+    document.querySelectorAll('.carousel-image').forEach(img => {
+      img.addEventListener('click', () => {
+        // Find the carousel container to get the caption
+        const carouselContainer = img.closest('.carousel-container');
+        const imageContainer = img.closest('.carousel-image-container');
+        const index = Array.from(carouselContainer.querySelectorAll('.carousel-image-container')).indexOf(imageContainer);
+        const caption = carouselContainer.querySelector(`.carousel-caption[data-index="${index}"] p`)?.textContent || '';
+        
+        modal.classList.remove('hidden');
+        // Allow DOM to update before showing the modal
+        setTimeout(() => {
+          modal.classList.add('opacity-100');
+        }, 10);
+        
+        modalImg.src = img.src;
+        modalCaption.textContent = caption;
+        
+        // Find all images in the same carousel
+        currentCarouselImages = Array.from(carouselContainer.querySelectorAll('.carousel-image'));
+        currentImageIndex = currentCarouselImages.indexOf(img);
+        
+        // Get all captions
+        currentCarouselCaptions = Array.from(carouselContainer.querySelectorAll('.carousel-caption p'))
+          .map(el => el.textContent || '');
+      });
+    });
+    
+    // Navigation functions
+    function showNextImage() {
+      modalImg.classList.add('scale-95');
+      setTimeout(() => {
+        if (currentCarouselImages.length > 0) {
+          currentImageIndex = (currentImageIndex + 1) % currentCarouselImages.length;
+          modalImg.src = currentCarouselImages[currentImageIndex].src;
+          modalCaption.textContent = currentCarouselCaptions[currentImageIndex] || '';
+        }
+        modalImg.classList.remove('scale-95');
+      }, 150);
+    }
+    
+    function showPrevImage() {
+      modalImg.classList.add('scale-95');
+      setTimeout(() => {
+        if (currentCarouselImages.length > 0) {
+          currentImageIndex = (currentImageIndex - 1 + currentCarouselImages.length) % currentCarouselImages.length;
+          modalImg.src = currentCarouselImages[currentImageIndex].src;
+          modalCaption.textContent = currentCarouselCaptions[currentImageIndex] || '';
+        }
+        modalImg.classList.remove('scale-95');
+      }, 150);
+    }
+    
+    // Close modal
+    function closeModal() {
+      modal.classList.remove('opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+    
+    closeBtn.addEventListener('click', closeModal);
+    
+    // Add navigation event listeners
+    nextBtn.addEventListener('click', showNextImage);
+    prevBtn.addEventListener('click', showPrevImage);
+    
+    // Close with ESC key and handle arrow navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+      
+      if (!modal.classList.contains('hidden')) {
+        if (e.key === 'ArrowRight') {
+          showNextImage();
+        } else if (e.key === 'ArrowLeft') {
+          showPrevImage();
+        }
+      }
+    });
+    
+    // Close when clicking outside the image
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  });
+</script>

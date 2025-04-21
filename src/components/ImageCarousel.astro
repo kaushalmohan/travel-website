@@ -1,0 +1,240 @@
+---
+interface Props {
+  images: {
+    src: string;
+    alt: string;
+    caption?: string;
+    srcset?: string;
+  }[];
+  interval?: number; // in milliseconds
+}
+
+const { images, interval = 5000 } = Astro.props;
+
+// Generate structured data for SEO
+const imageStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": images[0]?.alt || "Image gallery",
+  "image": images.map(img => ({
+    "@type": "ImageObject",
+    "contentUrl": img.src,
+    "name": img.alt,
+    "description": img.caption || img.alt
+  }))
+};
+---
+
+<div class="carousel-container relative rounded-lg overflow-hidden flex flex-col">
+  <div class="carousel-slides-container relative w-full" style="aspect-ratio: 4/3;">
+    {images.map((image, index) => (
+      <div class={`carousel-image-container absolute top-0 left-0 w-full h-full ${index === 0 ? 'active' : ''}`} aria-hidden={index !== 0}>
+        {image.srcset ? (
+          <picture>
+            <source srcset={image.srcset} type="image/webp" sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px" />
+            <img 
+              src={image.src} 
+              alt={image.alt} 
+              class="carousel-image w-full h-full object-contain cursor-pointer" 
+              width="800" 
+              height="600"
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchpriority={index === 0 ? "high" : "auto"}
+            />
+          </picture>
+        ) : (
+          <img 
+            src={image.src} 
+            alt={image.alt} 
+            class="carousel-image w-full h-full object-contain cursor-pointer" 
+            width="800" 
+            height="600" 
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchpriority={index === 0 ? "high" : "auto"}
+          />
+        )}
+      </div>
+    ))}
+    
+    <!-- Navigation dots -->
+    <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10">
+      {images.map((_, index) => (
+        <button 
+          class={`nav-dot w-3 h-3 rounded-full ${index === 0 ? 'bg-white' : 'bg-white/50'}`} 
+          data-index={index}
+          aria-label={`Go to image ${index + 1}`}
+        ></button>
+      ))}
+    </div>
+    
+    <!-- Navigation arrows -->
+    <button class="nav-arrow left-2 absolute top-1/2 transform -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white rounded-full p-2 z-10" aria-label="Previous image">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button class="nav-arrow right-2 absolute top-1/2 transform -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white rounded-full p-2 z-10" aria-label="Next image">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Caption container below image -->
+  <div class="carousel-caption-container bg-gray-100 border-t border-gray-200 p-4 rounded-b-lg min-h-[60px] text-center">
+    {images.map((image, index) => (
+      <div class={`carousel-caption ${index === 0 ? 'active' : 'hidden'}`} data-index={index}>
+        <p class="text-gray-700 text-sm leading-relaxed">{image.caption || ""}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- Add structured data for SEO -->
+<script type="application/ld+json" set:html={JSON.stringify(imageStructuredData)} />
+
+<style>
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    contain: layout style paint;
+  }
+
+  .carousel-slides-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .carousel-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    will-change: opacity;
+  }
+
+  .carousel-image-container.active {
+    opacity: 1;
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  .nav-arrow {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .carousel-container:hover .nav-arrow {
+    opacity: 1;
+  }
+</style>
+
+<script define:vars={{ interval, imageCount: images.length }}>
+document.addEventListener('DOMContentLoaded', () => {
+  const carousels = document.querySelectorAll('.carousel-container');
+  
+  carousels.forEach(container => {
+    const images = container.querySelectorAll('.carousel-image-container');
+    const captions = container.querySelectorAll('.carousel-caption');
+    const dots = container.querySelectorAll('.nav-dot');
+    const prevButton = container.querySelector('.nav-arrow:first-of-type');
+    const nextButton = container.querySelector('.nav-arrow:last-of-type');
+    let currentIndex = 0;
+    let autoplayInterval;
+    
+    const updateActiveSlide = (newIndex) => {
+      // Hide current slide
+      images[currentIndex].classList.remove('active');
+      images[currentIndex].setAttribute('aria-hidden', 'true');
+      captions[currentIndex].classList.add('hidden');
+      captions[currentIndex].classList.remove('active');
+      dots[currentIndex].classList.remove('bg-white');
+      dots[currentIndex].classList.add('bg-white/50');
+      
+      // Show new slide
+      currentIndex = newIndex;
+      images[currentIndex].classList.add('active');
+      images[currentIndex].setAttribute('aria-hidden', 'false');
+      captions[currentIndex].classList.remove('hidden');
+      captions[currentIndex].classList.add('active');
+      dots[currentIndex].classList.add('bg-white');
+      dots[currentIndex].classList.remove('bg-white/50');
+    };
+    
+    const goToNext = () => {
+      const newIndex = (currentIndex + 1) % images.length;
+      updateActiveSlide(newIndex);
+    };
+    
+    const goToPrev = () => {
+      const newIndex = (currentIndex - 1 + images.length) % images.length;
+      updateActiveSlide(newIndex);
+    };
+    
+    // Set up autoplay
+    const startAutoplay = () => {
+      autoplayInterval = setInterval(goToNext, interval);
+    };
+    
+    const stopAutoplay = () => {
+      clearInterval(autoplayInterval);
+    };
+    
+    // Navigation with dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopAutoplay();
+        updateActiveSlide(index);
+        startAutoplay();
+      });
+    });
+    
+    // Navigation with arrows
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        stopAutoplay();
+        goToPrev();
+        startAutoplay();
+      });
+    }
+    
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        stopAutoplay();
+        goToNext();
+        startAutoplay();
+      });
+    }
+    
+    // Pause on hover
+    container.addEventListener('mouseenter', stopAutoplay);
+    container.addEventListener('mouseleave', startAutoplay);
+    
+    // Start autoplay
+    startAutoplay();
+    
+    // Add keyboard navigation when carousel is focused
+    container.tabIndex = 0; // Make container focusable
+    container.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        stopAutoplay();
+        goToPrev();
+        startAutoplay();
+      } else if (e.key === 'ArrowRight') {
+        stopAutoplay();
+        goToNext();
+        startAutoplay();
+      }
+    });
+  });
+});
+</script> 

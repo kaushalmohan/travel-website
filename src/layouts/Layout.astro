@@ -5,9 +5,21 @@ import Footer from '../components/Footer.astro';
 export interface Props {
   title: string;
   description?: string;
+  canonical?: string;
+  ogImage?: string;
+  keywords?: string;
 }
 
-const { title, description = "Slow travel with Pankhuri and Kaushal - Documenting our journeys around the world" } = Astro.props;
+const { 
+  title, 
+  description = "Slow travel with Pankhuri and Kaushal - Documenting our journeys around the world",
+  canonical,
+  ogImage,
+  keywords
+} = Astro.props;
+
+// Default OG image if not provided
+const defaultOgImage = "/images/og-default.jpg";
 ---
 
 <!DOCTYPE html>
@@ -23,6 +35,24 @@ const { title, description = "Slow travel with Pankhuri and Kaushal - Documentin
     <!-- Performance optimizations -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#ffffff">
+    
+    <!-- SEO Meta Tags -->
+    {canonical && <link rel="canonical" href={canonical} />}
+    {keywords && <meta name="keywords" content={keywords} />}
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:site_name" content="Lifeing Together with Pankhuri and Kaushal" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
     
     <!-- Resource hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
