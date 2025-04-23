@@ -44,9 +44,30 @@ const currentYear = new Date().getFullYear();
       <div>
         <h3 class="text-xl font-bold mb-4">Subscribe</h3>
         <p class="text-gray-300 mb-4">Get notified about our latest adventures!</p>
-        <form class="flex flex-col sm:flex-row gap-2">
-          <input type="email" placeholder="Your email" class="px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-800 flex-grow" />
-          <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition duration-300">Subscribe</button>
+        <form 
+          name="newsletter" 
+          method="POST" 
+          netlify-honeypot="bot-field"
+          data-netlify="true" 
+          class="flex flex-col sm:flex-row gap-2"
+        >
+          <input type="hidden" name="form-name" value="newsletter" />
+          <p class="hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Your email" 
+            required
+            class="px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-800 flex-grow" 
+          />
+          <button 
+            type="submit" 
+            class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition duration-300"
+          >
+            Subscribe
+          </button>
         </form>
       </div>
     </div>
