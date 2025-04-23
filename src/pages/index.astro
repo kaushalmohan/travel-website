@@ -196,9 +196,20 @@ const recentPosts = [
       <h2 class="text-3xl font-bold mb-6">Join Our Journey</h2>
       <p class="max-w-2xl mx-auto mb-8">Subscribe to our newsletter and be the first to know about our latest adventures, travel tips, and exclusive content.</p>
       
-      <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+      <form 
+        name="newsletter" 
+        method="POST" 
+        netlify-honeypot="bot-field"
+        data-netlify="true" 
+        class="max-w-md mx-auto flex flex-col sm:flex-row gap-2"
+      >
+        <input type="hidden" name="form-name" value="newsletter" />
+        <p class="hidden">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
         <input 
           type="email" 
+          name="email"
           placeholder="Your email address" 
           class="px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 text-gray-800 flex-grow"
           required
