@@ -5,27 +5,66 @@ interface Props {
   image: string;
   imageSmall?: string;
   imageMobile?: string;
+  srcset?: string;
+  sizes?: string;
+  width?: string;
+  height?: string;
+  loading?: string;
+  fetchpriority?: string;
   overlay?: boolean;
 }
 
-const { title, subtitle, image, imageSmall, imageMobile, overlay = true } = Astro.props;
+const { 
+  title, 
+  subtitle, 
+  image, 
+  imageSmall, 
+  imageMobile, 
+  srcset, 
+  sizes, 
+  width, 
+  height, 
+  loading = "lazy",
+  fetchpriority = "auto",
+  overlay = true 
+} = Astro.props;
 ---
 
-<section class="relative h-[70vh] flex items-center justify-center">
+<section class="relative h-[70vh] flex items-center justify-center hero-container">
   <div class="absolute inset-0 z-0">
-    {imageSmall && imageMobile ? (
+    {srcset ? (
+      <picture>
+        <source 
+          srcset={srcset} 
+          sizes={sizes}
+          type="image/webp">
+        <img 
+          src={image} 
+          alt={title} 
+          class="w-full h-full object-cover"
+          width={width || "1200"}
+          height={height || "800"}
+          loading={loading}
+          fetchpriority={fetchpriority}
+          decoding="async"
+        />
+      </picture>
+    ) : imageSmall && imageMobile ? (
       <picture>
         <source 
           srcset={`${imageMobile} 400w, ${imageSmall} 800w, ${image} 1200w`} 
+          sizes={sizes || "(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"}
           type="image/webp">
         <img 
           src={image.replace('.webp', '.jpg')} 
           srcset={`${image.replace('.webp', '.jpg')} 1200w`}
           alt={title} 
           class="w-full h-full object-cover"
-          width="1200"
-          height="800"
-          fetchpriority="high"
+          width={width || "1200"}
+          height={height || "800"}
+          loading={loading}
+          fetchpriority={fetchpriority}
+          decoding="async"
         />
       </picture>
     ) : (
@@ -33,7 +72,11 @@ const { title, subtitle, image, imageSmall, imageMobile, overlay = true } = Astr
         src={image} 
         alt={title} 
         class="w-full h-full object-cover"
-        fetchpriority="high"
+        width={width || "1200"}
+        height={height || "800"}
+        loading={loading}
+        fetchpriority={fetchpriority}
+        decoding="async"
       />
     )}
     {overlay && <div class="absolute inset-0 bg-black opacity-40"></div>}
