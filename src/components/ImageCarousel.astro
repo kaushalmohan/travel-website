@@ -5,6 +5,10 @@ interface Props {
     alt: string;
     caption?: string;
     srcset?: string;
+    width?: string;
+    height?: string;
+    loading?: string;
+    decoding?: string;
   }[];
   interval?: number; // in milliseconds
 }
@@ -36,10 +40,11 @@ const imageStructuredData = {
               src={image.src} 
               alt={image.alt} 
               class="carousel-image w-full h-full object-contain cursor-pointer" 
-              width="800" 
-              height="600"
-              loading={index === 0 ? "eager" : "lazy"}
-              fetchpriority={index === 0 ? "high" : "auto"}
+              width={image.width || "800"} 
+              height={image.height || "600"}
+              loading={index === 0 ? "eager" : (image.loading || "lazy")}
+              decoding={image.decoding || "async"}
+              fetchpriority={index === 0 ? "high" : "low"}
             />
           </picture>
         ) : (
@@ -47,10 +52,11 @@ const imageStructuredData = {
             src={image.src} 
             alt={image.alt} 
             class="carousel-image w-full h-full object-contain cursor-pointer" 
-            width="800" 
-            height="600" 
-            loading={index === 0 ? "eager" : "lazy"}
-            fetchpriority={index === 0 ? "high" : "auto"}
+            width={image.width || "800"} 
+            height={image.height || "600"} 
+            loading={index === 0 ? "eager" : (image.loading || "lazy")}
+            decoding={image.decoding || "async"}
+            fetchpriority={index === 0 ? "high" : "low"}
           />
         )}
       </div>
@@ -69,12 +75,12 @@ const imageStructuredData = {
     
     <!-- Navigation arrows -->
     <button class="nav-arrow left-2 absolute top-1/2 transform -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white rounded-full p-2 z-10" aria-label="Previous image">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
     <button class="nav-arrow right-2 absolute top-1/2 transform -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white rounded-full p-2 z-10" aria-label="Next image">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
       </svg>
     </button>
@@ -115,6 +121,7 @@ const imageStructuredData = {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     will-change: opacity;
+    content-visibility: auto;
   }
 
   .carousel-image-container.active {
@@ -129,12 +136,21 @@ const imageStructuredData = {
   }
   
   .nav-arrow {
-    opacity: 0;
+    opacity: 0.8;
     transition: opacity 0.3s ease;
+    touch-action: manipulation;
   }
   
   .carousel-container:hover .nav-arrow {
     opacity: 1;
+  }
+
+  /* Make sure navigation arrows are visible on mobile */
+  @media (max-width: 768px) {
+    .nav-arrow {
+      opacity: 0.8;
+      padding: 0.75rem;
+    }
   }
 </style>
 
@@ -150,6 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = container.querySelector('.nav-arrow:last-of-type');
     let currentIndex = 0;
     let autoplayInterval;
+    let touchStartX = 0;
+    let touchEndX = 0;
     
     const updateActiveSlide = (newIndex) => {
       // Hide current slide
@@ -168,6 +186,15 @@ document.addEventListener('DOMContentLoaded', () => {
       captions[currentIndex].classList.add('active');
       dots[currentIndex].classList.add('bg-white');
       dots[currentIndex].classList.remove('bg-white/50');
+
+      // Preload next image if available
+      const nextIndex = (currentIndex + 1) % images.length;
+      if (nextIndex !== currentIndex) {
+        const nextImg = images[nextIndex].querySelector('img');
+        if (nextImg && nextImg.loading === 'lazy') {
+          nextImg.loading = 'eager';
+        }
+      }
     };
     
     const goToNext = () => {
@@ -218,6 +245,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pause on hover
     container.addEventListener('mouseenter', stopAutoplay);
     container.addEventListener('mouseleave', startAutoplay);
+    
+    // Touch swipe support for mobile
+    container.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    container.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      if (touchEndX < touchStartX - swipeThreshold) {
+        // Swiped left, show next image
+        stopAutoplay();
+        goToNext();
+        startAutoplay();
+      } else if (touchEndX > touchStartX + swipeThreshold) {
+        // Swiped right, show previous image
+        stopAutoplay();
+        goToPrev();
+        startAutoplay();
+      }
+    }
     
     // Start autoplay
     startAutoplay();

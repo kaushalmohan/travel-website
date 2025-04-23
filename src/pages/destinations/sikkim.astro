@@ -23,6 +23,9 @@ const dateModified = "2024-06-25"; // Update with last modified date
   ogImage={ogImage}
   keywords={keywords}
 >
+  <!-- Preload hero image -->
+  <link rel="preload" href="/images/sikkim/hero-image.webp" as="image" type="image/webp" fetchpriority="high" slot="head">
+  
   <!-- JSON-LD structured data for Article -->
   <script type="application/ld+json" slot="head">
     {
@@ -124,6 +127,20 @@ const dateModified = "2024-06-25"; // Update with last modified date
       ]
     }
   </script>
+
+  <!-- Custom styles for font display -->
+  <style is:inline slot="head">
+    /* Improve font display */
+    @font-face {
+      font-family: system-ui;
+      font-display: swap;
+    }
+    
+    /* Optimize CLS for hero section */
+    .hero-container {
+      min-height: 60vh;
+    }
+  </style>
 
   <Hero 
     title="Sikkim" 
@@ -886,31 +903,6 @@ const dateModified = "2024-06-25"; // Update with last modified date
                 </div>
               </div>
             </div>
-            
-            <div class="mt-12 text-center">
-              <h2 class="text-xl font-bold mb-4">Share Your Sikkim Experiences</h2>
-              <p class="text-gray-700 mb-6">
-                Have you visited Sikkim or planning to go soon? We'd love to hear your thoughts and answer any questions!
-              </p>
-              
-              <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-2" name="sikkim-subscribe" netlify>
-                <input 
-                  type="email" 
-                  name="email"
-                  placeholder="Your email address" 
-                  class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-800 flex-grow"
-                  aria-label="Email address"
-                  required
-                />
-                <button 
-                  type="submit" 
-                  class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-md font-medium transition duration-300"
-                  aria-label="Subscribe"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
           </div>
         </div>
       </section>
@@ -928,7 +920,8 @@ const dateModified = "2024-06-25"; // Update with last modified date
   </div>
 </Layout>
 
-<script>
+<!-- Defer non-critical JavaScript -->
+<script defer>
   // Defer the modal JavaScript functionality
   document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('imageModal');
@@ -1037,12 +1030,12 @@ const dateModified = "2024-06-25"; // Update with last modified date
     
     modalImg.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
-    }, false);
+    }, { passive: true });
     
     modalImg.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
-    }, false);
+    }, { passive: true });
     
     function handleSwipe() {
       const swipeThreshold = 50;
