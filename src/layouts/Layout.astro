@@ -12,14 +12,14 @@ export interface Props {
 
 const { 
   title, 
-  description = "Slow travel with Pankhuri and Kaushal - Documenting our journeys around the world",
+  description = "Documenting bits and pieces of our life, one story at a time",
   canonical,
   ogImage,
   keywords
 } = Astro.props;
 
 // Default OG image if not provided
-const defaultOgImage = "/images/og-default.jpg";
+const defaultOgImage = "/images/miscellaneous/about-us/about_us.jpg";
 ---
 
 <!DOCTYPE html>
@@ -44,7 +44,7 @@ const defaultOgImage = "/images/og-default.jpg";
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:image" content={ogImage || defaultOgImage} />
     {canonical && <meta property="og:url" content={canonical} />}
     <meta property="og:site_name" content="Lifeing Together with Pankhuri and Kaushal" />
     
@@ -52,7 +52,7 @@ const defaultOgImage = "/images/og-default.jpg";
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    <meta name="twitter:image" content={ogImage || defaultOgImage} />
     
     <!-- Resource hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
