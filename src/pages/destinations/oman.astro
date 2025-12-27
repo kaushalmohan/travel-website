@@ -1,0 +1,2398 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import ItineraryDay from '../../components/ItineraryDay.astro';
+
+// SEO metadata
+const title = "Oman Travel Guide: 13-Day Itinerary | Lifeing Together";
+const description = "Explore our comprehensive Oman travel guide with a detailed 13-day itinerary covering Muscat, Nizwa, Wadi Shab, Ras Al Jinz, Wahiba Sands, and more. Discover the best places to visit and travel tips.";
+
+// Fix for URL handling - gracefully handle when Astro.site is undefined
+const siteUrl = Astro.site?.toString() || 'https://justlifeingtogether.in';
+const canonicalURL = new URL('/destinations/oman', new URL(siteUrl)).toString();
+const ogImage = "/images/oman/hero-image/hero_image.webp";
+const absoluteImageUrl = new URL(ogImage, new URL(siteUrl)).toString();
+
+// Define structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "TravelGuide",
+  "name": "Oman Travel Guide: 13-Day Itinerary",
+  "author": {
+    "@type": "Person",
+    "name": "Pankhuri and Kaushal"
+  },
+  "description": "A comprehensive 13-day Oman travel guide with detailed itinerary covering Muscat, Nizwa, Wadi Shab, Ras Al Jinz, Wahiba Sands, and more.",
+  "datePublished": "2025-11-12",
+  "dateModified": new Date().toISOString().split('T')[0],
+  "image": absoluteImageUrl,
+  "inLanguage": "en",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalURL
+  },
+  "about": {
+    "@type": "Place",
+    "name": "Oman",
+    "description": "Sultanate on the Arabian Peninsula known for its deserts, wadis, forts, and pristine coastline."
+  },
+  "itinerary": {
+    "@type": "ItemList",
+    "numberOfItems": 13,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "TouristDestination",
+          "name": "Arrival in Muscat",
+          "touristType": ["City Tourism", "Cultural Tourism"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "TouristDestination",
+          "name": "Dolphin Cruise and Nizwa",
+          "touristType": ["Nature Tourism", "Cultural Tourism"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "TouristDestination",
+          "name": "Goat Market and Al Hoota Caves",
+          "touristType": ["Cultural Tourism", "Nature Tourism"]
+        }
+      }
+    ]
+  },
+  "touristType": ["Desert Tourism", "Cultural Tourism", "Adventure Tourism", "Beach Tourism"],
+  "keywords": "Oman travel guide, Oman itinerary, Muscat travel guide, Wadi Shab, Ras Al Jinz turtles, Wahiba Sands, Nizwa Fort, things to do in Oman, Oman tourist attractions, Oman travel tips"
+};
+
+// Define breadcrumb structured data
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": new URL('/', new URL(siteUrl)).toString()
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Destinations",
+      "item": new URL('/destinations', new URL(siteUrl)).toString()
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Oman",
+      "item": canonicalURL
+    }
+  ]
+};
+---
+
+<Layout 
+  title={title}
+  description={description}
+>
+  <!-- SEO Meta Tags -->
+  <link rel="canonical" href={canonicalURL} slot="head" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" slot="head" />
+  <meta property="og:url" content={canonicalURL} slot="head" />
+  <meta property="og:title" content={title} slot="head" />
+  <meta property="og:description" content={description} slot="head" />
+  <meta property="og:image" content={absoluteImageUrl} slot="head" />
+  <meta property="og:image:alt" content="Oman panoramic view with desert and mountains" slot="head" />
+  <meta property="og:site_name" content="Lifeing Together" slot="head" />
+  <meta property="og:locale" content="en_US" slot="head" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" slot="head" />
+  <meta name="twitter:url" content={canonicalURL} slot="head" />
+  <meta name="twitter:title" content={title} slot="head" />
+  <meta name="twitter:description" content={description} slot="head" />
+  <meta name="twitter:image" content={absoluteImageUrl} slot="head" />
+  <meta name="twitter:image:alt" content="Oman panoramic view with desert and mountains" slot="head" />
+  
+  <!-- Additional SEO Tags -->
+  <meta name="keywords" content="Oman travel guide, Oman itinerary, Muscat travel guide, Wadi Shab, Ras Al Jinz turtles, Wahiba Sands, Nizwa Fort, things to do in Oman, best places to visit in Oman, Oman tourist attractions, Oman travel tips, Oman travel blog" slot="head" />
+  <meta name="author" content="Pankhuri and Kaushal" slot="head" />
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json" slot="head">
+    {JSON.stringify(structuredData)}
+  </script>
+  
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json" slot="head">
+    {JSON.stringify(breadcrumbData)}
+  </script>
+  
+  <link rel="stylesheet" href="/styles/oman.css">
+
+  <Hero 
+    title="Oman" 
+    subtitle="A journey through deserts, wadis, and ancient forts"
+    image="/images/oman/hero-image/hero_image.webp"
+    imageSmall="/images/oman/hero-image/hero_image-800w.webp"
+    imageMobile="/images/oman/hero-image/hero_image-400w.webp"
+    imageAlt="Scenic Oman landscape with desert dunes and mountains, a top tourist destination in the Arabian Peninsula"
+  />
+  
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-6">Our 13-Day Oman Adventure</h2>
+        <p class="text-gray-600 mb-4">
+          We spent 13 incredible days exploring Oman in November, from the vibrant souks of Muscat to the vast dunes of Wahiba Sands. Our journey took us through stunning landscapes, including the pristine wadis, ancient forts, and the protected turtle beaches of Ras Al Jinz.
+        </p>
+        <p class="text-gray-600">
+          Below is our detailed day-by-day itinerary with recommendations on must-visit locations, places to skip, and practical information to help you plan your own Oman adventure.
+        </p>
+      </div>
+
+      {/* Day 1 */}
+      <div class="day-card">
+        <div class="day-header">Day 1: Arrival in Muscat</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Golden Tulip Headington Ruwi</div>
+            <div class="quick-info-item">📍 Base Location: Muscat</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                We landed in Muscat around noon, picked up our self-drive car shortly after, and made our way to the hotel. After checking in and grabbing a relaxed lunch at a nearby Indian restaurant, we headed back to rest briefly and shake off the travel fatigue.
+              </p>
+              <p class="text-gray-600 mb-4">
+                In the evening, we visited Mutrah Souk and spent a few unhurried hours wandering through its narrow lanes. While many shops sold similar items, the atmosphere, bustle, and energy made it a fun and immersive way to start the trip.
+              </p>
+              <p class="text-gray-600 mb-4">
+                Driving in Oman took a little adjustment at first, but once we settled in, it was genuinely enjoyable. The roads were excellent, signage was clear, and getting around Muscat felt effortless.
+              </p>           
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Mutrah Souk</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day1/day1a-400w.webp 400w, 
+                            /images/oman/day1/day1a-800w.webp 800w, 
+                            /images/oman/day1/day1a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day1/day1a.jpg" 
+                    srcset="/images/oman/day1/day1a.jpg 1200w"
+                    alt="Mutrah Souk in muscat is a wonderful mesh of tiny lanes, small stores, and tasty food" 
+                    class="clickable-image active" 
+                    data-day="1"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day1/day1b-400w.webp 400w, 
+                            /images/oman/day1/day1b-800w.webp 800w, 
+                            /images/oman/day1/day1b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day1/day1b.jpg" 
+                    srcset="/images/oman/day1/day1b.jpg 1200w"
+                    alt="Beautiful silver antique shop in mutrah souk - it felt like we were in an old Arabian Bazaar" 
+                    class="clickable-image" 
+                    data-day="1"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="1"></span>
+                <span class="carousel-dot" data-day="1"></span>
+              </div>
+              <div class="image-caption">Mutrah Souk in Muscat</div>
+          </div>
+        </div>
+        
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              Mutrah Souk was a lively and atmospheric introduction to Oman, and wandering its lanes felt like easing gently into the trip. Driving around Muscat was smooth and surprisingly stress-free, which instantly made the journey feel relaxed.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 2 */}
+      <div class="day-card">
+        <div class="day-header">Day 2: Dolphin Cruise and Nizwa</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Lavenue GuestHouse</div>
+            <div class="quick-info-item">📍 Base Location: Nizwa</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                We started the day early with a dolphin cruise, and it turned out to be an incredible experience. The waters were a striking turquoise, and we were lucky enough to spot well over a hundred dolphins swimming freely around the boat.
+              </p>
+              <p class="text-gray-600 mb-4">
+                Nearby Al Bustan village felt calm and picturesque, with its white-and-blue buildings giving it a distinctly Mediterranean vibe. It was a lovely spot for a short break and some photos.
+              </p>
+              <p class="text-gray-600 mb-4">
+                From there, we drove to Nizwa. The barren landscapes along the way were unexpectedly beautiful, and the drive itself was a pleasure. By evening, we explored Nizwa Souk, sampled various local sweets, and unanimously picked tahini halwa as our favorite.
+              </p>
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Dolphin Cruise</span>
+                <span class="tag">Al Bustan Village</span>
+                <span class="tag">Nizwa Souk</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day2/day2a-400w.webp 400w, 
+                            /images/oman/day2/day2a-800w.webp 800w, 
+                            /images/oman/day2/day2a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day2/day2a.jpg" 
+                    srcset="/images/oman/day2/day2a.jpg 1200w"
+                    alt="That's us getting ready for the dolphin watching experience at Marina Bandar" 
+                    class="clickable-image active" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day2/day2b-400w.webp 400w, 
+                            /images/oman/day2/day2b-800w.webp 800w, 
+                            /images/oman/day2/day2b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day2/day2b.jpg" 
+                    srcset="/images/oman/day2/day2b.jpg 1200w"
+                    alt="Dolphins were much larger than wwe thought they'd be!" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day2/day2c-400w.webp 400w, 
+                            /images/oman/day2/day2c-800w.webp 800w, 
+                            /images/oman/day2/day2c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day2/day2c.jpg" 
+                    srcset="/images/oman/day2/day2c.jpg 1200w"
+                    alt="The dolphins never stopped being fascinating" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day2/day2d-400w.webp 400w, 
+                            /images/oman/day2/day2d-800w.webp 800w, 
+                            /images/oman/day2/day2d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day2/day2d.jpg" 
+                    srcset="/images/oman/day2/day2d.jpg 1200w"
+                    alt="Al Bustan beach was stunningly pristine and beautiful" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day2/day2e-400w.webp 400w, 
+                            /images/oman/day2/day2e-800w.webp 800w, 
+                            /images/oman/day2/day2e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day2/day2e.jpg" 
+                    srcset="/images/oman/day2/day2e.jpg 1200w"
+                    alt="Just us, looking into the beach at Al Bustan" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day2/day2f-400w.webp 400w, 
+                            /images/oman/day2/day2f-800w.webp 800w, 
+                            /images/oman/day2/day2f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day2/day2f.jpg" 
+                    srcset="/images/oman/day2/day2f.jpg 1200w"
+                    alt="I can't emphasise what a pleasure driving in Oman was" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day2/day2g-400w.webp 400w, 
+                            /images/oman/day2/day2g-800w.webp 800w, 
+                            /images/oman/day2/day2g.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day2/day2g.jpg" 
+                    srcset="/images/oman/day2/day2g.jpg 1200w"
+                    alt="The drive from Muscat to Nizwa was pitcuresque with mountains dotting the landscape" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day2/day2h-400w.webp 400w, 
+                            /images/oman/day2/day2h-800w.webp 800w, 
+                            /images/oman/day2/day2h.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day2/day2h.jpg" 
+                    srcset="/images/oman/day2/day2h.jpg 1200w"
+                    alt="We ended our day at Nizwa Souk - which had countless shops with souveniers, dates, weapons, meat, and pots" 
+                    class="clickable-image" 
+                    data-day="2"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+                <span class="carousel-dot" data-day="2"></span>
+              </div>
+              <div class="image-caption">Dolphin watching at Marina Bandar</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The dolphin cruise was stunning, with over 100 dolphins in the turquoise waters. Al Bustan village was beautiful with its Santorini-inspired white and blue architecture. Staying within Nizwa Souk was incredibly convenient and we highly recommend it.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 3 */}
+      <div class="day-card">
+        <div class="day-header">Day 3: Goat Market and Al Hoota Caves</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Lavenue GuestHouse</div>
+            <div class="quick-info-item">📍 Base Location: Nizwa</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                Every Friday morning in Nizwa, the Goat Market comes alive between 7 and 11. Villagers and shepherds from nearby areas bring their goats and cattle into the city, and the entire space fills up with buyers, sellers, and curious onlookers. Buyers sit in a loose circle while sellers parade their animals through the centre, with deals sealed through handshakes and cash. Watching this unfold was fascinating and felt like stepping straight into a living tradition.
+              </p>
+              <p class="text-gray-600 mb-4">
+                After the market, we drove to Al Hoota Caves. The caves were incredibly impressive, with naturally formed stalactites and stalagmites that are millions of years old. The walk through the caves was well laid out, and the small trivia boards along the way made it both educational and enjoyable.
+              </p>
+              <p class="text-gray-600 mb-4">
+                From Al Hoota, we headed to the nearby village of Bahla to explore Bahla Fort and the adjoining historic mosque. The fort itself was massive and atmospheric, though not very clearly marked, and we felt a guide would have added more depth to the experience. After spending several hours there and struggling to find vegetarian food around the area, we drove back to Nizwa and ended the day with another relaxed walk through the souk.
+              </p>
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Goat Market</span>
+                <span class="tag">Al Hoota Caves</span>
+                <span class="tag">Bahla Fort</span>
+                <span class="tag">Nizwa Souk</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day3/day3a-400w.webp 400w, 
+                            /images/oman/day3/day3a-800w.webp 800w, 
+                            /images/oman/day3/day3a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day3/day3a.jpg" 
+                    srcset="/images/oman/day3/day3a.jpg 1200w"
+                    alt="Friday morning had locals bring in knives and swords for sale at Nizwa Souk" 
+                    class="clickable-image active" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day3/day3b-400w.webp 400w, 
+                            /images/oman/day3/day3b-800w.webp 800w, 
+                            /images/oman/day3/day3b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day3/day3b.jpg" 
+                    srcset="/images/oman/day3/day3b.jpg 1200w"
+                    alt="The highlight of the souk on Friday was the goat market - locals paraded their cattle in this circle" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day3/day3c-400w.webp 400w, 
+                            /images/oman/day3/day3c-800w.webp 800w, 
+                            /images/oman/day3/day3c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day3/day3c.jpg" 
+                    srcset="/images/oman/day3/day3c.jpg 1200w"
+                    alt="We drove down the beautiful roads from Nizwa to Al Hoota, to see the ancient caves" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day3/day3d-400w.webp 400w, 
+                            /images/oman/day3/day3d-800w.webp 800w, 
+                            /images/oman/day3/day3d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day3/day3d.jpg" 
+                    srcset="/images/oman/day3/day3d.jpg 1200w"
+                    alt="Al Hoota caves, famous for stalactites and stalagmites - are estimated to be over 2 million years old" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day3/day3e-400w.webp 400w, 
+                            /images/oman/day3/day3e-800w.webp 800w, 
+                            /images/oman/day3/day3e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day3/day3e.jpg" 
+                    srcset="/images/oman/day3/day3e.jpg 1200w"
+                    alt="In a desperate bid to find vegetarian food at the village of Bahla, we settled with just a Pizza and Veg puff for lunch" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day3/day3f-400w.webp 400w, 
+                            /images/oman/day3/day3f-800w.webp 800w, 
+                            /images/oman/day3/day3f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day3/day3f.jpg" 
+                    srcset="/images/oman/day3/day3f.jpg 1200w"
+                    alt="Bahla fort was quite large and had multiple nooks and corners, each with it's own stories" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day3/day3g-400w.webp 400w, 
+                            /images/oman/day3/day3g-800w.webp 800w, 
+                            /images/oman/day3/day3g.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day3/day3g.jpg" 
+                    srcset="/images/oman/day3/day3g.jpg 1200w"
+                    alt="The view from the bahla fort at dusk was mersmerizing, with the town slowly lighting up" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day3/day3h-400w.webp 400w, 
+                            /images/oman/day3/day3h-800w.webp 800w, 
+                            /images/oman/day3/day3h.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day3/day3h.jpg" 
+                    srcset="/images/oman/day3/day3h.jpg 1200w"
+                    alt="The bahla fort itself was lit up in the night" 
+                    class="clickable-image" 
+                    data-day="3"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+                <span class="carousel-dot" data-day="3"></span>
+              </div>
+              <div class="image-caption">The fascinating Goat Market in Nizwa</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The Goat Market was a truly unique cultural experience and one of the most memorable moments of the trip. Al Hoota Caves were impressive and thoughtfully presented, and Bahla Fort’s scale and atmosphere made it easy to imagine its past.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Consider Adding</div>
+            <p class="text-gray-600">
+               Jabreen Castle is close to Bahla Fort and is often recommended as a worthwhile stop. Falaj Daris, the ancient canal system nearby, is another interesting addition if you have extra time.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 4 */}
+      <div class="day-card">
+        <div class="day-header">Day 4: Nizwa Fort and Misfat Al Abriyeen</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Al hamra old house</div>
+            <div class="quick-info-item">📍 Base Location: al Hamra</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+             <p class="text-gray-600 mb-4">
+                We started the morning at Nizwa Fort and the adjoining castle. Hiring a guide turned out to be an excellent decision, as the additional stories and historical context made the visit far more engaging. Without the guide, much of the fort would have been easy to miss.
+              </p>
+              <p class="text-gray-600 mb-4">
+                From Nizwa, we drove to the mountain village of Misfat Al Abriyeen and wandered through its narrow lanes. The village was stunning, but our walk slowly turned into an unintended hike. As daylight faded quickly and the surroundings grew quiet, the experience became slightly nerve-wracking before we finally found our way back to the village parking.
+              </p>
+              <p class="text-gray-600 mb-4">
+                We ended the day in Al Hamra, staying in a traditional Omani house. The home was warm, charming, and full of character, and it genuinely gave us a sense of what everyday life in an Omani village might feel like.
+              </p>
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Nizwa Fort</span>
+                <span class="tag">Misfat Al abreeyen</span>
+                <span class="tag">Al Hamra Old House</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day4/day4a-400w.webp 400w, 
+                            /images/oman/day4/day4a-800w.webp 800w, 
+                            /images/oman/day4/day4a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day4/day4a.jpg" 
+                    srcset="/images/oman/day4/day4a.jpg 1200w"
+                    alt="The Nizwa castle and fort was our first plan for the day" 
+                    class="clickable-image active" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day4/day4b-400w.webp 400w, 
+                            /images/oman/day4/day4b-800w.webp 800w, 
+                            /images/oman/day4/day4b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day4/day4b.jpg" 
+                    srcset="/images/oman/day4/day4b.jpg 1200w"
+                    alt="The top of Nizwa fort gave us access to some pretty views of the city" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day4/day4c-400w.webp 400w, 
+                            /images/oman/day4/day4c-800w.webp 800w, 
+                            /images/oman/day4/day4c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day4/day4c.jpg" 
+                    srcset="/images/oman/day4/day4c.jpg 1200w"
+                    alt="A random mirror in Nizwa castle enabled us to take this selfie" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day4/day4d-400w.webp 400w, 
+                            /images/oman/day4/day4d-800w.webp 800w, 
+                            /images/oman/day4/day4d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day4/day4d.jpg" 
+                    srcset="/images/oman/day4/day4d.jpg 1200w"
+                    alt="We moved from Nizwa to Misfat al Abriyeen - a charming town with narrow lanes" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day4/day4e-400w.webp 400w, 
+                            /images/oman/day4/day4e-800w.webp 800w, 
+                            /images/oman/day4/day4e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day4/day4e.jpg" 
+                    srcset="/images/oman/day4/day4e.jpg 1200w"
+                    alt="Hiking down this trail in Misfat was pretty - and then scary as it started getting dark very quickly" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day4/day4f-400w.webp 400w, 
+                            /images/oman/day4/day4f-800w.webp 800w, 
+                            /images/oman/day4/day4f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day4/day4f.jpg" 
+                    srcset="/images/oman/day4/day4f.jpg 1200w"
+                    alt="We ate this Rogan Crepe and Rogan Cafe - and it was the tastiest thing we at in Oman" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day4/day4g-400w.webp 400w, 
+                            /images/oman/day4/day4g-800w.webp 800w, 
+                            /images/oman/day4/day4g.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day4/day4g.jpg" 
+                    srcset="/images/oman/day4/day4g.jpg 1200w"
+                    alt="Our night was spent in Al Hamra Old house - literally an old house in the village of Al hamra" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day4/day4h-400w.webp 400w, 
+                            /images/oman/day4/day4h-800w.webp 800w, 
+                            /images/oman/day4/day4h.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day4/day4h.jpg" 
+                    srcset="/images/oman/day4/day4h.jpg 1200w"
+                    alt="Our room at Al Hamra Old House - we loved how much vibe it had!" 
+                    class="clickable-image" 
+                    data-day="4"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+                <span class="carousel-dot" data-day="4"></span>
+              </div>
+              <div class="image-caption">Nizwa Fort and Castle</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+             Rogan Cafe's Rogan Crepe was brilliant, and staying in the old Omani house at Al Hamra was one of our favourite experiences.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+              If you’re short on time and doing a very quick trip, Misfat Al Abriyeen can be skipped - though we personally enjoyed it and felt it was worth the detour.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 5 */}
+      <div class="day-card">
+        <div class="day-header">Day 5: Wadi Bani Khalid and Ras Al Jinz Turtles</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Ras Al Hadd Sea Turtles Guest House</div>
+            <div class="quick-info-item">📍 Base Location: Ras Al Hadd Village</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+             <p class="text-gray-600 mb-4">
+                We checked out of the Al Hamra old house after a slow, relaxed morning and began the long but beautiful drive towards Wadi Bani Khalid. Once at the wadi, we hiked to the very end of the wadi.
+              </p>
+              <p class="text-gray-600 mb-4">
+                We had an early dinner near Wadi Bani Khalid and began our second long drive of the day towards Ras Al Jinz. For nearly 50 kilometres, there were no streetlights at all, as well as zero other vehicles on the road - making it the loneliest drive of our trip - it was a surreal experience.
+              </p>
+              <p class="text-gray-600 mb-4">
+                At Ras Al Jinz Turtle Reserve, the entire experience was thoughtfully organised. Visitors were grouped and asked to wait until rangers confirmed turtle activity. We waited patiently until a turtle finally chose a spot to lay her eggs. When it was our turn, we watched her carefully cover the eggs before slowly returning to the sea. We also saw newly hatched baby turtles making their way towards the ocean. Combined with glowing plankton along the shore and a sky full of stars, the night felt deeply emotional and unforgettable.
+              </p>
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Wadi Bani Khalid</span>
+                <span class="tag">Ras Al Jinz Turtle Reserve</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day5/day5a-400w.webp 400w, 
+                            /images/oman/day5/day5a-800w.webp 800w, 
+                            /images/oman/day5/day5a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day5/day5a.jpg" 
+                    srcset="/images/oman/day5/day5a.jpg 1200w"
+                    alt="Our first Wadi experience of Oman - Wadi Bani Khalid" 
+                    class="clickable-image active" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day5/day5b-400w.webp 400w, 
+                            /images/oman/day5/day5b-800w.webp 800w, 
+                            /images/oman/day5/day5b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day5/day5b.jpg" 
+                    srcset="/images/oman/day5/day5b.jpg 1200w"
+                    alt="Every turn at Wadi Bani Khalid gave us access to breathtaking views" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day5/day5c-400w.webp 400w, 
+                            /images/oman/day5/day5c-800w.webp 800w, 
+                            /images/oman/day5/day5c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day5/day5c.jpg" 
+                    srcset="/images/oman/day5/day5c.jpg 1200w"
+                    alt="We setup our tripod at the very end of the trail to capture this image" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day5/day5d-400w.webp 400w, 
+                            /images/oman/day5/day5d-800w.webp 800w, 
+                            /images/oman/day5/day5d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day5/day5d.jpg" 
+                    srcset="/images/oman/day5/day5d.jpg 1200w"
+                    alt="On the way back, we realized that the same paths we walked on looked so different from the opposite angle" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day5/day5e-400w.webp 400w, 
+                            /images/oman/day5/day5e-800w.webp 800w, 
+                            /images/oman/day5/day5e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day5/day5e.jpg" 
+                    srcset="/images/oman/day5/day5e.jpg 1200w"
+                    alt="And we couldn't resist stopping and staring into the stream" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day5/day5f-400w.webp 400w, 
+                            /images/oman/day5/day5f-800w.webp 800w, 
+                            /images/oman/day5/day5f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day5/day5f.jpg" 
+                    srcset="/images/oman/day5/day5f.jpg 1200w"
+                    alt="The drive to Sur had about 50 km or so of complete isolation and pitch darkness - where we were the only ones on the road!" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day5/day5g-400w.webp 400w, 
+                            /images/oman/day5/day5g-800w.webp 800w, 
+                            /images/oman/day5/day5g.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day5/day5g.jpg" 
+                    srcset="/images/oman/day5/day5g.jpg 1200w"
+                    alt="Watching the sea turtles at Ras Al Jinz reserve was an overwhelming experience" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day5/day5h-400w.webp 400w, 
+                            /images/oman/day5/day5h-800w.webp 800w, 
+                            /images/oman/day5/day5h.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day5/day5h.jpg" 
+                    srcset="/images/oman/day5/day5h.jpg 1200w"
+                    alt="Plankton dotted the coastline - a stunning view that left us so mesmerized" 
+                    class="clickable-image" 
+                    data-day="5"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+                <span class="carousel-dot" data-day="5"></span>
+              </div>
+              <div class="image-caption">Our first Wadi experience at Wadi Bani Khalid</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              Wadi Bani Khalid was a fantastic first wadi experience, and hiking to the quieter end felt incredibly rewarding. Watching turtles at Ras Al Jinz was emotional and humbling, and the combination of glowing plankton, total darkness, and a star-filled sky made the night unforgettable.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 6 */}
+      <div class="day-card">
+        <div class="day-header">Day 6: Dhow Factory and Sur</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Ras Al Hadd Sea Turtles Guest House</div>
+            <div class="quick-info-item">📍 Base Location: Ras Al Hadd Village</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+             <p class="text-gray-600 mb-4">
+                We drove from Ras Al Hadd to Sur and started the day at a dhow factory and it's adjoining maritime museum, where traditional dhows and canoes are still built entirely by hand. Watching craftsmen work on carvings, hinges, and wooden panels was fascinating, and we spent a couple of hours observing the process.
+              </p>
+              <p class="text-gray-600 mb-4">
+                After lunch at a small local spot, we headed to the Al Ayjah Watchtower. The short hike up was well worth it - we stayed long enough to see Sur both before sunset and as the city slowly lit up for the night. Compared to the lighthouse, this felt like a far better vantage point.
+              </p>
+              <p class="text-gray-600 mb-4">
+                Later, we stopped by Sur Corniche for coffee and briefly visited Sur Souq before heading back. We had planned another night of stargazing and plankton watching, but access to the beach was restricted. Even so, setting up our tripod nearby and simply staring at the star-filled sky was a perfect way to end the day.
+              </p>
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Dhow factory (Fatah Al Khair dhow)</span>
+                <span class="tag">Al Ayjah Watchtower</span>
+                <span class="tag">Al Ajyah Lighthouse</span>
+                <span class="tag">Sur Souk</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day6/day6a-400w.webp 400w, 
+                            /images/oman/day6/day6a-800w.webp 800w, 
+                            /images/oman/day6/day6a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day6/day6a.jpg" 
+                    srcset="/images/oman/day6/day6a.jpg 1200w"
+                    alt="Driving from Ras Al Hadd village to Sur city blessed us with these beautiful beach views" 
+                    class="clickable-image active" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day6/day6b-400w.webp 400w, 
+                            /images/oman/day6/day6b-800w.webp 800w, 
+                            /images/oman/day6/day6b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day6/day6b.jpg" 
+                    srcset="/images/oman/day6/day6b.jpg 1200w"
+                    alt="We went to a Dhow factory in Sur - was fascinating to see how dhows were actually built" 
+                    class="clickable-image" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day6/day6c-400w.webp 400w, 
+                            /images/oman/day6/day6c-800w.webp 800w, 
+                            /images/oman/day6/day6c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day6/day6c.jpg" 
+                    srcset="/images/oman/day6/day6c.jpg 1200w"
+                    alt="An under construction down at the Dhow factory" 
+                    class="clickable-image" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day6/day6d-400w.webp 400w, 
+                            /images/oman/day6/day6d-800w.webp 800w, 
+                            /images/oman/day6/day6d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day6/day6d.jpg" 
+                    srcset="/images/oman/day6/day6d.jpg 1200w"
+                    alt="The view from the top of the Sur Watchtower was stunning - gave us 360 views of Sur town" 
+                    class="clickable-image" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day6/day6e-400w.webp 400w, 
+                            /images/oman/day6/day6e-800w.webp 800w, 
+                            /images/oman/day6/day6e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day6/day6e.jpg" 
+                    srcset="/images/oman/day6/day6e.jpg 1200w"
+                    alt="That's Pankhuri, looking into Sur town" 
+                    class="clickable-image" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day6/day6f-400w.webp 400w, 
+                            /images/oman/day6/day6f-800w.webp 800w, 
+                            /images/oman/day6/day6f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day6/day6f.jpg" 
+                    srcset="/images/oman/day6/day6f.jpg 1200w"
+                    alt="Another view from the top of Sur Watchtower, just as dusk hit" 
+                    class="clickable-image" 
+                    data-day="6"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="6"></span>
+                <span class="carousel-dot" data-day="6"></span>
+                <span class="carousel-dot" data-day="6"></span>
+                <span class="carousel-dot" data-day="6"></span>
+                <span class="carousel-dot" data-day="6"></span>
+                <span class="carousel-dot" data-day="6"></span>
+              </div>
+              <div class="image-caption">Dhow factory in Sur</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              Watching the sun set at Al Ajyah Watchtower was a truly remarkable experience!
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+              Al-Ajyah Lighthouse can be skipped - the watchtower is a significantly better view. Sur Souq can be skipped as well - after having seen the souqs at Mutrah and Nizwa, Sur Souq doesn't add value.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Consider Adding</div>
+            <p class="text-gray-600">
+              We didn't do Sur Palace which is supposedly very nice.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 7 */}
+      <div class="day-card">
+        <div class="day-header">Day 7: Wadi Shab</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Golden Tulip Al Khuwair Muscat</div>
+            <div class="quick-info-item">📍 Base Location: Muscat</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                We reached Wadi Shab around 11am and rented life jackets at the parking area for 1 OMR each. The shop owner was refreshingly honest - when we showed him our own waterproof phone covers, he simply told us we didn’t need to buy anything extra. After taking the short boat ride across the river, we started the 45–50 minute trek.
+              </p>
+              <p class="text-gray-600 mb-4">
+                Once the trail gave way to water, we left our bags behind, put on our life jackets, and slowly entered the cold water. As it got deeper, panic briefly set in. Luckily, we met another Indian couple travelling with a guide, who patiently taught us how to float properly using the life jacket and move through the water without fighting it.
+              </p>
+              <p class="text-gray-600 mb-4">
+                That advice changed everything. Moving slowly, we made our way through the water, soaking in the sounds, sights, and calm of the wadi. By the time we were back at the parking area, it was close to 3pm and we were exhausted and starving. 
+              </p>
+              <p class="text-gray-600 mb-4">
+                We had originally planned to visit Bimmah Sinkhole and Tiwi Beach as well, but Wadi Shab took longer than expected and the early sunset made it impractical. We decided to leave those for the next day instead.
+              </p>
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Wadi Shab</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day7/day7a-400w.webp 400w, 
+                            /images/oman/day7/day7a-800w.webp 800w, 
+                            /images/oman/day7/day7a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day7/day7a.jpg" 
+                    srcset="/images/oman/day7/day7a.jpg 1200w"
+                    alt="Yet another Wadi day - the most famous of the Omani Wadis - Wadi Shab" 
+                    class="clickable-image active" 
+                    data-day="7"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day7/day7b-400w.webp 400w, 
+                            /images/oman/day7/day7b-800w.webp 800w, 
+                            /images/oman/day7/day7b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day7/day7b.jpg" 
+                    srcset="/images/oman/day7/day7b.jpg 1200w"
+                    alt="The starting point of Wadi Shab was a wide pool" 
+                    class="clickable-image" 
+                    data-day="7"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day7/day7c-400w.webp 400w, 
+                            /images/oman/day7/day7c-800w.webp 800w, 
+                            /images/oman/day7/day7c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day7/day7c.jpg" 
+                    srcset="/images/oman/day7/day7c.jpg 1200w"
+                    alt="Along the wadi route were areas so shallow we could sit in them" 
+                    class="clickable-image" 
+                    data-day="7"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day7/day7d-400w.webp 400w, 
+                            /images/oman/day7/day7d-800w.webp 800w, 
+                            /images/oman/day7/day7d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day7/day7d.jpg" 
+                    srcset="/images/oman/day7/day7d.jpg 1200w"
+                    alt="One of the rare together pics we got in the wadi" 
+                    class="clickable-image" 
+                    data-day="7"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day7/day7e-400w.webp 400w, 
+                            /images/oman/day7/day7e-800w.webp 800w, 
+                            /images/oman/day7/day7e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day7/day7e.jpg" 
+                    srcset="/images/oman/day7/day7e.jpg 1200w"
+                    alt="what you don't see here is how panicky we were since we didn't fully trust our lifejackets yet" 
+                    class="clickable-image" 
+                    data-day="7"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day7/day7f-400w.webp 400w, 
+                            /images/oman/day7/day7f-800w.webp 800w, 
+                            /images/oman/day7/day7f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day7/day7f.jpg" 
+                    srcset="/images/oman/day7/day7f.jpg 1200w"
+                    alt="Wadi Bani Khalid and Wadi Shab made us want to do another wadi - which we did, later!" 
+                    class="clickable-image" 
+                    data-day="7"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="7"></span>
+                <span class="carousel-dot" data-day="7"></span>
+                <span class="carousel-dot" data-day="7"></span>
+                <span class="carousel-dot" data-day="7"></span>
+                <span class="carousel-dot" data-day="7"></span>
+                <span class="carousel-dot" data-day="7"></span>
+              </div>
+              <div class="image-caption">Wadi Shab - the most famous of the Omani Wadis</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+             Wadi Shab pushed us well outside our comfort zone. Learning how to float properly was a game-changer and allowed us to truly enjoy the calm, beauty, and sensory experience of the wadi instead of rushing through it.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Consider Adding</div>
+            <p class="text-gray-600">
+              A lot of people do Tiwi Beach, Pebbles Beach, and Bimmah sinkhole on the same day as Wadi Shab. However, we didn't have time for these. We did it on the next day instead.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 8 */}
+      <div class="day-card">
+        <div class="day-header">Day 8: Sultan Qaboos Mosque and Tiwi Beach</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Golden Tulip Al Khuwair Muscat</div>
+            <div class="quick-info-item">📍 Base Location: Muscat</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <p class="text-gray-600 mb-4">
+                We started the day early to visit Sultan Qaboos Grand Mosque, which is open to non-Muslims only between 8am and 11am. We got a guide inside the mosque - a warm and friendly Omani uncle who shared insights about the mosque, Islam, and life in Oman, making the visit far more meaningful.
+              </p>
+              <p class="text-gray-600 mb-4">
+                Inside, we saw the mosque’s stunning architecture and learned about the second-largest hand-woven carpet in the world. Having already seen the largest carpet at Sheikh Zayed Mosque in Abu Dhabi, it felt like an oddly satisfying milestone.
+              </p>
+              <p class="text-gray-600 mb-4">
+                Later, we drove to Bimmah Sinkhole - a dramatic natural formation connected to an underground water source. While many people were swimming, we mostly relaxed by the edge and watched fish nibble at our feet. It was pleasant, but not a must-do.
+              </p>
+              <p class="text-gray-600 mb-4">
+                We then headed to Tiwi Beach, an incredibly calm and quiet pebble beach. We spent nearly two hours there, watching the sun set and the crystal-clear water meet the shore. Sitting there doing absolutely nothing turned out to be one of the most peaceful moments of the trip.
+              </p>
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Sultan Quboos grand mosque</span>
+                <span class="tag">Bimmah Sinkhole</span>
+                <span class="tag">Tiwi Beach</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day8/day8a-400w.webp 400w, 
+                            /images/oman/day8/day8a-800w.webp 800w, 
+                            /images/oman/day8/day8a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day8/day8a.jpg" 
+                    srcset="/images/oman/day8/day8a.jpg 1200w"
+                    alt="The morning began with a visit to Sultan Qaboos Mosque - beautiful and vast!" 
+                    class="clickable-image active" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day8/day8b-400w.webp 400w, 
+                            /images/oman/day8/day8b-800w.webp 800w, 
+                            /images/oman/day8/day8b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day8/day8b.jpg" 
+                    srcset="/images/oman/day8/day8b.jpg 1200w"
+                    alt="The carpet in Sultan Quboos is the second largest in the world, following the Shaik Zayed Mosque in Abu Dhabi" 
+                    class="clickable-image" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day8/day8c-400w.webp 400w, 
+                            /images/oman/day8/day8c-800w.webp 800w, 
+                            /images/oman/day8/day8c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day8/day8c.jpg" 
+                    srcset="/images/oman/day8/day8c.jpg 1200w"
+                    alt="We went to Bimmah Sinkhole (near Wadi Shab) since we missed it on the previous day" 
+                    class="clickable-image" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day8/day8d-400w.webp 400w, 
+                            /images/oman/day8/day8d-800w.webp 800w, 
+                            /images/oman/day8/day8d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day8/day8d.jpg" 
+                    srcset="/images/oman/day8/day8d.jpg 1200w"
+                    alt="Bimmah Sinkhole gave us the opportunity to get our feet nibbled at by tiny fish" 
+                    class="clickable-image" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day8/day8e-400w.webp 400w, 
+                            /images/oman/day8/day8e-800w.webp 800w, 
+                            /images/oman/day8/day8e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day8/day8e.jpg" 
+                    srcset="/images/oman/day8/day8e.jpg 1200w"
+                    alt="The Tiwi beach is next to the Sinkhole, and is so unbelievably peaceful and pebbley" 
+                    class="clickable-image" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day8/day8f-400w.webp 400w, 
+                            /images/oman/day8/day8f-800w.webp 800w, 
+                            /images/oman/day8/day8f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day8/day8f.jpg" 
+                    srcset="/images/oman/day8/day8f.jpg 1200w"
+                    alt="Pankhuri setting up our tripod at the Tiwi beach, to give us some great timelapses of the evening" 
+                    class="clickable-image" 
+                    data-day="8"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="8"></span>
+                <span class="carousel-dot" data-day="8"></span>
+                <span class="carousel-dot" data-day="8"></span>
+                <span class="carousel-dot" data-day="8"></span>
+                <span class="carousel-dot" data-day="8"></span>
+                <span class="carousel-dot" data-day="8"></span>
+              </div>
+              <div class="image-caption">Sultan Qaboos Grand Mosque</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              Tiwi Beach was pure calm - quiet, uncrowded, and the perfect place to slow down and simply watch the waves. Loved it.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+              The Bimmah sinkhole is an entirely skippable place if you don't have the time - nice, but not essential. 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 9 */}
+      <div class="day-card">
+        <div class="day-header">Day 9: Damaniyat Islands</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Golden Tulip Al Khuwair Muscat</div>
+            <div class="quick-info-item">📍 Base Location: Muscat</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                We had booked a half-day tour to the Damaniyat Islands - This protected group of islands off the coast of Muscat is known for its crystal-clear turquoise waters and rich marine life - turtles, sharks, corals, and massive schools of fish. Our tour included two snorkeling stops and time on one of the islands to take in the views from above.
+              </p>
+              <p class="text-gray-600 mb-4">
+                At the first snorkeling stop, our boat captain patiently taught us how to snorkel - it was our first time. Once we got comfortable putting our heads underwater, we were blown away by what we saw: incredibly clear water, several turtles swimming nearby, and vibrant marine life all around us.
+              </p>
+              <p class="text-gray-600 mb-4">
+                We then stopped near one of the islands, got off the boat, and walked up a small trail to a viewpoint overlooking the surrounding islands and open sea. After that, we snorkeled again near the shore, spotting coral reefs, jellyfish, and plenty of fish. By the end of the four-hour tour, we were completely exhausted but extremely happy. We reached back by around 2:30 pm, returned to the hotel, planned a short nap - and ended up sleeping for nearly 13 straight hours, interrupted only by a quick dinner.
+              </p>
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Damaniyat Islands</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day9/day9a-400w.webp 400w, 
+                            /images/oman/day9/day9a-800w.webp 800w, 
+                            /images/oman/day9/day9a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day9/day9a.jpg" 
+                    srcset="/images/oman/day9/day9a.jpg 1200w"
+                    alt="The day was all about visiting the stunning set of Damaniyat Islands" 
+                    class="clickable-image active" 
+                    data-day="9"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day9/day9b-400w.webp 400w, 
+                            /images/oman/day9/day9b-800w.webp 800w, 
+                            /images/oman/day9/day9b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day9/day9b.jpg" 
+                    srcset="/images/oman/day9/day9b.jpg 1200w"
+                    alt="From the top of one of the islands of the Damaniyat, we could see turtles and shallow sea sharks" 
+                    class="clickable-image" 
+                    data-day="9"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day9/day9c-400w.webp 400w, 
+                            /images/oman/day9/day9c-800w.webp 800w, 
+                            /images/oman/day9/day9c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day9/day9c.jpg" 
+                    srcset="/images/oman/day9/day9c.jpg 1200w"
+                    alt="We snorkeled for the first time, only to be treated by these cute turtles" 
+                    class="clickable-image" 
+                    data-day="9"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day9/day9d-400w.webp 400w, 
+                            /images/oman/day9/day9d-800w.webp 800w, 
+                            /images/oman/day9/day9d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day9/day9d.jpg" 
+                    srcset="/images/oman/day9/day9d.jpg 1200w"
+                    alt="We were continually awestruck by the turtles and fish we saw while snorkeling" 
+                    class="clickable-image" 
+                    data-day="9"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day9/day9e-400w.webp 400w, 
+                            /images/oman/day9/day9e-800w.webp 800w, 
+                            /images/oman/day9/day9e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day9/day9e.jpg" 
+                    srcset="/images/oman/day9/day9e.jpg 1200w"
+                    alt="For non swimmers like us, life jackets were truly life changing" 
+                    class="clickable-image" 
+                    data-day="9"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day9/day9f-400w.webp 400w, 
+                            /images/oman/day9/day9f-800w.webp 800w, 
+                            /images/oman/day9/day9f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day9/day9f.jpg" 
+                    srcset="/images/oman/day9/day9f.jpg 1200w"
+                    alt="yet another stunning view of the turquoise blue waters of the Arabian Ocean" 
+                    class="clickable-image" 
+                    data-day="9"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="9"></span>
+                <span class="carousel-dot" data-day="9"></span>
+                <span class="carousel-dot" data-day="9"></span>
+                <span class="carousel-dot" data-day="9"></span>
+                <span class="carousel-dot" data-day="9"></span>
+                <span class="carousel-dot" data-day="9"></span>
+              </div>
+              <div class="image-caption">Damaniyat Islands - the Maldives of Oman</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              Damaniyat Islands is called the Maldives of Oman and it lived up to its reputation. Seeing turtles, sharks, schools of fishes, and corals in the brilliant turquoise blue waters was an incredible sight. 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 10 */}
+      <div class="day-card">
+        <div class="day-header">Day 10: Wadi Hoqain</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Golden Tulip Al Khuwair Muscat</div>
+            <div class="quick-info-item">📍 Base Location: Muscat</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                By this point in the trip, we were fully in our water phase - and we decided to add Wadi Hoqain to our list of Wadis. We ended up buying two life jackets on the way at Hyper Max since this wadi wasn't very commercial. 
+              </p>
+              <p class="text-gray-600 mb-4">
+                The moment we entered the wadi, it felt completely different. The water got deep very quickly, starting out turquoise and gradually transforming into an unreal sulphur blue near the end. It was unlike any color we had ever seen in natural water, and it instantly became clear that the detour was worth it.
+              </p>
+              <p class="text-gray-600 mb-4">
+                We grabbed some snacks at a small coffee shop near the wadi around 5 pm and headed back toward the city. With the newly bought life jackets taking up space, we picked up a drag bag for cheap and then made a final stop at Mutrah Souk to shop for souvenirs.
+              </p>
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Wadi Hoqein</span>
+                <span class="tag">Mutrah Souk</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day10/day10a-400w.webp 400w, 
+                            /images/oman/day10/day10a-800w.webp 800w, 
+                            /images/oman/day10/day10a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day10/day10a.jpg" 
+                    srcset="/images/oman/day10/day10a.jpg 1200w"
+                    alt="We bought our own life jackets to visit the sulphur blue waters of Wadi Hoquin - the best Wadi we saw!" 
+                    class="clickable-image active" 
+                    data-day="10"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day10/day10b-400w.webp 400w, 
+                            /images/oman/day10/day10b-800w.webp 800w, 
+                            /images/oman/day10/day10b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day10/day10b.jpg" 
+                    srcset="/images/oman/day10/day10b.jpg 1200w"
+                    alt="Wadi Hoqain topped our wadi list - it was just SO different" 
+                    class="clickable-image" 
+                    data-day="10"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day10/day10c-400w.webp 400w, 
+                            /images/oman/day10/day10c-800w.webp 800w, 
+                            /images/oman/day10/day10c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day10/day10c.jpg" 
+                    srcset="/images/oman/day10/day10c.jpg 1200w"
+                    alt="Wadi Hoqain got really deep really quickly - but our life jackets did a great job!" 
+                    class="clickable-image" 
+                    data-day="10"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day10/day10d-400w.webp 400w, 
+                            /images/oman/day10/day10d-800w.webp 800w, 
+                            /images/oman/day10/day10d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day10/day10d.jpg" 
+                    srcset="/images/oman/day10/day10d.jpg 1200w"
+                    alt="Wadi Hoqain was really narrow at times, while being super deep" 
+                    class="clickable-image" 
+                    data-day="10"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="10"></span>
+                <span class="carousel-dot" data-day="10"></span>
+                <span class="carousel-dot" data-day="10"></span>
+                <span class="carousel-dot" data-day="10"></span>
+              </div>
+              <div class="image-caption">Wadi Hoqain - the best Wadi we saw</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              Wadi Hoqain was a surreal experience and topped our wadi list - it was just SO different. The stunning sulphur blue color at the end of the wadi was a completely different blue to any other water that we had ever seen in our lives.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 11 */}
+      <div class="day-card">
+        <div class="day-header">Day 11: Wahiba Sands Desert Camp</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Arab Desert Camp</div>
+            <div class="quick-info-item">📍 Base Location: Wahiba</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                We returned our trusted Nissan Sunny after nearly 10 days and close to 2,000 km on the road. In its place arrived a massive 4x4 Mitsubishi Montero Sport - our ride for the desert and the mountains ahead. It was my first time driving a 4x4, and it took a little while to get comfortable behind the wheel.
+              </p>
+              <p class="text-gray-600 mb-4">
+                Wahiba Sands was about a 3.5-hour drive away. Driving on the sand-dunes was such a different experience - and when we reached, we saw our tent was as simple and raw as it gets: a single bed, a cupboard, and an attached open-air bathroom. The desert stretched endlessly in every direction and looked stunning in the soft evening light.
+              </p>
+
+              <p class="text-gray-600 mb-4">
+                Walking the dunes was physically demanding - deep sand, strong winds, and sand getting everywhere. By sunset, the light faded quickly. At around 7 pm, our guides Badar and Abdul Malik lit a campfire. There were only a handful of guests that night, which made the evening feel intimate and special.
+              </p>
+              <p class="text-gray-600 mb-4">
+                Dinner was served at 7:30 pm and included a generous spread with plenty of vegetarian options. After dinner, everyone gathered around the fire as the guides shared stories about growing up in Bedouin culture and life in the desert. Later that night, under a sky bursting with stars, we spent nearly two hours trying to photograph the night sky - the most stars we had ever seen in our lives.
+              </p>              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Wahiba Sands</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day11/day11a-400w.webp 400w, 
+                            /images/oman/day11/day11a-800w.webp 800w, 
+                            /images/oman/day11/day11a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day11/day11a.jpg" 
+                    srcset="/images/oman/day11/day11a.jpg 1200w"
+                    alt="The desert at Bidiyah Sands was vast, stunningly beautiful, and ridiculously windy - getting sand everywhere!" 
+                    class="clickable-image active" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day11/day11b-400w.webp 400w, 
+                            /images/oman/day11/day11b-800w.webp 800w, 
+                            /images/oman/day11/day11b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day11/day11b.jpg" 
+                    srcset="/images/oman/day11/day11b.jpg 1200w"
+                    alt="We stayed in a tent in the desert at Bidiyah sands - it felt like a very authentic experience" 
+                    class="clickable-image" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day11/day11c-400w.webp 400w, 
+                            /images/oman/day11/day11c-800w.webp 800w, 
+                            /images/oman/day11/day11c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day11/day11c.jpg" 
+                    srcset="/images/oman/day11/day11c.jpg 1200w"
+                    alt="Pankhuri using the sand to determine the direction of the wind - to help her bowl the perfect outswinger" 
+                    class="clickable-image" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day11/day11d-400w.webp 400w, 
+                            /images/oman/day11/day11d-800w.webp 800w, 
+                            /images/oman/day11/day11d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day11/day11d.jpg" 
+                    srcset="/images/oman/day11/day11d.jpg 1200w"
+                    alt="Climbing up the dunes were painfully difficult" 
+                    class="clickable-image" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day11/day11e-400w.webp 400w, 
+                            /images/oman/day11/day11e-800w.webp 800w, 
+                            /images/oman/day11/day11e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day11/day11e.jpg" 
+                    srcset="/images/oman/day11/day11e.jpg 1200w"
+                    alt="We stayed up till 12 looking up at the starry sky - and we saw a fwe shooting stars!" 
+                    class="clickable-image" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day11/day11f-400w.webp 400w, 
+                            /images/oman/day11/day11f-800w.webp 800w, 
+                            /images/oman/day11/day11f.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day11/day11f.jpg" 
+                    srcset="/images/oman/day11/day11f.jpg 1200w"
+                    alt="It genuinely was the most stars we'd seen in our lives" 
+                    class="clickable-image" 
+                    data-day="11"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="11"></span>
+                <span class="carousel-dot" data-day="11"></span>
+                <span class="carousel-dot" data-day="11"></span>
+                <span class="carousel-dot" data-day="11"></span>
+                <span class="carousel-dot" data-day="11"></span>
+                <span class="carousel-dot" data-day="11"></span>
+              </div>
+              <div class="image-caption">Wahiba Sands Desert Camp</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+            Driving across open sand and climbing dunes was a completely new experience. The desert views were breathtaking, the Bedouin stories around the campfire were deeply memorable, and the night sky - filled with countless stars - was unlike anything we had ever seen before.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 12 */}
+      <div class="day-card">
+        <div class="day-header">Day 12: Jebel Akhdar</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">🏨 Stay: Green View Hotel Jebel Akhdar</div>
+            <div class="quick-info-item">📍 Base Location: Jebel</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+              <p class="text-gray-600 mb-4">
+                We woke up around 6 am to catch the sunrise, which meant climbing up a tall sand dune in the cold desert morning. It was absolutely worth it. After soaking in the sunrise, we crawled back to bed.
+              </p>
+              <p class="text-gray-600 mb-4">
+                From there, we began the long 4.5-hour drive to Jebel Akhdar. At the entry checkpoint, a policeman verified our license and confirmed that we were indeed driving a 4WD. The steep roads took some getting used to, but switching to manual mode made the drive much smoother than automatic.
+              </p>
+             
+              <p class="text-gray-600 mb-4">
+                We visited Diana’s Point, where Princess Diana is said to have spent time during a visit to Oman. From there, we went to Al Ain village, an inhabited mountain village with quiet, charming walking paths. 
+              </p>
+            
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Jebel Akhdar</span>
+                <span class="tag">Diana's Point</span>
+                <span class="tag">Al Ain Village</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day12/day12a-400w.webp 400w, 
+                            /images/oman/day12/day12a-800w.webp 800w, 
+                            /images/oman/day12/day12a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day12/day12a.jpg" 
+                    srcset="/images/oman/day12/day12a.jpg 1200w"
+                    alt="We woke up to see the sunrise at the desert - it was cold but so worth it" 
+                    class="clickable-image active" 
+                    data-day="12"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day12/day12b-400w.webp 400w, 
+                            /images/oman/day12/day12b-800w.webp 800w, 
+                            /images/oman/day12/day12b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day12/day12b.jpg" 
+                    srcset="/images/oman/day12/day12b.jpg 1200w"
+                    alt="On the way from Bidiyah to Jebel Akhdar, we saw many cute camels in the wild" 
+                    class="clickable-image" 
+                    data-day="12"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day12/day12c-400w.webp 400w, 
+                            /images/oman/day12/day12c-800w.webp 800w, 
+                            /images/oman/day12/day12c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day12/day12c.jpg" 
+                    srcset="/images/oman/day12/day12c.jpg 1200w"
+                    alt="Jebel Akhdar is an entirely skippable mountain village (especially if you've been to ghats / mountains in India)" 
+                    class="clickable-image" 
+                    data-day="12"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="12"></span>
+                <span class="carousel-dot" data-day="12"></span>
+                <span class="carousel-dot" data-day="12"></span>
+              </div>
+              <div class="image-caption">Sunrise at Wahiba Sands and Jebel Akhdar</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+              The sunrise view from the tall sand dune was worth the early morning desert cold. Also discovered honey and cheese with bread was a great combination.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+           If you’ve already spent time in mountain regions like the Western Ghats (Coorg, Coonoor, Wayanad, Mahabaleshwar, etc) in India, Jebel Akhdar can feel underwhelming and is fairly skippable.
+            </p>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Day 13 */}
+      <div class="day-card">
+        <div class="day-header">Day 13: Birkat Al-Mauz and Return to Muscat</div>
+        <div class="day-content">
+          <div class="quick-info">
+            <div class="quick-info-item">✈️ Travel: Return to Muscat</div>
+            <div class="quick-info-item">📍 Base Location: Muscat</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="section-title">Daily Summary</div>
+               <p class="text-gray-600 mb-4">
+                The last day of the trip came with a heavy feeling - we were genuinely sad that it was ending. While driving back, at the foothills of Jebel Akhdar, we stopped at Birkat Al-Mauz, an abandoned village that had been inhabited for centuries before being left behind in the late 1980s.
+              </p>
+              <p class="text-gray-600 mb-4">
+                The village was designed for a very different era - narrow, donkey-sized paths instead of roads for cars. You could clearly see the outlines of homes and imagine how each space was once used - bedrooms, kitchens, living areas - and picture what life in a tightly knit village must have felt like.
+              </p>
+      
+              <p class="text-gray-600 mb-4">
+                Once back in Muscat, we went to the Royal Opera House, and then to Mutrah Fort for sunset. Realising we still had a bit of time, we checked what we had missed and noticed we hadn’t visited Al-Jalali and Al-Mirani forts or the nearby viewpoints. Since they were just a short drive away, we did quick photo stops before heading back to Mutrah Souq. We spent the next couple of hours aimlessly walking around the souq, sitting quietly by the sea, and letting the feeling of the trip ending slowly sink in.
+              </p>
+        
+   
+              
+              <div class="section-title">Places Visited</div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">Birkat Al-Mauz</span>
+                <span class="tag">Royal Opera House</span>
+                <span class="tag">Mutrah Fort</span>
+                <span class="tag">Al-Jalali/Al-Mirani Forts</span>
+                <span class="tag">Mutrah Souq</span>
+              </div>
+            </div>
+            <div class="image-container">
+              <div class="image-wrapper">
+                <picture>
+                  <source 
+                    srcset="/images/oman/day13/day13a-400w.webp 400w, 
+                            /images/oman/day13/day13a-800w.webp 800w, 
+                            /images/oman/day13/day13a.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day13/day13a.jpg" 
+                    srcset="/images/oman/day13/day13a.jpg 1200w"
+                    alt="The area of Birkat al mouz is an abandoned village where you can still see the outlines of older houses" 
+                    class="clickable-image active" 
+                    data-day="13"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day13/day13b-400w.webp 400w, 
+                            /images/oman/day13/day13b-800w.webp 800w, 
+                            /images/oman/day13/day13b.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day13/day13b.jpg" 
+                    srcset="/images/oman/day13/day13b.jpg 1200w"
+                    alt="The opera house in Muscat is beautiful and glitzy" 
+                    class="clickable-image" 
+                    data-day="13"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day13/day13c-400w.webp 400w, 
+                            /images/oman/day13/day13c-800w.webp 800w, 
+                            /images/oman/day13/day13c.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day13/day13c.jpg" 
+                    srcset="/images/oman/day13/day13c.jpg 1200w"
+                    alt="We setup our tripod at the Royal Opera House and tried a few pics - none were great" 
+                    class="clickable-image" 
+                    data-day="13"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day13/day13d-400w.webp 400w, 
+                            /images/oman/day13/day13d-800w.webp 800w, 
+                            /images/oman/day13/day13d.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day13/day13d.jpg" 
+                    srcset="/images/oman/day13/day13d.jpg 1200w"
+                    alt="The top of the Mutrah fort gave us beautiful views of the corniche" 
+                    class="clickable-image" 
+                    data-day="13"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+                <picture>
+                  <source 
+                    srcset="/images/oman/day13/day13e-400w.webp 400w, 
+                            /images/oman/day13/day13e-800w.webp 800w, 
+                            /images/oman/day13/day13e.webp 1200w" 
+                    type="image/webp">
+                  <img 
+                    src="/images/oman/day13/day13e.jpg" 
+                    srcset="/images/oman/day13/day13e.jpg 1200w"
+                    alt="As the evening set in, the views we saw from the top of the Mutrah fort became prettier" 
+                    class="clickable-image" 
+                    data-day="13"
+                    width="800"
+                    height="600"
+                    loading="lazy" />
+                </picture>
+              </div>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-day="13"></span>
+                <span class="carousel-dot" data-day="13"></span>
+                <span class="carousel-dot" data-day="13"></span>
+                <span class="carousel-dot" data-day="13"></span>
+                <span class="carousel-dot" data-day="13"></span>
+              </div>
+              <div class="image-caption">Final day in Muscat</div>
+          </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="section-title">What We Loved</div>
+            <p class="text-gray-600">
+            Watching sunset from Mutrah Fort, with views of the Corniche and the city below, was a perfect way to end the trip.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Skip If You Want</div>
+            <p class="text-gray-600">
+              If you don't have time, you can actually skip Al-Jalali, Al-Mirani, and Al-Alam Palace.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="section-title">Consider Adding</div>
+            <p class="text-gray-600">
+              We really wanted to go to Yiti viewpoint but didn't have the time. 
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="border-t border-gray-200 pt-10 mt-8">
+        <h2 class="text-2xl font-bold mb-6 text-black">Comments</h2>
+        
+        <!-- Comment Form -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+          <form id="comment-form" class="space-y-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+              <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500">
+            </div>
+            <div>
+              <label for="comment" class="block text-sm font-medium text-gray-700 mb-1">Comment</label>
+              <textarea id="comment" name="comment" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"></textarea>
+            </div>
+            <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors">
+              Post Comment
+            </button>
+          </form>
+        </div>
+        
+        <!-- Comments List -->
+        <div id="comments-list" class="space-y-6">
+          <!-- Comments will be displayed here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Notification Popup -->
+  <div id="notification-popup" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 transition-opacity duration-300 opacity-0 pointer-events-none">
+    <div class="bg-white rounded-xl shadow-xl p-6 max-w-md w-full mx-4 transform transition-transform duration-300 scale-95">
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Thank You!</h3>
+        <p class="text-gray-600 mb-6">Your comment has been posted successfully.</p>
+        <button id="popup-close-btn" class="w-full px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors">
+          Okay
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/scripts/oman.js" defer></script>
+
+  <script>
+    // Initialize comments only when user scrolls to them
+    let commentsLoaded = false;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set up lazy loading for comments section
+      const commentsSection = document.querySelector('.border-t.border-gray-200');
+      
+      // Use Intersection Observer to detect when comments section is visible
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !commentsLoaded) {
+            initializeComments();
+            commentsLoaded = true;
+            observer.disconnect(); // No need to observe anymore
+          }
+        });
+      }, {
+        rootMargin: '100px', // Load a bit before it comes into view
+      });
+      
+      observer.observe(commentsSection);
+      
+      // Initialize popup functionality right away (it's lightweight)
+      setupNotificationPopup();
+    });
+    
+    // Setup notification popup
+    function setupNotificationPopup() {
+      const notificationPopup = document.getElementById('notification-popup');
+      const popupCloseBtn = document.getElementById('popup-close-btn');
+      
+      // Close popup when the button is clicked
+      popupCloseBtn.addEventListener('click', () => hideNotification(notificationPopup));
+      
+      // Close popup when clicking outside
+      notificationPopup.addEventListener('click', function(e) {
+        if (e.target === notificationPopup) {
+          hideNotification(notificationPopup);
+        }
+      });
+      
+      // Close popup when Escape key is pressed
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !notificationPopup.classList.contains('opacity-0')) {
+          hideNotification(notificationPopup);
+        }
+      });
+    }
+    
+    // Function to show the notification popup
+    function showNotification(popup = document.getElementById('notification-popup')) {
+      popup.classList.remove('opacity-0', 'pointer-events-none');
+      popup.classList.add('opacity-100');
+      document.querySelector('#notification-popup > div').classList.remove('scale-95');
+      document.querySelector('#notification-popup > div').classList.add('scale-100');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+    
+    // Function to hide the notification popup
+    function hideNotification(popup = document.getElementById('notification-popup')) {
+      popup.classList.remove('opacity-100');
+      popup.classList.add('opacity-0', 'pointer-events-none');
+      document.querySelector('#notification-popup > div').classList.remove('scale-100');
+      document.querySelector('#notification-popup > div').classList.add('scale-95');
+      document.body.style.overflow = ''; // Allow scrolling again
+    }
+  
+    // Initialize comments functionality
+    function initializeComments() {
+      console.log('Initializing comments section...');
+      
+      // Initialize Netlify Identity if available
+      if (typeof netlifyIdentity !== 'undefined') {
+        netlifyIdentity.on('init', user => {
+          if (user) {
+            document.getElementById('name').value = user.user_metadata.full_name || '';
+          }
+        });
+      }
+      
+      // Load existing comments
+      fetchComments();
+      
+      // Set up the comment form submission
+      const commentForm = document.getElementById('comment-form');
+      commentForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const commentText = document.getElementById('comment').value;
+        const timestamp = new Date().toISOString();
+        const page = window.location.pathname;
+        
+        // Create comment object
+        const commentData = {
+          name,
+          comment: commentText,
+          timestamp,
+          page
+        };
+        
+        try {
+          // Call Netlify function to save comment
+          await saveComment(commentData);
+          
+          // Clear form
+          document.getElementById('comment').value = '';
+          
+          // Refresh comments
+          fetchComments();
+          
+          // Show custom notification popup
+          showNotification();
+        } catch (error) {
+          console.error('Error posting comment:', error);
+          alert('There was an error posting your comment. Please try again.');
+        }
+      });
+    }
+  
+    // Function to fetch comments
+    async function fetchComments() {
+      const page = window.location.pathname;
+      const commentsContainer = document.getElementById('comments-list');
+      
+      try {
+        // For local testing, use localStorage
+        let comments = [];
+        if (window.localStorage) {
+          const storedComments = localStorage.getItem('pageComments-' + page);
+          if (storedComments) {
+            comments = JSON.parse(storedComments).filter(c => c.page === page);
+          }
+        }
+        
+        // Clear existing comments
+        commentsContainer.innerHTML = '';
+        
+        if (comments.length === 0) {
+          commentsContainer.innerHTML = '<p class="text-gray-500 italic">Be the first to comment!</p>';
+          return;
+        }
+        
+        // Sort comments by timestamp (newest first)
+        comments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        
+        // Render comments
+        comments.forEach(comment => {
+          const commentEl = document.createElement('div');
+          commentEl.className = 'bg-white p-6 rounded-lg shadow-sm';
+          
+          const date = new Date(comment.timestamp);
+          const formattedDate = date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+          
+          commentEl.innerHTML = `
+            <div class="flex items-center mb-4">
+              <div class="bg-primary-100 text-primary-800 rounded-full w-10 h-10 flex items-center justify-center font-bold">
+                ${comment.name.charAt(0).toUpperCase()}
+  </div>
+              <div class="ml-4">
+                <h4 class="font-bold text-gray-900">${escape(comment.name)}</h4>
+                <p class="text-sm text-gray-500">${formattedDate}</p>
+              </div>
+            </div>
+            <p class="text-gray-700">${escape(comment.comment)}</p>
+          `;
+          
+          commentsContainer.appendChild(commentEl);
+        });
+      } catch (error) {
+        console.error('Error fetching comments:', error);
+        commentsContainer.innerHTML = '<p class="text-red-500">Error loading comments. Please refresh the page.</p>';
+      }
+    }
+    
+    // Function to save a comment (using localStorage for now)
+    async function saveComment(commentData) {
+      // For local testing, use localStorage
+      if (window.localStorage) {
+        const page = window.location.pathname;
+        const storedComments = localStorage.getItem('pageComments-' + page) || '[]';
+        const comments = JSON.parse(storedComments);
+        comments.push(commentData);
+        localStorage.setItem('pageComments-' + page, JSON.stringify(comments));
+        return { success: true };
+      }
+      
+      // In production, this would call a Netlify function
+      // return fetch('/.netlify/functions/save-comment', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(commentData)
+      // }).then(response => response.json());
+    }
+    
+    // Helper function to escape HTML (prevent XSS)
+    function escape(html) {
+      const div = document.createElement('div');
+      div.textContent = html;
+      return div.innerHTML;
+    }
+  </script>
+</Layout>
+
+

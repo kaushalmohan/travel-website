@@ -1,0 +1,266 @@
+/* ================================
+   MODAL (DESERT NIGHT – VERY SOFT)
+================================ */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background-color: rgba(40, 38, 35, 0.85);
+  cursor: pointer;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 92%;
+  max-height: 90vh;
+  margin-top: 2%;
+  object-fit: contain;
+  background-color: transparent;
+}
+
+/* ================================
+   IMAGE CAPTIONS
+================================ */
+.image-caption {
+  color: #5A544F;
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 600;
+  background-color: #FBF6EF;
+  border-radius: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+/* ================================
+   CLOSE BUTTON
+================================ */
+.close {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  color: #f8f8f8;
+  font-size: 38px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 10px;
+}
+
+.close:hover {
+  color: #ffffff;
+}
+
+/* ================================
+   IMAGE CONTAINER (VERY LIGHT FRAME)
+================================ */
+.image-container {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background-color: #F7F1E8;
+  padding: 0.6rem;
+  border-radius: 1rem;
+}
+
+/* ================================
+   IMAGE WRAPPER
+================================ */
+.image-wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.85rem;
+  background-color: #FBF6EF;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease;
+}
+
+.image-wrapper:hover {
+  transform: scale(1.012);
+}
+
+.clickable-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.clickable-image.active {
+  opacity: 1;
+}
+
+/* ================================
+   CAROUSEL DOTS (VERY SUBTLE)
+================================ */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #EAD9BF;
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background-color: #E8B97F;
+}
+
+/* ================================
+   DAY CARD (IVORY SANDSTONE)
+================================ */
+.day-card {
+  background-color: #FFFBF5;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid #EEE5D6;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom: 2.5rem;
+  transition: transform 0.3s ease;
+}
+
+.day-card:hover {
+  transform: translateY(-3px);
+}
+
+/* ================================
+   DAY HEADER (SUN-BLEACHED WASH)
+================================ */
+.day-header {
+  background: linear-gradient(
+    90deg,
+    #EED1A5,
+    #F6E3C6
+  );
+  color: #433D38;
+  padding: 1.05rem 1.5rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* ================================
+   DAY CONTENT
+================================ */
+.day-content {
+  padding: 1.5rem;
+  color: #5A544F;
+}
+
+/* ================================
+   SECTION TITLES
+================================ */
+.section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #433D38;
+  margin-bottom: 0.6rem;
+  border-left: 3px solid #E8B97F;
+  padding-left: 12px;
+}
+
+/* ================================
+   HIGHLIGHT BOX (VERY PALE OASIS)
+================================ */
+.highlight-box {
+  background-color: #FAF3E8;
+  border-left: 3px solid #E8B97F;
+  padding: 1.1rem;
+  margin: 1.25rem 0;
+  border-radius: 0.75rem;
+}
+
+/* ================================
+   TAGS
+================================ */
+.tag {
+  background-color: #F7F1E8;
+  color: #5A544F;
+  border: 1px solid #EAD9BF;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ================================
+   QUICK INFO
+================================ */
+.quick-info {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.quick-info-item {
+  background-color: #FBF6EF;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.6rem;
+  font-size: 0.85rem;
+  color: #5A544F;
+  border: 1px solid #EEE5D6;
+}
+
+/* ================================
+   FOOD SECTION
+================================ */
+.food-section {
+  background-color: #FCF8F2;
+  border-radius: 0.6rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+/* ================================
+   NAV ARROWS
+================================ */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 34px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 14px;
+  user-select: none;
+  background-color: rgba(80, 85, 88, 0.45);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav:hover {
+  background-color: rgba(80, 85, 88, 0.65);
+}
+
+.prev {
+  left: 18px;
+}
+
+.next {
+  right: 18px;
+}
